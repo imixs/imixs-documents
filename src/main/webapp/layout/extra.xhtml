@@ -8,16 +8,16 @@
 	xmlns:i="http://xmlns.jcp.org/jsf/composite/imixs">
 
 
-<h:form>
+	<h:form>
 	Build: <h:panelGroup rendered="#{! empty app.application_office_build}"> Imixs-Office-Workflow-#{app.application_office_build} | </h:panelGroup>
-	<span>Imixs-Workflow-#{app.application_workflow_build}</span>
+		<span>Imixs-Workflow-#{app.application_workflow_build}</span>
 	
-	
+	  
 	
 		  |<h:commandLink actionListener="#{setupController.reset()}"
-				action="/pages/admin/systemcheck"
-				value="#{message.administration}">
-			</h:commandLink></h:form>
-			
+			action="/pages/admin/systemcheck" value="#{message.administration}">
+		</h:commandLink>
+	</h:form>
+
 
 </ui:composition>
