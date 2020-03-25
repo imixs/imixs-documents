@@ -29,17 +29,10 @@ import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RunAs;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
-import javax.enterprise.event.Observes;
 
-import org.imixs.marty.ejb.SetupEvent;
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.engine.DocumentService;
-import org.imixs.workflow.engine.PropertyService;
 import org.imixs.workflow.engine.WorkflowService;
-import org.imixs.workflow.exceptions.AccessDeniedException;
-import org.imixs.workflow.exceptions.ModelException;
-import org.imixs.workflow.exceptions.PluginException;
-import org.imixs.workflow.exceptions.ProcessingErrorException;
 import org.imixs.workflow.exceptions.QueryException;
 
 /**
@@ -54,8 +47,6 @@ import org.imixs.workflow.exceptions.QueryException;
 @Singleton
 public class DocsSetupService {
 
-	@EJB
-	protected PropertyService propertyService;
 
 	@EJB
 	DocumentService documentService;
@@ -64,54 +55,8 @@ public class DocsSetupService {
 	WorkflowService workflowService;
 	private static Logger logger = Logger.getLogger(DocsSetupService.class.getName());
 
-	/**
-	 * This method updates the UserGroup List be reaction on the CDI event
-	 * UserGroupEvent. The method uses an internal caching mechanism to avoid
-	 * multiple database lookups.
-	 */
-	public void onUserGroupEvent(@Observes SetupEvent setupEvent) {
+	
 
-		logger.info("....SetupDocsService started...");
-		ItemCollection rootProcess = getProcess();
-		try {
-
-			if (rootProcess == null) {
-				logger.info("....creating root process...");
-				rootProcess = new ItemCollection();
-				rootProcess.model(getSystemWorkflowVersion()).task(300).event(10);
-				rootProcess.replaceItemValue("txtname", "Posteingang");
-
-				workflowService.processWorkItem(rootProcess);
-
-			} else {
-				logger.info("....root process already exits...");
-			}
-
-		} catch (AccessDeniedException | ProcessingErrorException | PluginException | ModelException e) {
-			logger.warning("Unable to create root process: " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Returns the system workflow version defined by the imixs.properties file
-	 * 
-	 * <pre>
-	 * {@code
-	 * system.model.version
-	 * }
-	 * </pre>
-	 * 
-	 * @return the system Model version.
-	 */
-	public String getSystemWorkflowVersion() {
-		String version = null;
-		version = this.propertyService.getProperties().getProperty("system.model.version", "");
-		if (version.isEmpty()) {
-			logger.warning("property 'system.model.version' is not defined!");
-		}
-		return version;
-	}
 
 	/**
 	 * Returns the root process

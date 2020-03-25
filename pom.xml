@@ -5,7 +5,7 @@
 	<artifactId>imixs-documents</artifactId>
 	<packaging>war</packaging>
 	<name>Imixs Documents</name>
-	<version>0.0.1</version>
+	<version>0.1.0</version>
 	<description>Imixs Documents - A collaboration platform for documents. </description>
 	
 	<organization>
@@ -56,7 +56,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.imixs.workflow.version>4.5.0</org.imixs.workflow.version>
+		<org.imixs.workflow.version>5.1.10-SNAPSHOT</org.imixs.workflow.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		<custom.unpackTypes>war</custom.unpackTypes>
 		<lucene.version>7.5.0</lucene.version>
@@ -66,16 +66,16 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<!-- Dependency Versions -->
-		<org.imixs.workflow.version>4.5.2</org.imixs.workflow.version>
-		<org.imixs.marty.version>3.4.2</org.imixs.marty.version>
-		<org.imixs.office.version>3.5.1</org.imixs.office.version>
-		<!-- 6.6.1 -->
-		<lucene.version>7.5.0</lucene.version>
-		<org.imixs.adapters.version>1.6.0</org.imixs.adapters.version>
+		<org.imixs.workflow.version>5.1.10-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.marty.version>4.1.3-SNAPSHOT</org.imixs.marty.version>
+		<org.imixs.office.version>4.1.3-SNAPSHOT</org.imixs.office.version>
 		<org.imixs.archive.version>1.2.2</org.imixs.archive.version>
-		<apache.poi.version>3.17</apache.poi.version>
-		<apache.pdfbox.version>2.0.12</apache.pdfbox.version>
-		<apache.tika.version>1.16</apache.tika.version>
+		<org.imixs.adapters.version>2.0.0</org.imixs.adapters.version>
+		<org.imixs.archive.version>2.1.0</org.imixs.archive.version>
+		<org.imixs.melman.version>1.0.9</org.imixs.melman.version>
+		<apache.poi.version>4.0.0</apache.poi.version>
+		<apache.pdfbox.version>[2.0.15,)</apache.pdfbox.version>
+		<apache.tika.version>[1.20,)</apache.tika.version>
 
 		<custom.webResources>src/main/webapp</custom.webResources>
 		
@@ -150,9 +150,9 @@
 				</plugins>
 			</build>
 		</profile>    
-
+		
 		<profile>
-			<id>docker-build</id>
+			<id>dev</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -163,10 +163,11 @@
 							<execution>
 								<phase>install</phase>
 								<configuration>
-
 									<target>
 										<exec executable="docker">
 											<arg value="build" />
+											<arg value="-f" />
+											<arg value="Dockerfile-dev" />
 											<arg value="-t" />
 											<arg value="imixs/imixs-documents" />
 											<arg value="./" />
@@ -182,7 +183,9 @@
 
 				</plugins>
 			</build>
-		</profile>
+		</profile>    
+
+		
 	</profiles>
     
 	<build>
@@ -250,6 +253,8 @@
 			</plugin>
 
 		</plugins>
+		
+		<finalName>imixs-documents</finalName>
 	</build>
 
 	<dependencies>
@@ -297,6 +302,11 @@
 			<version>${org.imixs.workflow.version}</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-index-lucene</artifactId>
+			<version>${org.imixs.workflow.version}</version>
+		</dependency>
 
 		<!-- Marty -->
 		<dependency>
@@ -329,35 +339,6 @@
 		</dependency>
 
 
-
-		<!-- Apache Lucene -->
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-core</artifactId>
-			<version>${lucene.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-analyzers-common</artifactId>
-			<version>${lucene.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-queryparser</artifactId>
-			<version>${lucene.version}</version>
-			<scope>compile</scope>
-		</dependency>
-
-
-		<!-- QR-Code service -->
-		<dependency>
-			<groupId>org.imixs.workflow</groupId>
-			<artifactId>imixs-adapters-qrcode</artifactId>
-			<version>${org.imixs.adapters.version}</version>
-			<scope>runtime</scope>
-		</dependency>
 
 		<!-- Imixs-Archive -->
 		<dependency>
