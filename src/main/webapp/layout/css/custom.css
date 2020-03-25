@@ -1,0 +1,30 @@
+
+/* --- Imixs-Portlet ---------------------------------- */
+.imixs-portlet {
+	width: 33.33333%;
+	display: inline-block;
+	float: left;
+	min-height: 1px;
+	position: relative;
+	padding: 10px;
+	border-right: 1px solid #aaaaaa;
+	margin-bottom: 30px;
+}
+
+.startprocess {
+	margin-bottom: 20px;
+}
+
+.startprocess h1 {
+	font-size: 1.3rem;
+	color: #666;
+}
+
+.imixs-docs-start {
+	padding: 10px 10px;
+	border: 1px solid #145267;
+	color: #333;
+	height: 100px;
+	margin-right: 20px;
+} 
+
