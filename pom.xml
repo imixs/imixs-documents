@@ -5,7 +5,7 @@
 	<artifactId>imixs-documents</artifactId>
 	<packaging>war</packaging>
 	<name>Imixs Documents</name>
-	<version>1.0.0</version>
+	<version>0.0.1</version>
 	<description>Imixs Documents - A collaboration platform for documents. </description>
 	
 	<organization>
