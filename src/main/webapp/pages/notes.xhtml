@@ -47,10 +47,7 @@
 				</h:panelGroup>
 
 				<div class="row imixs-notes">
-	<!--  Box 3 -->
-					<ui:include src="/pages/portlet_startprocess.xhtml" />
-
-					<!--  Box 1 -->
+				<!--  Box 1 -->
 					<f:subview id="portlet_owner">
 						<ui:include src="/pages/portlet_worklist.xhtml">
 							<ui:param name="view" value="#{portletWorklistTasks}" />
@@ -70,14 +67,17 @@
 
 
 					<!--  Box 4 -->
-					<f:subview id="portlet_favorites">
-						<ui:include src="/pages/portlet_worklist.xhtml">
-							<ui:param name="view" value="#{portletWorklistFavorites}" />
-							<ui:param name="title" value="#{message['worklist.favorite']}" />
-						</ui:include>
-					</f:subview>
-
+					<!--  Box 3 -->
+					<ui:include src="/pages/portlet_startprocess.xhtml" />
+					
+									
 				
+				
+				</div>
+				<div class="row imixs-notes">
+					
+
+	
 
 					<!--  Box 5 -->
 					<c:choose>

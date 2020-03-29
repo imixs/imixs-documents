@@ -1,44 +1,8 @@
-/* --- Imixs-Portlet ---------------------------------- */
-.ximixs-portlet {
+/* --- Imixs-Portlet  3-colums-layout  ---------------------------- */
+.imixs-portlet {
 	width: 33.33333%;
-	/*display: inline-block;*/
-	float: left;
-	min-height: 1px;
-	position: relative;
-	padding: 10px;
-	border-right: 1px solid #aaaaaa;
-	margin-bottom: 30px;
+}
+.imixs-portlet:nth-child(3n+3) {
+	border-right: none;
 }
  
-.xstartprocess {
-	margin-bottom: 20px;
-	width: 100%;
-}
-
-.xstartprocess .imixs-viewentry {
-	padding: 10px;
-	border:none;
-	background: #f9f9fB;
-	
-	-webkit-box-shadow: 3px 3px 5px 0px rgba(90, 125, 153, 1);
-	-moz-box-shadow: 3px 3px 5px 0px rgba(90, 125, 153, 1);
-	box-shadow: 3px 3px 5px 0px rgba(90, 125, 153, 1);
-
-min-height: 120px;
-
-
-}
-
-.ximixs-viewentry:HOVER {
-	background: #fff;
-	xxxborder-left: 2px solid #fff;
-	cursor: pointer;
-}
-
-.ximixs-docs-start {
-	padding: 10px 10px;
-	border: 1px solid #145267;
-	color: #333;
-	height: 100px;
-	margin-right: 20px;
-}
