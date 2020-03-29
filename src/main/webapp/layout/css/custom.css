@@ -1,8 +1,7 @@
-
 /* --- Imixs-Portlet ---------------------------------- */
-.imixs-portlet {
+.ximixs-portlet {
 	width: 33.33333%;
-	display: inline-block;
+	/*display: inline-block;*/
 	float: left;
 	min-height: 1px;
 	position: relative;
@@ -10,21 +9,36 @@
 	border-right: 1px solid #aaaaaa;
 	margin-bottom: 30px;
 }
-
-.startprocess {
+ 
+.xstartprocess {
 	margin-bottom: 20px;
+	width: 100%;
 }
 
-.startprocess h1 {
-	font-size: 1.3rem;
-	color: #666;
+.xstartprocess .imixs-viewentry {
+	padding: 10px;
+	border:none;
+	background: #f9f9fB;
+	
+	-webkit-box-shadow: 3px 3px 5px 0px rgba(90, 125, 153, 1);
+	-moz-box-shadow: 3px 3px 5px 0px rgba(90, 125, 153, 1);
+	box-shadow: 3px 3px 5px 0px rgba(90, 125, 153, 1);
+
+min-height: 120px;
+
+
 }
 
-.imixs-docs-start {
+.ximixs-viewentry:HOVER {
+	background: #fff;
+	xxxborder-left: 2px solid #fff;
+	cursor: pointer;
+}
+
+.ximixs-docs-start {
 	padding: 10px 10px;
 	border: 1px solid #145267;
 	color: #333;
 	height: 100px;
 	margin-right: 20px;
-} 
-
+}

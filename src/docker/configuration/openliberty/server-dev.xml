@@ -56,9 +56,16 @@
 		https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_sec_runas.html
 		https://groups.io/g/openliberty/messages
 		https://www.ibm.com/support/knowledgecenter/de/SS7K4U_liberty/com.ibm.websphere.wlp.zseries.doc/ae/cwlp_authorization.html
+
+<applicationMonitor dropinsEnabled="false" />
 	 -->
-	<applicationMonitor dropinsEnabled="false" />
 	
+	
+	
+	  <!-- hot-deploy for dropins 
+    <applicationMonitor updateTrigger="polled" pollingRate="500ms"
+                    dropins="dropins" dropinsEnabled="true"/>
+	-->
 	<application name="imixs-documents"  context-root="/" type="war" 
 		id="imixs-documents"
     	location="${server.config.dir}dropins/imixs-documents.war">
@@ -91,7 +98,7 @@
 		httpsPort="9443" />
 
 	<!-- Automatically expand WAR files and EAR files -->
-	<applicationManager autoExpand="true" />
+	<applicationManager autoExpand="false" />
 
 
 	<!-- JDBC PostgreSQL driver -->

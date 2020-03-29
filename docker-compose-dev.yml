@@ -12,17 +12,20 @@ services:
     depends_on:
       - db
     environment:
+      WILDFLY_PASS: adminadmin
+      DEBUG: "true"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "adminadmin"
       POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
       TZ: "Europe/Berlin"
     ports:
-      - "9080:9080"
-      - "9443:9443"
-      - "7777:7777"
+      - "8080:8080"
+      - "9990:9990"
+      - "8787:8787"
     volumes:
-      - ~/git/imixs-documents/src/docker/deployments:/config/dropins/ 
- 
+      # openliberty
+      # - ~/git/imixs-documents/src/docker/deployments:/config/dropins/ 
+      - ~/git/imixs-documents/src/docker/deployments:/opt/wildfly/standalone/deployments/ 
 
 #  imixsadmin:
 #    image: imixs/imixs-admin

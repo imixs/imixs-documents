@@ -1,20 +1,11 @@
-FROM open-liberty:kernel
+FROM imixs/wildfly:1.2.9
 
+# Setup configuration
+COPY ./src/docker/configuration/imixsrealm.properties ${WILDFLY_CONFIG}/
+COPY ./src/docker/configuration/standalone.xml ${WILDFLY_CONFIG}/
 
-# Imixs-Documents
-MAINTAINER ralph.soika@imixs.com
+# OPTIONAL: copy the standalone.conf file for custom VM setup (e.g. heap size)
+#COPY ./src/docker/configuration/standalone.conf ${WILDFLY_HOME}/bin/
 
-# Copy postgres JDBC driver
-COPY ./src/docker/configuration/openliberty/postgresql-9.4.1212.jar /opt/ol/wlp/lib
-
-# Add config
-COPY --chown=1001:0 ./src/docker/configuration/openliberty/server.xml /config/
-
-# Activate Debug Mode...
-#COPY --chown=1001:0 ./src/docker/configuration/openliberty/jvm.options /config/
-
-# Copy sample application
-COPY ./target/imixs-documents.war /config/dropins/
-
-
-
+# Deploy artefact
+COPY ./target/*.war ${WILDFLY_DEPLOYMENT}/
