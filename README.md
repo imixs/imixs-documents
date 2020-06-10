@@ -66,7 +66,7 @@ To run Imixs-Office-Workflow in a Docker production environment the project prov
 
 With the profile '_docker-build_' a docker container based on the current version of Imixs-Office-Workflow is created locally
  
-	$ mvn clean install -Pdocker-build
+	$ mvn clean install -Pdocker
 
 
 ### docker-push

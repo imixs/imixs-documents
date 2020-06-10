@@ -17,16 +17,6 @@ services:
       POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
       TZ: "Europe/Berlin"
     ports:
-      - "9080:9080"
-      - "9443:9443"
-      - "7777:7777"
-#    volumes:
-#      - ~/git/imixs-jsf-example/src/docker/deployments:/config/dropins/   
+      - "8080:8080"
+ 
 
-
-
-    
-#  imixsadmin:
-#    image: imixs/imixs-admin
-#    ports:
-#      - "8888:8
