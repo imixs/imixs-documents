@@ -23,7 +23,7 @@ services:
 
       ASYNCEVENT_PROCESSOR_ENABLED: "true"
       TIKA_SERVICE_MODE: "model"
-      TIKA_SERVICE_ENDPONT: "http://tika:9998/tika"
+      TIKA_SERVICE_ENDPOINT: "http://tika:9998/tika"
       TIKA_OCR_MODE: "MIXED"
 
       ML_API_ENDPOINT: "http://imixs-ml-spacy:8000/analyse/"
