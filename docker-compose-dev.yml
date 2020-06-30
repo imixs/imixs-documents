@@ -6,8 +6,9 @@ services:
     environment:
       POSTGRES_PASSWORD: adminadmin
       POSTGRES_DB: office
-
-  app:
+    volumes: 
+      - dbdata:/var/lib/postgresql/data
+  imixs-documents:
     image: imixs/imixs-documents
     depends_on:
       - db
@@ -31,4 +32,6 @@ services:
 #    image: imixs/imixs-admin
 #    ports:
 #      - "8888:8080"
- 
+
+volumes:
+  dbdata: 

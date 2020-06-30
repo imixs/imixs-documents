@@ -1,0 +1,10 @@
+
+Style 
+
+background-color: #f0fbde;
+padding-left: 20px;
+
+background: url(http://localhost:8080/layout/css/idea_14.png) no-repeat scroll left center #f0fbde !important;
+    background-position-x: left;
+    background-position-y: center;
+background-position: 4px 6px, center !important;

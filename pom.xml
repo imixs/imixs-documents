@@ -64,12 +64,13 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<!-- Dependency Versions -->
-		<org.imixs.workflow.version>5.2.1</org.imixs.workflow.version>
-		<org.imixs.marty.version>4.1.4</org.imixs.marty.version>
-		<org.imixs.office.version>4.1.5-SNAPSHOT</org.imixs.office.version>
+		<org.imixs.workflow.version>5.2.2-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.marty.version>4.1.5-SNAPSHOT</org.imixs.marty.version>
+		<org.imixs.office.version>4.2.0-SNAPSHOT</org.imixs.office.version>
 		<org.imixs.adapters.version>2.0.0</org.imixs.adapters.version>
-		<org.imixs.archive.version>2.1.2-SNAPSHOT</org.imixs.archive.version>
-		<org.imixs.melman.version>1.0.9</org.imixs.melman.version>
+		<org.imixs.archive.version>2.2.0-SNAPSHOT</org.imixs.archive.version>
+		<org.imixs.ml.version>1.0.0-SNAPSHOT</org.imixs.ml.version>
+		<org.imixs.melman.version>1.0.18-SNAPSHOT</org.imixs.melman.version>
 		<apache.poi.version>4.0.0</apache.poi.version>
 		<apache.pdfbox.version>[2.0.15,)</apache.pdfbox.version>
 		<apache.tika.version>[1.20,)</apache.tika.version>
@@ -417,7 +418,21 @@
 			<version>${org.imixs.archive.version}</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-archive-documents</artifactId>
+			<version>${org.imixs.archive.version}</version>
+			<scope>compile</scope>
+		</dependency>
 
+
+		<!-- Imixs-ML -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-ml-workflow</artifactId>
+			<version>${org.imixs.ml.version}</version>
+			<scope>compile</scope>
+		</dependency>
 
 
 	</dependencies>
