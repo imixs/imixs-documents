@@ -1711,7 +1711,19 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="ml.model">models/invoice-de-0.0.2</item>]]></imixs:value>
+          <imixs:value><![CDATA[<ml-config name="entity">
+    <name>_invoicetotal</name>
+    <type>currency</type>
+</ml-config>
+<ml-config name="entity">
+    <name>_invoicenumber</name>
+    <type>text</type>
+</ml-config>
+<ml-config name="entity">
+    <name>_invoicedate</name>
+    <type>date</type>
+</ml-config>
+]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Speichern]]></imixs:value>
