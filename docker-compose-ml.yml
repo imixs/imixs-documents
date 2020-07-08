@@ -22,6 +22,8 @@ services:
       TZ: "Europe/Berlin"
 
       ASYNCEVENT_PROCESSOR_ENABLED: "true"
+      ASYNCEVENT_PROCESSOR_INITIALDELAY: "10000"
+
       TIKA_SERVICE_MODE: "model"
       TIKA_SERVICE_ENDPOINT: "http://tika:9998/tika"
       TIKA_OCR_MODE: "MIXED"
