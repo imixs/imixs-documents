@@ -2,7 +2,8 @@
 .imixs-portlet {
 	width: 33.33333%;
 }
+
 .imixs-portlet:nth-child(3n+3) {
 	border-right: none;
 }
- 
+

@@ -31,44 +31,29 @@
 	</script>
 		
 		
-		<!-- 
-			see:
-			https://stackoverflow.com/questions/16588327/how-to-invoke-a-jsf-managed-bean-on-a-html-dom-event-using-native-javascript
-			
-			https://dzone.com/articles/execute-a-jsf-ajax-request-by-just-a-function-call
-		 -->
-   		<h:commandScript name="imixsOfficeWorkflow.mlSearch" action="#{mlController.search()}" 
-   			rendered="#{mlController!=null}" render="ml-search-results" onevent="showMLSearchResult" />
+	<!-- 
+		see:
+		https://stackoverflow.com/questions/16588327/how-to-invoke-a-jsf-managed-bean-on-a-html-dom-event-using-native-javascript
 		
-			<h:panelGroup id="ml-search-results" layout="block"
-				style="width:100%;margin-top:15px;"
-				class="marty-userinput-suggestresultlist">
-
-				<ui:repeat var="suggest"
-					value="#{mlController.searchResult}">
-
-					<div class="marty-userinput-suggestresultlist-entry"
-						style="width: 100%;">
-
-						<a href="#">
-							<h:outputText style="font-weight: bold;"
-								value="#{suggest}" escape="false" />
-						</a>
-					</div>
-				</ui:repeat>
-			</h:panelGroup>
-							
-		
-			
-			<input type="button" value="click param" onclick="imixsOfficeWorkflow.mlSearch({ item: '_invoicenumber' })" />	
-			
-			
-			
-		<h1>ml.status=#{workitem.item['ml.status']}</h1>
-		
-		
-				
+		https://dzone.com/articles/execute-a-jsf-ajax-request-by-just-a-function-call
+	 -->
+  		<h:commandScript name="imixsOfficeWorkflow.mlSearch" action="#{mlController.search()}" 
+  			rendered="#{mlController!=null}" render="ml-search-results" onevent="showMLSearchResult" />
 	
+		<h:panelGroup id="ml-search-results" layout="block" class="ml-search-results">
+
+			<ui:repeat var="suggest" value="#{mlController.searchResult}">
+
+				<div>
+					<a href="javascript:void(0)" onclick="selectMLSearchResultEntry('#{suggest}')">
+						<h:outputText style="font-weight: bold;" value="#{suggest}" escape="false" />
+					</a>
+				</div>
+			</ui:repeat>
+		</h:panelGroup>
+						
+			
+
 				
 </ui:composition>
 
