@@ -22,9 +22,10 @@ Forms can be customized in Imixs-Documents within the BPMN model. The following 
 |**Contract** 	  |        |                                                                |
 |contract.name    |text   |  Contract name	|
 |contract.partner |text   |  Contract partner name	|
-|contract.start   |date   |  contract start date	|
-|contract.end     |date   |  contract end date	|
-|contract.fee     |float  |  contract fee per billing cycle	|
+|contract.number  |text   |  Contract number	|
+|contract.start   |date   |  Contract start date	|
+|contract.end     |date   |  Contract end date	|
+|contract.fee     |float  |  Contract fee per billing cycle	|
 |**Creditor**     |       |                                                                |
 |cdtr.name        |text   |  Creditor name	|
 |cdtr.iban        |text   |  IBAN number	|
