@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "building maven project...."
+echo "building maven project.... "
 set -e -x
 
 cd source-code
