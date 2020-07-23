@@ -1,5 +1,5 @@
 # Concourse Pipeline to build Imixs-Documents and push it into docker-hub
-# $ fly -t imixs set-pipeline --pipeline imixs-documents --config pipeline.yaml	
+# $ fly -t imixs set-pipeline --pipeline imixs-documents --config pipeline.yaml
 
 
 ---
