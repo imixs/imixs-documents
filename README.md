@@ -7,6 +7,37 @@ and is licensed under the GPL.
 The goal of the project is to provide a powerful and easy-to-use document management suite for companies and organizations.
 With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', business processes can be designed within the BPMN 2.0 standard and easily adapted to the individually needs of an enterprise.
 
+## Forms
+
+Forms can be customized in Imixs-Documents within the BPMN model. The following sections list the business items predefined by Imixs-Documents:
+
+
+
+ 
+| Item            | Type   | Description												 	|
+|-----------------|--------|------------|-----------------------------------------------------------------------|
+|**Billing** 
+|billing.total 	  |float   | billing amount	|
+|billing.cycle 	  |text    | billing cycle	|
+|**Contract** 
+|contract.name    |text   |  Contract name	|
+|contract.partner |text   |  Contract partner name	|
+|contract.start   |date   |  contract start date	|
+|contract.end     |date   |  contract end date	|
+|contract.fee     |float  |  contract fee per billing cycle	|
+|**Creditor** 
+|cdtr.name        |text   |  Creditor name	|
+|cdtr.iban        |text   |  IBAN number	|
+|cdtr.bic         |text   |  BIC number	|
+|**Invoice** 
+|invoice.number   |text   |  Invoice number	|
+|invoice.date     |date   |  Invoice Date|
+|invoice.total    |float  |  Invoice total amount|
+|invoice.vat      |float  |  Invoice vat |
+|invoice.gross    |float  |  Invoice gross amount |
+
+
+
 
 
 ## Contribute
