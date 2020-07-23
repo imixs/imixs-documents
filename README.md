@@ -15,21 +15,21 @@ Forms can be customized in Imixs-Documents within the BPMN model. The following 
 
  
 | Item            | Type   | Description												 	|
-|-----------------|--------|------------|-----------------------------------------------------------------------|
-|**Billing** 
+|-----------------|--------|----------------------------------------------------------------|
+|**Billing**      |        |                                                                |
 |billing.total 	  |float   | billing amount	|
 |billing.cycle 	  |text    | billing cycle	|
-|**Contract** 
+|**Contract** 	  |        |                                                                |
 |contract.name    |text   |  Contract name	|
 |contract.partner |text   |  Contract partner name	|
 |contract.start   |date   |  contract start date	|
 |contract.end     |date   |  contract end date	|
 |contract.fee     |float  |  contract fee per billing cycle	|
-|**Creditor** 
+|**Creditor**     |       |                                                                |
 |cdtr.name        |text   |  Creditor name	|
 |cdtr.iban        |text   |  IBAN number	|
 |cdtr.bic         |text   |  BIC number	|
-|**Invoice** 
+|**Invoice**      |        |                                                                |
 |invoice.number   |text   |  Invoice number	|
 |invoice.date     |date   |  Invoice Date|
 |invoice.total    |float  |  Invoice total amount|
