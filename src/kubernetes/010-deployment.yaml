@@ -1,0 +1,113 @@
+---
+###################################################
+# Deployment PostgreSQL
+###################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+
+  labels: 
+    app: db
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_DB
+          value: office
+        - name: POSTGRES_PASSWORD
+          value: adminadmin
+        - name: POSTGRES_USER
+          value: postgres
+        image: postgres:9.6.1
+        name: postgres
+        livenessProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        ports:
+          - containerPort: 5432        
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: dbdata
+          subPath: postgres
+      restartPolicy: Always
+      volumes:
+      - name: dbdata
+        persistentVolumeClaim:
+          claimName: dbdata-pvc
+
+
+---
+###################################################
+# Deployment office-demo
+###################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels: 
+    app: imixs-documents
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: imixs-documents
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imixs-documents
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_CONNECTION
+          value: jdbc:postgresql://db/office
+        - name: POSTGRES_PASSWORD
+          value: adminadmin
+        - name: POSTGRES_USER
+          value: postgres
+        - name: TZ
+          value: Europe/Berlin
+        - name: WILDFLY_PASS
+          value: adminadmin
+        image: imixs/imixs-documents:latest
+        name: imixs-documents
+        # run as root because of persistence volume storage
+        securityContext:
+          runAsUser: 0
+          allowPrivilegeEscalation: false
+        ports: 
+          - name: web
+            containerPort: 8080
+          - name: admin
+            containerPort: 9990
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 9990
+          initialDelaySeconds: 30
+          periodSeconds: 5
+        resources: {}
+        volumeMounts:
+        - mountPath: /home/imixs
+          name: appdata
+      restartPolicy: Always
+      volumes:
+      - name: appdata
+        persistentVolumeClaim:
+          claimName: appdata
+

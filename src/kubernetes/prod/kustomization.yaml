@@ -1,0 +1,10 @@
+namespace: my-namespace
+
+bases:
+- ../kubernetes
+
+resources:
+- 090-ingress.yaml
+
+patchesStrategicMerge:
+- 000-custom-env.yaml

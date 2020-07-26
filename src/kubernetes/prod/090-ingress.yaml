@@ -1,0 +1,17 @@
+---
+###################################################
+# Ingress
+###################################################
+kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+  name: documents-imixs-tls
+spec:
+  rules:
+  - host: documents.foo.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: imixs-documents
+          servicePort: 8080

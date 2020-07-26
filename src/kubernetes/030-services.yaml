@@ -1,0 +1,40 @@
+---
+###################################################
+# Service db
+###################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels: 
+    app: db
+spec:
+  ports:
+    - name: tcp
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: db
+  clusterIP: None
+
+
+---
+###################################################
+# Service imixs-documents
+###################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: imixs-documents
+spec:
+  ports:
+  - protocol: TCP
+    name: web
+    port: 8080
+  selector:
+    app: imixs-documents
+
+
+
+
+
