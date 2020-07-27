@@ -19,4 +19,4 @@ jobs:
   - get: source-code
     trigger: true
   - task: build
-    file: source-code/ci/build.yaml
+    file: source-code/build.yaml
