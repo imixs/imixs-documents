@@ -99,16 +99,18 @@ Developers can use a docker image for testing and the development of new feature
 
 	$ mvn clean install -Pdocker
 
-To start Imixs-Office-Workflow with docker, the docker-compose file 'docker-compose-dev.yml can be used:
+To start Imixs-Office-Workflow with docker, the docker-compose command line tool an be used:
 
-	$ docker-compose -f docker-compose-dev.yml up
+	$ docker-compose -f docker/docker-compose.yml up
 
 Note: this command will start several containers, 
 
 * a Postgre SQL database server 
-* a Wildfly Server running Imixs-Office-Workflow
-* and a Wildfly Server funning the [Imixs-Admin tool](https://www.imixs.org/doc/administration.html) 
+* a Wildfly Server running Imixs-Documents
 
+Optional you can run the docker-compose configuration docker/docker-compose-dev.yml which will also start a the [Imixs-Admin tool](https://www.imixs.org/doc/administration.html) 
+
+	$ docker-compose -f docker/docker-compose-dev.yml up
 
 ### Mount Points
 The development configuration sets a local mount point at the following location:
@@ -122,7 +124,7 @@ Make sure that this directory exits. During development new versions can easily 
 
 ## Docker for Production
 
-To run Imixs-Office-Workflow in a Docker production environment the project provides several additional maven profiles:
+To run Imixs-Documents in a Docker production environment the project provides several additional maven profiles:
 
 
 ### docker-build
@@ -148,7 +150,7 @@ Imixs-Office-Workflow is also available on [Docker-Hub](https://hub.docker.com/r
 
 
 ## Maven Build
-Imixs-Office-Workflow is based on [Maven](http://maven.apache.org/) and runs on the Jakarta EE stack. Imixs-Office-Workflow can be deployed on JBoss/Wildfly server or other Java EE application servers.
+*Imixs-Documents* is based on [Maven](http://maven.apache.org/) and runs on the Jakarta EE stack. Imixs-Office-Workflow can be deployed on JBoss/Wildfly server or other Java EE application servers.
 To build the application from sources, run the maven install command first:
 
 	$ mvn clean install
