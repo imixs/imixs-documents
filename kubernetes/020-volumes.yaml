@@ -1,44 +1,18 @@
 ---
 ###################################################
-# Persistence Volume for DB
-###################################################
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: dbdata-pv
-spec:
-  capacity:
-    storage: 2Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  claimRef:
-    namespace: default
-    name: dbdata-pvc
-  csi:
-    driver: driver.longhorn.io
-    fsType: ext4
-    volumeHandle: imixs-documents
-  storageClassName: longhorn-durable
-
-
-
----
-###################################################
 # Persistence Volume Claim for DB
 ###################################################
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: dbdata-pvc
+  name: imixs-documents-dbdata
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: longhorn-durable
+#  storageClassName: longhorn
   resources:
     requests:
       storage: 2Gi
-  volumeName: "dbdata-pv"
 
 
 
@@ -50,11 +24,11 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: appdata
+  name: imixs-documents-appdata
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: longhorn
+#  storageClassName: longhorn
   resources:
     requests:
       storage: 2Gi
