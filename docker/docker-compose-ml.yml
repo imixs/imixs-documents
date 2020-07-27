@@ -35,9 +35,7 @@ services:
       - "9990:9990"
       - "8787:8787"
     volumes:
-      # openliberty
-      # - ~/git/imixs-documents/src/docker/deployments:/config/dropins/ 
-      - ./src/docker/deployments:/opt/wildfly/standalone/deployments/ 
+      - ./deployments:/opt/wildfly/standalone/deployments/ 
 
 
 
@@ -49,12 +47,12 @@ services:
       PYTHONUNBUFFERED: 1
       TZ: "Europe/Berlin"
       MODEL_LANGUAGE: "de"
-      MODEL_PATH: "models/invoice-de-0.0.2/" 
+      MODEL_PATH: "models/invoice-de-0.0.3/" 
 
     ports:
       - "8000:8000"  
     volumes:
-      - ./src/models/:/usr/src/app/models/
+      - ../src/models/:/usr/src/app/models/
 
 
 # Imixs-ML API sevice
@@ -62,7 +60,7 @@ services:
     image: imixs/imixs-ml-training
     environment:
       TZ: "Europe/Berlin"
-      TIKA_SERVICE_ENDPONT: "http://tika:9998/tika"
+      TIKA_SERVICE_ENDPOINT: "http://tika:9998/tika"
       #TIKA_OCR_MODE: "PDF_ONLY"
       TIKA_OCR_MODE: "MIXED"
       # Payara-Micor ENV
@@ -79,6 +77,7 @@ services:
       TZ: "Europe/Berlin"
     ports:
       - "9998:9998"  
+
 
 
 
