@@ -3,9 +3,16 @@
 This is a deployment configuration for Kubernetes. The setup is configured to use [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) providing a declarative object management.
 
 
-## Deploy
+## Deploy 
 
-To create the deployment objects run:
+To create the deployment objects form the base-deployment run:
+
+	$ kubectl apply --kustomize https://github.com/imixs/imixs-documents/kubernetes/
+	
+
+## Deploy Custom Setup
+
+To create a custom deployment first download copy this directory. To deployment the objects localy run:
 
 	$ kubectl apply --kustomize  ./kubernetes
 
