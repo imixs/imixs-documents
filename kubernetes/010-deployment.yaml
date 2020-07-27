@@ -5,7 +5,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db
+  name: imixs-documents-db
 
   labels: 
     app: db
@@ -57,7 +57,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+  name: imixs-documents-app
   labels: 
     app: imixs-documents
 spec:
@@ -75,7 +75,7 @@ spec:
       containers:
       - env:
         - name: POSTGRES_CONNECTION
-          value: jdbc:postgresql://db/office
+          value: jdbc:postgresql://imixs-documents-db/office
         - name: POSTGRES_PASSWORD
           value: adminadmin
         - name: POSTGRES_USER

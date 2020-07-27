@@ -7,7 +7,7 @@ This is a deployment configuration for Kubernetes. The setup is configured to us
 
 To create the deployment objects form the base-deployment run:
 
-	$ kubectl apply --kustomize https://github.com/imixs/imixs-documents/kubernetes/
+	$ kubectl create --kustomize https://github.com/imixs/imixs-documents/kubernetes/
 	
 
 ## Deploy Custom Setup
