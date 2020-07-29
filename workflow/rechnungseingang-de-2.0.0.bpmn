@@ -59,10 +59,8 @@
         <bpmn2:flowNodeRef>Task_2</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_9</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>BoundaryEvent_1</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_8</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>Task_5000</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_5000-10</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_12</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>EventBasedGateway_1</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_5000-20</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>ExclusiveGateway_2</bpmn2:flowNodeRef>
@@ -80,6 +78,7 @@
         <bpmn2:flowNodeRef>IntermediateCatchEvent_10</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>Task_3</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>ExclusiveGateway_4</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_8</bpmn2:flowNodeRef>
       </bpmn2:lane>
       <bpmn2:lane id="Lane_2" name="Bereich Team">
         <bpmn2:flowNodeRef>EventBasedGateway_2</bpmn2:flowNodeRef>
@@ -111,8 +110,9 @@
           <imixs:value><![CDATA[form_panel_instruction_simple#custom]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />]]></imixs:value>
+          <imixs:value><![CDATA[Firma: <itemvalue>cdtr.name</itemvalue><br />
+Rechnungsdatum: <itemvalue format="dd.MMM yyyy">invoice.date</itemvalue>:<br />
+Betrag: € <itemvalue>invoice.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
@@ -121,7 +121,7 @@
           <imixs:value><![CDATA[typcn-download]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>numsequencenumber</itemvalue>  <itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">invoice.date</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -158,7 +158,6 @@
 <p>Eingangsrechnungen können über eine E-Mailschnittstelle oder das Filesystem automatisch eingelesen werden. Eine Eingangsrechnung wird in diesem Beispiel vom zugewiesenen Mitarbeiter sowie den Prozessverantworltichen (Controlling) bearbeitet. </p>]]></bpmn2:documentation>
       <bpmn2:incoming>SequenceFlow_31</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_18</bpmn2:incoming>
-      <bpmn2:incoming>SequenceFlow_11</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="Task_5000" targetRef="EventBasedGateway_1"/>
@@ -300,7 +299,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[var result={}; 
 result.isValid=true;
 
-var date = workitem.get('_invoicedate');
+var date = workitem.get('invoice.date');
  if (!date || !date[0] || date[0]=='') {
 	result.isValid=false;
     	result.errorMessage='Bitte geben Sie ein Rechnungsdatum an.';
@@ -327,8 +326,9 @@ var date = workitem.get('_invoicedate');
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />]]></imixs:value>
+          <imixs:value><![CDATA[Firma: <itemvalue>cdtr.name</itemvalue><br />
+Rechnungsdatum: <itemvalue format="dd.MMM yyyy">invoice.date</itemvalue>:<br />
+Betrag: € <itemvalue>invoice.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[in Prüfung]]></imixs:value>
@@ -337,18 +337,17 @@ var date = workitem.get('_invoicedate');
           <imixs:value><![CDATA[typcn-download|typcn-info,imixs-info,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>numsequencenumber</itemvalue>  <itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">invoice.date</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
         </imixs:item>
         <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[namspaceteam]]></imixs:value>
+          <imixs:value><![CDATA[namprocessmanager]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[namprocessteam]]></imixs:value>
           <imixs:value><![CDATA[namprocessmanager]]></imixs:value>
-          <imixs:value><![CDATA[namspaceteam]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_5005"><![CDATA[<h3>Arbeitsanweisung</h3>
@@ -671,8 +670,9 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />]]></imixs:value>
+          <imixs:value><![CDATA[Firma: <itemvalue>cdtr.name</itemvalue><br />
+Rechnungsdatum: <itemvalue format="dd.MMM yyyy">invoice.date</itemvalue>:<br />
+Betrag: € <itemvalue>invoice.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Warten auf Zahlungsziel]]></imixs:value>
@@ -681,7 +681,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[typcn-download|typcn-bell,imixs-success,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>numsequencenumber</itemvalue>  <itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">invoice.date</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -843,8 +843,9 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />]]></imixs:value>
+          <imixs:value><![CDATA[Firma: <itemvalue>cdtr.name</itemvalue><br />
+Rechnungsdatum: <itemvalue format="dd.MMM yyyy">invoice.date</itemvalue>:<br />
+Betrag: € <itemvalue>invoice.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[in Freigabe]]></imixs:value>
@@ -853,7 +854,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[typcn-download|typcn-bell,imixs-error,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>numsequencenumber</itemvalue>  <itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">invoice.date</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -952,7 +953,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[var result={}; 
 result.isValid=true;
 
-var team = workitem.get('datdate');
+var team = workitem.get('invoice.date');
  if (!team || !team[0]) {
 	result.isValid=false;
     	result.errorMessage='Bitte geben Sie das Zahlungsziel an.';
@@ -1029,8 +1030,9 @@ var team = workitem.get('datdate');
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />]]></imixs:value>
+          <imixs:value><![CDATA[Firma: <itemvalue>cdtr.name</itemvalue><br />
+Rechnungsdatum: <itemvalue format="dd.MMM yyyy">invoice.date</itemvalue>:<br />
+Betrag: € <itemvalue>invoice.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Warten auf Zahlungsziel]]></imixs:value>
@@ -1039,7 +1041,7 @@ var team = workitem.get('datdate');
           <imixs:value><![CDATA[typcn-download|typcn-edit,imixs-success,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>numsequencenumber</itemvalue>  <itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">invoice.date</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -1133,14 +1135,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value>false</imixs:value>
         </imixs:item>
         <imixs:item name="txtbusinessrule" type="CDATA">
-          <imixs:value><![CDATA[var result={}; 
-result.isValid=true;
-
-var team = workitem.get('datdate');
- if (!team || !team[0]) {
-	result.isValid=false;
-    	result.errorMessage='Bitte geben Sie das Zahlungsziel an.';
- }]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_1"><![CDATA[Rechnung geprüft, weiterleiten an Buchhaltung.]]></bpmn2:documentation>
@@ -1297,8 +1292,9 @@ var team = workitem.get('datdate');
           <imixs:value><![CDATA[workitemarchive]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />]]></imixs:value>
+          <imixs:value><![CDATA[Firma: <itemvalue>cdtr.name</itemvalue><br />
+Rechnungsdatum: <itemvalue format="dd.MMM yyyy">invoice.date</itemvalue>:<br />
+Betrag: € <itemvalue>invoice.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung storniert]]></imixs:value>
@@ -1307,7 +1303,7 @@ var team = workitem.get('datdate');
           <imixs:value><![CDATA[typcn-download|typcn-times,imixs-error,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>numsequencenumber</itemvalue>  <itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">invoice.date</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -1331,9 +1327,9 @@ var team = workitem.get('datdate');
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />
-]]></imixs:value>
+          <imixs:value><![CDATA[Firma: <itemvalue>cdtr.name</itemvalue><br />
+Rechnungsdatum: <itemvalue format="dd.MMM yyyy">invoice.date</itemvalue>:<br />
+Betrag: € <itemvalue>invoice.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung bezahlt]]></imixs:value>
@@ -1342,7 +1338,7 @@ var team = workitem.get('datdate');
           <imixs:value><![CDATA[typcn-download|typcn-tick,imixs-success,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>numsequencenumber</itemvalue>  <itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">invoice.date</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -1473,7 +1469,6 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[Automatische Empfangsbestätigung versendet]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>SequenceFlow_22</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_25</bpmn2:outgoing>
       <bpmn2:signalEventDefinition id="SignalEventDefinition_2"/>
     </bpmn2:intermediateCatchEvent>
@@ -1483,8 +1478,9 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[form_panel_instruction_simple#sub_attachments_simple]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />]]></imixs:value>
+          <imixs:value><![CDATA[Firma: <itemvalue>cdtr.name</itemvalue><br />
+Rechnungsdatum: <itemvalue format="dd.MMM yyyy">invoice.date</itemvalue>:<br />
+Betrag: € <itemvalue>invoice.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
@@ -1493,7 +1489,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[typcn-download]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">invoice.date</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -1529,8 +1525,8 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
 
 <p>Eingangsrechnungen können über eine E-Mailschnittstelle oder das Filesystem automatisch eingelesen werden. Eine Eingangsrechnung wird in diesem Beispiel vom zugewiesenen Mitarbeiter sowie den Prozessverantworltichen (Controlling) bearbeitet. </p>]]></bpmn2:documentation>
       <bpmn2:incoming>SequenceFlow_33</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_25</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
-      <bpmn2:outgoing>SequenceFlow_22</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_9" imixs:activityid="10" name="Weiter">
       <bpmn2:extensionElements>
@@ -1609,8 +1605,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[form_panel_documentviewer]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[<b><itemvalue format="dd.MMM yyyy">_invoicedate</itemvalue>:</b> 
-€ <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_gross</itemvalue>)<br />]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
@@ -1619,7 +1614,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[typcn-download]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>_company</itemvalue> <itemvalue>_invoicenumber</itemvalue> <itemvalue format="dd.MM.yyyy" locale="de_DE">_invoicedate</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>numsequencenumber</itemvalue> in Verarbeitung...]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -1712,15 +1707,15 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<ml-config name="entity">
-    <name>_invoicetotal</name>
+    <name>invoice.total</name>
     <type>currency</type>
 </ml-config>
 <ml-config name="entity">
-    <name>_invoicenumber</name>
+    <name>invoice.number</name>
     <type>text</type>
 </ml-config>
 <ml-config name="entity">
-    <name>_invoicedate</name>
+    <name>invoice.date</name>
     <type>date</type>
 </ml-config>
 ]]></imixs:value>
@@ -1755,8 +1750,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
       <bpmn2:timerEventDefinition id="TimerEventDefinition_1"/>
     </bpmn2:boundaryEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_13" sourceRef="IntermediateCatchEvent_11" targetRef="IntermediateCatchEvent_10"/>
-    <bpmn2:sequenceFlow id="SequenceFlow_22" sourceRef="Task_2" targetRef="IntermediateCatchEvent_8"/>
-    <bpmn2:sequenceFlow id="SequenceFlow_25" sourceRef="IntermediateCatchEvent_8" targetRef="ExclusiveGateway_4"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_25" sourceRef="IntermediateCatchEvent_8" targetRef="Task_2"/>
     <bpmn2:sequenceFlow id="SequenceFlow_3" sourceRef="IntermediateCatchEvent_10" targetRef="ExclusiveGateway_2"/>
     <bpmn2:exclusiveGateway id="ExclusiveGateway_2" gatewayDirection="Converging">
       <bpmn2:incoming>SequenceFlow_14</bpmn2:incoming>
@@ -1816,7 +1810,12 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="comment" ignore="true"/>]]></imixs:value>
+          <imixs:value><![CDATA[<item name="comment" ignore="true"/>
+<!-- Tika Options -->
+<tika name="options">X-Tika-PDFocrStrategy=OCR_AND_TEXT_EXTRACTION</tika>
+<tika name="options">X-Tika-PDFOcrImageType=RGB</tika>
+<tika name="options">X-Tika-PDFOcrDPI=400</tika>
+]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Speichern]]></imixs:value>
@@ -1846,101 +1845,23 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_26" sourceRef="BoundaryEvent_1" targetRef="IntermediateCatchEvent_11"/>
     <bpmn2:sequenceFlow id="SequenceFlow_30" sourceRef="Task_3" targetRef="IntermediateCatchEvent_11"/>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_12" imixs:activityid="60" name="ml-test">
-      <bpmn2:extensionElements>
-        <imixs:item name="keylogtimeformat" type="xs:string">
-          <imixs:value><![CDATA[2]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyarchive" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtmailsubject" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyaccessmode" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyscheduledactivity" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="rtfmailbody" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyversion" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyaddwritefields" type="xs:string">
-          <imixs:value><![CDATA[namCreator]]></imixs:value>
-          <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
-          <imixs:value><![CDATA[namprocessmanager]]></imixs:value>
-          <imixs:value><![CDATA[namprocessteam]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="numnextactivityid" type="xs:int">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyfollowup" type="xs:string">
-          <imixs:value><![CDATA[2]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keypublicresult" type="xs:string">
-          <imixs:value><![CDATA[1]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keylogdateformat" type="xs:string">
-          <imixs:value><![CDATA[2]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[namCurrentEditor]]></imixs:value>
-          <imixs:value><![CDATA[namCreator]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="numnextid" type="xs:int">
-          <imixs:value><![CDATA[5000]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtnextprocesstree" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="ml.model">models/invoice-de-0.0.2</item>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtname" type="xs:string">
-          <imixs:value><![CDATA[Speichern]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyownershipmode" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[OCR Processing]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyupdateacl" type="xs:boolean">
-          <imixs:value>false</imixs:value>
-        </imixs:item>
-      </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_11"><![CDATA[Zwischenspeichern]]></bpmn2:documentation>
-      <bpmn2:outgoing>SequenceFlow_11</bpmn2:outgoing>
-      <bpmn2:dataOutput id="DataOutput_4" name="Signal_1_Output"/>
-      <bpmn2:dataOutputAssociation id="DataOutputAssociation_4">
-        <bpmn2:sourceRef>DataOutput_4</bpmn2:sourceRef>
-      </bpmn2:dataOutputAssociation>
-      <bpmn2:outputSet id="OutputSet_3" name="Output Set 1">
-        <bpmn2:dataOutputRefs>DataOutput_4</bpmn2:dataOutputRefs>
-      </bpmn2:outputSet>
-      <bpmn2:signalEventDefinition id="SignalEventDefinition_5" signalRef="Signal_1"/>
-    </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_11" sourceRef="IntermediateCatchEvent_12" targetRef="Task_5000"/>
     <bpmn2:dataObject id="DataObject_2" name="Invoice Form">
       <bpmn2:documentation id="Documentation_8"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
   <imixs-form-section columns="2" label="Rechnungsdaten">
-    <item name="_invoicedate" type="date"  label="Rechnungsdatum:" />
-    <item name="_invoicenumber" type="text"  label="Rechnungsnummer:" />
-    <item name="_invoicetotal" type="currency"  label="Rechnungsbetrag:" />
-    <item name="_cdtr_name" type="text"  label="Firma:" />
+    <item name="invoice.date" type="date"  label="Rechnungsdatum:" />
+    <item name="invoice.number" type="text"  label="Rechnungsnummer:" />
+    <item name="invoice.total" type="currency"  label="Rechnungsbetrag:" />
+    <item name="cdtr.name" type="text"  label="Firma:" />
   </imixs-form-section>
 
   <imixs-form-section columns="2" label="Zahlungsdaten">
-    <item name="_cdtr_iban" type="text"  label="IBAN:" />
-    <item name="_cdtr_bic" type="text"  label="BIC:" />
+    <item name="cdtr.iban" type="text"  label="IBAN:" />
+    <item name="cdtr.bic" type="text"  label="BIC:" />
   </imixs-form-section>
  
 </imixs-form>]]></bpmn2:documentation>
+      <bpmn2:dataState id="DataState_1" name="Data State 1"/>
     </bpmn2:dataObject>
     <bpmn2:intermediateThrowEvent id="IntermediateThrowEvent_3" name="STORNO">
       <bpmn2:incoming>SequenceFlow_39</bpmn2:incoming>
@@ -2033,7 +1954,6 @@ result.isValid=true;
     <bpmn2:sequenceFlow id="SequenceFlow_45" sourceRef="Task_5020" targetRef="EventBasedGateway_3"/>
     <bpmn2:exclusiveGateway id="ExclusiveGateway_4" gatewayDirection="Converging">
       <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
-      <bpmn2:incoming>SequenceFlow_25</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_46</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_46" sourceRef="ExclusiveGateway_4" targetRef="Task_3"/>
@@ -2258,9 +2178,9 @@ result.isValid=true;
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_5" bpmnElement="IntermediateCatchEvent_8">
-        <dc:Bounds height="36.0" width="36.0" x="430.0" y="76.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="328.0" y="65.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_6" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="49.0" x="424.0" y="112.0"/>
+          <dc:Bounds height="28.0" width="49.0" x="322.0" y="101.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_Task_5" bpmnElement="Task_2">
@@ -2297,16 +2217,10 @@ result.isValid=true;
           <dc:Bounds height="14.0" width="27.0" x="774.0" y="193.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_16" bpmnElement="IntermediateCatchEvent_12">
-        <dc:Bounds height="36.0" width="36.0" x="320.0" y="231.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_53">
-          <dc:Bounds height="14.0" width="36.0" x="320.0" y="267.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_DataObject_1" bpmnElement="DataObject_2">
         <dc:Bounds height="50.0" width="36.0" x="152.0" y="240.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_85">
-          <dc:Bounds height="14.0" width="70.0" x="135.0" y="290.0"/>
+          <dc:Bounds height="28.0" width="73.0" x="134.0" y="290.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateThrowEvent_3" bpmnElement="IntermediateThrowEvent_3">
@@ -2537,16 +2451,10 @@ result.isValid=true;
         <di:waypoint xsi:type="dc:Point" x="789.0" y="296.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_55"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_23" bpmnElement="SequenceFlow_22" sourceElement="BPMNShape_Task_5" targetElement="BPMNShape_IntermediateCatchEvent_5">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_26" bpmnElement="SequenceFlow_25" sourceElement="BPMNShape_IntermediateCatchEvent_5" targetElement="BPMNShape_Task_5">
+        <di:waypoint xsi:type="dc:Point" x="346.0" y="101.0"/>
+        <di:waypoint xsi:type="dc:Point" x="346.0" y="125.0"/>
         <di:waypoint xsi:type="dc:Point" x="345.0" y="150.0"/>
-        <di:waypoint xsi:type="dc:Point" x="345.0" y="94.0"/>
-        <di:waypoint xsi:type="dc:Point" x="430.0" y="94.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_63"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_26" bpmnElement="SequenceFlow_25" sourceElement="BPMNShape_IntermediateCatchEvent_5" targetElement="BPMNShape_ExclusiveGateway_4">
-        <di:waypoint xsi:type="dc:Point" x="466.0" y="94.0"/>
-        <di:waypoint xsi:type="dc:Point" x="538.0" y="94.0"/>
-        <di:waypoint xsi:type="dc:Point" x="538.0" y="150.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_74"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_IntermediateCatchEvent_10" targetElement="BPMNShape_ExclusiveGateway_2">
@@ -2573,13 +2481,6 @@ result.isValid=true;
         <di:waypoint xsi:type="dc:Point" x="753.0" y="175.0"/>
         <di:waypoint xsi:type="dc:Point" x="770.0" y="175.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_80"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_13" bpmnElement="SequenceFlow_11" sourceElement="BPMNShape_IntermediateCatchEvent_16" targetElement="BPMNShape_Task_1">
-        <di:waypoint xsi:type="dc:Point" x="338.0" y="267.0"/>
-        <di:waypoint xsi:type="dc:Point" x="338.0" y="278.0"/>
-        <di:waypoint xsi:type="dc:Point" x="345.0" y="278.0"/>
-        <di:waypoint xsi:type="dc:Point" x="345.0" y="289.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_84"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_Association_2" bpmnElement="Association_2" sourceElement="BPMNShape_DataObject_1" targetElement="BPMNShape_Task_1">
         <di:waypoint xsi:type="dc:Point" x="188.0" y="265.0"/>

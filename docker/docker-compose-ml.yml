@@ -48,6 +48,7 @@ services:
       TZ: "Europe/Berlin"
       MODEL_LANGUAGE: "de"
       MODEL_PATH: "models/invoice-de-0.0.3/" 
+      #MODEL_PATH: "models/invoice-de-0.0.3-FULL/" 
 
     ports:
       - "8000:8000"  
@@ -82,10 +83,10 @@ services:
 
 
 
-#  imixsadmin:
-#    image: imixs/imixs-admin
-#    ports:
-#      - "8888:8080"
+  imixsadmin:
+    image: imixs/imixs-admin
+    ports:
+      - "8888:8080"
 
 volumes:
   dbdata: 
