@@ -72,6 +72,43 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 
 
 
+
+## Freigabeworkflow 
+
+Imixs-Documents stellt bis zu 2 optionale Freigabestufen zur Verüfung.
+
+### Sachliche Freigabe
+
+Die Sachliche Freigabe erfoglt immer dann, wenn eine Bereich ausgewählt wurde. (space.team)
+
+### Genehmigung 
+
+Eine Gehehmigugn erfoglt immer dann, wenn in der Prozessebene ein Manager hinterlegt ist (process.manager)
+
+### Esklalation
+
+Gibt es auf Bereichsebene einen Manager wird die Sachliche Freigabe bei Esklataion 
+
+
+
+
+
+ 
+| Item            | Freigabe   	| Eskalation 	| Genehmigung	|		
+|-----------------|-------------|---------------|---------------|
+|Bereich    	  | Team	 	| Manager		|				|
+|Prozess     	  |      		|    			| Manager  	 	|
+								|
+
+
+
+
+
+
+
+
+
+
 ## Contribute
 The source code of Imixs-Documents is free available on [Github](https://github.com/imixs/imixs-documents). 
 If you have any questions about how Imixs-Documents works and how you can use it in your own project, you can ask your question on the [GitHub Issue Tracker](https://github.com/imixs/imixs-documents/issues). 
