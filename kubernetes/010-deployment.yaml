@@ -55,7 +55,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: imixs-documents-app
+  name: imixs-documents
   labels: 
     app: imixs-documents
 spec:
