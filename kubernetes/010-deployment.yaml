@@ -73,7 +73,7 @@ spec:
       containers:
       - env:
         - name: POSTGRES_CONNECTION
-          value: jdbc:postgresql://imixs-documents-db/office
+          value: jdbc:postgresql://db/office
         - name: POSTGRES_PASSWORD
           value: adminadmin
         - name: POSTGRES_USER
