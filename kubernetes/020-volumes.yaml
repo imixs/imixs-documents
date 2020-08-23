@@ -1,11 +1,12 @@
 ---
 ###################################################
 # Persistence Volume Claim for DB
+# using the default storageClassName
 ###################################################
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: dbdata
+  name: imixs-documents-dbdata
 spec:
   accessModes:
     - ReadWriteOnce
@@ -15,16 +16,15 @@ spec:
       storage: 2Gi
 
 
-
-
 ---
 ###################################################
 # Persistence Volume Claim for Appdata
+# using the default storageClassName
 ###################################################
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: appdata
+  name: imixs-documents-appdata
 spec:
   accessModes:
     - ReadWriteOnce
