@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: imixs-documents-db
+  name: db
   labels: 
     app: db
 spec:
@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: imixs-documents-app
+  name: app
 spec:
   ports:
   - protocol: TCP

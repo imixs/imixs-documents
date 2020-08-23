@@ -5,8 +5,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: imixs-documents-db
-
+  name: postgres
   labels: 
     app: db
 spec:
@@ -38,7 +37,6 @@ spec:
           periodSeconds: 10
         ports:
           - containerPort: 5432        
-        resources: {}
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: dbdata
