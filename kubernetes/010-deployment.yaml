@@ -45,7 +45,7 @@ spec:
       volumes:
       - name: dbdata
         persistentVolumeClaim:
-          claimName: imixs-documents-dbdata
+          claimName: dbdata
 
 
 ---
@@ -107,5 +107,5 @@ spec:
       volumes:
       - name: appdata
         persistentVolumeClaim:
-          claimName: imixs-documents-appdata
+          claimName: appdata
 
