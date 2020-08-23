@@ -7,7 +7,7 @@
 
 To create the deployment objects form the base-deployment run:
 
-	$ kubectl create --kustomize https://github.com/imixs/imixs-documents/kubernetes/
+	$ kubectl apply --kustomize https://github.com/imixs/imixs-documents/kubernetes/
 
 The service endpoint of Imixs-Documents will be published on port 8080.
 This basic deployment configuration assumes that  a default storage class is defined within your kubernetes cluster. This storage class will be used for the database storage and the search index. You can customize the service and persistence volume configuration to your needs by using a custom setup.  
