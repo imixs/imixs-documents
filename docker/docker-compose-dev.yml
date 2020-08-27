@@ -25,8 +25,8 @@ services:
       - "8787:8787"
     volumes:
       # openliberty
-      # - ~/git/imixs-documents/src/docker/deployments:/config/dropins/ 
-      - ~/git/imixs-documents/src/docker/deployments:/opt/wildfly/standalone/deployments/ 
+      # - ./deployments:/config/dropins/ 
+      - ./deployments:/opt/wildfly/standalone/deployments/ 
 
 #  imixsadmin:
 #    image: imixs/imixs-admin

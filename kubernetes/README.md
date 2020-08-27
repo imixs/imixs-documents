@@ -15,11 +15,7 @@ This basic deployment configuration assumes that  a default storage class is def
 
 ## Custom Setups
 
-To create a custom deployment first copy this directory into your environment. To deployment the objects locally run:
-
-	$ kubectl apply --kustomize  ./kubernetes
-
-Now you can create an overlay with custom settings based on the base deployment. First create a new folder like /prod and put again a kustomization.yaml file in here.
+To create a custom deployment create an overlay with custom settings based on the base deployment. First create a new folder like /prod and create a kustomization.yaml file:
 
 	bases:
 	- ../kubernetes
@@ -35,11 +31,9 @@ The kustomization.yaml file simply points into the base directory. Now you have 
 
 	.
 	├── kubernetes
-	│   ├── 010-deployment.yaml
 	│   ├── 020-volumes.yaml
-	│   ├── 030-service.yaml
 	│   └── kustomization.yaml
-	└── prod
+	├── prod
 	│   ├── 000-custom-env.yaml
 	│   ├── 090-ingress.yaml
 	    └── kustomization.yaml

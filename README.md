@@ -41,6 +41,10 @@ For application specific item names the ‘dot.Case’ format is recommended. It
  
 | Item            | Type   	| Description													|
 |-----------------|---------|---------------------------------------------------------------|
+|**Order** 	      |      	|                                                               |
+|order.name       | text 	| Order name													|
+|order.number     | text	| Order number													|
+|order.delivery   | date	| Delivery date													|
 |**Contract** 	  |      	|                                                               |
 |contract.name    | text 	| Contract name													|
 |contract.partner | text 	| Contract partner name											|
