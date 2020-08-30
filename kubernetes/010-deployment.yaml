@@ -99,7 +99,11 @@ spec:
             port: 9990
           initialDelaySeconds: 30
           periodSeconds: 5
-        resources: {}
+        # Memory Request and Limits
+        resources:
+          requests:
+            memory: 600Mi
+
         volumeMounts:
         - mountPath: /home/imixs
           name: appdata
