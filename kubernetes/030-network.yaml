@@ -9,13 +9,12 @@ metadata:
   labels: 
     app: db
 spec:
+  clusterIP: None
   ports:
     - name: tcp
       port: 5432
-#      targetPort: 5432
   selector:
     app: db
-  clusterIP: None
 
 
 ---
@@ -29,10 +28,9 @@ metadata:
   labels: 
     app: imixs-documents
 spec:
+  clusterIP: None
   ports:
   - name: web
-#  - protocol: TCP
-#    name: web
     port: 8080
   selector:
     app: imixs-documents
