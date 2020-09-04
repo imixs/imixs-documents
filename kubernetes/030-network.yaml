@@ -1,6 +1,7 @@
 ---
 ###################################################
-# Service db
+# Service db 
+#   - running with ClusterIP=None
 ###################################################
 apiVersion: v1
 kind: Service
@@ -28,7 +29,7 @@ metadata:
   labels: 
     app: imixs-documents
 spec:
-  clusterIP: None
+#  clusterIP: None
   ports:
   - name: web
     port: 8080
