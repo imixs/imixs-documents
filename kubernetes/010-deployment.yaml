@@ -7,18 +7,18 @@ kind: Deployment
 metadata:
   name: postgres
   labels: 
-    app: db
+    app: postgres
 spec:
   replicas: 1
   selector: 
     matchLabels:
-      app: db
+      app: postgres
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: db
+        app: postgres
     spec:
       containers:
       - env:

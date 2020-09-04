@@ -8,14 +8,14 @@ kind: Service
 metadata:
   name: db
   labels: 
-    app: db
+    app: postgres
 spec:
   clusterIP: None
   ports:
     - name: tcp
       port: 5432
   selector:
-    app: db
+    app: postgres
 
 
 ---
@@ -29,7 +29,6 @@ metadata:
   labels: 
     app: imixs-documents
 spec:
-#  clusterIP: None
   ports:
   - name: web
     port: 8080
