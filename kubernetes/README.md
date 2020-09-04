@@ -15,34 +15,55 @@ This basic deployment configuration assumes that  a default storage class is def
 
 ## Custom Setups
 
-To create a custom deployment create an overlay with custom settings based on the base deployment. First create a new folder like /prod and create a kustomization.yaml file:
+To create a custom deployment create an overlay with custom settings based on the base deployment. First create a new folder with the file *kustomization.yaml*:
 
+	namespace: my-application
 	bases:
-	- ../kubernetes
+	- https://github.com/imixs/imixs-documents/kubernetes/
 	
 	resources:
-	- 090-ingress.yaml
+	- 031-network.yaml
 	
 	patchesStrategicMerge:
-	- 000-custom-env.yaml
+	- 010-deployment.yaml
 
 
-The kustomization.yaml file simply points into the base directory. Now you have the following directory structure:
+The *kustomization.yaml* file simply points into the base directory hosted on github. It defines the new namespace 'my-application' where the resource objects will be created. Within this directory you can define new resources or resources to be merged in a existing resource. 
+
+So will have the following directory structure:
 
 	.
-	├── kubernetes
-	│   ├── 020-volumes.yaml
+	├── my-deployment
+	│   ├── 010-deployment.yaml
+	│   ├── 031-network.yaml
 	│   └── kustomization.yaml
-	├── prod
-	│   ├── 000-custom-env.yaml
-	│   ├── 090-ingress.yaml
-	    └── kustomization.yaml
+	
+You can now build the overlay with:
 
-You can build the overlay with:
+	$ kubectl apply --kustomize  ./my-deployment
 
-	$ kubectl apply --kustomize  ./kubernetes/prod
 
-For example you can add an ingress configuration file to publish the sevice endpoint of Imixs-Documents to a public or private Internet address. :
+In this example the file *010-deployment.yaml* adds a new additional environment variable with the name "ARCHIVE_SERVICE_ENDPOINT" to the imixs-documents deployment
+
+
+	apiVersion: apps/v1
+	kind: Deployment
+	metadata:
+	  name: imixs-documents
+	  labels: 
+	    app: imixs-documents
+	spec:
+	  template:
+	    spec:
+	      containers:
+	        - name: imixs-documents
+	          env:
+	            - name: ARCHIVE_SERVICE_ENDPOINT
+	              value: "http://imixs-archive:8080/api"
+          
+This shows how you can overwrite or extend existing deployment settings.          
+
+The file *031-network.yaml* defines a new ingress configuration to publish the sevice endpoint of Imixs-Documents to a public or private Internet address:
 
 
 	---
@@ -63,24 +84,8 @@ For example you can add an ingress configuration file to publish the sevice endp
 	          serviceName: imixs-documents
 	          servicePort: 8080
 
+This resource will be added to the base deployment.
 
-You can also overwrite environment variables in the custom-env.yaml
-
-
-	apiVersion: apps/v1
-	kind: Deployment
-	metadata:
-	  name: app
-	  labels: 
-	    app: imixs-documents
-	spec:
-	  template:
-	    spec:
-	      containers:
-	      - env:
-	        - name: POSTGRES_PASSWORD
-	          value: my-password
-          
           
 You can find further details about Kustomize [here](https://github.com/imixs/imixs-cloud/blob/master/doc/KUSTOMIZE.md). 
           
