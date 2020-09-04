@@ -12,7 +12,7 @@ spec:
   ports:
     - name: tcp
       port: 5432
-      targetPort: 5432
+#      targetPort: 5432
   selector:
     app: db
   clusterIP: None
@@ -25,13 +25,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app
+  name: imixs-documents
   labels: 
     app: imixs-documents
 spec:
   ports:
-  - protocol: TCP
-    name: web
+  - name: web
+#  - protocol: TCP
+#    name: web
     port: 8080
   selector:
     app: imixs-documents
