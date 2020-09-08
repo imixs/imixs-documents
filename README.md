@@ -135,6 +135,20 @@ The docker image is based on the docker image [imixs/wildfly](https://hub.docker
 
 
 
+
+## Maven Build
+*Imixs-Documents* is based on [Maven](http://maven.apache.org/) and runs on the Jakarta EE stack. Imixs-Office-Workflow can be deployed on JBoss/Wildfly server or other Java EE application servers.
+To build the application from sources, run the maven install command first:
+
+	$ mvn clean install
+
+Please check the pom.xml file for dependencies and versions. The master-branch of the project is continuously under development and is typically 
+against the latest snapshot releases form the Imixs-Workflow project. To run a stable version please build a [tagged version](https://github.com/imixs/imixs-office-workflow/releases). 
+To deploy the artifact the application server must provide a database pool named "java:/jdbc/office" and a security domain/realm named 'office'. See also the [Imixs-Workflow Deployment Guide](http://www.imixs.org/doc/deployment/index.html) for further details.
+
+
+
+
 ## Docker for Development
 Developers can use a docker image for testing and the development of new features. To build a new container first build the maven artefact running: 
 
@@ -189,14 +203,18 @@ Imixs-Office-Workflow is also available on [Docker-Hub](https://hub.docker.com/r
 
 
 
+## Kubernetes
 
-## Maven Build
-*Imixs-Documents* is based on [Maven](http://maven.apache.org/) and runs on the Jakarta EE stack. Imixs-Office-Workflow can be deployed on JBoss/Wildfly server or other Java EE application servers.
-To build the application from sources, run the maven install command first:
 
-	$ mvn clean install
+*Imixs-Documents* provides a base deployment configuration for Kubernetes. The setup is based on [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) providing a declarative object management.
 
-Please check the pom.xml file for dependencies and versions. The master-branch of the project is continuously under development and is typically 
-against the latest snapshot releases form the Imixs-Workflow project. To run a stable version please build a [tagged version](https://github.com/imixs/imixs-office-workflow/releases). 
-To deploy the artifact the application server must provide a database pool named "java:/jdbc/office" and a security domain/realm named 'office'. See also the [Imixs-Workflow Deployment Guide](http://www.imixs.org/doc/deployment/index.html) for further details.
+
+To create the deployment objects from the base-deployment run:
+
+	$ kubectl apply --kustomize https://github.com/imixs/imixs-documents/kubernetes/
+
+The service endpoint of Imixs-Documents will be published on port 8080.
+This basic deployment configuration assumes that  a default storage class is defined within your kubernetes cluster. This storage class will be used for the database storage and the search index. You can customize the service and persistence volume configuration to your needs by using a [custom setup](./kubernetes/README.md).  
+	
+
 

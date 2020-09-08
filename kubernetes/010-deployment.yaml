@@ -102,7 +102,10 @@ spec:
         # Memory Request and Limits
         resources:
           requests:
-            memory: 600Mi
+            memory: "256M"
+          limits:
+            memory: "1024M"
+
 
         volumeMounts:
         - mountPath: /home/imixs
