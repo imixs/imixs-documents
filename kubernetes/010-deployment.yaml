@@ -102,7 +102,7 @@ spec:
         # Memory Request and Limits
         resources:
           requests:
-            memory: "256M"
+            memory: "512M"
           limits:
             memory: "1024M"
 
