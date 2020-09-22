@@ -19,6 +19,7 @@ services:
       POSTGRES_PASSWORD: "adminadmin"
       POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
       TZ: "Europe/Berlin"
+      MAILGATEWAY: "localhost"
     ports:
       - "8080:8080"
       - "9990:9990"

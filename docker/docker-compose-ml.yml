@@ -20,7 +20,7 @@ services:
       POSTGRES_PASSWORD: "adminadmin"
       POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
       TZ: "Europe/Berlin"
-
+      MAILGATEWAY: "localhost"
       ASYNCEVENT_PROCESSOR_ENABLED: "true"
       ASYNCEVENT_PROCESSOR_INITIALDELAY: "10000"
 
