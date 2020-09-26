@@ -71,8 +71,9 @@ spec:
         app: imixs-documents
     spec:
       containers:
-      - image: imixs/imixs-documents:latest
-        name: imixs-documents
+      - name: imixs-documents
+        image: imixs/imixs-documents:latest
+        imagePullPolicy: Always
         env:
         - name: JAVA_OPTS
           value: "-Dnashorn.args=--no-deprecation-warning"
