@@ -7,9 +7,20 @@ and is licensed under the GPL.
 The goal of the project is to provide a powerful and easy-to-use document management suite for companies and organizations.
 With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', business processes can be designed within the BPMN 2.0 standard and easily adapted to the individually needs of an enterprise.
 
-## Forms
 
-Forms can be customized in Imixs-Documents within the BPMN model.
+## Imixs-ML
+
+Imixs-Office-Workflow supports the integration of the [Imixs-ML framework](https://github.com/imixs/imixs-ml). To activate the Imixs-ML functionality a Imixs-ML-Spacy service and an optional Imixs-ML-Training Service need to be started. 
+The docker-compose yaml file docker/docker-compose-ml.yml shows an example setup of the service integration.
+
+Optional custom ML models can be integrated by adding a docker volume. E.g:
+
+	./src/models/:/usr/src/app/models/
+	
+	
+## Custom Forms
+
+Forms can be customized in Imixs-Documents within the BPMN model. The following template shows an example:
 
 	<?xml version="1.0"?>
 	<imixs-form>

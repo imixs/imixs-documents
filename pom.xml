@@ -404,8 +404,6 @@
 			<version>${org.imixs.office.version}</version>
 		</dependency>
 
-
-
 		<!-- Imixs-Archive -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -413,14 +411,8 @@
 			<version>${org.imixs.archive.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.imixs.workflow</groupId>
-			<artifactId>imixs-archive-documents</artifactId>
-			<version>${org.imixs.archive.version}</version>
-			<scope>compile</scope>
-		</dependency>
-
-
+		
+		
 		<!-- Imixs-ML -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -428,7 +420,6 @@
 			<version>${org.imixs.ml.version}</version>
 			<scope>compile</scope>
 		</dependency>
-
 
 	</dependencies>
 </project>
