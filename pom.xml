@@ -411,7 +411,12 @@
 			<version>${org.imixs.archive.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-archive-documents</artifactId>
+			<version>${org.imixs.archive.version}</version>
+			<scope>compile</scope>
+		</dependency>
 		
 		<!-- Imixs-ML -->
 		<dependency>
