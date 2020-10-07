@@ -1,9 +1,4 @@
-/* --- Imixs-Portlet  3-colums-layout  ---------------------------- */
-.imixs-portlet {
-	width: 33.33333%;
-}
+/* --- Custom Layout --- */
 
-.imixs-portlet:nth-child(3n+3) {
-	border-right: none;
-}
+
 

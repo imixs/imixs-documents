@@ -10,13 +10,19 @@ With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', busines
 
 ## Imixs-ML
 
-Imixs-Office-Workflow supports the integration of the [Imixs-ML framework](https://github.com/imixs/imixs-ml). To activate the Imixs-ML functionality a Imixs-ML-Spacy service and an optional Imixs-ML-Training Service need to be started. 
+Imixs-Documents supports the integration of the [Imixs-ML framework](https://github.com/imixs/imixs-ml). To activate the Imixs-ML functionality a Imixs-ML-Spacy service and an optional Imixs-ML-Training Service need to be started. 
 The docker-compose yaml file docker/docker-compose-ml.yml shows an example setup of the service integration.
 
 Optional custom ML models can be integrated by adding a docker volume. E.g:
 
 	./src/models/:/usr/src/app/models/
 	
+	
+## Optical Character Recognition (OCR)
+
+Imixs-Documents includes the OCR functionality provided by the subproject [Imixs-Archive-OCR](https://github.com/imixs/imixs-archive/tree/master/imixs-archive-ocr).
+The OCR feature is based on [Apache Tika](https://tika.apache.org/) and Tesseract. To activate the OCR functionality a Tika service need to be started. 
+
 	
 ## Custom Forms
 
