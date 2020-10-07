@@ -10,7 +10,7 @@ services:
       - dbdata:/var/lib/postgresql/data
 
   imixs-documents:
-    image: imixs/imixs-documents
+    image: imixs/imixs-documents:latest
     depends_on:
       - db
     environment:

@@ -12,7 +12,7 @@ services:
 
 # Imixs-Documents
   imixs-documents:
-    image: imixs/imixs-documents
+    image: imixs/imixs-documents:latest
     depends_on:
       - db
     environment:
