@@ -1,11 +1,21 @@
 # Imixs-Documents
 
-'Imixs-Documents' provides a **Open Source Document Management Suite** for small, medium and large enterprises.
+*Imixs-Documents* provides a **Open Source Document Management Suite** for small, medium and large enterprises.
 The Project is based on the Workflow Suite [Imixs-Office-Worklfow](https://github.com/imixs/imixs-office-workflow/)
 and is licensed under the GPL.  
 
-The goal of the project is to provide a powerful and easy-to-use document management suite for companies and organizations.
+The goal of the project is to provide a powerful and easy-to-use *Business Process* and *Document Management* suite for companies and organizations.
 With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', business processes can be designed within the BPMN 2.0 standard and easily adapted to the individually needs of an enterprise.
+
+## Workflow Models
+
+*Imixs-Documents* provides a selection of standard workflow models that can be used for a quick start.
+The workflow modls are provided in different laguages. Switch into your prefered language for futher details.
+
+ - [German Workflow Models](./de/README.md)
+ - [English international workflow models](./en/README.md)
+
+
 
 
 ## Imixs-ML
@@ -89,37 +99,6 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 |payment.total 	  | float   | payment amount												|
 |payment.cycle 	  | text  	| payment cycle (monthly, yearly, fixed date					|
 
-
-
-
-
-
-## Freigabeworkflow 
-
-Imixs-Documents stellt bis zu 2 optionale Freigabestufen zur Verüfung.
-
-### Sachliche Freigabe
-
-Die Sachliche Freigabe erfoglt immer dann, wenn eine Bereich ausgewählt wurde. (space.team)
-
-### Genehmigung 
-
-Eine Gehehmigugn erfoglt immer dann, wenn in der Prozessebene ein Manager hinterlegt ist (process.manager)
-
-### Esklalation
-
-Gibt es auf Bereichsebene einen Manager wird die Sachliche Freigabe bei Esklataion 
-
-
-
-
-
- 
-| Item            | Freigabe   	| Eskalation 	| Genehmigung	|		
-|-----------------|-------------|---------------|---------------|
-|Bereich    	  | Team	 	| Manager		|				|
-|Prozess     	  |      		|    			| Manager  	 	|
-								|
 
 
 

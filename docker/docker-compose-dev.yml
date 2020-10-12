@@ -48,6 +48,12 @@ services:
     ports:
       - "9998:9998"  
 
+# Gotenberg Servcie (HTML2PDF converter)
+  gotenberg: 
+    image: thecodingmachine/gotenberg:6
+    ports:
+      - "3000:3000" 
+
 
 # Imixs-ML-spaCy Service
   imixs-ml-spacy: 
