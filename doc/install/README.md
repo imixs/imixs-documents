@@ -12,40 +12,38 @@ To follow the installation guide make sure that you have already installed [Dock
 
 docker-compose.yml
 
-	version: '3.1'
-	
+
+	version: "3.6"
 	services:
 	
 	  db:
 	    image: postgres:9.6.1
 	    environment:
-	      POSTGRES_USER: "imixs"
-	      POSTGRES_PASSWORD: "adminadmin"
-	      POSTGRES_DB: "office"      
+	      POSTGRES_PASSWORD: adminadmin
+	      POSTGRES_DB: office
 	    volumes: 
 	      - dbdata:/var/lib/postgresql/data
 	
-	
-	  app:
-	    image: imixs/imixs-office-workflow
+	  imixs-documents:
+	    image: imixs/imixs-documents:latest
 	    depends_on:
 	      - db
 	    environment:
-	      WILDFLY_PASS: "adminadmin"
-	      POSTGRES_USER: "imixs"
+	      JAVA_OPTS: "-Dnashorn.args=--no-deprecation-warning"
+	      POSTGRES_USER: "postgres"
 	      POSTGRES_PASSWORD: "adminadmin"
-	      POSTGRES_CONNECTION: "jdbc:postgresql://db/office"
-	    volumes: 
-	      - appdata:/home/imixs
+	      POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
+	      TZ: "Europe/Berlin"
+	      MAILGATEWAY: "localhost"
 	    ports:
 	      - "8080:8080"
-	      - "9990:9990"
-	      - "8787:8787"
-	
-	       
+	    volumes: 
+	      - appdata:/opt/jboss/lucene
 	volumes:
-	  dbdata:
+	  dbdata: 
 	  appdata:
+
+
 
 
 
@@ -70,25 +68,25 @@ You can login with the default account 'admin' with the password 'adminadmin'.
 
 After Imixs-Office-Workflow is up and running you need to setup a process with a worklfow. 
 
-<img src="setup-01.png" width="800px">
+<img src="../images/setup-01.png" width="800px">
 
 First upload a BPMN Workflow model. You can find many examples [here](https://github.com/imixs/imixs-office-workflow/tree/master/src/workflow). 
 To upload a model go to "Administration >> Models" and add a BPMN file to your model list.
 
-<img src="setup-02.png" width="800px">
+<img src="../images/setup-02.png" width="800px">
 
 
 Next create a new Process in the section "Administration >> Processes" and assign the uploaded workflow model with your new process:
 
 
-<img src="setup-03.png" width="800px">
+<img src="../images/setup-03.png" width="800px">
 
 
 Now you will see the new process and its workflow in the home screen under the section 'Processes'. 
 You can start the corresponding workflow:
 
 
-<img src="setup-04.png" width="800px">
+<img src="../images/setup-04.png" width="800px">
 
 
 Imixs-Office-Workflow provides a huge list of features to setup a professional Process Management Platform. You will find information in the several sub-projects of [Imixs-Workflow](https://github.com/imixs).
