@@ -1,29 +1,31 @@
+# Workflows
+
+Folgende Workflowmodelle können ausgewählt werden:
+
+ - Rechnungseingang - Prüfung und Freigabe einer Eingangsrechnung
+ - Bedarfsmeldung - Prüfung und Freigabe einer Bedarfsmeldung oder Bestellung
+ - Vertragsmanagement - Prüfung und Freigabe eines Vertrages
+
+
+
+
 # Freigabeworkflow 
 
-Imixs-Documents stellt bis zu 2 optionale Freigabestufen zur Verüfung.
+Imixs-Documents stellt bis zu 2 optionale Freigabestufen pro Workflowmodell zur Verfügung.
 
 ### Sachliche Freigabe
 
-Die Sachliche Freigabe erfoglt immer dann, wenn eine Bereich ausgewählt wurde. (space.team)
+Die sachliche Freigabe erfolgt immer dann, wenn vom Anwender ein Bereich ausgewählt wurde. 
 
 ### Genehmigung 
 
-Eine Gehehmigugn erfoglt immer dann, wenn in der Prozessebene ein Manager hinterlegt ist (process.manager)
-
-### Esklalation
-
-Gibt es auf Bereichsebene einen Manager wird die Sachliche Freigabe bei Esklataion 
-
-
-
-
-
+Eine Gehehmigung erfolgt immer dann, wenn in der Prozessebene ein Manager hinterlegt ist.
 
  
-| Item            | Freigabe   	| Eskalation 	| Genehmigung	|		
-|-----------------|-------------|---------------|---------------|
-|Bereich    	  | Team	 	| Manager		|				|
-|Prozess     	  |      		|    			| Manager  	 	|
-								|
+| Item            			| Freigabe  | Eskalation 	| Genehmigung	|		
+|---------------------------|-----------|---------------|---------------|
+|Bereich (space.team)   	| Team	 	| Manager		|				|
+|Prozess (process.manager)  |      		|    			| Manager  	 	|
+							 
 
 
