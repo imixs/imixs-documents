@@ -5,6 +5,10 @@ and is licensed under the GPL.
 The goal of the project is to provide a powerful and easy-to-use *Business Process* and *Document Management* suite for companies and organizations.
 With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', business processes can be designed within the BPMN 2.0 standard and easily adapted to the individually needs of an enterprise.
 
+## Quick-Installation Guide
+
+Imixs-Office-Workflow provides a Docker Container to run the service on any Docker host. With the [Quick-Installation guide](./install) you can setup an instance of Imixs-Office-Workflow in minutes.
+
 ## Workflow Models
 
 *Imixs-Documents* provides a selection of standard workflow models that can be used for a quick start.
@@ -17,23 +21,6 @@ All standard models have included a multi-level approval workflow. The approval 
 To add a management approval just add a manager into the corresponding process manager section.
 
 
-
-## Imixs-ML
-
-Imixs-Documents supports the integration of the [Imixs-ML framework](https://github.com/imixs/imixs-ml). To activate the Imixs-ML functionality a Imixs-ML-Spacy service and an optional Imixs-ML-Training Service need to be started. 
-The docker-compose yaml file docker/docker-compose-ml.yml shows an example setup of the service integration.
-
-Optional custom ML models can be integrated by adding a docker volume. E.g:
-
-	./src/models/:/usr/src/app/models/
-	
-	
-## Optical Character Recognition (OCR)
-
-Imixs-Documents includes the OCR functionality provided by the subproject [Imixs-Archive-OCR](https://github.com/imixs/imixs-archive/tree/master/imixs-archive-ocr).
-The OCR feature is based on [Apache Tika](https://tika.apache.org/) and Tesseract. To activate the OCR functionality a Tika service need to be started. 
-
-	
 ## Custom Forms
 
 Forms can be customized in Imixs-Documents within the BPMN model. The following template shows an example:
