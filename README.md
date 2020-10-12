@@ -12,9 +12,11 @@ With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', busines
 *Imixs-Documents* provides a selection of standard workflow models that can be used for a quick start.
 The workflow modls are provided in different laguages. Switch into your prefered language for futher details.
 
- - [German Workflow Models](./de/README.md)
- - [English international workflow models](./en/README.md)
+ - [German Workflow Models](https://github.com/imixs/imixs-documents/tree/master/workflow/de)
+ - [English international workflow models](https://github.com/imixs/imixs-documents/tree/master/workflow/en)
 
+All standard models have included a multi-level approval workflow. The approval is determined by team management at the process and space levels. 
+To add a management approval just add a manager into the corresponding process manager section.
 
 
 
