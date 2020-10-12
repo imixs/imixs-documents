@@ -1,16 +1,19 @@
 # Imixs-Documents
 
-*Imixs-Documents* provides a **Open Source Document Management Suite** for small, medium and large enterprises.
-The Project is based on the Workflow Suite [Imixs-Office-Worklfow](https://github.com/imixs/imixs-office-workflow/)
+*Imixs-Documents* provides an **Open Source Process and Document Management Suite** for small, medium and large enterprises.
+The Project is based on the Workflow Suite [Imixs-Office-Workflow](https://github.com/imixs/imixs-office-workflow/)
 and is licensed under the GPL.  
 
 The goal of the project is to provide a powerful and easy-to-use *Business Process* and *Document Management* suite for companies and organizations.
 With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', business processes can be designed within the BPMN 2.0 standard and easily adapted to the individually needs of an enterprise.
 
+<h2 align="center"><a href="https://imixs.github.io/imixs-documents/">Documentation &amp; Quick-Installation Guide</a></h2>
+
+
 ## Workflow Models
 
 *Imixs-Documents* provides a selection of standard workflow models that can be used for a quick start.
-The workflow modls are provided in different laguages. Switch into your prefered language for futher details.
+The workflow models are provided in different languages. Switch into your preferred language for further details.
 
  - [German Workflow Models](https://github.com/imixs/imixs-documents/tree/master/workflow/de)
  - [English international workflow models](https://github.com/imixs/imixs-documents/tree/master/workflow/en)
@@ -18,7 +21,7 @@ The workflow modls are provided in different laguages. Switch into your prefered
 All standard models have included a multi-level approval workflow. The approval is determined by team management at the process and space levels. 
 To add a management approval just add a manager into the corresponding process manager section.
 
-
+See the [documentation](https://imixs.github.io/imixs-documents/) to learn how to interact with it!
 
 ## Imixs-ML
 

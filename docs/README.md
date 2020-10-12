@@ -1,5 +1,5 @@
 *Imixs-Documents* provides a **Open Source Document Management Suite** for small, medium and large enterprises.
-The Project is based on the Workflow Suite [Imixs-Office-Worklfow](https://github.com/imixs/imixs-office-workflow/)
+The Project is based on the Workflow Suite [Imixs-Office-Workflow](https://github.com/imixs/imixs-office-workflow/)
 and is licensed under the GPL.  
 
 The goal of the project is to provide a powerful and easy-to-use *Business Process* and *Document Management* suite for companies and organizations.
@@ -99,47 +99,5 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 |payment.total 	  | float   | payment amount												|
 |payment.cycle 	  | text  	| payment cycle (monthly, yearly, fixed date					|
 
-
-
-
-
-
-
-
-
-
-
-## Contribute
-The source code of Imixs-Documents is free available on [Github](https://github.com/imixs/imixs-documents). 
-If you have any questions about how Imixs-Documents works and how you can use it in your own project, you can ask your question on the [GitHub Issue Tracker](https://github.com/imixs/imixs-documents/issues). 
-With a pull request on GitHub you can share your ideas or improvements that you want to contribute.
-
- 
-
-## Need Help?
-
-[Imixs Software Solutions GmbH](http://www.imixs.com) is an open source company and we are specialized in business process management solutions (BPMS). If you need professional services or consulting for your own individual software project [please contact us](mailto:info@imixs.com). 
-
- 
-
-
-<br /><br /><img src="small_h-trans.png" />
-
-
-**Imixs-Office-Workflow** provides a Docker Image to run the service on any Docker host. 
-The docker image is based on the docker image [imixs/wildfly](https://hub.docker.com/r/imixs/wildfly/) which can be used for development as also for production.
-
-
-
-
-## Maven Build
-*Imixs-Documents* is based on [Maven](http://maven.apache.org/) and runs on the Jakarta EE stack. Imixs-Office-Workflow can be deployed on JBoss/Wildfly server or other Java EE application servers.
-To build the application from sources, run the maven install command first:
-
-	$ mvn clean install
-
-Please check the pom.xml file for dependencies and versions. The master-branch of the project is continuously under development and is typically 
-against the latest snapshot releases form the Imixs-Workflow project. To run a stable version please build a [tagged version](https://github.com/imixs/imixs-office-workflow/releases). 
-To deploy the artifact the application server must provide a database pool named "java:/jdbc/office" and a security domain/realm named 'office'. See also the [Imixs-Workflow Deployment Guide](http://www.imixs.org/doc/deployment/index.html) for further details.
 
 
