@@ -5,6 +5,10 @@ and is licensed under the GPL.
 The goal of the project is to provide a powerful and easy-to-use *Business Process* and *Document Management* suite for companies and organizations.
 With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', business processes can be designed within the BPMN 2.0 standard and easily adapted to the individually needs of an enterprise.
 
+ - [Quick-Installation guide](./install)
+ - [Workflow Models](#workflow-models)
+ - [Custom Forms](#custom-forms)
+
 ## Quick-Installation Guide
 
 Imixs-Office-Workflow provides a Docker Container to run the service on any Docker host. With the [Quick-Installation guide](./install) you can setup an instance of Imixs-Office-Workflow in minutes.
