@@ -7,7 +7,7 @@ and is licensed under the GPL.
 The goal of the project is to provide a powerful and easy-to-use *Business Process* and *Document Management* suite for companies and organizations.
 With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', business processes can be designed within the BPMN 2.0 standard and easily adapted to the individually needs of an enterprise.
 
-<h2 align="center"><a href="https://imixs.github.io/imixs-documents/">Documentation &amp; Quick-Installation Guide</a></h2>
+<h3 align="center"><a href="https://imixs.github.io/imixs-documents/">Documentation &amp; Quick-Installation Guide</a></h3>
 
 
 ## Workflow Models
