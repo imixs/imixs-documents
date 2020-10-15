@@ -28,7 +28,13 @@ services:
       OCR_SERVICE_MODE: "MODEL"
       #OCR_PDF_MODE: "OCR_ONLY | TEXT_ONLY | TEXT_AND_OCR (default)" 
       OCR_PDF_MODE: "TEXT_AND_OCR"
-      ML_SERVICE_ENDPOINT: "http://imixs-ml-spacy:8000/analyse/"
+      ML_SERVICE_ENDPOINT: "http://imixs-ml-spacy:8000/"
+      # Enable Training Scheduler
+      ML_TRAINNG_SCHEDULER_ENABLED: "true"
+      # TYPO Issue #28      
+      ML_TRAINING_SCHEDULER_ENABLED: "true"
+      ML_TRAINING_SCHEDULER_INTERVAL: "10000"
+      ML_TRAINING_SCHEDULER_INITIALDELAY: "60000" 
     ports:
       - "8080:8080"
       - "9990:9990"
@@ -71,22 +77,22 @@ services:
     #  - ../src/models/:/usr/src/app/models/
 
 
-# Imixs-ML API sevice
-  imixs-ml-training:
-    image: imixs/imixs-ml-training:latest
-    environment:
-      TZ: "Europe/Berlin"
-      TIKA_SERVICE_ENDPOINT: "http://tika:9998/tika"
-      #OCR_PDF_MODE: "OCR_ONLY | TEXT_ONLY | TEXT_AND_OCR (default)" 
-      OCR_PDF_MODE: "TEXT_AND_OCR"
-      # Payara-Micor ENV
-      MP_OPENAPI_SERVERS: "http://localhost:8081"
-    ports:
-      - "8081:8080"
-      - "9009:9009"
+# Imixs-ML Training sevice
+#  imixs-ml-training:
+#    image: imixs/imixs-ml-training:latest
+#    environment:
+#      TZ: "Europe/Berlin"
+#      TIKA_SERVICE_ENDPOINT: "http://tika:9998/tika"
+#      #OCR_PDF_MODE: "OCR_ONLY | TEXT_ONLY | TEXT_AND_OCR (default)" 
+#      OCR_PDF_MODE: "TEXT_AND_OCR"
+#      # Payara-Micor ENV
+#      MP_OPENAPI_SERVERS: "http://localhost:8081"
+#    ports:
+#      - "8081:8080"
+#      - "9009:9009"
 
 
-
+# Imixs Admin Client
   imixsadmin:
     image: imixs/imixs-admin
     ports:

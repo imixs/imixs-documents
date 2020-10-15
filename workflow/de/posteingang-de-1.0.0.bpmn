@@ -377,6 +377,18 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <name>invoice.date</name>
     <type>date</type>
 </ml-config>
+<ml-config name="entity">
+    <name>cdtr.name</name>
+    <type>text</type>
+</ml-config>
+<ml-config name="entity">
+    <name>cdtr.iban</name>
+    <type>text</type>
+</ml-config>
+<ml-config name="entity">
+    <name>cdtr.bic</name>
+    <type>text</type>
+</ml-config>
 ]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">

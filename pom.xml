@@ -70,7 +70,7 @@
 		<org.imixs.archive.version>2.2.4-SNAPSHOT</org.imixs.archive.version>
 		<org.imixs.adapter.version>2.2.3-SNAPSHOT</org.imixs.adapter.version>
 		<org.imixs.melman.version>1.0.18</org.imixs.melman.version>
-		<org.imixs.ml.version>1.0.0-SNAPSHOT</org.imixs.ml.version>
+		<org.imixs.ml.version>1.0.1-SNAPSHOT</org.imixs.ml.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		
 
