@@ -21,6 +21,7 @@ services:
       POSTGRES_PASSWORD: "adminadmin"
       POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
       TZ: "Europe/Berlin"
+      LANG: "en_US.UTF-8"
       MAILGATEWAY: "localhost"
       ASYNCEVENT_PROCESSOR_ENABLED: "true"
       ASYNCEVENT_PROCESSOR_INITIALDELAY: "10000"
@@ -48,7 +49,8 @@ services:
 
 # Tika OCR Service
   tika: 
-    image: imixs/tika
+    #image: imixs/tika
+    image: apache/tika:1.24.1-full
     environment:
       TZ: "Europe/Berlin"
     ports:
