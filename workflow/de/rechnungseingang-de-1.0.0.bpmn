@@ -544,7 +544,7 @@ result.isValid=true;
     <bpmn2:task id="Task_2" imixs:processid="5000" name="Erfassung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[form_basic]]></imixs:value>
+          <imixs:value><![CDATA[form_basic_dispatch]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
