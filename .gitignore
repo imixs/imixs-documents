@@ -15,4 +15,5 @@ target/
 
 # ignore docker deployments
 docker/deployments/
+docker/keys
 

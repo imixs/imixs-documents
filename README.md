@@ -97,7 +97,8 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 |invoice.date     | date  	| Invoice Date													|
 |invoice.total    | float  	| Invoice total amount											|
 |invoice.vat      | float  	| Invoice vat 													|
-|invoice.gross    | float  	| Invoice gross amount 											|
+|invoice.net      | float  	| Invoice net amount 											|
+|invoice.currency | text  	| currency code													|
 |**Payment**      |        	|                                                               |
 |payment.type 	  | text   	| credit card, SEPA												|
 |payment.date 	  | date   	| payment date													|
