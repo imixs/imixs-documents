@@ -64,11 +64,11 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<!-- Dependency Versions -->
-		<org.imixs.workflow.version>5.2.5</org.imixs.workflow.version>
+		<org.imixs.workflow.version>5.2.7</org.imixs.workflow.version>
 		<org.imixs.marty.version>4.1.8</org.imixs.marty.version>
-		<org.imixs.office.version>4.3.2-SNAPSHOT</org.imixs.office.version>
+		<org.imixs.office.version>4.4.1</org.imixs.office.version>
 		<org.imixs.archive.version>2.2.8-SNAPSHOT</org.imixs.archive.version>
-		<org.imixs.adapter.version>2.2.3-SNAPSHOT</org.imixs.adapter.version>
+		<org.imixs.adapter.version>2.2.3</org.imixs.adapter.version>
 		<org.imixs.melman.version>1.0.18</org.imixs.melman.version>
 		<org.imixs.ml.version>1.0.1-SNAPSHOT</org.imixs.ml.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
@@ -293,7 +293,7 @@
 					<!-- We exclude libs form the parent WAR artifact -->
 					<overlays>
 						<overlay>
-							<groupId>com.imixs.workflow</groupId>
+							<groupId>org.imixs.workflow</groupId>
 							<artifactId>imixs-office-workflow-app</artifactId>
 							<excludes>
 								<exclude>WEB-INF/lib/*.jar</exclude>
@@ -393,13 +393,13 @@
 
 		<!-- Imixs-Office-Workflow Overlay -->
 		<dependency>
-			<groupId>com.imixs.workflow</groupId>
+			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-office-workflow-app</artifactId>
 			<type>war</type>
 			<version>${org.imixs.office.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.imixs.workflow</groupId>
+			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-office-workflow-util</artifactId>
 			<scope>compile</scope>
 			<version>${org.imixs.office.version}</version>
