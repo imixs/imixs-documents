@@ -77,6 +77,7 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 |order.name       | text 	| Order name													|
 |order.number     | text	| Order number													|
 |order.delivery   | date	| Delivery date													|
+|order.total   	  | float	| Order total amount											|
 |**Contract** 	  |      	|                                                               |
 |contract.name    | text 	| Contract name													|
 |contract.partner | text 	| Contract partner name											|
