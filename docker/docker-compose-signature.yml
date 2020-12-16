@@ -86,7 +86,7 @@ services:
     #  - ../src/models/:/usr/src/app/models/
 
 
-# Imixs-ML Training sevice
+# Imixs-ML Training service
 #  imixs-ml-training:
 #    image: imixs/imixs-ml-training:latest
 #    environment:
