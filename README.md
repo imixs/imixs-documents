@@ -73,11 +73,21 @@ For application specific item names the ‘dot.Case’ format is recommended. It
  
 | Item            | Type   	| Description													|
 |-----------------|---------|---------------------------------------------------------------|
+|**Request**      |      	|                                                               |
+|request.name     | text 	| Request name													|
+|request.number   | text	| Order number													|
 |**Order** 	      |      	|                                                               |
 |order.name       | text 	| Order name													|
 |order.number     | text	| Order number													|
 |order.delivery   | date	| Delivery date													|
 |order.total   	  | float	| Order total amount											|
+|**Invoice**      |     	|                                                               |
+|invoice.number   | text   	| Invoice number												|
+|invoice.date     | date  	| Invoice Date													|
+|invoice.total    | float  	| Invoice total amount											|
+|invoice.vat      | float  	| Invoice vat 													|
+|invoice.net      | float  	| Invoice net amount 											|
+|invoice.currency | text  	| currency code													|
 |**Contract** 	  |      	|                                                               |
 |contract.name    | text 	| Contract name													|
 |contract.partner | text 	| Contract partner name											|
@@ -93,13 +103,6 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 |dbtr.name        | text  	| debitor name													|
 |dbtr.iban        | text  	| IBAN number													|
 |dbtr.bic         | text  	| BIC number													|
-|**Invoice**      |     	|                                                               |
-|invoice.number   | text   	| Invoice number												|
-|invoice.date     | date  	| Invoice Date													|
-|invoice.total    | float  	| Invoice total amount											|
-|invoice.vat      | float  	| Invoice vat 													|
-|invoice.net      | float  	| Invoice net amount 											|
-|invoice.currency | text  	| currency code													|
 |**Payment**      |        	|                                                               |
 |payment.type 	  | text   	| credit card, SEPA												|
 |payment.date 	  | date   	| payment date													|

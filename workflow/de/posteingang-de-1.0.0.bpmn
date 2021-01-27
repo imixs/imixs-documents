@@ -388,7 +388,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<ml-config name="entity">
+          <imixs:value><![CDATA[<ml-config name="model">invoice-de-0.0.3</ml-config>
+<ml-config name="entity">
     <name>invoice.total</name>
     <type>currency</type>
 </ml-config>
@@ -847,7 +848,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<ml-config name="entity">
+          <imixs:value><![CDATA[<ml-config name="model">invoice-de-0.0.3</ml-config>
+<ml-config name="entity">
     <name>invoice.total</name>
     <type>currency</type>
 </ml-config>
@@ -1024,7 +1026,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<ml-config name="entity">
+          <imixs:value><![CDATA[<ml-config name="model">invoice-de-0.0.3</ml-config>
+<ml-config name="entity">
     <name>invoice.total</name>
     <type>currency</type>
 </ml-config>
