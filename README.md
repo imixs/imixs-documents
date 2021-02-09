@@ -65,6 +65,9 @@ Forms can be customized in Imixs-Documents within the BPMN model. The following 
 	</imixs-form>
 
 
+Find details how to model custom forms [here](https://github.com/imixs/imixs-office-workflow/blob/master/doc/modeling/CUSTOM_FORMS.md).
+
+### Predefined Items
 
 The following sections list the business items predefined by Imixs-Documents.
 For application specific item names the ‘dot.Case’ format is recommended. It’s basically a convention that makes it easier to see what properties are related.

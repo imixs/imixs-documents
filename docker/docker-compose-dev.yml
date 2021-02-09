@@ -30,6 +30,7 @@ services:
       #OCR_PDF_MODE: "OCR_ONLY | TEXT_ONLY | TEXT_AND_OCR (default)" 
       OCR_PDF_MODE: "TEXT_AND_OCR"
       ML_SERVICE_ENDPOINT: "http://imixs-ml-spacy:8000/"
+      ML_MODEL: "invoice-de-0.0.3"
       # Enable Training Scheduler
       ML_TRAINNG_SCHEDULER_ENABLED: "true"
       # TYPO Issue #28      
@@ -70,7 +71,8 @@ services:
       PYTHONUNBUFFERED: 1
       TZ: "Europe/Berlin"
       MODEL_LANGUAGE: "de"
-      MODEL_PATH: "models/invoice-de-0.0.3/" 
+      MODEL_PATH: "models/" 
+      #MODEL_PATH: "models/invoice-de-0.0.3/" 
       #MODEL_PATH: "models/invoice-de-0.0.3-FULL/" 
 
     ports:
