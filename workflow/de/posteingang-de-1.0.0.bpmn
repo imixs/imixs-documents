@@ -388,7 +388,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<ml-config name="model">invoice-de-0.0.3</ml-config>
+          <imixs:value><![CDATA[<ml-config name="model">invoice-de-0.1.0</ml-config>
 <ml-config name="entity">
     <name>invoice.total</name>
     <type>currency</type>

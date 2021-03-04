@@ -1275,7 +1275,7 @@ result.isValid=true;
     </bpmn2:intermediateThrowEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_17" sourceRef="IntermediateCatchEvent_7" targetRef="IntermediateThrowEvent_4"/>
     <bpmn2:sequenceFlow id="SequenceFlow_22" sourceRef="Task_3" targetRef="IntermediateCatchEvent_7"/>
-    <bpmn2:exclusiveGateway id="ExclusiveGateway_2" gatewayDirection="Diverging">
+    <bpmn2:exclusiveGateway id="ExclusiveGateway_2" gatewayDirection="Diverging" default="SequenceFlow_25">
       <bpmn2:incoming>SequenceFlow_12</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_19</bpmn2:outgoing>
       <bpmn2:outgoing>SequenceFlow_25</bpmn2:outgoing>
@@ -1289,9 +1289,7 @@ result.isValid=true;
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1">workitem['payment.type'] &amp;&amp; workitem['payment.type'][0]==&quot;sepa_transfer&quot;</bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="SequenceFlow_23" sourceRef="IntermediateCatchEvent_4" targetRef="Task_5"/>
-    <bpmn2:sequenceFlow id="SequenceFlow_25" sourceRef="ExclusiveGateway_2" targetRef="Task_5">
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_3">!workitem['payment.type'] || workitem['payment.type'][0]!=&quot;sepa_transfer&quot;</bpmn2:conditionExpression>
-    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="SequenceFlow_25" sourceRef="ExclusiveGateway_2" targetRef="Task_5"/>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_8" imixs:activityid="50" name="Warten">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">

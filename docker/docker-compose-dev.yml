@@ -30,7 +30,7 @@ services:
       #OCR_PDF_MODE: "OCR_ONLY | TEXT_ONLY | TEXT_AND_OCR (default)" 
       OCR_PDF_MODE: "TEXT_AND_OCR"
       ML_SERVICE_ENDPOINT: "http://imixs-ml-spacy:8000/"
-      ML_MODEL: "invoice-de-0.0.3"
+      ML_MODEL: "invoice-de-0.1.0"
       # Enable Training Scheduler
       ML_TRAINNG_SCHEDULER_ENABLED: "true"
       # TYPO Issue #28      
@@ -72,28 +72,12 @@ services:
       TZ: "Europe/Berlin"
       MODEL_LANGUAGE: "de"
       MODEL_PATH: "models/" 
-      #MODEL_PATH: "models/invoice-de-0.0.3/" 
-      #MODEL_PATH: "models/invoice-de-0.0.3-FULL/" 
 
     ports:
       - "8000:8000"  
     #volumes:
     #  - ../src/models/:/usr/src/app/models/
 
-
-# Imixs-ML Training service
-#  imixs-ml-training:
-#    image: imixs/imixs-ml-training:latest
-#    environment:
-#      TZ: "Europe/Berlin"
-#      TIKA_SERVICE_ENDPOINT: "http://tika:9998/tika"
-#      #OCR_PDF_MODE: "OCR_ONLY | TEXT_ONLY | TEXT_AND_OCR (default)" 
-#      OCR_PDF_MODE: "TEXT_AND_OCR"
-#      # Payara-Micor ENV
-#      MP_OPENAPI_SERVERS: "http://localhost:8081"
-#    ports:
-#      - "8081:8080"
-#      - "9009:9009"
 
 
 # Imixs Admin Client
