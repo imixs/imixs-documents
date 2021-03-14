@@ -7,7 +7,6 @@
 	<name>Imixs Documents</name>
 	<version>1.1.0</version>
 	<description>Imixs Documents - A collaboration platform for documents. </description>
-	
 	<organization>
 		<name>Imixs Software Solutions GmbH</name>
 		<url>http://www.imixs.com</url>
@@ -27,7 +26,6 @@
 			</roles>
 			<timezone>2</timezone>
 		</developer>
-
 		<developer>
 			<id>gaheinle</id>
 			<name>Gaby Heinle</name>
@@ -68,11 +66,10 @@
 		<org.imixs.marty.version>4.1.11</org.imixs.marty.version>
 		<org.imixs.office.version>4.4.4-SNAPSHOT</org.imixs.office.version>
 		<org.imixs.archive.version>2.2.8</org.imixs.archive.version>
-		<org.imixs.adapter.version>2.2.3</org.imixs.adapter.version>
+		<org.imixs.adapter.version>2.2.4</org.imixs.adapter.version>
 		<org.imixs.melman.version>1.0.18</org.imixs.melman.version>
 		<org.imixs.ml.version>1.1.0-SNAPSHOT</org.imixs.ml.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
-		
 
 		<!-- Environment Settings -->
 		<imixs-office.contextroot>/</imixs-office.contextroot>
@@ -85,10 +82,8 @@
 		<!-- imixs-github-repo on github - see ~/.m2/settings.xml -->
 		<github.global.server>imixs-github-repo</github.global.server>
 
-
 		<!-- Wildfly unpack war -->
 		<custom.unpackTypes>war</custom.unpackTypes>
-		
 	</properties>
 
 
@@ -109,7 +104,6 @@
 			</snapshots>
 		</repository>
     </repositories>
-    
     
     
     <profiles>
@@ -140,11 +134,9 @@
 							</execution>
 						</executions>
 					</plugin>
-
 				</plugins>
 			</build>
-		</profile>    
-		
+		</profile>
 		
 		<profile>
 			<id>docker-hub</id>
@@ -177,11 +169,9 @@
 							</execution>
 						</executions>
 					</plugin>
-
 				</plugins>
 			</build>
 		</profile>
-		
 		
 		<profile>
 			<id>docker-hub-latest</id>
@@ -248,11 +238,9 @@
 							</execution>
 						</executions>
 					</plugin>
-
 				</plugins>
 			</build>
 		</profile>
-		
 	</profiles>
     
 	<build>
@@ -433,29 +421,13 @@
 			<scope>compile</scope>
 		</dependency>
 		
-		
-		
-		<!-- Test Archive Signature Feature
+		<!-- Imixs-QR-Code -->
 		<dependency>
-			<groupId>org.imixs.workflow</groupId>
-			<artifactId>imixs-archive-signature</artifactId>
-			<version>${org.imixs.archive.version}</version>
-			<scope>compile</scope>
+		    <groupId>org.imixs.workflow</groupId>
+		    <artifactId>imixs-adapters-qrcode</artifactId>
+		    <version>${org.imixs.adapter.version}</version>
+		    <scope>compile</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.pdfbox</groupId>
-			<artifactId>pdfbox</artifactId>
-			<version>2.0.19</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcmail-jdk15on</artifactId>
-			<version>1.67</version>
-			<scope>compile</scope>
-		</dependency>
-		 -->
-		
 		
 
 	</dependencies>

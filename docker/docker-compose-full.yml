@@ -1,7 +1,6 @@
 version: "3.6"
 services:
 
-# PostgreSQL
   db:
     image: postgres:9.6.1
     environment:
@@ -10,7 +9,6 @@ services:
     volumes: 
       - dbdata:/var/lib/postgresql/data
 
-# Imixs-Documents
   imixs-documents:
     image: imixs/imixs-documents:latest
     depends_on:
@@ -37,13 +35,6 @@ services:
       ML_TRAINING_SCHEDULER_INITIALDELAY: "60000" 
     ports:
       - "8080:8080"
-      - "9990:9990"
-      - "8787:8787"
-    volumes:
-      # openliberty
-      # - ./deployments:/config/dropins/ 
-      - ./deployments:/opt/jboss/wildfly/standalone/deployments/
-
 
 
 # Tika OCR Service
@@ -54,12 +45,6 @@ services:
       TZ: "Europe/Berlin"
     ports:
       - "9998:9998"  
-
-# Gotenberg Servcie (HTML2PDF converter)
-  gotenberg: 
-    image: thecodingmachine/gotenberg:6
-    ports:
-      - "3000:3000" 
 
 
 # Imixs-ML-spaCy Service
@@ -76,13 +61,6 @@ services:
     #volumes:
     #  - ../src/models/:/usr/src/app/models/
 
-
-
-# Imixs Admin Client
-  imixsadmin:
-    image: imixs/imixs-admin
-    ports:
-      - "8888:8080"
 
 volumes:
   dbdata: 

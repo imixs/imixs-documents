@@ -188,7 +188,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Vertrag abgeschlossen]]></imixs:value>
+          <imixs:value><![CDATA[Rechnungseingang]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
@@ -443,7 +443,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_5" imixs:activityid="30" name="Start Rechnungseingang">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="CDATA">
-          <imixs:value><![CDATA[Rechnungseingang gestartet]]></imixs:value>
+          <imixs:value><![CDATA[neuen Rechnungseingang gestartet]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="CDATA">
           <imixs:value><![CDATA[<model>     
@@ -630,7 +630,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Vertrag abgeschlossen]]></imixs:value>
+          <imixs:value><![CDATA[Vertrag]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
@@ -699,7 +699,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Vertrag abgeschlossen]]></imixs:value>
+          <imixs:value><![CDATA[Bestellung]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
@@ -1071,7 +1071,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_12" imixs:activityid="30" name="Start Vertrag">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="CDATA">
-          <imixs:value><![CDATA[Rechnungseingang gestartet]]></imixs:value>
+          <imixs:value><![CDATA[neuen Vertrag gestartet]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="CDATA">
           <imixs:value><![CDATA[<model>     
@@ -1091,7 +1091,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_13" imixs:activityid="30" name="Start Bestellung">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="CDATA">
-          <imixs:value><![CDATA[Rechnungseingang gestartet]]></imixs:value>
+          <imixs:value><![CDATA[neue Bestellung gestartet]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="CDATA">
           <imixs:value><![CDATA[<model>     
