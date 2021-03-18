@@ -25,8 +25,8 @@ services:
       ASYNCEVENT_PROCESSOR_INITIALDELAY: "10000"
       OCR_SERVICE_ENDPOINT: "http://tika:9998/tika"
       OCR_SERVICE_MODE: "MODEL"
-      #OCR_PDF_MODE: "OCR_ONLY | TEXT_ONLY | TEXT_AND_OCR (default)" 
-      OCR_PDF_MODE: "TEXT_AND_OCR"
+      #OCR_STRATEGY: "NO_OCR, OCR_ONLY, OCR_AND_TEXT_EXTRACTION, AUTO (default)" 
+      OCR_STRATEGY: "AUTO"
       ML_SERVICE_ENDPOINT: "http://imixs-ml-spacy:8000/"
       ML_MODEL: "invoice-de-0.1.0"
       # Enable Training Scheduler
