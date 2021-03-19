@@ -566,6 +566,7 @@ result.isValid=true;
         </imixs:item>
         <imixs:item name="keyownershipfields" type="xs:string">
           <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[namprocessassist]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[namCreator]]></imixs:value>
@@ -573,6 +574,7 @@ result.isValid=true;
           <imixs:value><![CDATA[namprocessteam]]></imixs:value>
           <imixs:value><![CDATA[namspacemanager]]></imixs:value>
           <imixs:value><![CDATA[namspaceteam]]></imixs:value>
+          <imixs:value><![CDATA[namprocessassist]]></imixs:value>
         </imixs:item>
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
