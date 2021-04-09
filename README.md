@@ -77,7 +77,9 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 | Item            | Type   	| Description													|
 |-----------------|---------|---------------------------------------------------------------|
 |**Request**      |      	|                                                               |
-|request.name     | text 	| Request name													|
+|request.subject  | text 	| Subject														|
+|request.name     | text 	| Requester name												|
+|request.email    | text	| Requester E-Mail												|
 |request.number   | text	| Order number													|
 |**Order** 	      |      	|                                                               |
 |order.name       | text 	| Order name													|
@@ -103,7 +105,7 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 |cdtr.iban        | text  	| IBAN number													|
 |cdtr.bic         | text  	| BIC number													|
 |**Debitor**  	  |        	|                                                               |
-|dbtr.name        | text  	| debitor name													|
+|dbtr.name        | text  	| Debitor name													|
 |dbtr.iban        | text  	| IBAN number													|
 |dbtr.bic         | text  	| BIC number													|
 |**Payment**      |        	|                                                               |

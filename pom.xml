@@ -64,11 +64,11 @@
 		<!-- Dependency Versions -->
 		<org.imixs.workflow.version>5.2.8</org.imixs.workflow.version>
 		<org.imixs.marty.version>4.1.11</org.imixs.marty.version>
-		<org.imixs.office.version>4.4.4-SNAPSHOT</org.imixs.office.version>
-		<org.imixs.archive.version>2.2.8</org.imixs.archive.version>
+		<org.imixs.office.version>4.4.5-SNAPSHOT</org.imixs.office.version>
+		<org.imixs.archive.version>2.2.11-SNAPSHOT</org.imixs.archive.version>
 		<org.imixs.adapter.version>2.2.4</org.imixs.adapter.version>
 		<org.imixs.melman.version>1.0.18</org.imixs.melman.version>
-		<org.imixs.ml.version>1.1.0-SNAPSHOT</org.imixs.ml.version>
+		<org.imixs.ml.version>1.1.1-SNAPSHOT</org.imixs.ml.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 
 		<!-- Environment Settings -->

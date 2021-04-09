@@ -23,11 +23,11 @@ The XML definition contains sections and items:
 	<?xml version="1.0"?>
 	<imixs-form>
 	  <imixs-form-section label="Controlling">
-	    <item name="_description" type="textarea"
+	    <item name="description" type="textarea"
 	        label="Short Description" />
 	  </imixs-form-section>
 	  <imixs-form-section>
-	    <item name="_details" type="html" label="Description" />
+	    <item name="details" type="html" label="Description" />
 	  </imixs-form-section>
 	</imixs-form>
 	
@@ -36,24 +36,40 @@ The following common input formats are supported:
 
 ### Text Input
 
-	<item name="_description" type="text"
+	<item name="description" type="text"
 	        label="Topic" />
 
 ### Textarea Input
 
-	<item name="_description" type="textarea"
+	<item name="description" type="textarea"
 	        label="Description" />
 
 ### HTML/RichText Input
 
-	<item name="_description" type="html"
+	<item name="description" type="html"
 	        label="Description" />
 
 ### Date Input
 
-	<item name="_date" type="date"
+	<item name="invoice.date" type="date"
 	        label="Date" />
 
+### Select Boxes
+
+You can also create different type of select boxes with predefined values:
+
+	 <item name="invoice.currency" type="selectOneMenu" 
+		label="Currency:"
+		options="EUR;CHF;SEK;NOK;GBP;USD" />
+
+
+You can choose one of the following types for select boxes:
+
+ - *selectOneMenu*  - a dropdown menu
+ - *selectBooleanCheckbox* - a single checkbox
+ - *selectManyCheckbox* - a list of checkboxes
+ - *selectOneRadio* - radio buttons
+						
 
 ### Required Inputs
 With the tag 'required' a mandatory input is defined:
