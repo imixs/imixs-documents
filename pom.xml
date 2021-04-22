@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.imixs.documents</groupId>
@@ -64,11 +65,12 @@
 		<!-- Dependency Versions -->
 		<org.imixs.workflow.version>5.2.8</org.imixs.workflow.version>
 		<org.imixs.marty.version>4.1.11</org.imixs.marty.version>
-		<org.imixs.office.version>4.4.5-SNAPSHOT</org.imixs.office.version>
+		<org.imixs.office.version>4.4.5</org.imixs.office.version>
 		<org.imixs.archive.version>2.2.11-SNAPSHOT</org.imixs.archive.version>
 		<org.imixs.adapter.version>2.2.4</org.imixs.adapter.version>
 		<org.imixs.melman.version>1.0.18</org.imixs.melman.version>
 		<org.imixs.ml.version>1.1.1-SNAPSHOT</org.imixs.ml.version>
+		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
 
 		<!-- Environment Settings -->
@@ -88,13 +90,13 @@
 
 
 	<repositories>
-	   	<!-- Sonatype Snapshot repository -->
-      	<repository>
-            <id>sonatype-snaptshots</id>
-            <name>Sonatype Snapshot repository</name>
-            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-      	</repository> 
-      	<!-- Imixs repository -->
+		<!-- Sonatype Snapshot repository -->
+		<repository>
+			<id>sonatype-snaptshots</id>
+			<name>Sonatype Snapshot repository</name>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+		<!-- Imixs repository -->
 		<repository>
 			<id>imixs-mvn-repo</id>
 			<url>https://raw.githubusercontent.com/imixs/imixs-mvn-repo/master/</url>
@@ -103,10 +105,10 @@
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
-    </repositories>
-    
-    
-    <profiles>
+	</repositories>
+
+
+	<profiles>
 		<profile>
 			<id>docker</id>
 			<build>
@@ -137,7 +139,7 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
 		<profile>
 			<id>docker-hub</id>
 			<build>
@@ -172,7 +174,7 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
 		<profile>
 			<id>docker-hub-latest</id>
 			<build>
@@ -207,7 +209,7 @@
 
 				</plugins>
 			</build>
-		</profile>				
+		</profile>
 
 		<profile>
 			<id>docker-wildfly-debug</id>
@@ -242,7 +244,7 @@
 			</build>
 		</profile>
 	</profiles>
-    
+
 	<build>
 		<resources>
 			<!-- enable resource filtering for multi language version -->
@@ -308,7 +310,7 @@
 			</plugin>
 
 		</plugins>
-		
+
 		<finalName>imixs-documents</finalName>
 	</build>
 
@@ -412,7 +414,7 @@
 			<version>${org.imixs.archive.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Imixs-ML -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -420,15 +422,22 @@
 			<version>${org.imixs.ml.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Imixs-QR-Code -->
 		<dependency>
-		    <groupId>org.imixs.workflow</groupId>
-		    <artifactId>imixs-adapters-qrcode</artifactId>
-		    <version>${org.imixs.adapter.version}</version>
-		    <scope>compile</scope>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-adapters-qrcode</artifactId>
+			<version>${org.imixs.adapter.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
+
+		<!-- Imixs Signature Feature -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-signature-api</artifactId>
+			<version>${org.imixs.signature.version}</version>
+			<scope>compile</scope>
+		</dependency>
 
 	</dependencies>
 </project>

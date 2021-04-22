@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- origin at X=0.0 Y=0.0 -->
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:xs="http://www.w3.org/2001/XMLSchema" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.2.SNAPSHOT-v20200602-1600-B1" targetNamespace="http://www.imixs.org/bpmn2">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:xs="http://www.w3.org/2001/XMLSchema" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.3.SNAPSHOT-v20210402-0910-B1" targetNamespace="http://www.imixs.org/bpmn2">
   <bpmn2:extensionElements>
     <imixs:item name="txtworkflowmodelversion" type="xs:string">
       <imixs:value><![CDATA[vertrag-de-1.0]]></imixs:value>
@@ -951,7 +951,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="SequenceFlow_47" sourceRef="Task_5" targetRef="EndEvent_2"/>
     <bpmn2:sequenceFlow id="SequenceFlow_51" sourceRef="IntermediateCatchEvent_5005-20" targetRef="ExclusiveGateway_6"/>
     <bpmn2:sequenceFlow id="SequenceFlow_52" sourceRef="IntermediateCatchEvent_15" targetRef="IntermediateThrowEvent_1"/>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_17" imixs:activityid="20" name="Vereinbart">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_17" imixs:activityid="20" name="Abschließen">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
           <imixs:value><![CDATA[2]]></imixs:value>
@@ -960,7 +960,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtmailsubject" type="xs:string">
-          <imixs:value><![CDATA[Eingangsrechnung erhalten: <itemvalue>_subject</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[Vertragsunterlagen: <itemvalue>contract.name</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaccessmode" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
@@ -969,10 +969,11 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfmailbody" type="xs:string">
-          <imixs:value><![CDATA[Wir haben folgende Rechnung erhalten: bitte freigeben.
+          <imixs:value><![CDATA[Sehr geehrter Kunde,
 
-Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</itemvalue>)
-<itemvalue>_description</itemvalue>]]></imixs:value>
+anbei übersende wir Ihnen die Vertragsdokumente.
+
+]]></imixs:value>
         </imixs:item>
         <imixs:item name="keymailreceiverfields" type="xs:string"/>
         <imixs:item name="keyversion" type="xs:string">
@@ -1021,6 +1022,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmn2:documentation id="Documentation_32"><![CDATA[Vertrag wurde geschlossen und ist aktiv.]]></bpmn2:documentation>
       <bpmn2:incoming>SequenceFlow_55</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_56</bpmn2:outgoing>
+      <bpmn2:messageEventDefinition id="MessageEventDefinition_1"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_55" sourceRef="Task_3" targetRef="IntermediateCatchEvent_17"/>
     <bpmn2:sequenceFlow id="SequenceFlow_56" sourceRef="IntermediateCatchEvent_17" targetRef="Task_4"/>
@@ -1741,7 +1743,7 @@ result.isValid=true;
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_27" bpmnElement="IntermediateCatchEvent_17">
         <dc:Bounds height="36.0" width="36.0" x="947.0" y="297.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_116" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="56.0" x="937.0" y="333.0"/>
+          <dc:Bounds height="14.0" width="68.0" x="931.0" y="333.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_4" bpmnElement="ExclusiveGateway_4" isMarkerVisible="true">
