@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- origin at X=0.0 Y=0.0 -->
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:xs="http://www.w3.org/2001/XMLSchema" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.2.SNAPSHOT-v20200602-1600-B1" targetNamespace="http://www.imixs.org/bpmn2">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:xs="http://www.w3.org/2001/XMLSchema" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.3.SNAPSHOT-v20210402-0910-B1" targetNamespace="http://www.imixs.org/bpmn2">
   <bpmn2:extensionElements>
     <imixs:item name="txtworkflowmodelversion" type="xs:string">
       <imixs:value><![CDATA[receipt_of_invoice-en-1.0]]></imixs:value>
@@ -580,14 +580,14 @@ result.isValid=true;
     <bpmn2:dataObject id="DataObject_2" name="Invoice Form">
       <bpmn2:documentation id="Documentation_8"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
-  <imixs-form-section columns="1" label="Rechnungsdaten">
-    <item name="cdtr.name" type="text"  label="Kreditor:" />
+  <imixs-form-section columns="1" label="Invoice Details">
+    <item name="cdtr.name" type="text"  label="Creditor:" />
   </imixs-form-section>
   <imixs-form-section columns="2">
-    <item name="invoice.number" type="text"  label="Rechnungsnummer:" />
-    <item name="invoice.date" type="date"  label="Rechnungsdatum:" />
-    <item name="invoice.total" type="currency"  label="Rechnungsbetrag:" />
-    <item name="payment.type" type="text"  label="Zahlungsart:" />
+    <item name="invoice.number" type="text"  label="Invoice-No.:" />
+    <item name="invoice.date" type="date"  label="Invoice Date:" />
+    <item name="invoice.total" type="currency"  label="Invoice Total:" />
+    <item name="payment.type" type="text"  label="Payment Type:" />
     <item name="cdtr.iban" type="text"  label="IBAN:" />
     <item name="cdtr.bic" type="text"  label="BIC:" />
   </imixs-form-section>
