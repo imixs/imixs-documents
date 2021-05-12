@@ -35,6 +35,10 @@ services:
       ML_TRAINING_SCHEDULER_ENABLED: "true"
       ML_TRAINING_SCHEDULER_INTERVAL: "10000"
       ML_TRAINING_SCHEDULER_INITIALDELAY: "60000" 
+
+      # Collabora integration
+      WOPI_PUBLIC_ENDPOINT: "http://localhost:9980/loleaflet/6a844e4/loleaflet.html?"
+      WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
     ports:
       - "8080:8080"
       - "9990:9990"
@@ -77,6 +81,18 @@ services:
     #  - ../src/models/:/usr/src/app/models/
 
 
+  libreoffice-app:
+    image: collabora/code:6.4.8.4
+    container_name: libreoffice-app
+    expose:
+      - 9980
+    ports:
+      - "9980:9980"
+    environment:
+      - username=admin
+      - password=adminadmin
+    volumes:
+      - ./configuration/collabora/loolwsd.xml:/etc/loolwsd/loolwsd.xml
 
 # Imixs Admin Client
   imixsadmin:

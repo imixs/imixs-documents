@@ -23,45 +23,48 @@ To add a management approval just add a manager into the corresponding process m
 
 See the [documentation](https://imixs.github.io/imixs-documents/) to learn how to interact with it!
 
-## Imixs-ML
 
-Imixs-Documents supports the integration of the [Imixs-ML framework](https://github.com/imixs/imixs-ml). To activate the Imixs-ML functionality a Imixs-ML-Spacy service and an optional Imixs-ML-Training Service need to be started. 
-The docker-compose yaml file docker/docker-compose-ml.yml shows an example setup of the service integration.
 
-Optional custom ML models can be integrated by adding a docker volume. E.g:
+## Office Suite 
 
-	./src/models/:/usr/src/app/models/
-	
-	
+Imixs-Documents allows to integrate an online office suite like LibreOffice Online. LibreOffice supports all major document, spreadsheet and presentation file formats, which can processed in a collaborative way within your business process. 
+
+<img src="docs/images/wopi-01.png" width="900" />
+
+[Collabora Office](https://www.collaboraoffice.com/) with is one of the world’s most widely used Open Source office suite can be integrated easily. Found more details [here](docs/WOPI.md)
+
+
 ## Optical Character Recognition (OCR)
 
-Imixs-Documents includes the OCR functionality provided by the subproject [Imixs-Archive-OCR](https://github.com/imixs/imixs-archive/tree/master/imixs-archive-ocr).
-The OCR feature is based on [Apache Tika](https://tika.apache.org/) and Tesseract. To activate the OCR functionality a Tika service need to be started. 
+Imixs-Documents includes the OCR functionality provided by the subproject [Imixs-Archive-OCR](https://github.com/imixs/imixs-archive/tree/master/imixs-archive-ocr). This feature allows you to parse the content of scanned documents for further processing. 
+The OCR solution is based on [Apache Tika](https://tika.apache.org/) and Tesseract. To activate the OCR functionality a Tika service need to be started. 
 
 	
 ## Custom Forms
 
-Forms can be customized in Imixs-Documents within the BPMN model. The following template shows an example:
+Within Imixs-Documents, forms can be customized from the BPMN model. This makes it easy to design business processes from scratch without coding. A so called 'Custom Form' can be defined in a BPMN Data object.
+
+<img src="docs/images/bpmn-02.png" />
+
+
+ The following template shows an example:
 
 	<?xml version="1.0"?>
 	<imixs-form>
-	
 	  <imixs-form-section columns="2" label="Vertragsdaten">
 	    <item name="contract.name" type="text"  label="Partner:" />
 	    <item name="contract.number" type="text"  label="Nummer:" />
 	    <item name="contract.start" type="date"  label="Beginn:" />
 	    <item name="contract.end" type="date"  label="Ende:" />
 	    <item name="contract.fee" type="float"  label="Gebühr:" />
-	  </imixs-form-section>
-	
+	  </imixs-form-section>	
   	  <imixs-form-section columns="2" label="Zahlungsdaten">
 	    <item name="payment.cycle" type="text"  label="Abrechnungsperiode:" />
 	    <item name="payment.type" type="text"  label="Zahlungsart:" />
 	    <item name="cdtr.iban" type="text"  label="IBAN:" />
 	    <item name="cdtr.bic" type="text"  label="BIC:" />
 	    <item name="cdtr.name" type="text"  label="Kreditor:" />
-	  </imixs-form-section>
-	 
+	  </imixs-form-section>	 
 	</imixs-form>
 
 
@@ -121,6 +124,16 @@ For application specific item names the ‘dot.Case’ format is recommended. It
 
 
 
+## Imixs-ML
+
+Imixs-Documents supports the integration of the [Imixs-ML framework](https://github.com/imixs/imixs-ml). To activate the Imixs-ML functionality a Imixs-ML-Spacy service and an optional Imixs-ML-Training Service need to be started. 
+The docker-compose yaml file docker/docker-compose-ml.yml shows an example setup of the service integration.
+
+Optional custom ML models can be integrated by adding a docker volume. E.g:
+
+	./src/models/:/usr/src/app/models/
+	
+	
 
 
 

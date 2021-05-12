@@ -431,6 +431,14 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Imixs-Wopi -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-adapters-wopi</artifactId>
+			<version>${org.imixs.adapter.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		
 		<!-- Imixs Signature Feature -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
