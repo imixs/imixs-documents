@@ -36,6 +36,9 @@ services:
       ML_TRAINING_SCHEDULER_INTERVAL: "10000"
       ML_TRAINING_SCHEDULER_INITIALDELAY: "60000" 
 
+     # Signature
+      SIGNATURE_SERVICE_ENDPOINT: "http://imixssignature:8080/api"
+
       # Collabora integration
       WOPI_PUBLIC_ENDPOINT: "http://localhost:9980/loleaflet/6a844e4/loleaflet.html?"
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
@@ -60,10 +63,10 @@ services:
       - "9998:9998"  
 
 # Gotenberg Servcie (HTML2PDF converter)
-  gotenberg: 
-    image: thecodingmachine/gotenberg:6
-    ports:
-      - "3000:3000" 
+#  gotenberg: 
+#    image: thecodingmachine/gotenberg:6
+#    ports:
+#      - "3000:3000" 
 
 
 # Imixs-ML-spaCy Service
@@ -93,6 +96,22 @@ services:
       - password=adminadmin
     volumes:
       - ./configuration/collabora/loolwsd.xml:/etc/loolwsd/loolwsd.xml
+
+
+  imixssignature:
+    image: imixs/imixs-signature-service
+    environment:
+      SIGNATURE_KEYSTORE_PATH: "/opt/keys/imixs.jks"
+      SIGNATURE_KEYSTORE_PASSWORD: "123456" 
+      SIGNATURE_KEYSTORE_TYPE: "PKCS12"
+      SIGNATURE_ROOTCERT_ALIAS: "imixs.com"
+      SIGNATURE_ROOTCERT_PASSWORD: "123456" 
+      #SIGNATURE_TSA_URL: "https://freetsa.org/tsr"
+    ports:
+      - "8082:8080"
+      - "8789:8787"
+    volumes:
+      - ./keys:/opt/keys/
 
 # Imixs Admin Client
   imixsadmin:
