@@ -1113,7 +1113,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtmailsubject" type="xs:string">
-          <imixs:value><![CDATA[Empfangsbestätigung Rechnungseingang]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaccessmode" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
@@ -1122,13 +1122,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfmailbody" type="xs:string">
-          <imixs:value><![CDATA[Hallo,
-
-die von Ihnen an uns gesendete Eingangsrechung haben wir erhalten.
-Die Bearbeitung erfolgt in Kürze. 
-
-Bei Fragen wenden Sie sich bitte an info@imixs.com
-]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyversion" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
@@ -1165,7 +1159,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[1]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Vertrag beendet]]></imixs:value>
+          <imixs:value><![CDATA[Vorgang abgebrochen]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
