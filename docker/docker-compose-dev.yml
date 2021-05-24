@@ -42,6 +42,8 @@ services:
       # Collabora integration
       WOPI_PUBLIC_ENDPOINT: "http://localhost:9980/loleaflet/6a844e4/loleaflet.html?"
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
+      WOPI_TEMPLATES: "/wopi/templates"
+
     ports:
       - "8080:8080"
       - "9990:9990"
@@ -50,7 +52,7 @@ services:
       # openliberty
       # - ./deployments:/config/dropins/ 
       - ./deployments:/opt/jboss/wildfly/standalone/deployments/
-
+      - ./deployments/office-templates/:/wopi/templates/
 
 
 # Tika OCR Service

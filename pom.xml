@@ -212,7 +212,7 @@
 		</profile>
 
 		<profile>
-			<id>docker-wildfly-debug</id>
+			<id>debug</id>
 			<build>
 				<plugins>
 					<plugin>
