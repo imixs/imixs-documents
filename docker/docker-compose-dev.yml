@@ -87,7 +87,8 @@ services:
 
 
   libreoffice-app:
-    image: collabora/code:6.4.8.4
+    #image: collabora/code:6.4.8.4
+    image: collabora/code:6.4.9.2
     container_name: libreoffice-app
     expose:
       - 9980
