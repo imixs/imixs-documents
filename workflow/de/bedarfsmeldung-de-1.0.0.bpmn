@@ -95,7 +95,7 @@
     <bpmn2:task id="Task_5000" imixs:processid="5200" name="Genehmigung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[form_basic_dispatch#sub_orderitems_read]]></imixs:value>
+          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -547,7 +547,7 @@ result.isValid=true;
     <bpmn2:task id="Task_2" imixs:processid="5000" name="Erfassung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[form_basic_dispatch#sub_orderitems]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -589,7 +589,6 @@ result.isValid=true;
     <bpmn2:dataObject id="DataObject_2" name="Order Form">
       <bpmn2:documentation id="Documentation_8"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
-
   <imixs-form-section columns="1" label="Bestellung">
     <item name="order.name" type="text"  label="Bezeichnung:" />
   </imixs-form-section>
@@ -598,8 +597,10 @@ result.isValid=true;
      <item name="order.number" type="text"  label="Bestell-Nr.:" />
     <item name="order.delivery" type="date"  label="Liefertermin:" />
   </imixs-form-section>
- 
-</imixs-form>]]></bpmn2:documentation>
+  <imixs-form-section label="" path="sub_dispatch" />
+  <imixs-form-section label="Bestellpositionen" path="sub_orderitems" />
+</imixs-form>
+]]></bpmn2:documentation>
       <bpmn2:dataState id="DataState_1"/>
     </bpmn2:dataObject>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_13" imixs:activityid="10" name="Speichern">
