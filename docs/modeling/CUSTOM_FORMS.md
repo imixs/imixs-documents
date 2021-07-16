@@ -94,4 +94,82 @@ A custom form is separated by sections. A section can have an optional label and
 	 	.....
 	 </imixs-form-section>
 	 ....
+
+
+## Custom Input Fields
+
+It is also possible to define more complex input fields with the item type 'custom'
+
+	    <item name="custom_item" type="custom" label="My Custom Label" required="true" />
+
+	
+**Note:** A custom item is defined by a JSF ui:composition placed in the directory: 
+
+	/pages/workitems/parts/
+	
+You can also use sub directories to group custom input items. 
+
+See the following example of a custom input field definition:
+
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+		xmlns:h="http://xmlns.jcp.org/jsf/html">
+		<span class="custom-class"> 
+		   <h:inputText style="border:2px solid blue;" 
+		                value="#{workitem.item['custom_input']}"
+		                a:placeholder="enter custom data..." 
+		                rendered="#{!readonly}" />
+		    <h:outputText style="border:2px solid blue;" 
+		                value="#{workitem.item['custom_input']}"
+		                rendered="#{readonly}" />
+		</span>
+	</ui:composition>
+
+**Note:** This custom input form uses also the attribute '*readonly*' to determine if the input component is editable
+
+
+## Custom Input Section
+
+As an alternative to the custom input fields you can also define custom sections. A custom section defines a complete form section and is used for more complex input forms including ajax.
+
+	  <imixs-form-section label="My Custom section" path="sub_custom_form" > 
+
+
+	
+**Note:** A custom section is defined by a JSF ui:composition placed in the directory: 
+
+	/pages/workitems/forms/
+
+
+See the following example of a custom input field definition:
+
+
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:i="http://xmlns.jcp.org/jsf/composite/imixs"
+		xmlns:marty="http://xmlns.jcp.org/jsf/composite/marty">
+		<!-- show outgoing references -->
+		<div class="imixs-form-section">
+			<dl>
+				<dt class="imixs-no-print">
+					<h:outputText value="#{message['form.reference.outgoing']}" />
+				</dt>
+				<dd>
+					<marty:workitemLink workitem="#{workitem}" readonly="#{readonly}" 
+						filter="" />
+				</dd>
+			</dl>
+		</div>
+	</ui:composition>
+
+
+**Note:** Also in a custom section you can use the attribute '*readonly*' to determine if the input components are editable or readonly.
+
+
 	 

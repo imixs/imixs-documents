@@ -7,7 +7,7 @@ With the help of '[Imixs-BPMN](https://www.imixs.org/sub_modeler.html)', busines
 
  - [Quick-Installation guide](./install)
  - [Workflow Models](#workflow-models)
- - [Custom Forms](#custom-forms)
+ - [Input Forms](#input-forms)
 
 ## Quick-Installation Guide
 
@@ -25,34 +25,16 @@ All standard models have included a multi-level approval workflow. The approval 
 To add a management approval just add a manager into the corresponding process manager section.
 
 
-## Custom Forms
+## Input Forms
 
-Forms can be customized in Imixs-Documents within the BPMN model. The following template shows an example:
+With Imixs-Office-Workflow you can create individual forms completely based on your BPMN 2.0 model. No programming knowledge in HTML 
+or Java Script is required. Read the section [Custom-Forms](modeling/CUSTOM_FORMS.md) to learn how you can create your own forms.
 
-	<?xml version="1.0"?>
-	<imixs-form>
-	
-	  <imixs-form-section columns="2" label="Vertragsdaten">
-	    <item name="contract.name" type="text"  label="Partner:" />
-	    <item name="contract.number" type="text"  label="Nummer:" />
-	    <item name="contract.start" type="date"  label="Beginn:" />
-	    <item name="contract.end" type="date"  label="Ende:" />
-	    <item name="contract.fee" type="float"  label="Gebühr:" />
-	  </imixs-form-section>
-	
-  	  <imixs-form-section columns="2" label="Zahlungsdaten">
-	    <item name="payment.cycle" type="text"  label="Abrechnungsperiode:" />
-	    <item name="payment.type" type="text"  label="Zahlungsart:" />
-	    <item name="cdtr.iban" type="text"  label="IBAN:" />
-	    <item name="cdtr.bic" type="text"  label="BIC:" />
-	    <item name="cdtr.name" type="text"  label="Kreditor:" />
-	  </imixs-form-section>
-	 
-	</imixs-form>
+### Input Fields & Item Names
 
+It is recommended to use a naming concept when defining your custom forms. For that reason *Imixs-Documents* defines a set of standard item names to be used for different business objects. This naming convention makes it more easy to group related items. 
 
-
-The following sections list the business items predefined by Imixs-Documents.
+The following sections list the business items predefined by *Imixs-Documents*.
 For application specific item names the ‘dot.Case’ format is recommended. It’s basically a convention that makes it easier to see what properties are related.
 
 
