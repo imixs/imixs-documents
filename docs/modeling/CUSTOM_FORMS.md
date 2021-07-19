@@ -106,7 +106,7 @@ It is also possible to define more complex input fields with the item type 'cust
 
 	/pages/workitems/parts/[PART_NAME].xhtml
 	
-The *path* contains the path for JSF component relative to the */pages/workitems/parts/* directory with the .xhtml extension. You can also use sub directories to group custom input items. 
+The mandatory *path* attribute contains the path for JSF component relative to the */pages/workitems/parts/* directory with the .xhtml extension. You can also use sub directories to group custom input items. 
 
 	/pages/workitems/parts/[SUB_DIR]/[PART_NAME].xhtml
 
