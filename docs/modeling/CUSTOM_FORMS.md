@@ -100,13 +100,13 @@ A custom form is separated by sections. A section can have an optional label and
 
 It is also possible to define more complex input fields with the item type 'custom'
 
-	    <item name="[PART_NAME]" type="custom" label="My Custom Label" required="true" />
+	    <item name="mycustomitem" path="[PART_NAME]" type="custom" label="My Custom Label" required="true" readonly="false" />
 
 **Note:** A custom item is defined by a JSF ui:composition placed in the directory */pages/workitems/parts/*: 
 
 	/pages/workitems/parts/[PART_NAME].xhtml
 	
-The *name* contains the path for JSF component relative to the */pages/workitems/parts/* directory with the .xhtml extension. You can also use sub directories to group custom input items. 
+The *path* contains the path for JSF component relative to the */pages/workitems/parts/* directory with the .xhtml extension. You can also use sub directories to group custom input items. 
 
 	/pages/workitems/parts/[SUB_DIR]/[PART_NAME].xhtml
 
@@ -120,16 +120,16 @@ See the following example of a custom input field definition:
 		xmlns:h="http://xmlns.jcp.org/jsf/html">
 		<span class="custom-class"> 
 		   <h:inputText style="border:2px solid blue;" 
-		                value="#{workitem.item['custom_input']}"
+		                value="#{workitem.item[item.name]}"
 		                a:placeholder="enter custom data..." 
 		                rendered="#{!readonly}" />
 		    <h:outputText style="border:2px solid blue;" 
-		                value="#{workitem.item['custom_input']}"
+		                value="#{workitem.item[item.name]}"
 		                rendered="#{readonly}" />
 		</span>
 	</ui:composition>
 
-**Note:** This custom input form uses also the attribute '*readonly*' to determine if the input component is editable
+**Note:** This custom input form uses also the attributes '*readonly*' and '*required*' to determine if the input component is editable or readonly.
 
 
 ## Custom Input Section
