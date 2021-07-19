@@ -100,14 +100,15 @@ A custom form is separated by sections. A section can have an optional label and
 
 It is also possible to define more complex input fields with the item type 'custom'
 
-	    <item name="custom_item" type="custom" label="My Custom Label" required="true" />
+	    <item name="[PART_NAME]" type="custom" label="My Custom Label" required="true" />
 
-	
-**Note:** A custom item is defined by a JSF ui:composition placed in the directory: 
+**Note:** A custom item is defined by a JSF ui:composition placed in the directory */pages/workitems/parts/*: 
 
-	/pages/workitems/parts/
+	/pages/workitems/parts/[PART_NAME].xhtml
 	
-You can also use sub directories to group custom input items. 
+The *name* contains the path for JSF component relative to the */pages/workitems/parts/* directory with the .xhtml extension. You can also use sub directories to group custom input items. 
+
+	/pages/workitems/parts/[SUB_DIR]/[PART_NAME].xhtml
 
 See the following example of a custom input field definition:
 
