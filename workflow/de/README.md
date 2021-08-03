@@ -5,7 +5,7 @@ Folgende Workflowmodelle können ausgewählt werden:
  - Rechnungseingang - Prüfung und Freigabe einer Eingangsrechnung
  - Bedarfsmeldung - Prüfung und Freigabe einer Bedarfsmeldung oder Bestellung
  - Vertragsmanagement - Prüfung und Freigabe eines Vertrages
-
+ - Maßnahme - Erstellung von internen Maßnahemen mit Kontroll- und Wiedervorlagefunktion
 
 
 
