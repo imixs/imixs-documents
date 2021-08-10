@@ -8,7 +8,7 @@ To follow the installation guide make sure that you have already installed [Dock
 ## Install the Application with Docker-Compose
 
 1. Create a working directory on you machine (e.g. /office-workflow/)
-2. Copy the [docker-compose.yml](../../docker/docker-compose.yml) file into work working directory
+2. Copy the [docker-compose.yml](https://github.com/imixs/imixs-documents/blob/master/docker/docker-compose.yml) file into work working directory
 
 docker-compose.yml
 
