@@ -1,6 +1,9 @@
 version: "3.6"
 services:
 
+#######################
+# PostgreSQL
+#######################
   db:
     image: postgres:9.6.1
     environment:
@@ -9,6 +12,9 @@ services:
     volumes: 
       - dbdata:/var/lib/postgresql/data
 
+#######################
+# Imixs-Documents
+#######################
   imixs-documents:
     image: imixs/imixs-documents:latest
     depends_on:
@@ -36,8 +42,9 @@ services:
     ports:
       - "8080:8080"
 
-
+#######################
 # Tika OCR Service
+#######################
   tika: 
     #image: imixs/tika
     image: apache/tika:1.24.1-full
@@ -46,8 +53,9 @@ services:
     ports:
       - "9998:9998"  
 
-
+#######################
 # Imixs-ML-spaCy Service
+#######################
   imixs-ml-spacy: 
     image: imixs/imixs-ml-spacy:latest
     environment:

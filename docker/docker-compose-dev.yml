@@ -1,7 +1,9 @@
 version: "3.6"
 services:
 
+#######################
 # PostgreSQL
+#######################
   db:
     image: postgres:9.6.1
     environment:
@@ -10,7 +12,9 @@ services:
     volumes: 
       - dbdata:/var/lib/postgresql/data
 
+#######################
 # Imixs-Documents
+#######################
   imixs-documents:
     image: imixs/imixs-documents:latest
     depends_on:
@@ -55,7 +59,9 @@ services:
       - ./deployments/office-templates/:/wopi/templates/
 
 
+#######################
 # Tika OCR Service
+#######################
   tika: 
     #image: imixs/tika
     image: apache/tika:1.24.1-full
@@ -71,7 +77,9 @@ services:
 #      - "3000:3000" 
 
 
+#######################
 # Imixs-ML-spaCy Service
+#######################
   imixs-ml-spacy: 
     image: imixs/imixs-ml-spacy:latest
     environment:
@@ -86,8 +94,11 @@ services:
     #  - ../src/models/:/usr/src/app/models/
 
 
+
+#######################
+# Libre Office Online
+#######################
   libreoffice-app:
-    #image: collabora/code:6.4.8.4
     image: collabora/code:6.4.9.2
     container_name: libreoffice-app
     expose:
@@ -100,7 +111,9 @@ services:
     volumes:
       - ./configuration/collabora/loolwsd.xml:/etc/loolwsd/loolwsd.xml
 
-
+#######################
+# Imixs Signature
+#######################
   imixssignature:
     image: imixs/imixs-signature-service
     environment:
@@ -116,7 +129,9 @@ services:
     volumes:
       - ./keys:/opt/keys/
 
+#######################
 # Imixs Admin Client
+#######################
   imixsadmin:
     image: imixs/imixs-admin
     ports:
