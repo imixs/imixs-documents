@@ -8,14 +8,13 @@ To follow the installation guide make sure that you have already installed [Dock
 ## Install the Application with Docker-Compose
 
 1. Create a working directory on you machine (e.g. /office-workflow/)
-2. Copy the [docker-compose.yml](docker-compose.yml) file into work working directory
+2. Copy the [../../docker/docker-compose.yml](docker-compose.yml) file into work working directory
 
 docker-compose.yml
 
 
 	version: "3.6"
 	services:
-	
 	  db:
 	    image: postgres:9.6.1
 	    environment:
@@ -23,7 +22,6 @@ docker-compose.yml
 	      POSTGRES_DB: office
 	    volumes: 
 	      - dbdata:/var/lib/postgresql/data
-	
 	  imixs-documents:
 	    image: imixs/imixs-documents:latest
 	    depends_on:
@@ -37,11 +35,8 @@ docker-compose.yml
 	      MAILGATEWAY: "localhost"
 	    ports:
 	      - "8080:8080"
-	    volumes: 
-	      - appdata:/opt/jboss/lucene
 	volumes:
 	  dbdata: 
-	  appdata:
 
 
 
