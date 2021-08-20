@@ -43,8 +43,8 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:https://github.com/imixs/imixs-documents.git</connection>
-		<developerConnection>scm:git:https://github.com/imixs/imixs-documents.git</developerConnection>
+		<connection>scm:git:git@github.com:imixs/imixs-documents.git</connection>
+		<developerConnection>scm:git:git@github.com:imixs/imixs-documents.git</developerConnection>
 		<url>https://github.com/imixs/imixs-documents/</url>
 	</scm>
 
@@ -66,7 +66,7 @@
 		<org.imixs.workflow.version>5.2.9</org.imixs.workflow.version>
 		<org.imixs.marty.version>4.1.11</org.imixs.marty.version>
 		<org.imixs.office.version>4.4.7-SNAPSHOT</org.imixs.office.version>
-		<org.imixs.archive.version>2.2.11</org.imixs.archive.version>
+		<org.imixs.archive.version>2.2.12-SNAPSHOT</org.imixs.archive.version>
 		<org.imixs.adapter.version>2.2.7-SNAPSHOT</org.imixs.adapter.version>
 		<org.imixs.melman.version>1.0.18</org.imixs.melman.version>
 		<org.imixs.ml.version>1.1.1</org.imixs.ml.version>
