@@ -65,7 +65,7 @@ After Imixs-Office-Workflow is up and running you need to setup a process with a
 
 <img src="../images/setup-01.png" width="800px">
 
-First upload a BPMN Workflow model. You can find many examples [here](https://github.com/imixs/imixs-office-workflow/tree/master/src/workflow). 
+First upload a BPMN Workflow model. You can find many examples [here](https://github.com/imixs/imixs-documents/tree/master/workflow/de). 
 To upload a model go to "Administration >> Models" and add a BPMN file to your model list.
 
 <img src="../images/setup-02.png" width="800px">
