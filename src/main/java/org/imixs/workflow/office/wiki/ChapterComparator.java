@@ -24,8 +24,8 @@ public class ChapterComparator implements Comparator<ItemCollection> {
 
 		public int compare(ItemCollection a, ItemCollection b) {
 			int result = this.collator.compare(
-					convertChapter(a.getItemValueString("txtName")),
-					convertChapter(b.getItemValueString("txtname")));
+					convertChapter(a.getItemValueString("name")),
+					convertChapter(b.getItemValueString("name")));
 
 			if (!this.ascending) {
 				result = -result;

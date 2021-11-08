@@ -21,15 +21,19 @@ import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.naming.NamingException;
 
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.ItemCollectionComparator;
+import org.imixs.workflow.WorkflowKernel;
 import org.imixs.workflow.engine.DocumentService;
 import org.imixs.workflow.engine.WorkflowService;
 import org.imixs.workflow.exceptions.QueryException;
 import org.imixs.workflow.faces.data.WorkflowController;
 import org.imixs.workflow.faces.data.WorkflowEvent;
 import org.imixs.workflow.faces.fileupload.FileUploadController;
+import org.imixs.workflow.office.forms.WorkitemLinkController;
+import org.imixs.workflow.office.util.WorkitemHelper;
 import org.imixs.workflow.office.views.BoardController;
 import org.imixs.workflow.office.views.SearchController;
 
@@ -166,12 +170,9 @@ public class WikiController implements Serializable {
     }
 
     /**
-     * This method returns the complete question document with all published
-     * questions. The list contains only simple ItemCollection elements with the
-     * minimum of content to avoid waist of memory...
+     * This method returns all chepters with $taskid 1000-1999. 
      * <p>
-     * The complete list must be loaded because of a paging functionality containing
-     * the main chapters
+     * 
      * 
      * 
      * @return
@@ -182,15 +183,14 @@ public class WikiController implements Serializable {
             document = new ArrayList<ItemCollection>();
             List<ItemCollection> col = null;
             try {
+                String query = "(type:\"workitem\") AND ($taskid:[1000 TO 1999]) AND ($uniqueidref:\"" + process.getUniqueID() + "\")";
                 // select all objects....
-                col = documentService.find("(type:\"workitem\") AND ($uniqueidref:\"" + process.getUniqueID() + "\")",
-                        999, 0);
+                document = documentService.find(query, 999, 0, "name", false);
+//
+//                for (ItemCollection aworkitem : col) {
+//                    document.add(aworkitem);
+//                }
 
-                for (ItemCollection aworkitem : col) {
-                    document.add(aworkitem);
-                }
-
-              
             } catch (QueryException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -199,8 +199,6 @@ public class WikiController implements Serializable {
             Collections.sort(document,
                     new ChapterComparator(FacesContext.getCurrentInstance().getViewRoot().getLocale(), true));
         }
-
-       
 
         return document;
     }
@@ -246,26 +244,20 @@ public class WikiController implements Serializable {
             List<ItemCollection> chapters;
             try {
                 // all chapters, ignore current
-                String query = "(type:\"workitem\") AND ($workflowgroup:\"Kapitel\" OR $workflowgroup:\"Chapter\") AND ($uniqueidref:\""
-                        + processref + "\")";
+                String query = "(type:\"workitem\") AND ($taskid:[1000 TO 1999]) AND ($uniqueidref:\"" + processref + "\")";
 
                 if (!workflowController.getWorkitem().getUniqueID().isEmpty()) {
                     query = query + " AND NOT ($uniqueid:" + workflowController.getWorkitem().getUniqueID() + ")";
                 }
-                chapters = documentService.find(query, 999, 0);
 
-                // sort by number
-                Collections.sort(chapters, new ItemCollectionComparator("chapter.number", true));
+                // select all objects....
+                chapters = documentService.find(query, 999, 0, "name", false);
 
+                // build a list of JSF SelectItems
                 for (ItemCollection chaper : chapters) {
-
-                    String label = chaper.getItemValueString("chapter.number") + " "
-                            + chaper.getItemValueString("chapter.name");
-
-                    SelectItem s = new SelectItem(chaper.getItemValueString("chapter.number"), label);
-                    // s.setDescription(chaper.getItemValueString("_description"));
+                    String label = chaper.getItemValueString("$workflowsummary");
+                    SelectItem s = new SelectItem(chaper.getItemValueString("name"), label);
                     result.add(s);
-
                 }
             } catch (QueryException e) {
                 logger.severe("getMainChapters - Unable to load chapters: " + e.getMessage());
@@ -275,49 +267,6 @@ public class WikiController implements Serializable {
 
         }
         return result;
-    }
-
-    /**
-     * This method returns a SelectItem list with the main chapter numbers.
-     * 
-     * @return
-     */
-    public List<ItemCollection> getMainChaptersByQuestion() {
-
-        List<ItemCollection> list = new ArrayList<ItemCollection>();
-        ItemCollection workitem = this.workflowController.getWorkitem();
-        String sMainChaper = workitem.getItemValueString("txtMainchapter") + ".";
-
-        if (!"".equals(sMainChaper)) {
-            // select main chapters....
-            List<ItemCollection> chapters;
-            try {
-                chapters = documentService.find(
-                        "(type:\"workitem\") AND ($workflowgroup:\"Kapitel\" OR $workflowgroup:\"Chapter\") AND ($uniqueidref:\""
-                                + workflowController.getWorkitem().getItemValueString("process.ref") + "\")",
-                        999, 0);
-
-                // now we take every main chapter which matches the txtName property
-                for (ItemCollection chaper : chapters) {
-                    String sChapter = chaper.getItemValueString("chapter.number");
-
-                    if (sMainChaper.startsWith(sChapter)) {
-
-                        ItemCollection itemCol = new ItemCollection();
-                        itemCol.replaceItemValue("chapter.Name", sChapter);
-                        itemCol.replaceItemValue("chapter.name", chaper.getItemValueString("chapter.name"));
-                        list.add(itemCol);
-
-                    }
-
-                }
-            } catch (QueryException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-        }
-        return list;
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -372,8 +321,8 @@ public class WikiController implements Serializable {
             logger.severe("unable to encode search phrase!");
             e.printStackTrace();
         }
-        String action = "/pages/workitems/forms/wiki/document.xhtml?faces-redirect=true&page=" + getPageIndex() + "&processref="
-                + boardController.getProcessRef() + "&phrase=" + phrase;
+        String action = "/pages/workitems/forms/wiki/document.xhtml?faces-redirect=true&page=" + getPageIndex()
+                + "&processref=" + boardController.getProcessRef() + "&phrase=" + phrase;
 
         return action;
     }
@@ -404,108 +353,24 @@ public class WikiController implements Serializable {
 
         return pageMax;
     }
-//
-//	public int getRow() {
-//		return row;
-//	}
-//
-//	public void setRow(int row) {
-//		this.row = row;
-//	}
 
     public boolean isEndOfList() {
         return endOfList;
     }
-
-//    public int getPageMax() {
-//        return pageMax;
-//    }
 
     public void setEndOfList(boolean endOfList) {
         this.endOfList = endOfList;
     }
 
     /**
-     * Set default value for AEO Question. keyReminder will be set to '0'
-     * datReminder will be set to + one year
+     * The WikiController reacts on the event 'WORKITEM_BEFORE_PROCESS' and resets
+     * the wiki document cache.
      * 
      * @param workflowEvent
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
     public void onWorkflowEvent(@Observes WorkflowEvent workflowEvent) {
         if (workflowEvent == null)
             return;
-
-        ItemCollection workitem = workflowEvent.getWorkitem();
-
-        String model = workitem.getModelVersion();
-        if (!model.startsWith("frage-") && !model.startsWith("question-")) {
-            return;
-        }
-
-        if (WorkflowEvent.WORKITEM_CREATED == workflowEvent.getEventType()) {
-            // keyReminder and datReminder
-            workitem.replaceItemValue("keyReminder", "-1");
-            Calendar cal = Calendar.getInstance();
-
-            cal.add(Calendar.YEAR, 1);
-            workitem.replaceItemValue("datReminder", cal.getTime());
-            workitem.replaceItemValue("_attachements", "0");
-
-            selection = new HashMap();
-
-        }
-
-        if (WorkflowEvent.WORKITEM_CHANGED == workflowEvent.getEventType()) {
-            // update _relevant based on question selection
-            selection = new HashMap();
-            if (workitem != null) {
-                List<String> vSelection = workitem.getItemValue("_relevant");
-                for (String akey : vSelection) {
-                    selection.put(akey, true);
-                }
-            }
-            // reset dms filter
-            setDmsFilter(null);
-
-            // set process...
-            process = documentService.load(workitem.getItemValueString("txtprocessref"));
-        }
-
-        if (WorkflowEvent.WORKITEM_BEFORE_PROCESS == workflowEvent.getEventType()) {
-            document = null;
-
-            // Migrations Helper Class (wegen alt daten)
-            if (workitem.getItemValueString("process.ref").isEmpty()) {
-                workitem.setItemValue("process.ref", workitem.getItemValue("txtprocessref"));
-            }
-            if (workitem.getItemValueString("space.ref").isEmpty()) {
-                workitem.setItemValue("space.ref", workitem.getItemValue("txtspaceref"));
-            }
-
-            /*
-             * List<String> files = fileUploadController.getAttachedFiles();
-             * 
-             * // jetzt speichern wird die Liste der Dateien im Feld "$Filenames", // damit
-             * wir // die Information im Report nutzen können Vector v = new
-             * Vector(Arrays.asList(files)); workitem.replaceItemValue("$FileNames", v);
-             * String aeoName = "aeo-" + workitem.getItemValueString("txtname") + ".pdf";
-             * v.remove(aeoName); workitem.replaceItemValue("_aeoFileNames", v);
-             * 
-             */
-
-            // update _relevant based on question selection
-            if (selection != null) {
-                Vector<String> newSelection = new Vector<String>();
-                for (Map.Entry<String, Boolean> entry : selection.entrySet()) {
-                    if (entry.getValue() == true)
-                        newSelection.add(entry.getKey());
-                }
-                workitem.replaceItemValue("_relevant", newSelection);
-                logger.info("Question selected=" + newSelection);
-            }
-
-        }
 
         if (WorkflowEvent.WORKITEM_AFTER_PROCESS == workflowEvent.getEventType()) {
             this.reset();
@@ -525,25 +390,56 @@ public class WikiController implements Serializable {
         this.dmsFilter = dmsFitler;
     }
 
+    
+    
     /**
-     * returns a List with all Versions of the current Workitem
+     * returns a list of all workItems holding a reference to a given workItem.
      * 
-     * removes all deleted versions!
      * 
      * @return
+     * @param filter
+     * @throws NamingException
      */
-//	public List<ItemCollection> getVersions() {
-//		List<ItemCollection> versions = workflowController.getVersions();
-//
-//		// remove all deleted versions!
-//		List<ItemCollection> result = new ArrayList<ItemCollection>();
-//		for (ItemCollection aversion : versions) {
-//			if (!"workitemversiondeleted".equals(aversion.getItemValueString("type"))) {
-//				result.add(aversion);
-//			}
-//		}
-//
-//		return result;
-//	}
+    public List<ItemCollection> getReferences(String uniqueid) {
+        List<ItemCollection> result = new ArrayList<ItemCollection>();
 
+        // select all references.....
+        String sQuery = "(";
+        sQuery = " (type:\"workitem\") AND ($uniqueidref:\"" + uniqueid + "\")";
+
+        List<ItemCollection> workitems = null;
+
+        try {
+            workitems = workflowService.getDocumentService().findStubs(sQuery, WorkitemLinkController.MAX_SEARCH_RESULT, 0,
+                    WorkflowKernel.LASTEVENTDATE, true);
+        } catch (QueryException e) {
+
+            e.printStackTrace();
+        }
+        // sort by modified
+        Collections.sort(workitems, new ItemCollectionComparator("$created", true));
+
+        result.addAll(workitems);
+        return result;
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

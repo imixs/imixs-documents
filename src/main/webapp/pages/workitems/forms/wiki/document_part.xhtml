@@ -8,67 +8,106 @@
 
 	<h:panelGroup layout="block" styleClass="wiki-part">
 
-	
+
 
 		<!-- *** chapter Info *** -->
-		<h:panelGroup 
-			layout="block" styleClass="wiki-part-chapter">
-			<h:panelGroup layout="block" styleClass="question-head">
+		<h:panelGroup layout="block" styleClass="wiki-part-chapter">
 
-				<h3>
-					<h:link outcome="/pages/workitems/workitem"
-						>
-						<h:outputText value="#{workitem.item['chapter.number']}" styleClass="" />
-						<h:outputText value="#{workitem.item['chapter.name']}"
-							style="margin-left:10px;" />
-						<f:param name="id" value="#{workitem.item['$uniqueid']}" />
-					</h:link> 
-					
-					
-				</h3>
+			<h:link outcome="/pages/workitems/workitem">
+				<h:outputText value="#{workitem.item['name']}" styleClass=""
+					style="margin-right:10px;" />
+				<h:outputText value="#{workitem.item['subject']}" styleClass="" />
+				<f:param name="id" value="#{workitem.item['$uniqueid']}" />
+			</h:link>
+		</h:panelGroup>
+
+		<h:panelGroup layout="block" styleClass="wiki-part-body">
+
+			<h:panelGroup layout="block">
+				<h:outputText escape="false"
+					value="#{workitem.item['$workflowabstract']}" styleClass="" />
 			</h:panelGroup>
 
-			<h:panelGroup layout="block" styleClass="wiki-part-body">
-
-				<h:panelGroup layout="block" >
-					<h:outputText escape="false"
-						value="#{workitem.item['chapter.description']}" styleClass="" />
-				</h:panelGroup>
-				<h:panelGroup layout="block" rendered="#{! empty workitem.item['htmlanswer']}" class="answer #{(catalogController.hasOpenCallback(workitem.item['$uniqueid']))?'aeo-monitoring':''}">
-					<h3>#{custom['aeo.form.catalog_answer']}:</h3>
-					<h:outputText escape="false" value="#{workitem.item['htmlanswer']}"
-						styleClass="" />
-						
-					<h:panelGroup layout="block" rendered="#{! empty workitem.itemList['$file.names']}"  style="">
-					<h3>#{message.documents}:</h3>
-						<ui:repeat value="#{workitem.itemList['$file.names']}"
-							var="filename">							
-								<h:outputText escape="false" value="#{filename}" />
-							<br />
-						</ui:repeat>
-					</h:panelGroup>
-				</h:panelGroup>
-
-				<h:panelGroup layout="block"
-					style="font-size: 11px;padding: 2px 0px; border-top: 1px solid #CCC;">
-					<b>#{message['status']}: </b>
-					<h:outputText escape="false"
-						value="#{workitem.item['$workflowstatus']} (#{workitem.item['space.name']}) " />
-					<b> - #{message['modified']}: </b>
-					<ui:param name="modified"
-						value="#{! empty workitem.item['$lasteventdate']?workitem.item['$lasteventdate']:(! empty workitem.item['timworkflowlastaccess']?workitem.item['timworkflowlastaccess']:workitem.item['$modified'])}"></ui:param>
-					<h:outputText escape="false" value="#{modified}">
-						<f:convertDateTime timeZone="#{message.timeZone}" type="both"
-							pattern="#{message.dateTimePattern}" />
-					</h:outputText>
-				</h:panelGroup>
+			<h:panelGroup layout="block"
+				style="font-size: 11px;padding: 2px 0px; xborder-top: 1px solid #CCC;">
+				<b>#{message['status']}: </b>
+				<h:outputText escape="false"
+					value="#{workitem.item['$workflowstatus']} (#{workitem.item['space.name']}) " />
+				<b> - #{message['modified']}: </b>
+				<ui:param name="modified"
+					value="#{! empty workitem.item['$lasteventdate']?workitem.item['$lasteventdate']:(! empty workitem.item['timworkflowlastaccess']?workitem.item['timworkflowlastaccess']:workitem.item['$modified'])}"></ui:param>
+				<h:outputText escape="false" value="#{modified}">
+					<f:convertDateTime timeZone="#{message.timeZone}" type="both"
+						pattern="#{message.dateTimePattern}" />
+				</h:outputText>
 			</h:panelGroup>
 
-			<div style="clear: left;" />
+
+
+			<!-- references -->
+
+
+			<!-- workitem link data table -->
+			<h:panelGroup id="datalist" class="workitemlink-refs">
+
+
+				<ui:repeat var="workitem_ref"
+					value="#{wikiController.getReferences(workitem.uniqueID)}">
+
+					<div
+						style="border-left: 8px solid #faa732; padding-left: 10px; margin: 10px 0;">
+
+						<h:link outcome="/pages/workitems/workitem">
+							<strong><h:outputText value="#{workitem_ref.item['$workflowgroup']}: " /></strong> <h:outputText
+								value="#{workitem_ref.item['$workflowsummary']}" styleClass=""
+								style="" />
+							<f:param name="id" value="#{workitem_ref.item['$uniqueid']}" />
+						</h:link>
+
+
+						<br /> <span class="workitemlink-entry-abstract"> <h:outputText escape="false"
+								value="#{workitem_ref.item['$workflowabstract']}" />
+						</span>
+
+
+
+						<h:panelGroup layout="block"
+							style="font-size: 11px;padding: 2px 0px; xborder-top: 1px solid #CCC;">
+							<b>#{message['status']}: </b>
+							<h:outputText escape="false"
+								value="#{workitem_ref.item['$workflowstatus']}" />
+							<b> - #{message['modified']}: </b>
+							<h:outputText escape="false" value="#{workitem_ref.item['$lasteventdate']}">
+								<f:convertDateTime timeZone="#{message.timeZone}" type="both"
+									pattern="#{message.dateTimePattern}" />
+							</h:outputText>
+						</h:panelGroup>
+
+					</div>
+
+				</ui:repeat>
+
+
+			</h:panelGroup>
+
+
+
+
+
+
+
+
+
+
+
 
 		</h:panelGroup>
 
-		
+		<div style="clear: left;" />
+
+
+
+
 
 
 	</h:panelGroup>

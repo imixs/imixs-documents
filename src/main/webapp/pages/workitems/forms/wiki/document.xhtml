@@ -10,9 +10,24 @@
 	xmlns:i="http://xmlns.jcp.org/jsf/composite/imixs"
 	template="/layout/template.xhtml">
 
+	<ui:define name="scripts">
+		
+		<style>
+		
+			.wiki-part-chapter {
+			   font-weight: bold;
+			}
+			.wiki-part-body {
+			   margin-left:30px;
+			   width: 50%;
+			}
+		</style>
+	</ui:define>
+	
 
 	<!-- This board view shows the aeo catalog data -->
 	<ui:define name="content">
+	
 		<f:view>
 			<script type="text/javascript">
 				/*<![CDATA[*/
@@ -53,7 +68,7 @@
 							<h:link outcome="/pages/notes">
 								<span class="typcn typcn-home-outline"></span>
 							</h:link>
-							#{custom['aeo.form.catalog_title']} #{boardController.title}
+							#{boardController.title}
 							<!-- Search box -->
 							<h:panelGroup styleClass="search" id="search_box">
 								<h:inputText a:data-id="input_phrase"

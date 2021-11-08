@@ -19,6 +19,7 @@
 		
 			<dd>
 				<h:selectOneMenu value="#{workitem.item['chapter.parent']}" style="width:inherit;">
+					<f:selectItem itemLabel="" itemValue="-"></f:selectItem>
 					<f:selectItems value="#{wikiController.getMainChapters(workitem.item['process.ref'])}" />
 				</h:selectOneMenu>
 				.
