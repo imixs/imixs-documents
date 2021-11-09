@@ -68,7 +68,7 @@ Within Imixs-Documents, forms can be customized from the BPMN model. This makes 
 	</imixs-form>
 
 
-Find details how to model custom forms [here](https://github.com/imixs/imixs-office-workflow/blob/master/doc/modeling/CUSTOM_FORMS.md).
+Find details how to model custom forms [here](./docs/modeling/CUSTOM_FORMS.md).
 
 ### Predefined Items
 
