@@ -28,7 +28,7 @@ To add a management approval just add a manager into the corresponding process m
 ## Input Forms
 
 With Imixs-Office-Workflow you can create individual forms completely based on your BPMN 2.0 model. No programming knowledge in HTML 
-or Java Script is required. Read the section [Custom-Forms](modeling/CUSTOM_FORMS.md) to learn how you can create your own forms.
+or Java Script is required. Read the section [Custom-Forms](../modeling/CUSTOM_FORMS.md) to learn how you can create your own forms.
 
 ### Input Fields & Item Names
 

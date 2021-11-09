@@ -172,5 +172,22 @@ See the following example of a custom input field definition:
 
 **Note:** Also in a custom section you can use the attribute '*readonly*' to determine if the input components are editable or readonly.
 
+## Ajax Support
 
+Within a custom form part or a custom section you can also trigger Ajax events refreshing other form parts or sections within the same form definition. For this behaviour you can refer to the clientId of the component 'formComponents'. See the following example:
+
+
+		<h:selectOneMenu 
+			required="#{empty required?false:required}"
+			value="#{workflowController.workitem.item['space.ref']}">
+				<f:selectItem itemLabel="a"></f:selectItem>
+				<f:selectItem itemLabel="b"></f:selectItem>
+				<f:selectItem itemLabel="c"></f:selectItem>
+				
+			<!-- trigger refresh over all components -->	
+			<f:ajax render="#{formComponents.clientId}"  />
+			
+		</h:selectOneMenu>
+
+In this example choosing a new option from the select menu will refresh all other form components. 
 	 
