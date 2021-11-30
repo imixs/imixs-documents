@@ -34,6 +34,7 @@
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ApplicationPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.marty.plugins.MailPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.IntervalPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.SplitAndJoinPlugin]]></imixs:value>
     </imixs:item>
   </bpmn2:extensionElements>
   <bpmn2:signal id="Signal_1" name="org.imixs.ml.workflow.MLAdapter"/>
@@ -72,6 +73,7 @@
         <bpmn2:flowNodeRef>EventBasedGateway_3</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateThrowEvent_3</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_5</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_11</bpmn2:flowNodeRef>
       </bpmn2:lane>
       <bpmn2:lane id="Lane_2" name="Bereich Team">
         <bpmn2:flowNodeRef>Task_5005</bpmn2:flowNodeRef>
@@ -96,7 +98,7 @@
     <bpmn2:task id="Task_5000" imixs:processid="5200" name="Genehmigung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -596,8 +598,8 @@ result.isValid=true;
      <item name="cdtr.name" type="text"  label="Firma:" />
      <item name="order.number" type="text"  label="Bestell-Nr.:" />
     <item name="order.delivery" type="date"  label="Liefertermin:" />
+    <item name="" type="custom" path="spaceref"  label="Fachbereich:" />
   </imixs-form-section>
-  <imixs-form-section label="" path="sub_dispatch" />
   <imixs-form-section label="Bestellpositionen" path="sub_orderitems" />
 </imixs-form>
 ]]></bpmn2:documentation>
@@ -942,6 +944,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_31"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
       <bpmn2:incoming>SequenceFlow_21</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_35</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_47</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:endEvent id="EndEvent_2" name="Ende">
@@ -1780,10 +1783,61 @@ result.isValid=true;
     <bpmn2:sequenceFlow id="SequenceFlow_42" sourceRef="IntermediateCatchEvent_10" targetRef="Task_3"/>
     <bpmn2:eventBasedGateway id="EventBasedGateway_3" gatewayDirection="Diverging">
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
-      <bpmn2:outgoing>SequenceFlow_12</bpmn2:outgoing>
       <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_12</bpmn2:outgoing>
     </bpmn2:eventBasedGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_12" sourceRef="EventBasedGateway_3" targetRef="IntermediateCatchEvent_5000-20"/>
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_11" imixs:activityid="10" name="Rechnungseingang">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtactivityresult" type="CDATA">
+          <imixs:value><![CDATA[<item name="subprocess_create">
+	<modelversion>(^posteingang-de)</modelversion>
+	<task>100</task>
+	<event>900</event>
+	<items>space.ref,process.ref</items>
+        <action>/pages/workitems/workitem.jsf?id=<itemvalue>$uniqueid</itemvalue></action>
+</item>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="Documentation_25"><![CDATA[Erfassung eines neuen Rechnungseingangs]]></bpmn2:documentation>
+      <bpmn2:outgoing>SequenceFlow_35</bpmn2:outgoing>
+      <bpmn2:linkEventDefinition id="LinkEventDefinition_6" name="Link Event Definition 6"/>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_35" sourceRef="IntermediateCatchEvent_11" targetRef="Task_5"/>
+    <bpmn2:dataObject id="DataObject_1" name="Order Form">
+      <bpmn2:documentation id="Documentation_7"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+  <imixs-form-section columns="1" label="Bestellung">
+    <item name="order.name" type="text"  label="Bezeichnung:" readonly="true" />
+  </imixs-form-section>
+  <imixs-form-section columns="2">
+     <item name="cdtr.name" type="text"  label="Firma:" readonly="true" />
+     <item name="order.number" type="text"  label="Bestell-Nr.:" readonly="true" />
+    <item name="order.delivery" type="date"  label="Liefertermin:" readonly="true" />
+    <item name="" type="custom" path="spaceref"  label="Fachbereich:" />
+  </imixs-form-section>
+  <imixs-form-section label="Bestellpositionen" path="sub_orderitems_read"  />
+</imixs-form>
+]]></bpmn2:documentation>
+      <bpmn2:dataState id="DataState_2"/>
+    </bpmn2:dataObject>
+    <bpmn2:dataObject id="DataObject_3" name="Order Form">
+      <bpmn2:documentation id="Documentation_14"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+  <imixs-form-section columns="1" label="Bestellung">
+    <item name="order.name" type="text"  label="Bezeichnung:" readonly="true" />
+  </imixs-form-section>
+  <imixs-form-section columns="2">
+     <item name="cdtr.name" type="text"  label="Firma:" readonly="true" />
+     <item name="order.number" type="text"  label="Bestell-Nr.:" readonly="false" />
+    <item name="order.delivery" type="date"  label="Liefertermin:" readonly="false" />
+    <item name="" type="custom" path="spaceref"  label="Fachbereich:" readonly="true" />
+  </imixs-form-section>
+  <imixs-form-section label="Bestellpositionen" path="sub_orderitems_read"  />
+</imixs-form>
+]]></bpmn2:documentation>
+      <bpmn2:dataState id="DataState_3"/>
+    </bpmn2:dataObject>
     <bpmn2:association id="Association_2" sourceRef="DataObject_2" targetRef="Task_2"/>
     <bpmn2:textAnnotation id="TextAnnotation_2">
       <bpmn2:text>Wurde ein Prozess Team festgelegt, erfolgt eine Genehmigung.</bpmn2:text>
@@ -1794,6 +1848,13 @@ result.isValid=true;
 </bpmn2:text>
     </bpmn2:textAnnotation>
     <bpmn2:association id="Association_5" sourceRef="TextAnnotation_4" targetRef="Task_1"/>
+    <bpmn2:association id="Association_1" sourceRef="DataObject_1" targetRef="Task_5000"/>
+    <bpmn2:association id="Association_4" sourceRef="DataObject_1" targetRef="Task_5005"/>
+    <bpmn2:association id="Association_6" sourceRef="DataObject_3" targetRef="Task_3"/>
+    <bpmn2:textAnnotation id="TextAnnotation_1">
+      <bpmn2:text>OCR &amp; KI</bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="Association_7" sourceRef="TextAnnotation_1" targetRef="IntermediateCatchEvent_11"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="Collaboration_1">
@@ -2010,9 +2071,9 @@ result.isValid=true;
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_2" bpmnElement="TextAnnotation_2">
-        <dc:Bounds height="50.0" width="151.0" x="580.0" y="837.0"/>
+        <dc:Bounds height="50.0" width="151.0" x="630.0" y="911.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_64">
-          <dc:Bounds height="44.0" width="139.0" x="586.0" y="837.0"/>
+          <dc:Bounds height="44.0" width="139.0" x="636.0" y="911.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_4" bpmnElement="TextAnnotation_4">
@@ -2080,6 +2141,30 @@ result.isValid=true;
       <bpmndi:BPMNShape id="BPMNShape_EventBasedGateway_3" bpmnElement="EventBasedGateway_3" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="452.0" y="291.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_4"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_18" bpmnElement="IntermediateCatchEvent_11">
+        <dc:Bounds height="36.0" width="36.0" x="1517.0" y="380.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_63">
+          <dc:Bounds height="28.0" width="108.0" x="1481.0" y="416.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObject_2" bpmnElement="DataObject_1">
+        <dc:Bounds height="50.0" width="36.0" x="230.0" y="837.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_77">
+          <dc:Bounds height="14.0" width="62.0" x="217.0" y="887.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObject_3" bpmnElement="DataObject_3">
+        <dc:Bounds height="50.0" width="36.0" x="700.0" y="291.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_96">
+          <dc:Bounds height="14.0" width="62.0" x="687.0" y="341.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_3" bpmnElement="TextAnnotation_1">
+        <dc:Bounds height="50.0" width="100.0" x="1589.0" y="372.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_98">
+          <dc:Bounds height="44.0" width="88.0" x="1595.0" y="372.0"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_0" sourceElement="BPMNShape_StartEvent_1" targetElement="BPMNShape_ExclusiveGateway_1">
         <di:waypoint xsi:type="dc:Point" x="155.0" y="315.0"/>
@@ -2295,9 +2380,9 @@ result.isValid=true;
         <bpmndi:BPMNLabel id="BPMNLabel_62"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_Association_3" bpmnElement="Association_3" sourceElement="BPMNShape_TextAnnotation_2" targetElement="BPMNShape_Task_1">
-        <di:waypoint xsi:type="dc:Point" x="731.0" y="862.0"/>
-        <di:waypoint xsi:type="dc:Point" x="764.0" y="862.0"/>
-        <di:waypoint xsi:type="dc:Point" x="798.0" y="862.0"/>
+        <di:waypoint xsi:type="dc:Point" x="781.0" y="936.0"/>
+        <di:waypoint xsi:type="dc:Point" x="834.0" y="936.0"/>
+        <di:waypoint xsi:type="dc:Point" x="834.0" y="887.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_68"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_Association_5" bpmnElement="Association_5" sourceElement="BPMNShape_TextAnnotation_4" targetElement="BPMNShape_Task_3">
@@ -2383,6 +2468,36 @@ result.isValid=true;
         <di:waypoint xsi:type="dc:Point" x="523.0" y="315.0"/>
         <di:waypoint xsi:type="dc:Point" x="545.0" y="315.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_6"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_36" bpmnElement="SequenceFlow_35" sourceElement="BPMNShape_IntermediateCatchEvent_18" targetElement="BPMNShape_Task_11">
+        <di:waypoint xsi:type="dc:Point" x="1535.0" y="380.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1535.0" y="361.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1535.0" y="341.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_69"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Association_1" bpmnElement="Association_1" sourceElement="BPMNShape_DataObject_2" targetElement="BPMNShape_Task_1">
+        <di:waypoint xsi:type="dc:Point" x="266.0" y="862.0"/>
+        <di:waypoint xsi:type="dc:Point" x="532.0" y="862.0"/>
+        <di:waypoint xsi:type="dc:Point" x="798.0" y="862.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_81"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Association_4" bpmnElement="Association_4" sourceElement="BPMNShape_DataObject_2" targetElement="BPMNShape_Task_2">
+        <di:waypoint xsi:type="dc:Point" x="248.0" y="837.0"/>
+        <di:waypoint xsi:type="dc:Point" x="248.0" y="618.0"/>
+        <di:waypoint xsi:type="dc:Point" x="308.0" y="618.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_95"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Association_6" bpmnElement="Association_6" sourceElement="BPMNShape_DataObject_3" targetElement="BPMNShape_Task_9">
+        <di:waypoint xsi:type="dc:Point" x="736.0" y="316.0"/>
+        <di:waypoint xsi:type="dc:Point" x="765.0" y="315.0"/>
+        <di:waypoint xsi:type="dc:Point" x="795.0" y="315.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_97"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Association_7" bpmnElement="Association_7" sourceElement="BPMNShape_TextAnnotation_3" targetElement="BPMNShape_IntermediateCatchEvent_18">
+        <di:waypoint xsi:type="dc:Point" x="1589.0" y="397.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1571.0" y="397.0"/>
+        <di:waypoint xsi:type="dc:Point" x="1553.0" y="398.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_99"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
