@@ -67,8 +67,13 @@ You can choose one of the following types for select boxes:
 
  - *selectOneMenu*  - a dropdown menu
  - *selectBooleanCheckbox* - a single checkbox
- - *selectManyCheckbox* - a list of checkboxes
- - *selectOneRadio* - radio buttons
+ - *selectManyCheckbox* - a list of checkboxes  (layout=line direction)
+ - *selectOneRadio* - radio buttons (layout=line direction)
+ 
+*selectManyCheckbox* and *selectOneRadio* are displayed in line direction per default. If you want to display them in page direction use:
+
+ - *selectManyCheckboxPageDirection* - a list of checkboxes (layout=page direction)
+ - *selectOneRadioPageDirection* - radio buttons (layout=page direction)
 						
 
 ### Required Inputs
