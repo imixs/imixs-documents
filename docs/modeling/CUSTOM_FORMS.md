@@ -196,14 +196,14 @@ Within a custom form part or a custom section you can also trigger Ajax events r
 
 In this example choosing a new option from the select menu will refresh all other form components. 
 
-### The customFormContainer
+### The customFormComponents
 
-If you just want to update the elements of the custom form you can refere to the custom forms section by the binding `customFormContainer`
+If you just want to update the elements of the custom form you can refere to the custom forms section by the binding `customFormComponents`
 
 	<h:selectOneMenu value="#{workitem.item['myselection']}">
 			<f:selectItem itemLabel=""></f:selectItem>
 			.....
-			<f:ajax render="#{customFormContainer.clientId}"/>
+			<f:ajax render="#{customFormComponents.clientId}"/>
 	</h:selectOneMenu>
 
 This will trigger a render event only on the parts within the customForm Container	 
