@@ -96,15 +96,6 @@
 			<name>Sonatype Snapshot repository</name>
 			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
 		</repository>
-		<!-- Imixs repository -->
-		<repository>
-			<id>imixs-mvn-repo</id>
-			<url>https://raw.githubusercontent.com/imixs/imixs-mvn-repo/master/</url>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
 	</repositories>
 
 
