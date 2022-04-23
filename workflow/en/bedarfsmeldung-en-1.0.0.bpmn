@@ -95,7 +95,7 @@
     <bpmn2:task id="Task_5000" imixs:processid="5200" name="Approval">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic_read#sub_orderitems_read]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -283,7 +283,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
     <bpmn2:task id="Task_5005" imixs:processid="5100" name="Factual Review">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic_read#sub_orderitems]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -675,7 +675,7 @@ result.isValid=true;
     <bpmn2:task id="Task_3" imixs:processid="5300" name="Ordering">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic_read#sub_orderitems_read]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
