@@ -44,7 +44,8 @@ services:
       SIGNATURE_SERVICE_ENDPOINT: "http://imixssignature:8080/api"
 
       # Collabora integration
-      WOPI_PUBLIC_ENDPOINT: "http://localhost:9980/loleaflet/6a844e4/loleaflet.html?"
+      WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
+      WOPI_DISCOVERY_ENDPOINT: "http://libreoffice-app:9980/hosting/discovery"
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
       WOPI_TEMPLATES: "/wopi/templates"
 

@@ -1,0 +1,80 @@
+version: "3.6"
+services:
+
+#######################
+# PostgreSQL
+#######################
+  db:
+    image: postgres:9.6.1
+    environment:
+      POSTGRES_PASSWORD: adminadmin
+      POSTGRES_DB: office
+    volumes: 
+      - dbdata:/var/lib/postgresql/data
+    networks:
+      - onlyoffice
+      
+#######################
+# Imixs-Documents
+#######################
+  imixs-documents:
+    image: imixs/imixs-documents:latest
+    depends_on:
+      - db
+    environment:
+      JAVA_OPTS: "-Dnashorn.args=--no-deprecation-warning"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "adminadmin"
+      POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
+      TZ: "Europe/Berlin"
+      LANG: "en_US.UTF-8"
+      MAILGATEWAY: "localhost"
+      ASYNCEVENT_PROCESSOR_ENABLED: "true"
+      ASYNCEVENT_PROCESSOR_INITIALDELAY: "10000"
+
+      # ONlyOffice integration
+      WOPI_PUBLIC_ENDPOINT: "http://localhost:80/"
+      WOPI_DISCOVERY_ENDPOINT: "http://onlyoffice-app:80/hosting/discovery"
+      WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
+      #WOPI_TEMPLATES: "/wopi/templates"
+
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+      - "8787:8787"
+    volumes:
+      - ./deployments:/opt/jboss/wildfly/standalone/deployments/
+    networks:
+      - onlyoffice
+
+
+
+
+#######################
+# Only Office Online
+#######################
+  onlyoffice-app:
+    image: onlyoffice/documentserver
+    container_name: onlyoffice-app
+    stdin_open: true
+    tty: true
+    expose:
+      - 80
+    ports:
+      - "80:80"
+    environment:
+      WOPI_ENABLED: "true"
+      USE_UNAUTHORIZED_STORAGE: "true"
+      # geht nciht WOPI_HOST: "http://localhost:80/"
+    networks:
+      - onlyoffice
+    volumes:
+      - ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json      
+      
+      
+networks:
+  onlyoffice:
+    driver: 'bridge'
+
+volumes:
+  dbdata: 
