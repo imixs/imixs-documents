@@ -26,7 +26,7 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "adminadmin"
       POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
-      TZ: "Europe/Berlin"
+      #TZ: "Europe/Berlin"
       LANG: "en_US.UTF-8"
       MAILGATEWAY: "localhost"
       ASYNCEVENT_PROCESSOR_ENABLED: "true"
@@ -36,6 +36,7 @@ services:
       WOPI_PUBLIC_ENDPOINT: "http://localhost:80/"
       WOPI_DISCOVERY_ENDPOINT: "http://onlyoffice-app:80/hosting/discovery"
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
+      WOPI_OPTIONS: "thm=1"
       #WOPI_TEMPLATES: "/wopi/templates"
 
     ports:
@@ -56,15 +57,17 @@ services:
   onlyoffice-app:
     image: onlyoffice/documentserver
     container_name: onlyoffice-app
-    stdin_open: true
-    tty: true
+    #stdin_open: true
+    #tty: true
     expose:
       - 80
     ports:
       - "80:80"
     environment:
+      #TZ: "Europe/Berlin"
+      #LANG: "en_US.UTF-8"    
       WOPI_ENABLED: "true"
-      USE_UNAUTHORIZED_STORAGE: "true"
+      #USE_UNAUTHORIZED_STORAGE: "true"
       # geht nciht WOPI_HOST: "http://localhost:80/"
     networks:
       - onlyoffice
