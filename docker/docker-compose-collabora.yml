@@ -45,8 +45,9 @@ services:
 
       # Collabora integration
       WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
-      WOPI_DISCOVERY_ENDPOINT: "http://libreoffice-app:9980/hosting/discovery"
+      WOPI_DISCOVERY_ENDPOINT: "http://collabora-app:9980/hosting/discovery"
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
+      WOPI_OPTIONS: "TextSidebar=false"
       WOPI_TEMPLATES: "/wopi/templates"
 
     ports:
@@ -63,9 +64,10 @@ services:
 #######################
 # Libre Office Online
 #######################
-  libreoffice-app:
+  collabora-app:
+    # 6.4.9.2 | 22.05.3.1.1
     image: collabora/code:6.4.9.2
-    container_name: libreoffice-app
+    container_name: collabora-app
     expose:
       - 9980
     ports:
