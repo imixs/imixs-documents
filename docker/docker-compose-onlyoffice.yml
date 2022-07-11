@@ -64,15 +64,16 @@ services:
     ports:
       - "80:80"
     environment:
-      #TZ: "Europe/Berlin"
+      TZ: "Europe/Berlin"
       #LANG: "en_US.UTF-8"    
-      WOPI_ENABLED: "true"
+      #WOPI_ENABLED: "true"
       #USE_UNAUTHORIZED_STORAGE: "true"
       # geht nciht WOPI_HOST: "http://localhost:80/"
     networks:
       - onlyoffice
     volumes:
-      - ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json      
+      - ./configuration/onlyoffice/local.json:/etc/onlyoffice/documentserver/local.json      
+      #- ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json      
       
       
 networks:

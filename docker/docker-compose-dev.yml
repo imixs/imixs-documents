@@ -40,14 +40,20 @@ services:
       ML_TRAINING_SCHEDULER_INTERVAL: "10000"
       ML_TRAINING_SCHEDULER_INITIALDELAY: "60000" 
 
-     # Signature
-      SIGNATURE_SERVICE_ENDPOINT: "http://imixssignature:8080/api"
+      # Signature
+      #SIGNATURE_SERVICE_ENDPOINT: "http://imixssignature:8080/api"
 
       # Collabora integration
-      WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
-      WOPI_DISCOVERY_ENDPOINT: "http://libreoffice-app:9980/hosting/discovery"
+      #WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
+      #WOPI_DISCOVERY_ENDPOINT: "http://libreoffice-app:9980/hosting/discovery"
+      #WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
+      #WOPI_TEMPLATES: "/wopi/templates"
+
+      # ONlyOffice integration
+      WOPI_PUBLIC_ENDPOINT: "http://localhost:80/"
+      WOPI_DISCOVERY_ENDPOINT: "http://onlyoffice-app:80/hosting/discovery"
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
-      WOPI_TEMPLATES: "/wopi/templates"
+      WOPI_OPTIONS: "thm=1"
 
     ports:
       - "8080:8080"
@@ -69,13 +75,7 @@ services:
     environment:
       TZ: "Europe/Berlin"
     ports:
-      - "9998:9998"  
-
-# Gotenberg Servcie (HTML2PDF converter)
-#  gotenberg: 
-#    image: thecodingmachine/gotenberg:6
-#    ports:
-#      - "3000:3000" 
+      - "9998:9998"
 
 
 #######################
@@ -99,36 +99,55 @@ services:
 #######################
 # Libre Office Online
 #######################
-  libreoffice-app:
-    image: collabora/code:6.4.9.2
-    container_name: libreoffice-app
-    expose:
-      - 9980
-    ports:
-      - "9980:9980"
-    environment:
-      - username=admin
-      - password=adminadmin
-    volumes:
-      - ./configuration/collabora/loolwsd.xml:/etc/loolwsd/loolwsd.xml
+#  libreoffice-app:
+#    image: collabora/code:6.4.9.2
+#    container_name: libreoffice-app
+#    expose:
+#      - 9980
+#    ports:
+#      - "9980:9980"
+#    environment:
+#      - username=admin
+#      - password=adminadmin
+#    volumes:
+#      - ./configuration/collabora/loolwsd.xml:/etc/loolwsd/loolwsd.xml
 
+
+
+#######################
+# Only Office Online
+#######################
+  onlyoffice-app:
+    image: onlyoffice/documentserver
+    container_name: onlyoffice-app
+    expose:
+      - 80
+    ports:
+      - "80:80"
+    environment:
+      TZ: "Europe/Berlin"
+    volumes:
+      - ./configuration/onlyoffice/local.json:/etc/onlyoffice/documentserver/local.json      
+      #- ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json   
+      
+      
 #######################
 # Imixs Signature
 #######################
-  imixssignature:
-    image: imixs/imixs-signature-service
-    environment:
-      SIGNATURE_KEYSTORE_PATH: "/opt/keys/imixs.jks"
-      SIGNATURE_KEYSTORE_PASSWORD: "123456" 
-      SIGNATURE_KEYSTORE_TYPE: "PKCS12"
-      SIGNATURE_ROOTCERT_ALIAS: "imixs.com"
-      SIGNATURE_ROOTCERT_PASSWORD: "123456" 
-      #SIGNATURE_TSA_URL: "https://freetsa.org/tsr"
-    ports:
-      - "8082:8080"
-      - "8789:8787"
-    volumes:
-      - ./keys:/opt/keys/
+#  imixssignature:
+#    image: imixs/imixs-signature-service
+#    environment:
+#      SIGNATURE_KEYSTORE_PATH: "/opt/keys/imixs.jks"
+#      SIGNATURE_KEYSTORE_PASSWORD: "123456" 
+#      SIGNATURE_KEYSTORE_TYPE: "PKCS12"
+#      SIGNATURE_ROOTCERT_ALIAS: "imixs.com"
+#      SIGNATURE_ROOTCERT_PASSWORD: "123456" 
+#      #SIGNATURE_TSA_URL: "https://freetsa.org/tsr"
+#    ports:
+#      - "8082:8080"
+#      - "8789:8787"
+#    volumes:
+#      - ./keys:/opt/keys/
 
 #######################
 # Imixs Admin Client
