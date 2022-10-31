@@ -9,9 +9,9 @@
       <imixs:value><![CDATA[Ersteller | namCreator]]></imixs:value>
       <imixs:value><![CDATA[Aktueller Bearbeiter | $Editor]]></imixs:value>
       <imixs:value><![CDATA[Manager | process.manager]]></imixs:value>
+      <imixs:value><![CDATA[Team | process.team]]></imixs:value>
       <imixs:value><![CDATA[Area Manager | space.manager]]></imixs:value>
-      <imixs:value><![CDATA[Callback Team | namcallbackteam]]></imixs:value>
-      <imixs:value><![CDATA[Callback Approvers | namcallbackteamApprovers]]></imixs:value>
+      <imixs:value><![CDATA[Area Team | space.team]]></imixs:value>
     </imixs:item>
     <imixs:item name="txttimefieldmapping" type="xs:string">
       <imixs:value><![CDATA[Termin | datDate]]></imixs:value>
@@ -43,12 +43,9 @@
     <bpmn2:laneSet id="LaneSet_2" name="Lane Set 2">
       <bpmn2:lane id="Lane_2" name="AEO Manager">
         <bpmn2:flowNodeRef>IntermediateCatchEvent_1</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>StartEvent_1</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>Task_1</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>Task_3</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_8</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_26</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_19</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_10</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_4</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>ParallelGateway_2</bpmn2:flowNodeRef>
@@ -58,19 +55,20 @@
         <bpmn2:flowNodeRef>ParallelGateway_1</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>EndEvent_1</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>EventBasedGateway_3</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_2</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_23</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateThrowEvent_4</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_29</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateThrowEvent_5</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_22</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>Task_9</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_31</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>EndEvent_3</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_6</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_17</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_7</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>Task_12</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_17</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>ExclusiveGateway_2</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_2</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_7</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_20</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_6</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>StartEvent_1</bpmn2:flowNodeRef>
       </bpmn2:lane>
     </bpmn2:laneSet>
     <bpmn2:startEvent id="StartEvent_1" name="Start">
@@ -85,16 +83,20 @@
           <imixs:value><![CDATA[<itemvalue>description</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[process.manager]]></imixs:value>
+          <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[process.team]]></imixs:value>
+          <imixs:value><![CDATA[space.manager]]></imixs:value>
+          <imixs:value><![CDATA[space.team]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[process.manager]]></imixs:value>
+          <imixs:value><![CDATA[namCreator]]></imixs:value>
         </imixs:item>
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
@@ -105,7 +107,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_16</bpmn2:incoming>
-      <bpmn2:incoming>SequenceFlow_22</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_9</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
       <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
     </bpmn2:task>
@@ -123,7 +125,7 @@
           <imixs:value><![CDATA[process.manager]]></imixs:value>
         </imixs:item>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="CDATA">
           <imixs:value><![CDATA[<itemvalue>description</itemvalue>]]></imixs:value>
@@ -134,6 +136,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_15</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_38</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_37</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_48</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_1" imixs:activityid="20" name="Submit">
@@ -160,7 +163,7 @@
           <imixs:value>true</imixs:value>
         </imixs:item>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="CDATA">
           <imixs:value><![CDATA[<itemvalue>description</itemvalue>]]></imixs:value>
@@ -176,7 +179,7 @@
       <bpmn2:incoming>SequenceFlow_54</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_2" imixs:activityid="210" name="Confirm">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_2" imixs:activityid="20" name="Confirm">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="CDATA">
           <imixs:value><![CDATA[Confirmed]]></imixs:value>
@@ -186,10 +189,10 @@
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_8"><![CDATA[Ready with answering, answer is confirmed]]></bpmn2:documentation>
-      <bpmn2:incoming>SequenceFlow_44</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_38</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_3" imixs:activityid="20" name="Antwort ändern">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_3" imixs:activityid="20" name="Change">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="CDATA">
           <imixs:value><![CDATA[Frage zur erneuten beantwortung vorgelegt von <username>namcurrenteditor</username>.]]></imixs:value>
@@ -375,42 +378,6 @@
     <bpmn2:sequenceFlow id="SequenceFlow_53" sourceRef="IntermediateCatchEvent_22" targetRef="ParallelGateway_2"/>
     <bpmn2:sequenceFlow id="SequenceFlow_54" sourceRef="IntermediateCatchEvent_24" targetRef="Task_4"/>
     <bpmn2:sequenceFlow id="SequenceFlow_55" sourceRef="IntermediateCatchEvent_23" targetRef="IntermediateThrowEvent_4"/>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_19" name="EDIT QUESTION">
-      <bpmn2:outgoing>SequenceFlow_21</bpmn2:outgoing>
-      <bpmn2:linkEventDefinition id="LinkEventDefinition_4" name="Link Event Definition 1"/>
-    </bpmn2:intermediateCatchEvent>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_26" imixs:activityid="80" name="Frage bearbeiten">
-      <bpmn2:extensionElements>
-        <imixs:item name="rtfresultlog" type="CDATA">
-          <imixs:value><![CDATA[Aktualisiert von <username>namcurrenteditor</username>.]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="$readaccess" type="xs:string">
-          <imixs:value><![CDATA[org.imixs.ACCESSLEVEL.MANAGERACCESS]]></imixs:value>
-        </imixs:item>
-      </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_20"><![CDATA[Edit question administrative]]></bpmn2:documentation>
-      <bpmn2:incoming>SequenceFlow_21</bpmn2:incoming>
-      <bpmn2:outgoing>SequenceFlow_22</bpmn2:outgoing>
-    </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_21" sourceRef="IntermediateCatchEvent_19" targetRef="IntermediateCatchEvent_26"/>
-    <bpmn2:sequenceFlow id="SequenceFlow_22" sourceRef="IntermediateCatchEvent_26" targetRef="Task_1"/>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_29" imixs:activityid="201" name="[confirm Callback]">
-      <bpmn2:extensionElements>
-        <imixs:item name="rtfresultlog" type="CDATA">
-          <imixs:value><![CDATA[Callback bestätigt von<username>namcurrenteditor</username>, Antwort aktualisiert.]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtactivityresult" type="CDATA">
-          <imixs:value><![CDATA[<item name="txtanswer"><itemvalue>callback_txtanswer</itemvalue></item>
-<item name="htmlanswer"><itemvalue>callback_htmlanswer</itemvalue></item>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keypublicresult" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-      </bpmn2:extensionElements>
-      <bpmn2:outgoing>SequenceFlow_42</bpmn2:outgoing>
-      <bpmn2:signalEventDefinition id="SignalEventDefinition_9"/>
-    </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_42" sourceRef="IntermediateCatchEvent_29" targetRef="IntermediateThrowEvent_5"/>
     <bpmn2:sequenceFlow id="SequenceFlow_48" sourceRef="Task_3" targetRef="EventBasedGateway_3"/>
     <bpmn2:eventBasedGateway id="EventBasedGateway_3" gatewayDirection="Diverging">
       <bpmn2:incoming>SequenceFlow_48</bpmn2:incoming>
@@ -421,10 +388,6 @@
     <bpmn2:intermediateThrowEvent id="IntermediateThrowEvent_4" name="CONFIRMED">
       <bpmn2:incoming>SequenceFlow_55</bpmn2:incoming>
       <bpmn2:linkEventDefinition id="LinkEventDefinition_7" name="Link Event Definition 2"/>
-    </bpmn2:intermediateThrowEvent>
-    <bpmn2:intermediateThrowEvent id="IntermediateThrowEvent_5" name="CONFIRMED">
-      <bpmn2:incoming>SequenceFlow_42</bpmn2:incoming>
-      <bpmn2:linkEventDefinition id="LinkEventDefinition_8" name="Link Event Definition 2"/>
     </bpmn2:intermediateThrowEvent>
     <bpmn2:task id="Task_9" imixs:processid="1900" name="Deleted">
       <bpmn2:extensionElements>
@@ -481,13 +444,12 @@
 
   <imixs-form-section columns="3" label="Review">
      <item name="chapter.reminder" type="date"  label="Reminder:" />
-     <item name="space.ref" type="part" path="spaceref" label="Responsible" />
-
+     <item name="" type="custom" path="spaceref"  label="Responsible:" />
   </imixs-form-section>
  
 </imixs-form>]]></bpmn2:documentation>
     </bpmn2:dataObject>
-    <bpmn2:sequenceFlow id="SequenceFlow_37" sourceRef="IntermediateCatchEvent_17" targetRef="Task_12"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_37" sourceRef="IntermediateCatchEvent_17" targetRef="Task_3"/>
     <bpmn2:sequenceFlow id="SequenceFlow_38" sourceRef="IntermediateCatchEvent_2" targetRef="Task_3"/>
     <bpmn2:task id="Task_12" imixs:processid="1100" name="Review">
       <bpmn2:extensionElements>
@@ -495,13 +457,16 @@
           <imixs:value>true</imixs:value>
         </imixs:item>
         <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[process.manager]]></imixs:value>
+          <imixs:value><![CDATA[space.team]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[process.manager]]></imixs:value>
+          <imixs:value><![CDATA[process.team]]></imixs:value>
+          <imixs:value><![CDATA[space.team]]></imixs:value>
+          <imixs:value><![CDATA[space.manager]]></imixs:value>
         </imixs:item>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>name</itemvalue> <itemvalue>subject</itemvalue>]]></imixs:value>
@@ -513,14 +478,44 @@
           <imixs:value><![CDATA[typcn-bookmark||||]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>SequenceFlow_43</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_13</bpmn2:incoming>
-      <bpmn2:incoming>SequenceFlow_37</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_43</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_44</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:sequenceFlow id="SequenceFlow_43" sourceRef="IntermediateCatchEvent_7" targetRef="Task_12"/>
-    <bpmn2:sequenceFlow id="SequenceFlow_44" sourceRef="Task_12" targetRef="IntermediateCatchEvent_2"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_44" sourceRef="Task_12" targetRef="ExclusiveGateway_2"/>
+    <bpmn2:exclusiveGateway id="ExclusiveGateway_2" gatewayDirection="Diverging">
+      <bpmn2:incoming>SequenceFlow_44</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:sequenceFlow id="SequenceFlow_4" sourceRef="ExclusiveGateway_2" targetRef="IntermediateCatchEvent_2"/>
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_20" imixs:activityid="30" name="Reject">
+      <bpmn2:extensionElements>
+        <imixs:item name="rtfresultlog" type="CDATA">
+          <imixs:value><![CDATA[Confirmed]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="CDATA">
+          <imixs:value><![CDATA[<item name="action">home</item>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtbusinessrule" type="CDATA">
+          <imixs:value><![CDATA[var result={};
+ var refField="txtcomment"; 
+result.isValid=true;
+
+ if (  ( workitem.get(refField) == null || ''==workitem.get(refField)[0])   ) {
+     result.isValid=false;
+     result.errorMessage='Please enter a comment.';
+  }]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="Documentation_26"><![CDATA[Ready with answering, answer is confirmed]]></bpmn2:documentation>
+      <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_9</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_8" sourceRef="ExclusiveGateway_2" targetRef="IntermediateCatchEvent_20"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_9" sourceRef="IntermediateCatchEvent_20" targetRef="Task_1"/>
     <bpmn2:textAnnotation id="TextAnnotation_5">
       <bpmn2:text>Reminderdatum wird automatisch bei jedem Prozesschritt neu berechnet</bpmn2:text>
     </bpmn2:textAnnotation>
@@ -628,7 +623,6 @@
     <item name="description" type="html"  label="Description:" />
   </imixs-form-section>
   <imixs-form-section columns="2">
-     <item name="action.section" type="text"  label="Bereich:" />
     <item name="action.delivery" type="date"  label="Date:" />
   </imixs-form-section>
   <imixs-form-section label="" path="sub_dispatch" />
@@ -640,7 +634,7 @@
     <bpmn2:task id="Task_6" imixs:processid="2100" name="in Progress">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -652,13 +646,20 @@
           <imixs:value><![CDATA[typcn-dropbox|typcn-info,imixs-info,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>action.name</itemvalue> <itemvalue>action.section</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
         </imixs:item>
-        <imixs:item name="keyownershipfields" type="xs:string"/>
-        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="keyownershipfields" type="xs:string">
+          <imixs:value><![CDATA[space.team]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string">
+          <imixs:value><![CDATA[space.team]]></imixs:value>
+          <imixs:value><![CDATA[space.manager]]></imixs:value>
+          <imixs:value><![CDATA[process.team]]></imixs:value>
+          <imixs:value><![CDATA[process.manager]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_21"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
       <bpmn2:incoming>SequenceFlow_17</bpmn2:incoming>
@@ -902,16 +903,20 @@ result.isValid=true;
           <imixs:value><![CDATA[typcn-dropbox|typcn-stopwatch,imixs-error,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>action.name</itemvalue> <itemvalue>action.section</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
         </imixs:item>
         <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[process.manager]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[space.team]]></imixs:value>
+          <imixs:value><![CDATA[space.manager]]></imixs:value>
+          <imixs:value><![CDATA[process.team]]></imixs:value>
+          <imixs:value><![CDATA[process.manager]]></imixs:value>
         </imixs:item>
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
@@ -936,14 +941,20 @@ result.isValid=true;
           <imixs:value><![CDATA[typcn-dropbox|typcn-stopwatch,imixs-info,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>action.name</itemvalue> <itemvalue>action.section</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
         </imixs:item>
-        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="keyownershipfields" type="xs:string">
+          <imixs:value><![CDATA[process.manager]]></imixs:value>
+        </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[process.manager]]></imixs:value>
+          <imixs:value><![CDATA[process.team]]></imixs:value>
+          <imixs:value><![CDATA[space.manager]]></imixs:value>
+          <imixs:value><![CDATA[space.team]]></imixs:value>
         </imixs:item>
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
@@ -1037,7 +1048,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[typcn-dropbox|typcn-tick,imixs-success,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>action.name</itemvalue> <itemvalue>action.section</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -1045,6 +1056,10 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <imixs:item name="keyownershipfields" type="xs:string"/>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[namCreator]]></imixs:value>
+          <imixs:value><![CDATA[process.team]]></imixs:value>
+          <imixs:value><![CDATA[process.manager]]></imixs:value>
+          <imixs:value><![CDATA[space.manager]]></imixs:value>
+          <imixs:value><![CDATA[space.team]]></imixs:value>
         </imixs:item>
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitemarchive]]></imixs:value>
@@ -1070,7 +1085,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[typcn-dropbox|typcn-times,imixs-error,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>action.name</itemvalue> <itemvalue>action.section</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -1170,7 +1185,7 @@ result.isValid=true;
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_30" sourceRef="EventBasedGateway_2" targetRef="IntermediateCatchEvent_14"/>
     <bpmn2:sequenceFlow id="SequenceFlow_31" sourceRef="IntermediateCatchEvent_14" targetRef="Task_11"/>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_15" imixs:activityid="10" name="Speichern">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_15" imixs:activityid="10" name="Save">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
           <imixs:value><![CDATA[2]]></imixs:value>
@@ -1322,7 +1337,7 @@ result.isValid=true;
     <bpmn2:task id="Task_13" imixs:processid="2000" name="Open">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>name</itemvalue> <itemvalue>subject</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>subject</itemvalue> / <itemvalue>space.name</itemvalue> (Termin: <itemvalue>action.delivery</itemvalue>) ]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="CDATA">
           <imixs:value><![CDATA[<itemvalue>description</itemvalue>]]></imixs:value>
@@ -1346,8 +1361,8 @@ result.isValid=true;
           <imixs:value><![CDATA[typcn-weather-stormy||||]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>SequenceFlow_46</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_40</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_46</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_14</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:sequenceFlow id="SequenceFlow_46" sourceRef="IntermediateCatchEvent_5" targetRef="Task_13"/>
@@ -1397,9 +1412,9 @@ result.isValid=true;
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="StartEvent_1">
-        <dc:Bounds height="36.0" width="36.0" x="172.0" y="154.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="177.0" y="154.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_7" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="25.0" x="177.0" y="190.0"/>
+          <dc:Bounds height="14.0" width="25.0" x="182.0" y="190.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_Task_1" bpmnElement="Task_1" isExpanded="true">
@@ -1427,15 +1442,15 @@ result.isValid=true;
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_2" bpmnElement="IntermediateCatchEvent_2">
-        <dc:Bounds height="36.0" width="36.0" x="660.0" y="154.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="725.0" y="154.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_16" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="43.0" x="657.0" y="190.0"/>
+          <dc:Bounds height="14.0" width="43.0" x="722.0" y="190.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_3" bpmnElement="IntermediateCatchEvent_3">
         <dc:Bounds height="36.0" width="36.0" x="1100.0" y="154.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_17" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="44.0" x="1096.0" y="190.0"/>
+          <dc:Bounds height="14.0" width="44.0" x="1096.0" y="190.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ParallelGateway_1" bpmnElement="ParallelGateway_1" isMarkerVisible="true">
@@ -1455,15 +1470,15 @@ result.isValid=true;
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_6" bpmnElement="IntermediateCatchEvent_6">
-        <dc:Bounds height="36.0" width="36.0" x="274.0" y="242.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="297.0" y="70.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_32" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="28.0" x="278.0" y="278.0"/>
+          <dc:Bounds height="14.0" width="28.0" x="301.0" y="106.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_7" bpmnElement="IntermediateCatchEvent_7">
-        <dc:Bounds height="36.0" width="36.0" x="502.0" y="235.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="510.0" y="74.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_34" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="28.0" x="506.0" y="271.0"/>
+          <dc:Bounds height="14.0" width="28.0" x="514.0" y="110.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_8" bpmnElement="IntermediateCatchEvent_8">
@@ -1479,9 +1494,9 @@ result.isValid=true;
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_17" bpmnElement="IntermediateCatchEvent_17">
-        <dc:Bounds height="36.0" width="36.0" x="715.0" y="249.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="887.0" y="242.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_68" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="24.0" x="721.0" y="285.0"/>
+          <dc:Bounds height="14.0" width="24.0" x="893.0" y="278.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_22" bpmnElement="IntermediateCatchEvent_22">
@@ -1506,24 +1521,6 @@ result.isValid=true;
           <dc:Bounds height="14.0" width="46.0" x="1372.0" y="271.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_19" bpmnElement="IntermediateCatchEvent_19">
-        <dc:Bounds height="36.0" width="36.0" x="201.0" y="74.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_51" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="62.0" x="188.0" y="110.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_26" bpmnElement="IntermediateCatchEvent_26">
-        <dc:Bounds height="36.0" width="36.0" x="297.0" y="74.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_57" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="60.0" x="285.0" y="110.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_29" bpmnElement="IntermediateCatchEvent_29">
-        <dc:Bounds height="36.0" width="36.0" x="1302.0" y="380.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_117" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="52.0" x="1294.0" y="416.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EventBasedGateway_3" bpmnElement="EventBasedGateway_3" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="1009.0" y="147.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_122" labelStyle="BPMNLabelStyle_1"/>
@@ -1532,12 +1529,6 @@ result.isValid=true;
         <dc:Bounds height="36.0" width="36.0" x="1377.0" y="309.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_127" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="73.0" x="1359.0" y="345.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_IntermediateThrowEvent_5" bpmnElement="IntermediateThrowEvent_5">
-        <dc:Bounds height="36.0" width="36.0" x="1379.0" y="380.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_128" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="73.0" x="1361.0" y="416.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_Task_9" bpmnElement="Task_9" isExpanded="true">
@@ -1565,9 +1556,9 @@ result.isValid=true;
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_DataObject_2" bpmnElement="DataObject_4">
-        <dc:Bounds height="50.0" width="36.0" x="172.0" y="228.0"/>
+        <dc:Bounds height="50.0" width="36.0" x="207.0" y="56.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_146">
-          <dc:Bounds height="14.0" width="28.0" x="176.0" y="278.0"/>
+          <dc:Bounds height="14.0" width="28.0" x="211.0" y="106.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_5" bpmnElement="IntermediateCatchEvent_5">
@@ -1659,7 +1650,7 @@ result.isValid=true;
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_15" bpmnElement="IntermediateCatchEvent_15">
         <dc:Bounds height="36.0" width="36.0" x="747.0" y="728.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_71" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="56.0" x="737.0" y="764.0"/>
+          <dc:Bounds height="14.0" width="28.0" x="751.0" y="764.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_1" bpmnElement="ExclusiveGateway_1" isMarkerVisible="true">
@@ -1668,45 +1659,54 @@ result.isValid=true;
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_16" bpmnElement="IntermediateCatchEvent_16">
         <dc:Bounds height="36.0" width="36.0" x="260.0" y="730.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_82">
+        <bpmndi:BPMNLabel id="BPMNLabel_82" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="34.0" x="261.0" y="766.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_StartEvent_2" bpmnElement="StartEvent_2">
         <dc:Bounds height="36.0" width="36.0" x="200.0" y="730.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_83">
+        <bpmndi:BPMNLabel id="BPMNLabel_83" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="25.0" x="205.0" y="766.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_Task_12" bpmnElement="Task_12" isExpanded="true">
         <dc:Bounds height="50.0" width="110.0" x="502.0" y="147.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_86">
+        <bpmndi:BPMNLabel id="BPMNLabel_86" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="41.0" x="536.0" y="165.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_Task_13" bpmnElement="Task_13" isExpanded="true">
         <dc:Bounds height="50.0" width="110.0" x="340.0" y="723.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_90">
+        <bpmndi:BPMNLabel id="BPMNLabel_90" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="30.0" x="380.0" y="741.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndEvent_2" bpmnElement="EndEvent_2">
         <dc:Bounds height="36.0" width="36.0" x="1332.0" y="770.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_95">
+        <bpmndi:BPMNLabel id="BPMNLabel_95" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="22.0" x="1339.0" y="806.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_18" bpmnElement="IntermediateCatchEvent_18">
         <dc:Bounds height="36.0" width="36.0" x="1227.0" y="638.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_107">
+        <bpmndi:BPMNLabel id="BPMNLabel_107" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="28.0" width="56.0" x="1217.0" y="674.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ExclusiveGateway_2" bpmnElement="ExclusiveGateway_2" isMarkerVisible="true">
+        <dc:Bounds height="50.0" width="50.0" x="640.0" y="147.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_10" labelStyle="BPMNLabelStyle_1"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_20" bpmnElement="IntermediateCatchEvent_20">
+        <dc:Bounds height="36.0" width="36.0" x="647.0" y="235.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_19" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds height="14.0" width="35.0" x="647.0" y="271.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_StartEvent_1" targetElement="BPMNShape_Task_1">
-        <di:waypoint xsi:type="dc:Point" x="208.0" y="172.0"/>
-        <di:waypoint xsi:type="dc:Point" x="234.0" y="172.0"/>
-        <di:waypoint xsi:type="dc:Point" x="234.0" y="163.0"/>
-        <di:waypoint xsi:type="dc:Point" x="260.0" y="163.0"/>
+        <di:waypoint xsi:type="dc:Point" x="213.0" y="172.0"/>
+        <di:waypoint xsi:type="dc:Point" x="236.0" y="172.0"/>
+        <di:waypoint xsi:type="dc:Point" x="260.0" y="172.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_9"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_Task_1" targetElement="BPMNShape_IntermediateCatchEvent_1">
@@ -1761,10 +1761,9 @@ result.isValid=true;
         <bpmndi:BPMNLabel id="BPMNLabel_28"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_16" bpmnElement="SequenceFlow_16" sourceElement="BPMNShape_IntermediateCatchEvent_6" targetElement="BPMNShape_Task_1">
-        <di:waypoint xsi:type="dc:Point" x="292.0" y="242.0"/>
-        <di:waypoint xsi:type="dc:Point" x="292.0" y="220.0"/>
-        <di:waypoint xsi:type="dc:Point" x="296.0" y="220.0"/>
-        <di:waypoint xsi:type="dc:Point" x="296.0" y="197.0"/>
+        <di:waypoint xsi:type="dc:Point" x="315.0" y="106.0"/>
+        <di:waypoint xsi:type="dc:Point" x="315.0" y="126.0"/>
+        <di:waypoint xsi:type="dc:Point" x="315.0" y="147.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_33"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_15" bpmnElement="SequenceFlow_15" sourceElement="BPMNShape_IntermediateCatchEvent_8" targetElement="BPMNShape_Task_3">
@@ -1815,24 +1814,6 @@ result.isValid=true;
         <di:waypoint xsi:type="dc:Point" x="1377.0" y="327.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_104"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_21" bpmnElement="SequenceFlow_21" sourceElement="BPMNShape_IntermediateCatchEvent_19" targetElement="BPMNShape_IntermediateCatchEvent_26">
-        <di:waypoint xsi:type="dc:Point" x="237.0" y="92.0"/>
-        <di:waypoint xsi:type="dc:Point" x="267.0" y="92.0"/>
-        <di:waypoint xsi:type="dc:Point" x="297.0" y="92.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_64"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_22" bpmnElement="SequenceFlow_22" sourceElement="BPMNShape_IntermediateCatchEvent_26" targetElement="BPMNShape_Task_1">
-        <di:waypoint xsi:type="dc:Point" x="315.0" y="110.0"/>
-        <di:waypoint xsi:type="dc:Point" x="315.0" y="128.0"/>
-        <di:waypoint xsi:type="dc:Point" x="315.0" y="147.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_69"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_42" bpmnElement="SequenceFlow_42" sourceElement="BPMNShape_IntermediateCatchEvent_29" targetElement="BPMNShape_IntermediateThrowEvent_5">
-        <di:waypoint xsi:type="dc:Point" x="1338.0" y="398.0"/>
-        <di:waypoint xsi:type="dc:Point" x="1358.0" y="398.0"/>
-        <di:waypoint xsi:type="dc:Point" x="1379.0" y="398.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_118"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_48" bpmnElement="SequenceFlow_48" sourceElement="BPMNShape_Task_3" targetElement="BPMNShape_EventBasedGateway_3">
         <di:waypoint xsi:type="dc:Point" x="960.0" y="172.0"/>
         <di:waypoint xsi:type="dc:Point" x="984.0" y="172.0"/>
@@ -1846,8 +1827,8 @@ result.isValid=true;
         <bpmndi:BPMNLabel id="BPMNLabel_123"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="BPMNShape_Task_1" targetElement="BPMNShape_IntermediateCatchEvent_31">
-        <di:waypoint xsi:type="dc:Point" x="333.0" y="197.0"/>
-        <di:waypoint xsi:type="dc:Point" x="333.0" y="370.0"/>
+        <di:waypoint xsi:type="dc:Point" x="296.0" y="197.0"/>
+        <di:waypoint xsi:type="dc:Point" x="296.0" y="370.0"/>
         <di:waypoint xsi:type="dc:Point" x="410.0" y="370.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_129"/>
       </bpmndi:BPMNEdge>
@@ -1864,10 +1845,9 @@ result.isValid=true;
         <bpmndi:BPMNLabel id="BPMNLabel_132"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_Association_6" bpmnElement="Association_6" sourceElement="BPMNShape_DataObject_2" targetElement="BPMNShape_Task_1">
-        <di:waypoint xsi:type="dc:Point" x="208.0" y="253.0"/>
-        <di:waypoint xsi:type="dc:Point" x="234.0" y="253.0"/>
-        <di:waypoint xsi:type="dc:Point" x="234.0" y="180.0"/>
-        <di:waypoint xsi:type="dc:Point" x="260.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="243.0" y="81.0"/>
+        <di:waypoint xsi:type="dc:Point" x="296.0" y="81.0"/>
+        <di:waypoint xsi:type="dc:Point" x="296.0" y="147.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_147"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_Association_1" bpmnElement="Association_1" sourceElement="BPMNShape_DataObject_1" targetElement="BPMNShape_Task_13">
@@ -1974,23 +1954,22 @@ result.isValid=true;
         <di:waypoint xsi:type="dc:Point" x="765.0" y="858.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_79"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_37" bpmnElement="SequenceFlow_37" sourceElement="BPMNShape_IntermediateCatchEvent_17" targetElement="BPMNShape_Task_12">
-        <di:waypoint xsi:type="dc:Point" x="733.0" y="249.0"/>
-        <di:waypoint xsi:type="dc:Point" x="733.0" y="223.0"/>
-        <di:waypoint xsi:type="dc:Point" x="575.0" y="223.0"/>
-        <di:waypoint xsi:type="dc:Point" x="575.0" y="197.0"/>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_37" bpmnElement="SequenceFlow_37" sourceElement="BPMNShape_IntermediateCatchEvent_17" targetElement="BPMNShape_Task_3">
+        <di:waypoint xsi:type="dc:Point" x="905.0" y="242.0"/>
+        <di:waypoint xsi:type="dc:Point" x="905.0" y="220.0"/>
+        <di:waypoint xsi:type="dc:Point" x="905.0" y="197.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_6"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_38" bpmnElement="SequenceFlow_38" sourceElement="BPMNShape_IntermediateCatchEvent_2" targetElement="BPMNShape_Task_3">
-        <di:waypoint xsi:type="dc:Point" x="696.0" y="172.0"/>
-        <di:waypoint xsi:type="dc:Point" x="773.0" y="172.0"/>
+        <di:waypoint xsi:type="dc:Point" x="761.0" y="172.0"/>
+        <di:waypoint xsi:type="dc:Point" x="805.0" y="172.0"/>
         <di:waypoint xsi:type="dc:Point" x="850.0" y="172.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_80"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_MessageFlow_1" bpmnElement="MessageFlow_1" sourceElement="BPMNShape_IntermediateCatchEvent_17" targetElement="BPMNShape_Task_13">
-        <di:waypoint xsi:type="dc:Point" x="733.0" y="285.0"/>
-        <di:waypoint xsi:type="dc:Point" x="733.0" y="504.0"/>
-        <di:waypoint xsi:type="dc:Point" x="395.0" y="504.0"/>
+        <di:waypoint xsi:type="dc:Point" x="905.0" y="278.0"/>
+        <di:waypoint xsi:type="dc:Point" x="905.0" y="500.0"/>
+        <di:waypoint xsi:type="dc:Point" x="395.0" y="500.0"/>
         <di:waypoint xsi:type="dc:Point" x="395.0" y="723.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_81"/>
       </bpmndi:BPMNEdge>
@@ -2008,16 +1987,16 @@ result.isValid=true;
         <bpmndi:BPMNLabel id="BPMNLabel_85"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_43" bpmnElement="SequenceFlow_43" sourceElement="BPMNShape_IntermediateCatchEvent_7" targetElement="BPMNShape_Task_12">
-        <di:waypoint xsi:type="dc:Point" x="520.0" y="235.0"/>
-        <di:waypoint xsi:type="dc:Point" x="520.0" y="216.0"/>
-        <di:waypoint xsi:type="dc:Point" x="538.0" y="216.0"/>
-        <di:waypoint xsi:type="dc:Point" x="538.0" y="197.0"/>
+        <di:waypoint xsi:type="dc:Point" x="528.0" y="110.0"/>
+        <di:waypoint xsi:type="dc:Point" x="528.0" y="128.0"/>
+        <di:waypoint xsi:type="dc:Point" x="538.0" y="128.0"/>
+        <di:waypoint xsi:type="dc:Point" x="538.0" y="147.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_88"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_44" bpmnElement="SequenceFlow_44" sourceElement="BPMNShape_Task_12" targetElement="BPMNShape_IntermediateCatchEvent_2">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_44" bpmnElement="SequenceFlow_44" sourceElement="BPMNShape_Task_12" targetElement="BPMNShape_ExclusiveGateway_2">
         <di:waypoint xsi:type="dc:Point" x="612.0" y="172.0"/>
-        <di:waypoint xsi:type="dc:Point" x="636.0" y="172.0"/>
-        <di:waypoint xsi:type="dc:Point" x="660.0" y="172.0"/>
+        <di:waypoint xsi:type="dc:Point" x="626.0" y="172.0"/>
+        <di:waypoint xsi:type="dc:Point" x="640.0" y="172.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_89"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_46" bpmnElement="SequenceFlow_46" sourceElement="BPMNShape_IntermediateCatchEvent_5" targetElement="BPMNShape_Task_13">
@@ -2043,6 +2022,24 @@ result.isValid=true;
         <di:waypoint xsi:type="dc:Point" x="1245.0" y="697.0"/>
         <di:waypoint xsi:type="dc:Point" x="1245.0" y="721.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_108"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="BPMNShape_ExclusiveGateway_2" targetElement="BPMNShape_IntermediateCatchEvent_2">
+        <di:waypoint xsi:type="dc:Point" x="690.0" y="172.0"/>
+        <di:waypoint xsi:type="dc:Point" x="707.0" y="172.0"/>
+        <di:waypoint xsi:type="dc:Point" x="725.0" y="172.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_18"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="BPMNShape_ExclusiveGateway_2" targetElement="BPMNShape_IntermediateCatchEvent_20">
+        <di:waypoint xsi:type="dc:Point" x="665.0" y="197.0"/>
+        <di:waypoint xsi:type="dc:Point" x="665.0" y="216.0"/>
+        <di:waypoint xsi:type="dc:Point" x="665.0" y="235.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_30"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="BPMNShape_IntermediateCatchEvent_20" targetElement="BPMNShape_Task_1">
+        <di:waypoint xsi:type="dc:Point" x="647.0" y="253.0"/>
+        <di:waypoint xsi:type="dc:Point" x="342.0" y="253.0"/>
+        <di:waypoint xsi:type="dc:Point" x="342.0" y="197.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_35"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">

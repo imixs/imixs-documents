@@ -418,6 +418,10 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <type>text</type>
 </ml-config>
 <ml-config name="entity">
+    <name>cdtr.vatid</name>
+    <type>text</type>
+</ml-config>
+<ml-config name="entity">
     <name>cdtr.iban</name>
     <type>text</type>
 </ml-config>

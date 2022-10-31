@@ -263,7 +263,16 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value>false</imixs:value>
         </imixs:item>
         <imixs:item name="txtbusinessrule" type="CDATA">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[var result={};
+ if (workitem['order.number'][0].length<5) {
+    result.isValid=false;
+    result.errorMessage='The order number must have at least 5 digits!';
+ } else {
+	if (workitem['$file.count'][0]==0) {
+	    result.isValid=false;
+	    result.errorMessage='Please attache the Purchase Order Document!';
+	}
+}]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_105"><![CDATA[Data entry completed]]></bpmn2:documentation>
@@ -589,11 +598,11 @@ result.isValid=true;
 <imixs-form>
 
   <imixs-form-section columns="1" label="Purchase Order">
-    <item name="order.name" type="text"  label="Description:" />
+    <item name="order.name" type="text"  label="Description:" required="true"/>
   </imixs-form-section>
   <imixs-form-section columns="2">
-     <item name="cdtr.name" type="text"  label="Company:" />
-     <item name="order.number" type="text"  label="Order-No.:" />
+     <item name="cdtr.name" type="text"  label="Company:" required="true" />
+     <item name="order.number" type="text"  label="Order-No.:" required="true" />
     <item name="order.delivery" type="date"  label="Delivery Date:" />
   <imixs-form-section label="" path="sub_dispatch" />
   </imixs-form-section>
@@ -1973,13 +1982,13 @@ result.isValid=true;
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateThrowEvent_1" bpmnElement="IntermediateThrowEvent_1">
         <dc:Bounds height="36.0" width="36.0" x="1150.0" y="961.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_42">
+        <bpmndi:BPMNLabel id="BPMNLabel_42" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="47.0" x="1145.0" y="997.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateThrowEvent_2" bpmnElement="IntermediateThrowEvent_2">
         <dc:Bounds height="36.0" width="36.0" x="629.0" y="720.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_43">
+        <bpmndi:BPMNLabel id="BPMNLabel_43" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="47.0" x="624.0" y="756.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
@@ -1991,7 +2000,7 @@ result.isValid=true;
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_Task_3" bpmnElement="Task_1">
         <dc:Bounds height="50.0" width="110.0" x="1173.0" y="191.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_55">
+        <bpmndi:BPMNLabel id="BPMNLabel_55" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="55.0" x="1200.0" y="209.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
@@ -2027,7 +2036,7 @@ result.isValid=true;
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateThrowEvent_3" bpmnElement="IntermediateThrowEvent_3">
         <dc:Bounds height="36.0" width="36.0" x="472.0" y="264.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_51">
+        <bpmndi:BPMNLabel id="BPMNLabel_51" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="51.0" x="465.0" y="300.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
@@ -2045,7 +2054,7 @@ result.isValid=true;
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_Task_4" bpmnElement="Task_6">
         <dc:Bounds height="50.0" width="110.0" x="1474.0" y="192.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_72">
+        <bpmndi:BPMNLabel id="BPMNLabel_72" labelStyle="BPMNLabelStyle_1">
           <dc:Bounds height="14.0" width="53.0" x="1502.0" y="210.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>

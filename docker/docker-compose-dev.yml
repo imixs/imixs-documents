@@ -44,16 +44,16 @@ services:
       #SIGNATURE_SERVICE_ENDPOINT: "http://imixssignature:8080/api"
 
       # Collabora integration
-      #WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
-      #WOPI_DISCOVERY_ENDPOINT: "http://libreoffice-app:9980/hosting/discovery"
-      #WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
-      #WOPI_TEMPLATES: "/wopi/templates"
+      WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
+      WOPI_DISCOVERY_ENDPOINT: "http://libreoffice-app:9980/hosting/discovery"
+      WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
+      WOPI_TEMPLATES: "/wopi/templates"
 
       # ONlyOffice integration
-      WOPI_PUBLIC_ENDPOINT: "http://localhost:80/"
-      WOPI_DISCOVERY_ENDPOINT: "http://onlyoffice-app:80/hosting/discovery"
-      WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
-      WOPI_OPTIONS: "thm=1"
+      #WOPI_PUBLIC_ENDPOINT: "http://localhost:80/"
+      #WOPI_DISCOVERY_ENDPOINT: "http://onlyoffice-app:80/hosting/discovery"
+      #WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
+      #WOPI_OPTIONS: "thm=1"
 
     ports:
       - "8080:8080"
@@ -97,38 +97,38 @@ services:
 
 
 #######################
-# Libre Office Online
+# collabora Office Online
 #######################
-#  libreoffice-app:
-#    image: collabora/code:6.4.9.2
-#    container_name: libreoffice-app
-#    expose:
-#      - 9980
-#    ports:
-#      - "9980:9980"
-#    environment:
-#      - username=admin
-#      - password=adminadmin
-#    volumes:
-#      - ./configuration/collabora/loolwsd.xml:/etc/loolwsd/loolwsd.xml
+  libreoffice-app:
+    image: collabora/code:6.4.9.2
+    container_name: libreoffice-app
+    expose:
+      - 9980
+    ports:
+      - "9980:9980"
+    environment:
+      - username=admin
+      - password=adminadmin
+    volumes:
+      - ./configuration/collabora/loolwsd.xml:/etc/loolwsd/loolwsd.xml
 
 
 
 #######################
 # Only Office Online
 #######################
-  onlyoffice-app:
-    image: onlyoffice/documentserver
-    container_name: onlyoffice-app
-    expose:
-      - 80
-    ports:
-      - "80:80"
-    environment:
-      TZ: "Europe/Berlin"
-    volumes:
-      - ./configuration/onlyoffice/local.json:/etc/onlyoffice/documentserver/local.json      
-      #- ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json   
+#  onlyoffice-app:
+#    image: onlyoffice/documentserver
+#    container_name: onlyoffice-app
+#    expose:
+#      - 80
+#    ports:
+#      - "80:80"
+#    environment:
+#      TZ: "Europe/Berlin"
+#    volumes:
+#      - ./configuration/onlyoffice/local.json:/etc/onlyoffice/documentserver/local.json      
+#      #- ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json   
       
       
 #######################
