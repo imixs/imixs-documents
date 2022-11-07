@@ -11,8 +11,7 @@ services:
       POSTGRES_DB: office
     volumes: 
       - dbdata:/var/lib/postgresql/data
-    networks:
-      - onlyoffice
+
       
 #######################
 # Imixs-Documents
@@ -26,7 +25,7 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "adminadmin"
       POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
-      #TZ: "Europe/Berlin"
+      TZ: "Europe/Berlin"
       LANG: "en_US.UTF-8"
       MAILGATEWAY: "localhost"
       ASYNCEVENT_PROCESSOR_ENABLED: "true"
@@ -34,7 +33,7 @@ services:
 
       # ONlyOffice integration
       WOPI_PUBLIC_ENDPOINT: "http://localhost:80/"
-      WOPI_DISCOVERY_ENDPOINT: "http://onlyoffice-app:80/hosting/discovery"
+      WOPI_DISCOVERY_ENDPOINT: "http://onlyoffice-app/hosting/discovery"
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
       WOPI_OPTIONS: "thm=1"
       #WOPI_TEMPLATES: "/wopi/templates"
@@ -45,40 +44,33 @@ services:
       - "8787:8787"
     volumes:
       - ./deployments:/opt/jboss/wildfly/standalone/deployments/
-    networks:
-      - onlyoffice
-
-
 
 
 #######################
 # Only Office Online
 #######################
   onlyoffice-app:
-    image: onlyoffice/documentserver
+    image: onlyoffice/documentserver   
     container_name: onlyoffice-app
-    #stdin_open: true
-    #tty: true
+    environment:
+      TZ: "Europe/Berlin"
+      #WOPI_ENABLED: "true"
+      USE_UNAUTHORIZED_STORAGE: "true"
+      DOCUMENT_SERVER_PORT_80_TCP_ADDR: "onlyoffice-app"
     expose:
       - 80
     ports:
       - "80:80"
-    environment:
-      TZ: "Europe/Berlin"
-      #LANG: "en_US.UTF-8"    
-      #WOPI_ENABLED: "true"
-      #USE_UNAUTHORIZED_STORAGE: "true"
-      # geht nciht WOPI_HOST: "http://localhost:80/"
-    networks:
-      - onlyoffice
     volumes:
-      - ./configuration/onlyoffice/local.json:/etc/onlyoffice/documentserver/local.json      
-      #- ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json      
-      
-      
-networks:
-  onlyoffice:
-    driver: 'bridge'
+      - ./configuration/onlyoffice/local-production-linux.json:/etc/onlyoffice/documentserver/local-production-linux.json
+      # Enable debug
+      - ./configuration/onlyoffice/log4j/production.json:/etc/onlyoffice/documentserver/log4js/production.json
+         
+
 
 volumes:
-  dbdata: 
+  dbdata:
+  
+
+      
+   

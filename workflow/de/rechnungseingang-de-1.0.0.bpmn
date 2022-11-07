@@ -58,7 +58,6 @@
       </bpmn2:lane>
       <bpmn2:lane id="Lane_2" name="Bereich Team">
         <bpmn2:flowNodeRef>Task_5005</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_5005-10</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>ExclusiveGateway_6</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_2</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>EventBasedGateway_2</bpmn2:flowNodeRef>
@@ -67,6 +66,7 @@
         <bpmn2:flowNodeRef>ExclusiveGateway_3</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateThrowEvent_2</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>ExclusiveGateway_5</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_5000-10</bpmn2:flowNodeRef>
       </bpmn2:lane>
       <bpmn2:lane id="Lane_3" name="Prozess Manager">
         <bpmn2:flowNodeRef>Task_5000</bpmn2:flowNodeRef>
@@ -74,7 +74,7 @@
         <bpmn2:flowNodeRef>IntermediateCatchEvent_16</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateCatchEvent_15</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>IntermediateThrowEvent_1</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>IntermediateCatchEvent_5000-10</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_5005-10</bpmn2:flowNodeRef>
       </bpmn2:lane>
       <bpmn2:lane id="Lane_4" name="Prozess Team">
         <bpmn2:flowNodeRef>IntermediateCatchEvent_17</bpmn2:flowNodeRef>
@@ -92,7 +92,7 @@
     <bpmn2:task id="Task_5000" imixs:processid="5200" name="Freigabe">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -120,11 +120,11 @@
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_3"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
-      <bpmn2:incoming>SequenceFlow_31</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_38</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_32</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_5000-10" imixs:activityid="10" name="Speichern">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_5000-10" imixs:activityid="10" name="Umleiten">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
           <imixs:value><![CDATA[2]]></imixs:value>
@@ -176,7 +176,7 @@
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="comment" ignore="true"/>]]></imixs:value>
+          <imixs:value><![CDATA[<item name="action">home</item>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Speichern]]></imixs:value>
@@ -185,16 +185,25 @@
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Aktualisiert von <username>$editor</username>.]]></imixs:value>
+          <imixs:value><![CDATA[umgeleitet ⇨ <itemvalue>space.name</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
         </imixs:item>
+        <imixs:item name="txtbusinessrule" type="CDATA">
+          <imixs:value><![CDATA[var result={};
+ var refField="txtcomment"; 
+result.isValid=true;
+
+ if (  ( workitem.get(refField) == null || ''==workitem.get(refField)[0])   ) {
+     result.isValid=false;
+     result.errorMessage='Bitte geben Sie einen Kommentar ein.';
+  }]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_108"><![CDATA[Zwischenspeichern]]></bpmn2:documentation>
-      <bpmn2:outgoing>SequenceFlow_31</bpmn2:outgoing>
+      <bpmn2:documentation id="Documentation_108"><![CDATA[Vorgang an anderen Fachbereich umleiten]]></bpmn2:documentation>
+      <bpmn2:outgoing>SequenceFlow_26</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_31" sourceRef="IntermediateCatchEvent_5000-10" targetRef="Task_5000"/>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_5000-20" imixs:activityid="20" name="Weiterleiten">
       <bpmn2:extensionElements>
         <imixs:item name="keyarchive" type="xs:string">
@@ -280,7 +289,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
     <bpmn2:task id="Task_5005" imixs:processid="5100" name="Sachprüfung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -308,8 +317,8 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_6"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
-      <bpmn2:incoming>SequenceFlow_38</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_13</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_26</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_37</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:sequenceFlow id="SequenceFlow_37" sourceRef="Task_5005" targetRef="EventBasedGateway_2"/>
@@ -444,7 +453,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Aktualisiert von <username>$editor</username>.]]></imixs:value>
+          <imixs:value><![CDATA[Aktualisiert]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
@@ -453,7 +462,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmn2:documentation id="Documentation_109"><![CDATA[Zwischenspeichern]]></bpmn2:documentation>
       <bpmn2:outgoing>SequenceFlow_38</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_38" sourceRef="IntermediateCatchEvent_5005-10" targetRef="Task_5005"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_38" sourceRef="IntermediateCatchEvent_5005-10" targetRef="Task_5000"/>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_5005-30" imixs:activityid="30" name="Ablehnen">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
@@ -544,7 +553,7 @@ result.isValid=true;
     <bpmn2:task id="Task_2" imixs:processid="5000" name="Erfassung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -586,14 +595,21 @@ result.isValid=true;
     <bpmn2:dataObject id="DataObject_2" name="Invoice Form">
       <bpmn2:documentation id="Documentation_8"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
-  <imixs-form-section columns="1" label="Rechnungsdaten">
-    <item name="cdtr.name" type="text"  label="Kreditor:" />
+  <imixs-form-section columns="2" label="Kreditorendaten">
+    <item name="cdtr.name" type="text"  label="Kreditor:" required="true" />
+    <item name="cdtr.vatid" type="text"  label="Ust-IdNr:" required="true" />
   </imixs-form-section>
-  <imixs-form-section columns="2">
-    <item name="invoice.number" type="text"  label="Rechnungsnummer:" />
-    <item name="invoice.date" type="date"  label="Rechnungsdatum:" />
-    <item name="invoice.total" type="currency"  label="Rechnungsbetrag:" />
+
+  <imixs-form-section columns="2" label="Rechnungsdaten">
+    <item name="invoice.number" type="text"  label="Rechnungsnummer:" required="true" />
+    <item name="invoice.date" type="date"  label="Rechnungsdatum:" required="true" />
+    <item name="invoice.total" type="currency"  label="Rechnungsbetrag:" required="true" />
+    <item name="" type="custom" path="spaceref"  label="zur Prüfung an:" />
+  </imixs-form-section>
+
+  <imixs-form-section columns="2" label="Zahlungsweise">
     <item name="payment.type" type="selectOneMenu" required="true" options="Bankeinzug / Kreditkarte|direct_debit;SEPA|sepa_transfer"   label="Zahlungsart:" />
+    <item name="payment.date" type="date"  label="Zahlbar bis:" />
     <item name="cdtr.iban" type="text"  label="IBAN:" />
     <item name="cdtr.bic" type="text"  label="BIC:" />
   </imixs-form-section>
@@ -653,7 +669,8 @@ result.isValid=true;
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="comment" ignore="true"/>]]></imixs:value>
+          <imixs:value><![CDATA[<item name="comment" ignore="true"/>
+<validation name="required">false</validation>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Speichern]]></imixs:value>
@@ -678,7 +695,7 @@ result.isValid=true;
     <bpmn2:task id="Task_3" imixs:processid="5300" name="Bezahlung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[]]></imixs:value>
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -1107,7 +1124,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
       <bpmn2:outgoing>SequenceFlow_11</bpmn2:outgoing>
       <bpmn2:linkEventDefinition id="LinkEventDefinition_4" name="Link Event Definition 6"/>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_5" imixs:activityid="30" name="Beenden">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_5" imixs:activityid="30" name="Stornieren">
       <bpmn2:extensionElements>
         <imixs:item name="keyarchive" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
@@ -1150,7 +1167,8 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="action">home</item>]]></imixs:value>
+          <imixs:value><![CDATA[<item name="action">home</item>
+<validation name="required">false</validation>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Akzeptieren]]></imixs:value>
@@ -1277,6 +1295,11 @@ result.isValid=true;
       <bpmn2:outgoing>SequenceFlow_25</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_4" imixs:activityid="40" name="SEPA">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_19</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_23</bpmn2:outgoing>
       <bpmn2:signalEventDefinition id="SignalEventDefinition_1"/>
@@ -1430,6 +1453,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmn2:linkEventDefinition id="LinkEventDefinition_7" name="Link Event Definition 7"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_21" sourceRef="IntermediateCatchEvent_6" targetRef="ExclusiveGateway_1"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_26" sourceRef="IntermediateCatchEvent_5000-10" targetRef="Task_5005"/>
     <bpmn2:association id="Association_2" sourceRef="DataObject_2" targetRef="Task_2"/>
     <bpmn2:textAnnotation id="TextAnnotation_2">
       <bpmn2:text>Wurde ein Prozess Manager festgelegt, erfolgt eine Genehmigung.</bpmn2:text>
@@ -1492,9 +1516,9 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_1" bpmnElement="IntermediateCatchEvent_5000-10">
-        <dc:Bounds height="36.0" width="36.0" x="835.0" y="774.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="345.0" y="560.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_9" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="56.0" x="825.0" y="810.0"/>
+          <dc:Bounds height="14.0" width="49.0" x="339.0" y="596.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_2" bpmnElement="IntermediateCatchEvent_5000-20">
@@ -1504,9 +1528,9 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_6" bpmnElement="IntermediateCatchEvent_5005-10">
-        <dc:Bounds height="36.0" width="36.0" x="345.0" y="560.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="835.0" y="770.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_14" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="56.0" x="335.0" y="596.0"/>
+          <dc:Bounds height="14.0" width="56.0" x="825.0" y="806.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_7" bpmnElement="IntermediateCatchEvent_5005-20">
@@ -1658,7 +1682,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmndi:BPMNShape id="BPMNShape_IntermediateCatchEvent_10" bpmnElement="IntermediateCatchEvent_5">
         <dc:Bounds height="36.0" width="36.0" x="417.0" y="97.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_18" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="50.0" x="410.0" y="133.0"/>
+          <dc:Bounds height="14.0" width="57.0" x="407.0" y="133.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_IntermediateThrowEvent_3" bpmnElement="IntermediateThrowEvent_3">
@@ -1719,12 +1743,6 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <di:waypoint xsi:type="dc:Point" x="528.0" y="578.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_36"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_32" bpmnElement="SequenceFlow_31" sourceElement="BPMNShape_IntermediateCatchEvent_1" targetElement="BPMNShape_Task_1">
-        <di:waypoint xsi:type="dc:Point" x="853.0" y="774.0"/>
-        <di:waypoint xsi:type="dc:Point" x="853.0" y="762.0"/>
-        <di:waypoint xsi:type="dc:Point" x="853.0" y="750.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_58"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_34" bpmnElement="SequenceFlow_33" sourceElement="BPMNShape_ExclusiveGateway_1">
         <di:waypoint xsi:type="dc:Point" x="269.0" y="205.0"/>
         <di:waypoint xsi:type="dc:Point" x="288.0" y="205.0"/>
@@ -1737,10 +1755,10 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <di:waypoint xsi:type="dc:Point" x="451.0" y="508.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_66"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_39" bpmnElement="SequenceFlow_38" sourceElement="BPMNShape_IntermediateCatchEvent_6" targetElement="BPMNShape_Task_2">
-        <di:waypoint xsi:type="dc:Point" x="363.0" y="560.0"/>
-        <di:waypoint xsi:type="dc:Point" x="363.0" y="547.0"/>
-        <di:waypoint xsi:type="dc:Point" x="363.0" y="533.0"/>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_39" bpmnElement="SequenceFlow_38" sourceElement="BPMNShape_IntermediateCatchEvent_6" targetElement="BPMNShape_Task_1">
+        <di:waypoint xsi:type="dc:Point" x="853.0" y="770.0"/>
+        <di:waypoint xsi:type="dc:Point" x="853.0" y="760.0"/>
+        <di:waypoint xsi:type="dc:Point" x="853.0" y="750.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_67"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_15" bpmnElement="SequenceFlow_14" sourceElement="BPMNShape_IntermediateCatchEvent_8" targetElement="BPMNShape_IntermediateThrowEvent_2">
@@ -1958,6 +1976,12 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <di:waypoint xsi:type="dc:Point" x="244.0" y="115.0"/>
         <di:waypoint xsi:type="dc:Point" x="244.0" y="180.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_59"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_27" bpmnElement="SequenceFlow_26" sourceElement="BPMNShape_IntermediateCatchEvent_1" targetElement="BPMNShape_Task_2">
+        <di:waypoint xsi:type="dc:Point" x="363.0" y="560.0"/>
+        <di:waypoint xsi:type="dc:Point" x="363.0" y="547.0"/>
+        <di:waypoint xsi:type="dc:Point" x="363.0" y="533.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_62"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">

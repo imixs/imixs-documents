@@ -1,0 +1,14 @@
+{
+  "services": {
+    "CoAuthoring": {
+      "autoAssembly": {
+        "enable": false,
+        "interval": "5m",
+        "step": "1m"
+      }
+    }
+  },
+  "wopi": {
+    "enable": true
+  }
+}

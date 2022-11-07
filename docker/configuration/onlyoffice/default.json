@@ -135,9 +135,9 @@
 				"rejectUnauthorized": true
 			},
 			"autoAssembly": {
-				"enable": true,
-				"interval": "0m",
-				"step": "0m"
+				"enable": false,
+				"interval": "5m",
+				"step": "1m"
 			},
 			"utils": {
 				"utils_common_fontdir": "null",
