@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 
-<head runat="server">
+<head >
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width" />
@@ -17,11 +17,11 @@
             -ms-content-zooming: none;
         }
         
-        #office_frame { 
+        #office_frame {
             width: 100%;
-            height: 500px;
+            height: 100%;
             position: absolute;
-            top: 70;
+            top: 0;
             left: 0;
             right: 0;
             bottom: 0;
@@ -32,21 +32,28 @@
     </style>
 </head>
 
-<body>
-	<h3>OnlyOffice Debug Page</h3>
-    <form id="office_form" name="office_form" target="office_frame" action="<%= actionUrl %>" method="post">
-        <input name="wopi_uri" id="wopi_uri_input" value="<%= wopi uri %>" type="text" />
+<body> 
+	<h1>Wopi Debug</h1>
+	<a href="http://localhost/hosting/discovery" target="_blank">Discovery URL</a>
+	<br />
+	<pre>
+	wopisrc=http://imixs-documents:8080/api/wopi/e3a08859-999b-4d4d-b785-6a2bc3e4a036/files/imixs-workflow.odt
+	</pre>
+	<br />
+	
+    <form id="office_form" name="office_form" target="office_frame" action="http://localhost/hosting/wopi/word/edit?closeUrl=http://localhost:8080&wopisrc=http://imixs-documents:8080/api/wopi/e3a08859-999b-4d4d-b785-6a2bc3e4a036/files/imixs-workflow.odt" method="post">
+
         <input name="access_token" value="<%= token %>" type="text" />
-        <input name="access_token_ttl" value="<%= tokenTtl %>" type="text" />
-        <button onclick="loadWopi();">load</button>
+        <input name="access_token_ttl" value="0" type="text" />
+        <input type="button" onclick="test();" />
     </form>
 
     <span id="frameholder"></span>
 
     <script type="text/javascript">
     
-    
-    
+    	function test() {
+    	alert('start...');
         var frameholder = document.getElementById('frameholder');
         var office_frame = document.createElement('iframe');
         office_frame.name = 'office_frame';
@@ -59,16 +66,12 @@
         office_frame.setAttribute('allow', 'autoplay camera microphone display-capture');
         frameholder.appendChild(office_frame);
 
-         function loadWopi() {
-        	 var uri=document.getElementById("wopi_uri_input").value;
-             console.log('set action uri='+uri);
-             document.getElementById("office_form").action = uri;
-             console.log('submit page...');
-             document.getElementById('office_form').submit();
-     	 }
-         
+        alert('go...');
+        document.getElementById('office_form').submit();
+        
+    	}
     </script>
-
+  
 </body>
 
 </html>

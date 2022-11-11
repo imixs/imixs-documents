@@ -50,7 +50,7 @@ services:
 # Only Office Online
 #######################
   onlyoffice-app:
-    image: onlyoffice/documentserver   
+    image: onlyoffice/documentserver:7.2.1   
     container_name: onlyoffice-app
     environment:
       TZ: "Europe/Berlin"
