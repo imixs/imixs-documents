@@ -1,1 +1,0 @@
-{"lang":"de","name":"model","version":"0.0.0","spacy_version":">=2.2.4","description":"","author":"","email":"","url":"","license":"","vectors":{"width":0,"vectors":0,"keys":0,"name":"spacy_pretrained_vectors"},"pipeline":["ner"],"factories":{"ner":"ner"},"labels":{"ner":["cdtr.bic","cdtr.iban","cdtr.name","invoice.date","invoice.number","invoice.total"]}}

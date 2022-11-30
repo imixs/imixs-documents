@@ -65,13 +65,17 @@
 		<!-- Dependency Versions -->
 		<org.imixs.workflow.version>5.2.15</org.imixs.workflow.version>
 		<org.imixs.marty.version>4.2.1</org.imixs.marty.version>
-		<org.imixs.office.version>4.5.3-SNAPSHOT</org.imixs.office.version>
+		<org.imixs.office.version>4.5.4-SNAPSHOT</org.imixs.office.version>
 		<org.imixs.archive.version>2.2.13</org.imixs.archive.version>
-		<org.imixs.adapter.version>2.3.1-SNAPSHOT</org.imixs.adapter.version>
+		<org.imixs.adapter.version>2.3.2-SNAPSHOT</org.imixs.adapter.version>
 		<org.imixs.melman.version>1.0.18</org.imixs.melman.version>
-		<org.imixs.ml.version>1.1.5</org.imixs.ml.version>
+		<org.imixs.ml.version>1.1.6-SNAPSHOT</org.imixs.ml.version>
 		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
 		<custom.webResources>src/main/webapp</custom.webResources>
+
+
+
+
 
 		<!-- Environment Settings -->
 		<imixs-office.contextroot>/</imixs-office.contextroot>
