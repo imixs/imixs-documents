@@ -371,7 +371,7 @@ result.isValid=true;
 <imixs-form>
 
 
-  <imixs-form-section columns="2" label="Vertragsdaten">
+  <imixs-form-section columns="2" label="Bewerbungsdaten">
     <item name="name" type="text"  label="Thema:" />
      <item name="reminder" type="date"  label="Wiedervorlage:" />
     </imixs-form-section>
@@ -1027,16 +1027,16 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="SequenceFlow_58" sourceRef="StartEvent_1" targetRef="Task_2"/>
     <bpmn2:exclusiveGateway id="ExclusiveGateway_2" gatewayDirection="Converging">
       <bpmn2:incoming>SequenceFlow_23</bpmn2:incoming>
-      <bpmn2:incoming>SequenceFlow_53</bpmn2:incoming>
       <bpmn2:incoming>SequenceFlow_50</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_53</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_59</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_59" sourceRef="ExclusiveGateway_2" targetRef="ExclusiveGateway_4"/>
     <bpmn2:exclusiveGateway id="ExclusiveGateway_7" gatewayDirection="Diverging">
       <bpmn2:incoming>SequenceFlow_49</bpmn2:incoming>
-      <bpmn2:outgoing>SequenceFlow_60</bpmn2:outgoing>
-      <bpmn2:outgoing>SequenceFlow_53</bpmn2:outgoing>
       <bpmn2:outgoing>SequenceFlow_14</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_53</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_60</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_60" sourceRef="ExclusiveGateway_7" targetRef="IntermediateCatchEvent_6"/>
     <bpmn2:association id="Association_2" sourceRef="DataObject_2" targetRef="Task_2"/>
