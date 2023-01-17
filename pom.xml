@@ -75,8 +75,6 @@
 
 
 
-
-
 		<!-- Environment Settings -->
 		<imixs-office.contextroot>/</imixs-office.contextroot>
 		<imixs-office.realm>imixsrealm</imixs-office.realm>
@@ -459,7 +457,13 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-adapters-odf</artifactId>
+			<version>${org.imixs.adapter.version}</version>
+			<scope>compile</scope>
+		</dependency>
+			
 		<!-- Imixs Signature Feature -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>

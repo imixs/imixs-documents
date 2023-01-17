@@ -145,7 +145,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[in Prüfung]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtimageurl" type="xs:string">
-          <imixs:value><![CDATA[typcn-home-outline|typcn-tick,imixs-success,icon-sub-ne]]></imixs:value>
+          <imixs:value><![CDATA[typcn-location-outline|typcn-tick,imixs-success,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>name</itemvalue> / <itemvalue>residence.street</itemvalue> <itemvalue>residence.city</itemvalue>]]></imixs:value>
@@ -326,7 +326,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtimageurl" type="xs:string">
-          <imixs:value><![CDATA[typcn-home-outline]]></imixs:value>
+          <imixs:value><![CDATA[typcn-location-outline]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>name</itemvalue> / <itemvalue>residence.street</itemvalue> <itemvalue>residence.city</itemvalue>]]></imixs:value>
@@ -550,7 +550,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtimageurl" type="xs:string">
-          <imixs:value><![CDATA[typcn-home-outline|typcn-info,imixs-warning,icon-sub-ne]]></imixs:value>
+          <imixs:value><![CDATA[typcn-location-outline|typcn-info,imixs-warning,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>name</itemvalue> / <itemvalue>residence.street</itemvalue> <itemvalue>residence.city</itemvalue>]]></imixs:value>
@@ -686,7 +686,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EventBasedGateway_3" bpmnElement="EventBasedGateway_3" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="467.0" y="164.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_4"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4" labelStyle="BPMNLabelStyle_1"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_3" bpmnElement="TextAnnotation_1">
         <dc:Bounds height="61.0" width="241.0" x="119.0" y="71.0"/>
