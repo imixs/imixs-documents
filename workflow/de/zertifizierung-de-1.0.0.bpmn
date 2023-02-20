@@ -44,6 +44,7 @@
     <bpmn2:participant id="Participant_2" name="Rechnungseingang Pool"/>
     <bpmn2:participant id="Participant_3" name="Anforderung Unterlagen" processRef="Process_2"/>
     <bpmn2:messageFlow id="MessageFlow_1" sourceRef="IntermediateCatchEvent_2" targetRef="Participant_3"/>
+    <bpmn2:messageFlow id="MessageFlow_3" sourceRef="IntermediateCatchEvent_18" targetRef="Participant_1"/>
   </bpmn2:collaboration>
   <bpmn2:process id="Process_1" name="Zertifizierung" definitionalCollaborationRef="Collaboration_1" isExecutable="false">
     <bpmn2:laneSet id="LaneSet_1" name="Lane Set 1">
@@ -1528,6 +1529,21 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
     </bpmn2:intermediateThrowEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_70" sourceRef="EventBasedGateway_5" targetRef="IntermediateThrowEvent_6"/>
     <bpmn2:association id="Association_2" sourceRef="DataObject_2" targetRef="Task_2"/>
+    <bpmn2:textAnnotation id="TextAnnotation_2">
+      <bpmn2:text>Meilensteine:
+============
+Erfassung der Kundendaten  ⇒ Anfordern von Unterlagen
+
+Angebots Erstellung ⇒ Angebot kalkuliert, erstellt und versandt
+
+Durchführung Audit  ⇒ terminiert, durchgeführt, vorläufiger Auditbericht
+
+Zertifizierung ⇒ Erfassungsbogen ausgefüllt, Unterlagen vollständig
+
+Abgeschlossen ⇒  eingereicht, positiver Bescheid
+
+</bpmn2:text>
+    </bpmn2:textAnnotation>
   </bpmn2:process>
   <bpmn2:process id="Process_2" name="Anforderung Unterlagen" definitionalCollaborationRef="Collaboration_1" isExecutable="false">
     <bpmn2:laneSet id="LaneSet_2" name="Lane Set 2">
@@ -1572,7 +1588,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <imixs:value><![CDATA[typcn-cloud-storage-outline]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>name</itemvalue> - <itemvalue>project</itemvalue> / <username>customer.user</username>>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>project</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -2156,6 +2172,10 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
      <item name="customer.user"  type="custom"   path="userinput" label="Kunde:" required="true"  />
      <item name="request.reminder" type="date"  label="Wiedervorlage:" required="false" />
   </imixs-form-section>
+  <imixs-form-section columns="1" >
+    <item name="description" type="textarea"  label="Bemerkung" />
+
+  </imixs-form-section>
 
 </imixs-form>]]></bpmn2:documentation>
       <bpmn2:dataState id="DataState_2"/>
@@ -2558,6 +2578,12 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
           <dc:Bounds height="14.0" width="74.0" x="851.0" y="128.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_2" bpmnElement="TextAnnotation_2">
+        <dc:Bounds height="193.0" width="420.0" x="861.0" y="380.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_142">
+          <dc:Bounds height="187.0" width="408.0" x="867.0" y="380.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_38" bpmnElement="SequenceFlow_37" sourceElement="BPMNShape_Task_2" targetElement="BPMNShape_EventBasedGateway_2">
         <di:waypoint xsi:type="dc:Point" x="1064.0" y="188.0"/>
         <di:waypoint xsi:type="dc:Point" x="1079.0" y="188.0"/>
@@ -2863,6 +2889,12 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
         <di:waypoint xsi:type="dc:Point" x="378.0" y="568.0"/>
         <di:waypoint xsi:type="dc:Point" x="378.0" y="700.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_140"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_MessageFlow_3" bpmnElement="MessageFlow_3" sourceElement="BPMNShape_IntermediateCatchEvent_21" targetElement="BPMNShape_Participant_1">
+        <di:waypoint xsi:type="dc:Point" x="918.0" y="775.0"/>
+        <di:waypoint xsi:type="dc:Point" x="918.0" y="631.0"/>
+        <di:waypoint xsi:type="dc:Point" x="918.0" y="621.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_141"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
