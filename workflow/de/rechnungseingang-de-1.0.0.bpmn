@@ -39,6 +39,7 @@
   </bpmn2:extensionElements>
   <bpmn2:signal id="Signal_1" name="org.imixs.ml.workflow.MLAdapter"/>
   <bpmn2:signal id="Signal_2" name="org.imixs.archive.documents.OCRDocumentAdapter"/>
+  <bpmn2:signal id="Signal_3" name="org.imixs.workflow.sepa.adapter.SEPARefAddAdapter"/>
   <bpmn2:collaboration id="Collaboration_1">
     <bpmn2:participant id="Participant_1" name="Rechnungseingang" processRef="Process_1"/>
   </bpmn2:collaboration>
@@ -597,7 +598,7 @@ result.isValid=true;
 <imixs-form>
   <imixs-form-section columns="2" label="Kreditorendaten">
     <item name="cdtr.name" type="text"  label="Kreditor:" required="true" />
-    <item name="cdtr.vatid" type="text"  label="Ust-IdNr:" required="true" />
+    <item name="cdtr.vatid" type="text"  label="Ust-IdNr:" required="false" />
   </imixs-form-section>
 
   <imixs-form-section columns="2" label="Rechnungsdaten">
@@ -626,7 +627,7 @@ result.isValid=true;
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtmailsubject" type="xs:string">
-          <imixs:value><![CDATA[test]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaccessmode" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
@@ -635,7 +636,7 @@ result.isValid=true;
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfmailbody" type="xs:string">
-          <imixs:value><![CDATA[test]]></imixs:value>
+          <imixs:value><![CDATA[]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyversion" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
@@ -684,9 +685,7 @@ result.isValid=true;
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
         </imixs:item>
-        <imixs:item name="keymailreceiverfields" type="xs:string">
-          <imixs:value><![CDATA[namCreator]]></imixs:value>
-        </imixs:item>
+        <imixs:item name="keymailreceiverfields" type="xs:string"/>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_19"><![CDATA[Zwischenspeichern]]></bpmn2:documentation>
       <bpmn2:outgoing>SequenceFlow_20</bpmn2:outgoing>
@@ -879,7 +878,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value>false</imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_29"><![CDATA[Rechnung geprüft, weiterleiten an Buchhaltung.]]></bpmn2:documentation>
+      <bpmn2:documentation id="Documentation_29"><![CDATA[Rechnung geprüft, und zur Zahlung freigeben.]]></bpmn2:documentation>
       <bpmn2:incoming>SequenceFlow_30</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
@@ -1299,10 +1298,25 @@ result.isValid=true;
         <imixs:item name="keypublicresult" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
+        <imixs:item name="rtfresultlog" type="CDATA">
+          <imixs:value><![CDATA[SEPA Lauf vorbereitet]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="CDATA">
+          <imixs:value><![CDATA[<sepa-export name="modelversion">sepa-export-manual-de-3.0</sepa-export>
+  <sepa-export name="task">1000</sepa-export>
+  <sepa-export name="key">SEPA Lastschriftverfahren</sepa-export> ]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_19</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_23</bpmn2:outgoing>
-      <bpmn2:signalEventDefinition id="SignalEventDefinition_1"/>
+      <bpmn2:dataOutput id="DataOutput_1" name="Signal_1_Output"/>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_1</bpmn2:sourceRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="OutputSet_2" name="Output Set 2">
+        <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:signalEventDefinition id="SignalEventDefinition_1" signalRef="Signal_3"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_19" name="payment.type = sepa_transfer" sourceRef="ExclusiveGateway_2" targetRef="IntermediateCatchEvent_4">
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1">workitem['payment.type'] &amp;&amp; workitem['payment.type'][0]==&quot;sepa_transfer&quot;</bpmn2:conditionExpression>
