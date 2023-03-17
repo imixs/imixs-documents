@@ -601,6 +601,15 @@ result.isValid=true;
     <item name="cdtr.vatid" type="text"  label="Ust-IdNr:" required="false" />
   </imixs-form-section>
 
+  <imixs-form-section columns="1" label="Bestelldaten">
+
+  <item name="object.ref" 
+      type="custom"  required="true"
+      path="workitemlink"
+      options="($workflowgroup:Bedarfsmeldung)(type:workitem)"
+      label="Referenz:" />
+  </imixs-form-section>
+
   <imixs-form-section columns="2" label="Rechnungsdaten">
     <item name="invoice.number" type="text"  label="Rechnungsnummer:" required="true" />
     <item name="invoice.date" type="date"  label="Rechnungsdatum:" required="true" />
