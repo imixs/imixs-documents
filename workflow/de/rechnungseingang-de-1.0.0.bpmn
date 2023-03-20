@@ -1392,10 +1392,10 @@ result.isValid=true;
         <imixs:item name="rtfresultlog" type="CDATA">
           <imixs:value><![CDATA[SEPA Lauf vorbereitet]]></imixs:value>
         </imixs:item>
-        <imixs:item name="txtactivityresult" type="CDATA">
+        <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<sepa-export name="modelversion">sepa-export-manual-de-3.0</sepa-export>
-  <sepa-export name="task">1000</sepa-export>
-  <sepa-export name="key">SEPA Lastschriftverfahren</sepa-export> ]]></imixs:value>
+<sepa-export name="task">1000</sepa-export>
+<sepa-export name="key">SEPA Lastschriftverfahren</sepa-export> ]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_19</bpmn2:incoming>
