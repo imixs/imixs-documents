@@ -301,7 +301,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
     <bpmn2:task id="Task_5005" imixs:processid="5100" name="Sachprüfung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -624,8 +624,7 @@ result.isValid=true;
   </imixs-form-section>
 
   <imixs-form-section columns="1" label="Bestelldaten">
-
-  <item name="object.ref" 
+    <item name="object.ref" 
       type="custom"  required="true"
       path="workitemlink"
       options="($workflowgroup:Bedarfsmeldung)(type:workitem)"
@@ -727,7 +726,7 @@ result.isValid=true;
     <bpmn2:task id="Task_3" imixs:processid="5300" name="Bezahlung">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -928,7 +927,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:task id="Task_5" imixs:processid="5900" name="Erledigt">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
-          <imixs:value/>
+          <imixs:value><![CDATA[form_basic_read]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -1606,6 +1605,81 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
     <bpmn2:association id="Association_aLlhAQ" sourceRef="textAnnotation_b50y3w" targetRef="IntermediateCatchEvent_5000-20">
       <bpmn2:documentation id="documentation_c0VLsQ"/>
     </bpmn2:association>
+    <bpmn2:dataObject id="dataObject_Vj8NJA" name="Form">
+      <bpmn2:documentation id="documentation_4y62YQ"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+  <imixs-form-section columns="2" label="Kreditorendaten">
+    <item name="cdtr.name" type="text"  label="Kreditor:" required="true" readonly="true" />
+    <item name="cdtr.vatid" type="text"  label="Ust-IdNr:" required="false" readonly="true" />
+  </imixs-form-section>
+
+  <imixs-form-section columns="1" label="Bestelldaten">
+
+  <item name="object.ref" 
+      type="custom"  required="true"
+      path="workitemlink"
+      options="($workflowgroup:Bedarfsmeldung)(type:workitem)"
+      label="Referenz:" />
+  </imixs-form-section>
+
+  <imixs-form-section columns="2" label="Rechnungsdaten">
+    <item name="invoice.number" type="text"  label="Rechnungsnummer:" required="true" readonly="true" />
+    <item name="invoice.date" type="date"  label="Rechnungsdatum:" required="true" readonly="true" />
+    <item name="invoice.total" type="currency"  label="Rechnungsbetrag:" required="true" readonly="true" />
+    <item name="" type="custom" path="spaceref"  label="zur Prüfung an:" />
+  </imixs-form-section>
+
+  <imixs-form-section columns="2" label="Zahlungsweise">
+    <item name="payment.type" type="selectOneMenu" required="true" options="Bankeinzug / Kreditkarte|direct_debit;SEPA|sepa_transfer"   label="Zahlungsart:" readonly="true" />
+    <item name="payment.date" type="date"  label="Zahlbar bis:" readonly="true" />
+    <item name="cdtr.iban" type="text"  label="IBAN:" readonly="true" />
+    <item name="cdtr.bic" type="text"  label="BIC:" readonly="true" />
+  </imixs-form-section>
+ 
+</imixs-form>]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:association id="Association_zFgl0Q" sourceRef="dataObject_Vj8NJA" targetRef="Task_5005">
+      <bpmn2:documentation id="documentation_v67UHA"/>
+    </bpmn2:association>
+    <bpmn2:association id="Association_SUICiw" sourceRef="dataObject_Vj8NJA" targetRef="Task_5000">
+      <bpmn2:documentation id="documentation_2xLCEg"/>
+    </bpmn2:association>
+    <bpmn2:dataObject id="dataObject_ptenLw" name="Form">
+      <bpmn2:documentation id="documentation_dp0lfg"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+  <imixs-form-section columns="2" label="Kreditorendaten">
+    <item name="cdtr.name" type="text"  label="Kreditor:" required="true" readonly="true" />
+    <item name="cdtr.vatid" type="text"  label="Ust-IdNr:" required="false" readonly="true" />
+  </imixs-form-section>
+
+  <imixs-form-section columns="1" label="Bestelldaten">
+
+  <item name="object.ref" 
+      type="custom"  required="true"
+      path="workitemlink"
+      options="($workflowgroup:Bedarfsmeldung)(type:workitem)"
+      label="Referenz:" />
+  </imixs-form-section>
+
+  <imixs-form-section columns="2" label="Rechnungsdaten">
+    <item name="invoice.number" type="text"  label="Rechnungsnummer:" required="true" readonly="true" />
+    <item name="invoice.date" type="date"  label="Rechnungsdatum:" required="true" readonly="true" />
+    <item name="invoice.total" type="currency"  label="Rechnungsbetrag:" required="true" readonly="true" />
+    <item name="" type="custom" path="spaceref"  label="zur Prüfung an:" readonly="true" />
+  </imixs-form-section>
+
+  <imixs-form-section columns="2" label="Zahlungsweise">
+    <item name="payment.type" type="selectOneMenu" required="true" options="Bankeinzug / Kreditkarte|direct_debit;SEPA|sepa_transfer"   label="Zahlungsart:" readonly="false" />
+    <item name="payment.date" type="date"  label="Zahlbar bis:" readonly="false" />
+    <item name="cdtr.iban" type="text"  label="IBAN:" readonly="false" />
+    <item name="cdtr.bic" type="text"  label="BIC:" readonly="false" />
+  </imixs-form-section>
+ 
+</imixs-form>]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:association id="Association_6a0zRA" sourceRef="dataObject_ptenLw" targetRef="Task_3">
+      <bpmn2:documentation id="documentation_n9UN4A"/>
+    </bpmn2:association>
   </bpmn2:process>
   <bpmn2:process id="process_2" name="Default Process" processType="Public">
     <bpmn2:documentation id="documentation_eWys2w"/>
@@ -1752,9 +1826,6 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="Task_5" id="BPMNShape_Task_11">
         <dc:Bounds height="50.0" width="110.0" x="1590.0" y="1064.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_109" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="42.0" x="1624.0" y="1082.0"/>
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="EndEvent_2" id="BPMNShape_EndEvent_2">
         <dc:Bounds height="36.0" width="36.0" x="1760.0" y="1071.0"/>
@@ -1823,10 +1894,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="TextAnnotation_3" id="BPMNShape_TextAnnotation_3">
-        <dc:Bounds height="96.0" width="187.0" x="900.0" y="890.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_4">
-          <dc:Bounds height="90.0" width="175.0" x="906.0" y="890.0"/>
-        </bpmndi:BPMNLabel>
+        <dc:Bounds height="96.0" width="187.0" x="757.2896860760418" y="879.8064061482887"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_1" id="BPMNShape_IntermediateCatchEvent_3">
         <dc:Bounds height="36.0" width="36.0" x="1627.0" y="1150.0"/>
@@ -2061,7 +2129,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="Association_4" id="BPMNEdge_Association_4" sourceElement="BPMNShape_TextAnnotation_3" targetElement="BPMNShape_Task_9">
         <bpmndi:BPMNLabel id="BPMNLabel_6"/>
-        <di:waypoint x="1087.0" y="938.0"/>
+        <di:waypoint x="944.2896728515625" y="938.0"/>
         <di:waypoint x="1204.0" y="938.0"/>
         <di:waypoint x="1204.0" y="944.0"/>
       </bpmndi:BPMNEdge>
@@ -2154,6 +2222,35 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         <di:waypoint x="629.75" y="139.0"/>
         <di:waypoint x="629.75" y="216.0"/>
         <di:waypoint x="581.0" y="216.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="dataObject_Vj8NJA" id="BPMNShape_0skHlQ">
+        <dc:Bounds height="50.0" width="35.0" x="242.5" y="709.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_zLIKbw">
+          <dc:Bounds height="16.0" width="100.0" x="210.0" y="764.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="Association_zFgl0Q" id="BPMNEdge_mPh59Q" sourceElement="BPMNShape_0skHlQ" targetElement="BPMNShape_Task_2">
+        <di:waypoint x="261.75" y="709.0"/>
+        <di:waypoint x="261.75" y="508.0"/>
+        <di:waypoint x="308.0" y="508.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Association_SUICiw" id="BPMNEdge_BrRDxA" sourceElement="BPMNShape_0skHlQ" targetElement="BPMNShape_Task_1">
+        <di:waypoint x="259.0" y="759.0"/>
+        <di:waypoint x="259.0" y="818.0"/>
+        <di:waypoint x="810.0" y="818.0"/>
+        <di:waypoint x="810.0" y="750.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="dataObject_ptenLw" id="BPMNShape_20MvEA">
+        <dc:Bounds height="50.0" width="35.0" x="850.5345102099207" y="997.8782124837797"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_mq9g0g">
+          <dc:Bounds height="16.0" width="100.0" x="818.0345102099207" y="1052.8782124837799"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="Association_6a0zRA" id="BPMNEdge_6PT4og" sourceElement="BPMNShape_20MvEA" targetElement="BPMNShape_Task_9">
+        <di:waypoint x="885.5344848632812" y="1017.6202392578125"/>
+        <di:waypoint x="1061.5953369140625" y="1017.6202392578125"/>
+        <di:waypoint x="1061.5953369140625" y="956.7247314453125"/>
+        <di:waypoint x="1168.0" y="956.7247314453125"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
