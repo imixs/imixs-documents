@@ -1,0 +1,91 @@
+###################################################
+# Deployment imixs-ml-spacy
+###################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imixs-ml-spacy
+  labels: 
+    app: imixs-ml-spacy
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: imixs-ml-spacy
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imixs-ml-spacy
+    spec:
+      containers:
+      - name: imixs-ml-spacy
+        image: imixs/imixs-ml-spacy:latest        
+        imagePullPolicy: Always
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        - name: TZ
+          value: "CET"
+        - name: MODEL_LANGUAGE
+          value: "de"
+        - name: MODEL_PATH
+          value: "models/"
+        ports: 
+          - name: web
+            containerPort: 8000
+        # Memory Request and Limits
+        resources:
+          requests:
+            memory: "512Mi"
+          limits:
+            memory: "3Gi"
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+
+        # Mount the volume that contains the spacy models
+        volumeMounts:
+        - mountPath: /usr/src/app/models
+          name: ml-models
+      restartPolicy: Always
+
+     # Add ml volume to the Pod
+      volumes:
+      - name: ml-models
+        persistentVolumeClaim:
+          claimName: ml-models
+
+###################################################
+# Deplyoment Tika
+###################################################
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  #namespace: imixs-system
+  name: tika
+  labels: 
+    app: tika
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tika
+  template:
+    metadata:
+      labels:
+        app: tika
+    spec:
+      containers:
+      - name: tika
+        image: apache/tika:2.4.1-full
+        ports: 
+          - name: web
+            containerPort: 9998

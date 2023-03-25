@@ -1,0 +1,141 @@
+---
+###################################################
+# Deployment PostgreSQL
+###################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels: 
+    app: postgres
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: postgres
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_DB
+          value: office
+        - name: POSTGRES_PASSWORD
+          value: adminadmin
+        - name: POSTGRES_USER
+          value: postgres
+        image: postgres:9.6.1
+        name: postgres
+        livenessProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        ports:
+          - containerPort: 5432        
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: dbdata
+          subPath: postgres
+      restartPolicy: Always
+      volumes:
+      - name: dbdata
+        persistentVolumeClaim:
+          claimName: dbdata
+
+
+---
+###################################################
+# Deployment office-demo
+###################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imixs-office-workflow
+  labels: 
+    app: imixs-office-workflow
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: imixs-office-workflow
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imixs-office-workflow
+    spec:
+      containers:
+      - name: imixs-office-workflow
+        image: imixs/imixs-office-workflow:latest
+        imagePullPolicy: Always
+        env:
+        - name: POSTGRES_CONNECTION
+          value: jdbc:postgresql://db/office
+        - name: POSTGRES_PASSWORD
+          value: adminadmin
+        - name: POSTGRES_USER
+          value: postgres
+        - name: TZ
+          value: CET
+        - name: LANG
+          value: "en_US.UTF-8"
+        - name: MAILGATEWAY
+          value: "localhost"
+
+        # Imixs OCR Config
+        - name: OCR_SERVICE_ENDPOINT
+          value: "http://tika:9998/tika"
+        - name: OCR_SERVICE_MODE
+          value: "MODEL"
+        - name: OCR_PDF_MODE
+          value: "OCR_ONLY"
+
+        # Imixs-ML Config
+        - name: ML_SERVICE_ENDPOINT
+          value: "http://imixs-ml-spacy:8000/"
+        - name: ML_TRAINING_SCHEDULER_ENABLED
+          value: "true"
+        - name: ML_TRAINING_SCHEDULER_INTERVAL
+          value: "10000"
+        - name: ML_TRAINING_SCHEDULER_INITIALDELAY
+          value: "60000" 
+
+
+        # run as root because of persistence volume storage
+        securityContext:
+          runAsUser: 0
+          allowPrivilegeEscalation: false
+        ports: 
+          - name: web
+            containerPort: 8080
+          - name: admin
+            containerPort: 9990
+
+        livenessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:9990/health | grep -q '\"name\":\"imixs-workflow\",\"status\":\"UP\"'"]
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+
+        # Memory Request and Limits
+        resources:
+          requests:
+            memory: 600Mi
+
+        volumeMounts:
+        - mountPath: /opt/jboss/lucene
+          name: index
+      restartPolicy: Always
+      volumes:
+      - name: index
+        persistentVolumeClaim:
+          claimName: index
+

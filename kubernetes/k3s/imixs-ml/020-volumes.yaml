@@ -1,0 +1,40 @@
+###################################################
+# Persistence Volume for ml-models
+###################################################
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ml-models
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: dev-local-storage
+  resources:
+    requests:
+      storage: 128Mi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ml-models
+spec:
+  capacity:
+    storage: 128Mi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: dev-local-storage
+  local:
+    path: /opt/kubernetes-local-pv/office-imixs-ml
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node.kubernetes.io/instance-type
+          operator: In
+          values:
+          - k3s
+         

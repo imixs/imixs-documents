@@ -1,0 +1,31 @@
+###################################################
+# Service imixs-ml-spacy
+###################################################
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: imixs-ml-spacy
+spec:
+  ports:
+  - name: web
+    port: 8000
+  selector:
+    app: imixs-ml-spacy
+
+###################################################
+# Service tika
+###################################################
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: tika
+  #namespace: imixs-system
+spec:
+  ports:
+  - protocol: TCP
+    port: 9998
+    name: web
+  selector:
+    app: tika
