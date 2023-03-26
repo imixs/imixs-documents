@@ -64,7 +64,7 @@
 
 		<!-- Dependency Versions -->
 		<org.imixs.workflow.version>5.2.19-SNAPSHOT</org.imixs.workflow.version>
-		<org.imixs.marty.version>4.2.1</org.imixs.marty.version>
+		<org.imixs.marty.version>4.2.3</org.imixs.marty.version>
 		<org.imixs.office.version>4.6.1-SNAPSHOT</org.imixs.office.version>
 		<org.imixs.archive.version>2.2.13</org.imixs.archive.version>
 		<org.imixs.adapter.version>2.3.2-SNAPSHOT</org.imixs.adapter.version>

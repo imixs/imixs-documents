@@ -5,6 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: imixs-ml-spacy
+  namespace: imixs
   labels: 
     app: imixs-ml-spacy
 spec:
@@ -69,7 +70,7 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  #namespace: imixs-system
+  namespace: imixs 
   name: tika
   labels: 
     app: tika

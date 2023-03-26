@@ -1,12 +1,12 @@
 ###################################################
 # Persistence Volume for ml-models
 ###################################################
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ml-models
+  namespace: imixs 
 spec:
   accessModes:
     - ReadWriteOnce

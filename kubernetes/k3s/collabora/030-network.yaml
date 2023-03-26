@@ -1,0 +1,24 @@
+---
+###################################################
+# Service libreoffice
+###################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: collabora
+  namespace: imixs
+  # test see: https://github.com/CollaboraOnline/online/blob/master/kubernetes/helm/collabora-online/templates/service.yaml
+  annotations:
+    haproxy.org/timeout-tunnel: "3600s"
+    haproxy.org/backend-config-snippet: |
+      balance url_param WOPISrc check_post
+      hash-type consistent
+  # test ende
+
+spec:
+  ports:
+  - protocol: TCP
+    name: web
+    port: 9980
+  selector:
+    app: collabora

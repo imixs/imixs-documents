@@ -1,3 +1,12 @@
+
+###################################################
+# Namespace imixs
+###################################################
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: imixs
+
 ---
 ###################################################
 # Deployment PostgreSQL
@@ -6,6 +15,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
+  namespace: imixs  
   labels: 
     app: postgres
 spec:
@@ -56,6 +66,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: imixs-office-workflow
+  namespace: imixs  
   labels: 
     app: imixs-office-workflow
 spec:
@@ -72,7 +83,7 @@ spec:
     spec:
       containers:
       - name: imixs-office-workflow
-        image: imixs/imixs-office-workflow:latest
+        image: imixs/imixs-documents:latest      
         imagePullPolicy: Always
         env:
         - name: POSTGRES_CONNECTION
@@ -85,27 +96,36 @@ spec:
           value: CET
         - name: LANG
           value: "en_US.UTF-8"
+        - name: JAVA_OPTS
+          value: "-Dnashorn.args=--no-deprecation-warning"
         - name: MAILGATEWAY
           value: "localhost"
 
+        - name: ASYNCEVENT_PROCESSOR_ENABLED
+          value: "true"
+        - name: ASYNCEVENT_PROCESSOR_INITIALDELAY
+          value: "10000"
+        - name: ASYNCEVENT_PROCESSOR_INTERVAL
+          value: "5000"
+
         # Imixs OCR Config
         - name: OCR_SERVICE_ENDPOINT
-          value: "http://tika:9998/tika"
+          value: "http://tika.imixs:9998/tika"
         - name: OCR_SERVICE_MODE
           value: "MODEL"
         - name: OCR_PDF_MODE
           value: "OCR_ONLY"
 
+
         # Imixs-ML Config
         - name: ML_SERVICE_ENDPOINT
-          value: "http://imixs-ml-spacy:8000/"
+          value: "http://imixs-ml-spacy.imixs:8000/"
         - name: ML_TRAINING_SCHEDULER_ENABLED
           value: "true"
         - name: ML_TRAINING_SCHEDULER_INTERVAL
           value: "10000"
         - name: ML_TRAINING_SCHEDULER_INITIALDELAY
           value: "60000" 
-
 
         # run as root because of persistence volume storage
         securityContext:

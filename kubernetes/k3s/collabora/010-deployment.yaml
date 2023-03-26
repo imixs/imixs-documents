@@ -1,0 +1,68 @@
+---
+###################################################
+# Deployment office-demo
+###################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collabora
+  #namespace: imixs-system
+  labels: 
+    app: collabora
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: collabora
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: collabora
+    spec:
+      containers:
+      - image: collabora/code:6.4.10.9
+        name: collabora
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: TZ
+          value: Europe/Berlin
+        - name: username
+          value: admin
+        - name: password
+          value: adminadmin
+        - name: extra_params
+          value: --o:ssl.termination=true --o:ssl.enable=false
+        - name: domain
+          #value: demo.imixs.com
+          value: (\.imixs\.com|\.office-workflow\.de|\.office-workflow\.com)
+        ports: 
+          - name: web
+            containerPort: 9980
+        # map the loolwsd.xml file
+        volumeMounts:
+        - name: lool-configmap-volume
+          mountPath: /etc/loolwsd/loolwsd.xml
+          subPath: loolwsd.xml
+        resources:
+          requests:
+            memory: "512M"
+          limits:
+            memory: "1G"
+        #securityContext:
+        #  allowPrivilegeEscalation: true
+        #  capabilities:
+        #    add:
+        #    - MKNOD
+        #  privileged: false
+        #  procMount: Default
+        #  readOnlyRootFilesystem: false
+        #  runAsNonRoot: false
+
+      restartPolicy: Always
+      # Add the ConfigMap as a volume to the Pod
+      volumes:
+      - name: lool-configmap-volume
+        configMap:
+          name: lool-config

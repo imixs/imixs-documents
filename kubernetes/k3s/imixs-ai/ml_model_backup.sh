@@ -14,7 +14,7 @@ BACKUP_PATH="/kubernetes/k3s/imixs-ml/"$BACKUP_DATE"/"
 
 # first compute the POD name....
 # See: https://stackoverflow.com/questions/47389443/finding-the-name-of-a-new-pod-with-kubectl
-POD=$(kubectl get -n default pod -l app=imixs-ml-spacy -o jsonpath="{.items[0].metadata.name}")
+POD=$(kubectl get -n imixs pod -l app=imixs-ml-spacy -o jsonpath="{.items[0].metadata.name}")
 
 
 mkdir -p "$BACKUP_PATH"
