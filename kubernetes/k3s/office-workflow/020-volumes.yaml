@@ -29,7 +29,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: dev-local-storage
   local:
-    path: /opt/kubernetes-local-pv/office-dbdata
+    path: /opt/kubernetes-local-pv/office-ib-vassen-dbdata
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -71,7 +71,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: dev-local-storage
   local:
-    path: /opt/kubernetes-local-pv/office-index
+    path: /opt/kubernetes-local-pv/office-ib-vassen-index
   nodeAffinity:
     required:
       nodeSelectorTerms:
