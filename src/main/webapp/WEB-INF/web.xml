@@ -11,11 +11,11 @@
 	
 	<!--  -->
 	<context-param>
-		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-name>jakarta.faces.STATE_SAVING_METHOD</param-name>
 		<param-value>server</param-value>
 	</context-param>
 	<context-param>
-		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-name>jakarta.faces.CONFIG_FILES</param-name>
 		<param-value>
 			/WEB-INF/faces-config.xml,/WEB-INF/faces-config-office.xml,/WEB-INF/faces-config-custom.xml
 		</param-value>
@@ -26,7 +26,7 @@
 	<!-- Change to "Production" when you are ready to deploy
 	     Change to "Development" during development -->
 	<context-param>
-		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-name>jakarta.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
 	
@@ -46,7 +46,7 @@
 	<!-- Facelets -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
-		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>0</load-on-startup>		
 		<multipart-config>
 	      <location>/tmp</location>
@@ -71,17 +71,17 @@
     
 	<!-- Error handling -->
 	 <error-page>   
-     	<exception-type>javax.enterprise.context.NonexistentConversationException</exception-type>
+     	<exception-type>jakarta.enterprise.context.NonexistentConversationException</exception-type>
      	<location>/error_conversationexpired.xhtml?nocid=true</location>   
     </error-page>  
     
     
     <error-page>   
-     	<exception-type>javax.faces.view.facelets.TagAttributeException</exception-type>   
+     	<exception-type>jakarta.faces.view.facelets.TagAttributeException</exception-type>   
      	<location>/errorhandler.jsf</location>   
     </error-page>  
   	<error-page>   
-     	<exception-type>javax.servlet.ServletException</exception-type>   
+     	<exception-type>jakarta.servlet.ServletException</exception-type>   
      	<location>/errorhandler.jsf</location>   
     </error-page>  
     
