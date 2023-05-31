@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<imixs-form>
+  <imixs-form-section columns="2" label="Produktdaten">
+     <item name="order.nr" type="text"  label="Artikel Nr:" />
+     <item name="order.bez" type="text"  label="Artikel Bez.:" />
+    <item name="order.type" type="text"  label="Anlage / Gerät:" />
+    <item name="order.room" type="text"  label="Raum:" />
+</imixs-form-section>
+
+ <imixs-form-section columns="2" label="">
+  <item name="order.reason" type="selectManyCheckbox" 
+	label="Change Betrifft:"
+	options="Produkt;Rohstoff;Anlage;Prozess;Sonstiges" />
+    <item name="issue.date" type="date"  label="Termin:" />
+
+</imixs-form-section>
+
+ <imixs-form-section columns="1" label="Dokumentation">
+   <item name="issue.documentation" type="html"  label="Grund der Änderung:" />
+</imixs-form-section>
+
+  <imixs-form-section label="" path="sub_dispatch" />
+
+</imixs-form>
+

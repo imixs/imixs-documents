@@ -627,7 +627,7 @@ result.isValid=true;
     <item name="object.ref" 
       type="custom"  required="true"
       path="workitemlink"
-      options="($workflowgroup:Bedarfsmeldung)(type:workitem)"
+      options="($workflowgroup:Bedarfsmeldung)((type:workitem) OR (type:workitemarchive))"
       label="Referenz:" />
   </imixs-form-section>
 
