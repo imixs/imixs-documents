@@ -66,29 +66,8 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 	
-	
-
     
 	<!-- Error handling -->
-	 <error-page>   
-     	<exception-type>jakarta.enterprise.context.NonexistentConversationException</exception-type>
-     	<location>/error_conversationexpired.xhtml?nocid=true</location>   
-    </error-page>  
-    
-    
-    <error-page>   
-     	<exception-type>jakarta.faces.view.facelets.TagAttributeException</exception-type>   
-     	<location>/errorhandler.jsf</location>   
-    </error-page>  
-  	<error-page>   
-     	<exception-type>jakarta.servlet.ServletException</exception-type>   
-     	<location>/errorhandler.jsf</location>   
-    </error-page>  
-    
-	<error-page>
-		<exception-type>java.lang.RuntimeException</exception-type>
-		<location>/error.jsf</location>
-	</error-page>
 	<error-page>
 		<error-code>401</error-code>
 		<location>/loginerror.jsf</location>
@@ -105,7 +84,6 @@
 		<error-code>500</error-code>
 		<location>/error.jsf</location>
 	</error-page>
-
 
 	<!-- Login Modul - Formular-Login  -->
 	 <login-config> 
