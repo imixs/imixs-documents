@@ -46,15 +46,9 @@ services:
 
       # Collabora integration
       WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
-      WOPI_DISCOVERY_ENDPOINT: "http://libreoffice-app:9980/hosting/discovery"
-      WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
-      WOPI_TEMPLATES: "/wopi/templates"
-
-      # ONlyOffice integration
-      #WOPI_PUBLIC_ENDPOINT: "http://localhost:80/"
-      #WOPI_DISCOVERY_ENDPOINT: "http://onlyoffice-app:80/hosting/discovery"
-      #WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
-      #WOPI_OPTIONS: "thm=1"
+      WOPI_DISCOVERY_ENDPOINT: "http://collabora:9980/hosting/discovery"
+      WOPI_HOST_ENDPOINT: "http://app:8080/api/wopi/"
+      COLLABORA_CONVERTER_URL: "http://collabora:9980/lool/convert-to/"
 
     ports:
       - "8080:8080"
@@ -89,29 +83,29 @@ services:
       TZ: "Europe/Berlin"
       MODEL_LANGUAGE: "de"
       MODEL_PATH: "models/" 
-
     ports:
       - "8000:8000"  
     volumes:
       - ../src/models/:/usr/src/app/models/
 
 
-
-#######################
-# collabora Office Online
-#######################
-  libreoffice-app:
-    image: collabora/code:6.4.9.2
-    container_name: libreoffice-app
-    expose:
-      - 9980
+  #######################
+  # collabora Office Online
+  #######################
+  collabora:
+    image: collabora/code:23.05.0.5.1
+    #expose:
+    #  - 9980
     ports:
       - "9980:9980"
     environment:
       - username=admin
       - password=adminadmin
+      - extra_params=--o:ssl.enable=false
+      - aliasgroup1=http://app:8080:443
     volumes:
-      - ./configuration/collabora/loolwsd.xml:/etc/loolwsd/loolwsd.xml
+      - ./docker/configuration/collabora/fonts:/usr/share/fonts/truetype/more/
+      - ./docker/configuration/collabora/fonts:/opt/cool/systemplate/usr/share/fonts/truetype/more/
 
 
 
