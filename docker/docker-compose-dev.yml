@@ -47,7 +47,7 @@ services:
       # Collabora integration
       WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
       WOPI_DISCOVERY_ENDPOINT: "http://collabora:9980/hosting/discovery"
-      WOPI_HOST_ENDPOINT: "http://app:8080/api/wopi/"
+      WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
       COLLABORA_CONVERTER_URL: "http://collabora:9980/lool/convert-to/"
 
     ports:
@@ -102,7 +102,7 @@ services:
       - username=admin
       - password=adminadmin
       - extra_params=--o:ssl.enable=false
-      - aliasgroup1=http://app:8080:443
+      - aliasgroup1=http://imixs-documents:8080:443
     volumes:
       - ./docker/configuration/collabora/fonts:/usr/share/fonts/truetype/more/
       - ./docker/configuration/collabora/fonts:/opt/cool/systemplate/usr/share/fonts/truetype/more/

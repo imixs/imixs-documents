@@ -3,10 +3,12 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Debug Wildfly",
+      "name": "Debug Imixs-Documents",
       "request": "attach",
       "hostName": "localhost",
-      "port": "8787"
+      "port": "8787",
+      "projectName": "imixs-documents"
     }
+
 ]
 }
