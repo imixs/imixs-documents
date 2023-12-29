@@ -7,28 +7,47 @@
 	xmlns:marty="http://java.sun.com/jsf/composite/marty">
 
 
+
 	<div class="imixs-form-section-2">
-		<dl>
-			<dt>IBAN</dt>
-			<dd>
-				<h:outputText value="#{workitem.item['dbtr.iban']}" />
-			</dd>
-		</dl>
 
+		<h3>#{workitem.item['name']}</h3>
 
-		<dl>
-			<dt>BIC</dt>
-			<dd>
-				<h:outputText value="#{workitem.item['dbtr.bic']}" />
-			</dd>
+		<ui:fragment rendered="#{! empty workitem.item['cdtr.iban']}">
+			<dl>
+				<dt>Cdtr IBAN</dt>
+				<dd>
+					<h:outputText value="#{workitem.item['cdtr.iban']}" />
+				</dd>
+			</dl>
+			<dl>
+				<dt>Cdtr BIC</dt>
+				<dd>
+					<h:outputText value="#{workitem.item['cdtr.bic']}" />
+				</dd>
+			</dl>
+		</ui:fragment>
+		<ui:fragment rendered="#{! empty workitem.item['dbtr.iban']}">
+			<dl>
+				<dt>Dbtr IBAN</dt>
+				<dd>
+					<h:outputText value="#{workitem.item['dbtr.iban']}" />
+				</dd>
+			</dl>
+			<dl>
+				<dt>Dbtr BIC</dt>
+				<dd>
+					<h:outputText value="#{workitem.item['dbtr.bic']}" />
+				</dd>
 
-		</dl>
+			</dl>
+		</ui:fragment>
 	</div>
+
 
 
 	<div class="imixs-form-section">
 		<h3>Zahlungen</h3>
-		<table class="">
+		<table class="" style="width:100%;">
 			<tr>
 				<th style=""></th>
 				<th style="">IBAN</th>

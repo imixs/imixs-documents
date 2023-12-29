@@ -74,6 +74,7 @@
 		<org.imixs.ml.version>2.0.0-SNAPSHOT</org.imixs.ml.version>
 		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
 		<jakarta.version>10.0.0</jakarta.version>
+		<net.sf.saxon.version>9.9.1-4</net.sf.saxon.version>
 		<apache.pdfbox.version>2.0.21</apache.pdfbox.version>
 		<custom.webResources>src/main/webapp</custom.webResources>		
 
@@ -494,6 +495,12 @@
 			<artifactId>imixs-adapters-sepa</artifactId>
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
+		</dependency>
+		<!-- xsl 2.0 support -->
+		<dependency>
+			<groupId>net.sf.saxon</groupId>
+			<artifactId>Saxon-HE</artifactId>
+			<version>${net.sf.saxon.version}</version>
 		</dependency>
 
 	</dependencies>
