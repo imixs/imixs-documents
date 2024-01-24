@@ -1,0 +1,253 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:i="http://java.sun.com/jsf/composite/imixs"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:marty="http://java.sun.com/jsf/composite/marty"
+	template="/layout/template.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+
+
+
+			<script type="text/javascript">
+				/*<![CDATA[*/
+
+				function updateStatustPanel(data) {
+					//initUserInput($('#userselector_id'));
+					if (data.status === 'success') {
+						// select with wildcard operator
+						$('[id$=status_panel]').imixsLayout();
+					}
+				}
+
+				/*]]>*/
+			</script>
+
+
+			<h:form id="import_form_id">
+
+				<div class="imixs-form">
+					<div class="imixs-header">
+						<h1>DATEV</h1>
+					</div>
+
+
+
+					<div class="imixs-body">
+
+
+						<div class="imixs-tabs">
+							<ul>
+								<li><a href="#tab-1">Import</a></li>
+								<li><a href="#tab-2">Export</a></li>
+							</ul>
+
+							<div id="tab-1">
+								<!-- **** DATEV import ***** -->
+								<div class="imixs-form-section">
+									<div class="ui-state-highlight ui-corner-all"
+										style="margin-bottom: 10px; padding: .5em;">
+										<h3>Import DATEV Stammdaten</h3>
+										<ul>
+											<li>Fügen Sie hier die zu importierende DATEV Datei an.</li>
+											<li>Die Datei muss im CSV Format vorliegen.</li>
+
+											<li>Die Datei muss zwei Header Zeilen enthalten:
+												<ol>
+													<li>Zeile: Datenart - z.B. "Kontobeschriftungen"</li>
+													<li>Zeile: Feldbezeichnungen - z.B. "Konto,
+														Kontobezeichnung"</li>
+												</ol>
+											</li>
+											<li>Fügen Sie immer nur eine Datei für den Import an!</li>
+											<li>Der Import kann einige Minuten in Anspruch nehmen.</li>
+											<li>Brechen Sie den Vorgang nicht ab und warten Sie bis
+												der Import vollständig abgeschlossen ist.</li>
+										</ul>
+									</div>
+
+									<dl>
+										<dt>Importdatei wählen:</dt>
+										<dd>
+											<i:imixsFileUpload id="file_upload_id"
+												workitem="#{kriegerImportController.importData}"
+												context_url="#{facesContext.externalContext.requestContextPath}/rest-service/workflow/workitem/#{workflowController.workitem.item['$uniqueid']}"
+												hideatachments="true" />
+											<h:panelGroup layout="block"
+												styleClass="ui-state-highlight ui-corner-all"
+												style="margin-bottom: 10px; padding: .5em;"
+												rendered="#{! empty kriegerImportController.importData.item['log']}">
+												<pre>#{kriegerImportController.importData.item['log']}</pre>
+
+											</h:panelGroup>
+										</dd>
+									</dl>
+
+									<h:commandButton
+										actionListener="#{kriegerImportController.startImport}"
+										value="Start Import">
+									</h:commandButton>
+
+								</div>
+
+							</div>
+							<div id="tab-2">
+
+								<!-- **** Export Buchunsstapel ***** -->
+								<div class="imixs-form-section">
+									<div class="ui-state-highlight ui-corner-all"
+										style="margin-bottom: 10px; padding: .5em;">
+										<h3>Export DATEV Buchungsstapel</h3>
+										<p>Definieren Sie hier den Export Workflow sowie die Reportdefinition.</p>
+									</div>
+
+									<h:panelGroup layout="block" id="report_selection"
+										styleClass="imixs-form-section-2">
+										<dl>
+											<dt>
+												DATEV Schnittstellen-Typ <span class="imixs-required">*</span>
+											</dt>
+											<dd>
+												<h:selectOneRadio
+													value="#{datevController.configuration.item['_export_type']}"
+													required="true">
+													<f:selectItem itemValue="xml"
+														itemLabel="DATEV Belegsatzschnittstelle im XML-Format"></f:selectItem>
+													<f:selectItem itemValue="csv"
+														itemLabel="DATEV-Format (csv)"></f:selectItem>
+													<f:ajax render="report_selection"/>
+												</h:selectOneRadio>
+											</dd>
+										</dl>
+
+										<dl>
+											<dt>
+												DATEV Report Definitionen <span class="imixs-required">*</span>
+											</dt>
+											<dd>
+												Belegexport:
+												<h:inputText required="true"
+													value="#{datevController.configuration.item['_report_invoices']}">
+												</h:inputText>
+
+												<h:panelGroup
+													rendered="#{'xml' eq datevController.configuration.item['_export_type']}">
+													<br />
+											Dokumente: <h:inputText required="false"
+														value="#{datevController.configuration.item['_report_documents']}">
+													</h:inputText>
+												</h:panelGroup>
+
+											</dd>
+										</dl>
+									</h:panelGroup>
+									<div class="imixs-form-section-2">
+
+										<dl>
+											<dt>
+												DATEV Model Version <span class="imixs-required">*</span>
+											</dt>
+											<dd>
+												<h:inputText required="true"
+													value="#{datevController.configuration.item['_model_version']}">
+												</h:inputText>
+											</dd>
+										</dl>
+
+										<dl>
+											<dt>
+												DATEV Initial Task <span class="imixs-required">*</span>
+											</dt>
+											<dd>
+												<h:inputText required="true"
+													value="#{datevController.configuration.item['_initial_task']}">
+												</h:inputText>
+											</dd>
+										</dl>
+
+									</div>
+
+									<div class="imixs-form-section-3">
+										
+										<dl>
+											<dt>DATEV Mandant Name</dt>
+											<dd>
+												<h:inputText required="false"
+													value="#{datevController.configuration.item['datev.client.name']}">
+												</h:inputText>
+											</dd>
+										</dl>
+
+										<dl>
+											<dt>DATEV Mandantennummer </dt>
+											<dd>
+												<h:inputText required="false"
+													value="#{datevController.configuration.item['datev.client.id']}">
+												</h:inputText>
+											</dd>
+										</dl>
+
+										<dl>
+											<dt>
+												DATEV Beraternummer <span class="imixs-required">*</span>
+											</dt>
+											<dd>
+												<h:inputText required="true"
+													value="#{datevController.configuration.item['datev.consultant.id']}">
+												</h:inputText>
+											</dd>
+										</dl>
+									</div>
+
+
+									<div class="imixs-form-section">
+										<p>
+											<span class="typcn typcn-lightbulb"></span> Der Initaltask
+											muss einen Report definieren, der die Abfrage und das Stylesheet enthält. 
+											Die Rechnungen werden automatisch nach dem
+											 Attribut "datev.client.id" sowie der Buchungsperiode gruppiert.
+										</p>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+
+					</div>
+
+
+
+
+					<div class="imixs-footer">
+						<h:outputLabel value="#{message.modified}: " />
+						<h:outputText
+							value="#{datevController.configuration.item['$modified']}">
+							<f:convertDateTime timeZone="#{message.timeZone}" type="both"
+								pattern="#{message.dateTimePattern}" />
+						</h:outputText>
+
+
+						<br />
+
+						<h:commandButton
+							actionListener="#{datevController.saveConfiguration()}"
+							value="#{message.save}">
+						</h:commandButton>
+
+						<h:commandButton value="#{message.close}" action="notes" />
+
+					</div>
+
+				</div>
+			</h:form>
+		</f:view>
+	</ui:define>
+
+
+
+</ui:composition>

@@ -496,6 +496,15 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<!-- DATEV -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-adapters-datev</artifactId>
+			<version>${org.imixs.adapter.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<!-- xsl 2.0 support -->
 		<dependency>
 			<groupId>net.sf.saxon</groupId>
