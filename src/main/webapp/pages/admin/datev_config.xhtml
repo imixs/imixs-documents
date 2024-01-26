@@ -73,21 +73,21 @@
 										<dt>Importdatei wählen:</dt>
 										<dd>
 											<i:imixsFileUpload id="file_upload_id"
-												workitem="#{kriegerImportController.importData}"
+												workitem="#{datevController.importData}"
 												context_url="#{facesContext.externalContext.requestContextPath}/rest-service/workflow/workitem/#{workflowController.workitem.item['$uniqueid']}"
 												hideatachments="true" />
 											<h:panelGroup layout="block"
 												styleClass="ui-state-highlight ui-corner-all"
 												style="margin-bottom: 10px; padding: .5em;"
-												rendered="#{! empty kriegerImportController.importData.item['log']}">
-												<pre>#{kriegerImportController.importData.item['log']}</pre>
+												rendered="#{! empty datevController.importData.item['log']}">
+												<pre>#{datevController.importData.item['log']}</pre>
 
 											</h:panelGroup>
 										</dd>
 									</dl>
 
 									<h:commandButton
-										actionListener="#{kriegerImportController.startImport}"
+										actionListener="#{datevController.startImport}"
 										value="Start Import">
 									</h:commandButton>
 
@@ -112,7 +112,7 @@
 											</dt>
 											<dd>
 												<h:selectOneRadio
-													value="#{datevController.configuration.item['_export_type']}"
+													value="#{datevController.configuration.item['export.type']}"
 													required="true">
 													<f:selectItem itemValue="xml"
 														itemLabel="DATEV Belegsatzschnittstelle im XML-Format"></f:selectItem>
@@ -130,14 +130,14 @@
 											<dd>
 												Belegexport:
 												<h:inputText required="true"
-													value="#{datevController.configuration.item['_report_invoices']}">
+													value="#{datevController.configuration.item['report.invoices']}">
 												</h:inputText>
 
 												<h:panelGroup
-													rendered="#{'xml' eq datevController.configuration.item['_export_type']}">
+													rendered="#{'xml' eq datevController.configuration.item['export.type']}">
 													<br />
 											Dokumente: <h:inputText required="false"
-														value="#{datevController.configuration.item['_report_documents']}">
+														value="#{datevController.configuration.item['report.documents']}">
 													</h:inputText>
 												</h:panelGroup>
 
@@ -152,7 +152,7 @@
 											</dt>
 											<dd>
 												<h:inputText required="true"
-													value="#{datevController.configuration.item['_model_version']}">
+													value="#{datevController.configuration.item['model.version']}">
 												</h:inputText>
 											</dd>
 										</dl>
@@ -163,7 +163,7 @@
 											</dt>
 											<dd>
 												<h:inputText required="true"
-													value="#{datevController.configuration.item['_initial_task']}">
+													value="#{datevController.configuration.item['initial.task']}">
 												</h:inputText>
 											</dd>
 										</dl>
