@@ -496,7 +496,6 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
-
 		<!-- DATEV -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -504,6 +503,13 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
+		<!-- POI Adapter -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-adapters-poi</artifactId>
+			<version>${org.imixs.adapter.version}</version>
+			<scope>compile</scope>
+		</dependency>		
 
 		<!-- xsl 2.0 support -->
 		<dependency>
