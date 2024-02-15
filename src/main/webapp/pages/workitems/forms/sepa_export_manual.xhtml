@@ -12,21 +12,8 @@
 
 		<h3>#{workitem.item['name']}</h3>
 
-		<ui:fragment rendered="#{! empty workitem.item['cdtr.iban']}">
-			<dl>
-				<dt>Cdtr IBAN</dt>
-				<dd>
-					<h:outputText value="#{workitem.item['cdtr.iban']}" />
-				</dd>
-			</dl>
-			<dl>
-				<dt>Cdtr BIC</dt>
-				<dd>
-					<h:outputText value="#{workitem.item['cdtr.bic']}" />
-				</dd>
-			</dl>
-		</ui:fragment>
-		<ui:fragment rendered="#{! empty workitem.item['dbtr.iban']}">
+
+		
 			<dl>
 				<dt>Dbtr IBAN</dt>
 				<dd>
@@ -40,7 +27,7 @@
 				</dd>
 
 			</dl>
-		</ui:fragment>
+		
 	</div>
 
 
@@ -50,6 +37,7 @@
 		<table class="" style="width:100%;">
 			<tr>
 				<th style=""></th>
+				<th style="">Zahlbar bis</th>
 				<th style="">IBAN</th>
 				<th style="">BIC</th>
 				<th style="">Betrag EUR</th>
@@ -66,13 +54,21 @@
 					         <f:param name="id" value="#{invoice.item['$uniqueid']}" />
 						</h:link> 
 					</td>
-					
-					<td>#{invoice.item['dbtr.iban']}</td>
-					<td>#{invoice.item['dbtr.bic']}</td>
+					<td>
+						<h:outputText
+							value="#{invoice.item['payment.date']}">
+						 <f:convertDateTime pattern="#{message.datePatternShort}"
+						timeZone="#{message.timeZone}" />
+					a</h:outputText>
+
+					</td>
+
+					<td>#{invoice.item['cdtr.iban']}</td>
+					<td>#{invoice.item['cdtr.bic']}</td>
 					
 				
 					<td style="text-align: right;"><h:outputText
-							value="#{invoice.item['invoice.total']}">
+							value="#{invoice.item['payment.total']}">
 							<f:convertNumber minFractionDigits="2" locale="de" />
 						</h:outputText></td>
 
@@ -82,9 +78,10 @@
 			<tr style="border-top: 1px solid #ccc;">
 				<td />
 				<td />
+				<td />
 				<td><strong>Summary</strong></td>
 				<td style="text-align: right;"><strong><h:outputText
-							value="#{sepaController.calculateSum(workitem.itemList['$workitemref'], 'invoice.total')}">
+							value="#{sepaController.calculateSum(workitem.itemList['$workitemref'], 'payment.total')}">
 							<f:convertNumber minFractionDigits="2" locale="de" />
 						</h:outputText></strong></td>
 				
