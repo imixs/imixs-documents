@@ -65,11 +65,11 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<!-- Dependency Versions -->
-		<org.imixs.workflow.version>6.0.4-SNAPSHOT</org.imixs.workflow.version>
-		<org.imixs.marty.version>5.0.0-SNAPSHOT</org.imixs.marty.version>
-		<org.imixs.office.version>5.0.0-SNAPSHOT</org.imixs.office.version>
-		<org.imixs.archive.version>3.0.1-SNAPSHOT</org.imixs.archive.version>
-		<org.imixs.adapter.version>3.0.0-SNAPSHOT</org.imixs.adapter.version>
+		<org.imixs.workflow.version>6.0.4</org.imixs.workflow.version>
+		<org.imixs.marty.version>5.0.0</org.imixs.marty.version>
+		<org.imixs.office.version>5.0.1</org.imixs.office.version>
+		<org.imixs.archive.version>3.0.1</org.imixs.archive.version>
+		<org.imixs.adapter.version>3.0.0</org.imixs.adapter.version>
 		<org.imixs.melman.version>1.0.18</org.imixs.melman.version>
 		<org.imixs.ml.version>2.0.0-SNAPSHOT</org.imixs.ml.version>
 		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
