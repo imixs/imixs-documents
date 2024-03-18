@@ -35,6 +35,7 @@
       <imixs:value><![CDATA[org.imixs.marty.profile.MailPlugin]]></imixs:value>
       <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.IntervalPlugin]]></imixs:value>
     </imixs:item>
+    <open-bpmn:auto-align/>
   </bpmn2:extensionElements>
   <bpmn2:signal id="Signal_1" name="org.imixs.ml.workflow.MLAdapter"/>
   <bpmn2:signal id="Signal_2" name="org.imixs.archive.documents.OCRDocumentAdapter"/>
@@ -530,7 +531,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<item name="action">home</item>
-<item name="space.lastname"><itemvalue>space.name</itemvalue></item>]]></imixs:value>
+<item name="space.lastname"><itemvalue>space.name</itemvalue></item>
+<ml-config name="status">suggest</ml-config>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Anweisen]]></imixs:value>
@@ -702,7 +704,8 @@ result.isValid=true;
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<item name="comment" ignore="true"/>
-<validation name="required">false</validation>]]></imixs:value>
+<validation name="required">false</validation>
+<ml-config name="status">suggest</ml-config>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Speichern]]></imixs:value>
@@ -810,7 +813,8 @@ result.isValid=true;
           <imixs:value/>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="action">home</item>]]></imixs:value>
+          <imixs:value><![CDATA[<item name="action">home</item>
+<ml-config name="status">suggest</ml-config>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Anweisen]]></imixs:value>
@@ -1243,7 +1247,9 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<item name="action">home</item>
-<validation name="required">false</validation>]]></imixs:value>
+<validation name="required">false</validation>
+<ml-config name="status">cancel</ml-config>
+]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Akzeptieren]]></imixs:value>

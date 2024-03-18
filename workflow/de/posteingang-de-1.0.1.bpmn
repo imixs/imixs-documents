@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- origin at X=0.0 Y=0.0 --><bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:tl="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.4.RC1-v20220528-0836-B1" id="Definitions_1" targetNamespace="http://www.imixs.org/bpmn2">
+<!-- origin at X=0.0 Y=0.0 --><bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:open-bpmn="http://open-bpmn.org/XMLSchema" xmlns:tl="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.4.RC1-v20220528-0836-B1" id="Definitions_1" targetNamespace="http://www.imixs.org/bpmn2">
   <bpmn2:extensionElements>
     <imixs:item name="txtfieldmapping" type="xs:string">
       <imixs:value><![CDATA[Ersteller | namCreator]]></imixs:value>
@@ -35,6 +35,7 @@
     <imixs:item name="txtworkflowmodelversion" type="xs:string">
       <imixs:value><![CDATA[posteingang-de-1.0]]></imixs:value>
     </imixs:item>
+    <open-bpmn:auto-align/>
   </bpmn2:extensionElements>
   <bpmn2:signal id="Signal_1" name="org.imixs.archive.documents.OCRDocumentAdapter"/>
   <bpmn2:signal id="Signal_2" name="org.imixs.ml.workflow.MLAdapter"/>
@@ -65,6 +66,7 @@ Possible ImageTypes are:
  * RGB      Red, Green, Blue
 </bpmn2:text>
     </bpmn2:textAnnotation>
+    <bpmn2:participant id="participant_GUMWGQ" name="Default Process" processRef="process_2"/>
   </bpmn2:collaboration>
   <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Posteingang">
     <bpmn2:laneSet id="LaneSet_1" name="Lane Set 1">
@@ -326,7 +328,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<item name="comment" ignore="true"/>
 <tika name="options">X-Tika-OCRLanguage=eng+deu</tika>
-<tika name="options">X-Tika-PDFocrStrategy=ocr_only</tika>
+<tika name="options">X-Tika-PDFocrStrategy=AUTO</tika>
 <tika name="filepattern">(PDF|pdf)$</tika>
 <tika name="maxpdfpages">10</tika>]]></imixs:value>
         </imixs:item>
@@ -1332,19 +1334,19 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmndi:BPMNShape bpmnElement="ExclusiveGateway_1" id="BPMNShape_ExclusiveGateway_1" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="401.0" y="296.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_3" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="16.0" width="100.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="369.0" y="335.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_2" id="BPMNShape_IntermediateCatchEvent_2">
         <dc:Bounds height="36.0" width="36.0" x="490.0" y="170.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_5" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="108.0" x="454.0" y="206.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="458.0" y="206.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="BPMNShape_StartEvent_1">
         <dc:Bounds height="36.0" width="36.0" x="170.0" y="303.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_9" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="25.0" x="175.0" y="339.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="137.5" y="339.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="Task_2" id="BPMNShape_Task_2">
@@ -1356,19 +1358,19 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_3" id="BPMNShape_IntermediateCatchEvent_3">
         <dc:Bounds height="36.0" width="36.0" x="721.0" y="170.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_14" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="27.0" x="725.0" y="206.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="688.5" y="206.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_4" id="BPMNShape_IntermediateCatchEvent_4">
         <dc:Bounds height="36.0" width="36.0" x="791.0" y="170.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_15" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="57.0" x="781.0" y="206.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="759.5" y="206.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_5" id="BPMNShape_IntermediateCatchEvent_5">
         <dc:Bounds height="36.0" width="36.0" x="890.0" y="170.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_16" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="42.0" width="108.0" x="854.0" y="206.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="858.0" y="206.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="Task_4" id="BPMNShape_Task_4">
@@ -1380,13 +1382,13 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmndi:BPMNShape bpmnElement="ExclusiveGateway_2" id="BPMNShape_ExclusiveGateway_2" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="986.0" y="296.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_23" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="16.0" width="100.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="954.0" y="335.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="EndEvent_1" id="BPMNShape_EndEvent_1">
         <dc:Bounds height="36.0" width="36.0" x="1238.0" y="303.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_26" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="22.0" x="1245.0" y="339.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1206.0" y="339.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="Task_5" id="BPMNShape_Task_5">
@@ -1404,67 +1406,67 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_6" id="BPMNShape_IntermediateCatchEvent_6">
         <dc:Bounds height="36.0" width="36.0" x="490.0" y="303.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_31" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="39.0" x="489.0" y="339.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="458.5" y="339.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_7" id="BPMNShape_IntermediateCatchEvent_7">
         <dc:Bounds height="36.0" width="36.0" x="491.0" y="438.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_33" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="58.0" x="480.0" y="474.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="459.0" y="474.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_8" id="BPMNShape_IntermediateCatchEvent_8">
         <dc:Bounds height="36.0" width="36.0" x="721.0" y="303.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_37" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="27.0" x="725.0" y="339.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="688.5" y="339.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_9" id="BPMNShape_IntermediateCatchEvent_9">
         <dc:Bounds height="36.0" width="36.0" x="791.0" y="303.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_38" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="57.0" x="781.0" y="339.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="759.5" y="339.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_10" id="BPMNShape_IntermediateCatchEvent_10">
         <dc:Bounds height="36.0" width="36.0" x="721.0" y="438.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_41" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="27.0" x="725.0" y="474.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="688.5" y="474.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_11" id="BPMNShape_IntermediateCatchEvent_11">
         <dc:Bounds height="36.0" width="36.0" x="791.0" y="438.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_42" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="57.0" x="781.0" y="474.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="759.5" y="474.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_12" id="BPMNShape_IntermediateCatchEvent_12">
         <dc:Bounds height="36.0" width="36.0" x="890.0" y="303.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_45" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="14.0" width="67.0" x="875.0" y="339.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="858.5" y="339.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_13" id="BPMNShape_IntermediateCatchEvent_13">
         <dc:Bounds height="36.0" width="36.0" x="890.0" y="438.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_46" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="28.0" width="58.0" x="879.0" y="474.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="858.0" y="474.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BoundaryEvent_2" id="BPMNShape_BoundaryEvent_2">
         <dc:Bounds height="36.0" width="36.0" x="609.0" y="278.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_13" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="16.0" width="100.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="577.0" y="317.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BoundaryEvent_1" id="BPMNShape_BoundaryEvent_1">
         <dc:Bounds height="36.0" width="36.0" x="608.0" y="145.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_11" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="16.0" width="100.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="576.0" y="184.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BoundaryEvent_3" id="BPMNShape_BoundaryEvent_3">
         <dc:Bounds height="36.0" width="36.0" x="609.0" y="413.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_19" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="16.0" width="100.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="577.0" y="452.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="TextAnnotation_1" id="BPMNShape_TextAnnotation_1">
@@ -1476,13 +1478,13 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_1" id="BPMNShape_IntermediateCatchEvent_1">
         <dc:Bounds height="36.0" width="36.0" x="278.0" y="209.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_54">
-          <dc:Bounds height="14.0" width="40.0" x="276.0" y="245.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="246.0" y="245.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_14" id="BPMNShape_IntermediateCatchEvent_14">
         <dc:Bounds height="36.0" width="36.0" x="170.0" y="209.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_55">
-          <dc:Bounds height="16.0" width="100.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="138.0" y="248.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1" id="BPMNEdge_SequenceFlow_1" sourceElement="BPMNShape_ExclusiveGateway_1" targetElement="BPMNShape_IntermediateCatchEvent_2">
