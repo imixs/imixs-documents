@@ -75,7 +75,7 @@
 		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
 		<jakarta.version>10.0.0</jakarta.version>
 		<net.sf.saxon.version>9.9.1-4</net.sf.saxon.version>
-		<apache.pdfbox.version>2.0.21</apache.pdfbox.version>
+		<apache.pdfbox.version>2.0.24</apache.pdfbox.version>
 		<custom.webResources>src/main/webapp</custom.webResources>		
 
 		<!-- Environment Settings -->
