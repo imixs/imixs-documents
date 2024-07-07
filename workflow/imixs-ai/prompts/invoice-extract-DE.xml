@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+  <prompt_options>{"max_tokens": 4096, "temperature": 0 }</prompt_options>
+	<prompt><![CDATA[[INST]Du bist Sachbearbeiter in einem Software Unternehmen. Deine Aufgabe ist es Eingangsrechnungen zu prüfen. [/INST]
+
+<itemvalue>invoice.summary</itemvalue>
+
+</s>[INST]Übertrage die Rechnungsdaten in ein XML Objekt mit der folgenden Struktur:
+
+<invoice>
+  <cdtr.name>...</cdtr.name>
+  <invoice.number>...</invoice.number> 
+  <invoice.date>2024-12-31</invoice.date>
+  <payment.date>2024-12-31</payment.date>
+  <invoice.total type="double">1234.00</invoice.total>
+  <cdtr.iban>...</cdtr.iban>
+  <cdtr.bic>...</cdtr.bic>
+  <invoice.position>
+    <order>...</order>
+    <description>...</description>
+    <costtype>...</costtype>
+    <total type="double">0.00</total>
+    <tax type="double">0.00</tax>
+  </invoice.position>
+  <invoice.position>
+    <order>...</order>
+    <description>...</description>
+    <costtype>...</costtype>
+    <total type="double">0.00</total>
+    <tax type="double">0.00</tax>
+  </invoice.position>
+</invoice>
+
+
+Erstelle nur das XML Objekt. Verwende nur die in diesem Beispiel XML angegebenen Struktur und erzeuge keine anderen XML Tags. Erstelle keine Erklärungen oder Kommentare.
+Formatiere Datums Werte (invoice.date, payment.date) im ISO 8601 Format (YYYY-MM-DD). 
+Formatiere Zahlen und Beträge (type="double") nach ISO 4217. 
+
+
+Übertrage die einzelnen Rechnugsdaten unter berücksichtigung der folgenden Vorschläge für ein Mapping auf die XML Tags:
+
+ - Firmenname ==> "cdtr.name"
+
+ - Rechnungsnummer / Beleg-Nr ==> "invoice.number"
+ - Rechnungsdatum / Datum ==> "invoice.date"
+ - Betrag / Gesamtsumme / Rechnungssummme / Brutto ==> "invoice.total"
+
+ - IBAN ==> "cdtr.iban"
+ - BIC oder SWIFT ==> "cdtr.bic"
+ - Zahlungsdatum / Zahlbar bis ==> "payment.date"
+
+(Die Zahlungsinformationen können mehrere IBAN und BIC Nummern für unterschiedliche Banken enthalten. Erstelle in diesem Fall eine Liste.)
+
+** "invoice.positions"
+ - Auftragsnummer / Bestellnummer / Kunden-Referenz ==> "order"
+ - Leistungsart, Beschreibung  ==> "description"
+ - Kostenart ==> "costtype"
+ - Gesamtpreis der Einzelleistung ==> "total"
+ - Steuer (falls angegeben) ==> "tax"
+
+<<EXAMPLES_XML>>
+
+[/INST]
+
+]]>
+</prompt>
+</PromptDefinition>    
