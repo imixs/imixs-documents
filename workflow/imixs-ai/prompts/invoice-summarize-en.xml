@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+	<prompt_options>{"n_predict": 4096, "temperature": 0}</prompt_options>
+	<prompt><![CDATA[[INST]You are a clerk at a logistic company. Your task is to check incoming invoices. [/INST]
+
+<FILECONTEXT>^.+\.([pP][dD][fF])$</FILECONTEXT>
+
+</s>[INST]
+
+Summarize the data from this invoice document: 
+
+ - Company information
+ - General Billing data
+ - Invoice total information
+ - Payment summary
+ - Invoice items
+
+The company name is the name of the company that issued the invoice document, not the recipient. The company name is usually at the beginning or end of the invoice document.
+
+Summarize the invoice lines in a table.
+Use only the default values and do not perform any calculations, summing or changes to these values yourself. Format numbers and amounts according to ISO 4217.
+
+[/INST]
+]]>
+</prompt>
+</PromptDefinition>    

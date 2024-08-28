@@ -29,12 +29,7 @@ services:
       OCR_SERVICE_MODE: "MODEL"
       #OCR_STRATEGY: "NO_OCR, OCR_ONLY, OCR_AND_TEXT_EXTRACTION, AUTO (default)" 
       OCR_STRATEGY: "AUTO"
-      ML_SERVICE_ENDPOINT: "http://imixs-ml-spacy:8000/"
-      ML_MODEL: "invoice-de-0.1.0"
-      # Enable Training Scheduler
-      ML_TRAINING_SCHEDULER_ENABLED: "true"
-      ML_TRAINING_SCHEDULER_INTERVAL: "10000"
-      ML_TRAINING_SCHEDULER_INITIALDELAY: "60000" 
+
      # Signature
       SIGNATURE_SERVICE_ENDPOINT: "http://imixssignature:8080/api"
 

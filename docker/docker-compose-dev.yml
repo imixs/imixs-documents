@@ -33,32 +33,26 @@ services:
       OCR_SERVICE_MODE: "MODEL"
       #OCR_STRATEGY: "NO_OCR, OCR_ONLY, OCR_AND_TEXT_EXTRACTION, AUTO (default)" 
       OCR_STRATEGY: "AUTO"
-      ML_SERVICE_ENDPOINT: "http://imixs-ml-spacy:8000/"
-      #ML_MODEL: "invoice-de-0.1.0"
-      ML_MODEL: "invoice-de-0.2.0"
-      # Enable Training Scheduler
-      ML_TRAINING_SCHEDULER_ENABLED: "true"
-      ML_TRAINING_SCHEDULER_INTERVAL: "10000"
-      ML_TRAINING_SCHEDULER_INITIALDELAY: "60000" 
-
-      # Signature
-      #SIGNATURE_SERVICE_ENDPOINT: "http://imixssignature:8080/api"
-
       # Collabora integration
       WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
       WOPI_DISCOVERY_ENDPOINT: "http://collabora:9980/hosting/discovery"
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
       COLLABORA_CONVERTER_URL: "http://collabora:9980/lool/convert-to/"
 
+      # Imixs-Archive 
+      # ARCHIVE_SERVICE_ENDPOINT: "http://imixs-archive:8080/api"
+
+      # Imixs-AI 
+      # LLM_SERVICE_ENDPOINT_USER: "admin"
+      # LLM_SERVICE_ENDPOINT_PASSWORD: "xxxxx"
+
+
     ports:
       - "8080:8080"
       - "9990:9990"
       - "8787:8787"
     volumes:
-      # openliberty
-      # - ./deployments:/config/dropins/ 
       - ./deployments:/opt/jboss/wildfly/standalone/deployments/
-      - ./deployments/office-templates/:/wopi/templates/
 
 
 #######################
@@ -71,22 +65,6 @@ services:
       TZ: "Europe/Berlin"
     ports:
       - "9998:9998"
-
-
-#######################
-# Imixs-ML-spaCy Service
-#######################
-  imixs-ml-spacy: 
-    image: imixs/imixs-ml-spacy:latest
-    environment:
-      PYTHONUNBUFFERED: 1
-      TZ: "Europe/Berlin"
-      MODEL_LANGUAGE: "de"
-      MODEL_PATH: "models/" 
-    ports:
-      - "8000:8000"  
-    volumes:
-      - ../src/models/:/usr/src/app/models/
 
 
   #######################

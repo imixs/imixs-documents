@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+  <prompt_options>{"n_predict": 4096, "temperature": 0 }</prompt_options>
+  <prompt><![CDATA[[INST]You are a clerk at a logistic company. Your task is to check incoming invoices. [/INST]
+
+<itemvalue>invoice.summary</itemvalue>
+
+</s>[INST]Transfer the invoice data into an XML object with the following structure:
+
+<invoice>
+  <cdtr.name>...</cdtr.name>
+  <invoice.number>...</invoice.number> 
+  <invoice.date>2024-12-31</invoice.date>
+  <payment.date>2024-12-31</payment.date>
+  <invoice.total type="double">1234.00</invoice.total>
+  <cdtr.iban>...</cdtr.iban>
+  <cdtr.bic>...</cdtr.bic>
+</invoice>
+
+Transfer the individual invoice data to the XML tags, taking into account the following suggestions for mapping:
+
+ - Company name ==> "cdtr.name" (the name of the company that issued the invoice document, not the recipient)
+ - Invoice number ==> "invoice.number"
+ - Invoice Date ==> "invoice.date"
+ - Total ==> "invoice.total"  (in EUR or if not available in USD or PLN)
+ - IBAN ==> "cdtr.iban"
+ - BIC or SWIFT ==> "cdtr.bic"
+ - Payment date / Due date ==> "payment.date"
+
+Note: Output only the XML object! Don't add explanations or comments. Use only the XML structure specified in this example and do not create any other XML tags. If you don't have data for some fields, leave the corresponding XML tags blank. Format date values (invoice.date, payment.date) into the ISO 8601 format (YYYY-MM-DD). Format numbers and amounts (type="double") according to ISO 4217. 
+
+<<EXAMPLES_XML>>
+
+[/INST]
+
+]]>
+</prompt>
+</PromptDefinition>    
