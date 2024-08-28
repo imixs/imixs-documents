@@ -65,7 +65,7 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<!-- Dependency Versions -->
-		<org.imixs.workflow.version>6.0.4</org.imixs.workflow.version>
+		<org.imixs.workflow.version>6.0.7</org.imixs.workflow.version>
 		<org.imixs.marty.version>5.0.0</org.imixs.marty.version>
 		<org.imixs.office.version>5.0.2</org.imixs.office.version>
 		<org.imixs.archive.version>3.0.1</org.imixs.archive.version>
