@@ -16,7 +16,8 @@ services:
 # Imixs-Documents
 #######################
   imixs-documents:
-    image: imixs/imixs-documents:latest
+    #image: imixs/imixs-documents:latest
+    image: imixs/imixs-office-workflow
     depends_on:
       - db
     environment:
@@ -43,8 +44,8 @@ services:
       # ARCHIVE_SERVICE_ENDPOINT: "http://imixs-archive:8080/api"
 
       # Imixs-AI 
-      # LLM_SERVICE_ENDPOINT_USER: "admin"
-      # LLM_SERVICE_ENDPOINT_PASSWORD: "xxxxx"
+      LLM_SERVICE_ENDPOINT_USER: "admin"
+      LLM_SERVICE_ENDPOINT_PASSWORD: "xxxxx"
 
 
     ports:
@@ -122,13 +123,13 @@ services:
 #    volumes:
 #      - ./keys:/opt/keys/
 
-#######################
-# Imixs Admin Client
-#######################
-  imixsadmin:
-    image: imixs/imixs-admin
-    ports:
-      - "8888:8080"
+# #######################
+# # Imixs Admin Client
+# #######################
+#   imixsadmin:
+#     image: imixs/imixs-admin
+#     ports:
+#       - "8888:8080"
 
 volumes:
   dbdata: 

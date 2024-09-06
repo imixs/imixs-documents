@@ -17,3 +17,4 @@ target/
 docker/deployments/
 docker/keys
 
+docker/docker-compose-imixs.yaml

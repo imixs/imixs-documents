@@ -6,7 +6,7 @@
 	<artifactId>imixs-documents</artifactId>
 	<packaging>war</packaging>
 	<name>Imixs Documents</name>
-	<version>2.1.0</version>
+	<version>2.2.0</version>
 	<description>Imixs Documents - A collaboration platform for documents. </description>
 	<organization>
 		<name>Imixs Software Solutions GmbH</name>
@@ -65,41 +65,42 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<!-- Dependency Versions -->
-		<org.imixs.workflow.version>6.0.7</org.imixs.workflow.version>
-		<org.imixs.marty.version>5.0.0</org.imixs.marty.version>
-		<org.imixs.office.version>5.0.2</org.imixs.office.version>
-		<org.imixs.archive.version>3.0.1</org.imixs.archive.version>
+		<jakarta.version>10.0.0</jakarta.version>
+		<org.imixs.workflow.version>6.1.0-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.archive.version>3.1.0-SNAPSHOT</org.imixs.archive.version> 
+		<org.imixs.office.version>5.1.0-SNAPSHOT</org.imixs.office.version>
+		
+	 <org.imixs.marty.version>5.0.1</org.imixs.marty.version> 
 		<org.imixs.adapter.version>3.0.1</org.imixs.adapter.version>
-		<org.imixs.melman.version>2.0.1</org.imixs.melman.version>
+	
 		<org.imixs.ai.version>1.1.0-SNAPSHOT</org.imixs.ai.version>
 		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
-		<jakarta.version>10.0.0</jakarta.version>
 		<net.sf.saxon.version>9.9.1-4</net.sf.saxon.version>
 		<apache.pdfbox.version>2.0.24</apache.pdfbox.version>
 		<custom.webResources>src/main/webapp</custom.webResources>		
-
+		<imixs-office.applicationname>imixs-documents</imixs-office.applicationname>
 		<!-- Environment Settings -->
 		<imixs-office.contextroot>/</imixs-office.contextroot>
 		<imixs-office.realm>imixsrealm</imixs-office.realm>
 		<imixs-office.jta-data-source>jdbc/office</imixs-office.jta-data-source>
 		<imixs-office.IndexDir>lucene/office-workflow-index</imixs-office.IndexDir>
-		<!-- jndi Mail res-ref name -->
+		<!-- jndi Mail res-ref name
+		java:/mail/org.imixs.workflow.mail	
+		 -->
 		<imixs-mail-res-ref-name>java:/mail/org.imixs.workflow.mail</imixs-mail-res-ref-name>
-
-		<!-- imixs-github-repo on github - see ~/.m2/settings.xml -->
-		<github.global.server>imixs-github-repo</github.global.server>
 
 		<!-- Wildfly unpack war -->
 		<custom.unpackTypes>war</custom.unpackTypes>
+		<jakarta.faces.project_stage>Production</jakarta.faces.project_stage>
 	</properties>
 
-
 	<repositories>
-		<!-- Sonatype Snapshot repository -->
 		<repository>
-			<id>sonatype-snaptshots</id>
-			<name>Sonatype Snapshot repository</name>
-			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+			<id>oss-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 
@@ -250,6 +251,7 @@
 			</resource>
 		</resources>
 		<plugins>
+
 			<!-- use JDK settings for compiling -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -258,8 +260,32 @@
 					<source>${java.source}</source>
 					<target>${java.target}</target>
 				</configuration>
-			</plugin>	
+			</plugin>
 
+			<!-- issue #572  
+			 	hack for:
+			https://stackoverflow.com/questions/75116023/unable-to-make-protected-final-java-lang-class-java-lang-classloader-defineclass
+			 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.3.1</version>
+				<executions>
+					<execution>
+						<id>default-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<argLine>
+								--add-opens java.base/java.lang=ALL-UNNAMED
+							</argLine>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.0</version>
@@ -282,9 +308,11 @@
 						<overlay>
 							<groupId>org.imixs.workflow</groupId>
 							<artifactId>imixs-office-workflow-app</artifactId>
+							<!-- 
 							<excludes>
 								<exclude>WEB-INF/lib/*.jar</exclude>
 							</excludes>
+							-->
 						</overlay>
 					</overlays>
 				</configuration>
@@ -402,6 +430,8 @@
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 
+		
+
 		<!-- Marty -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -410,6 +440,7 @@
 			<version>${org.imixs.marty.version}</version>
 			<scope>compile</scope>
 		</dependency>
+		
 
 		<!-- Imixs-Office-Workflow Overlay -->
 		<dependency>
@@ -459,7 +490,7 @@
 			<scope>compile</scope>
 		</dependency>		
 
-		<!-- Imixs-QR-Code -->
+		<!-- Imixs-QR-Code  -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-qrcode</artifactId>
@@ -481,14 +512,14 @@
 			<scope>compile</scope>
 		</dependency>
 			
-		<!-- Imixs Signature Feature -->
+		<!-- Imixs Signature Feature
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-signature-api</artifactId>
 			<version>${org.imixs.signature.version}</version>
 			<scope>compile</scope>
 		</dependency>
-
+ 		-->
 		<!-- SEPA -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -496,6 +527,7 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
+		
 		<!-- DATEV -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -503,22 +535,21 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		<!-- POI Adapter -->
+		
+		<!-- POI Adapter -->	
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-poi</artifactId>
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
-		</dependency>		
-
+		</dependency>	
+		
 		<!-- xsl 2.0 support -->
 		<dependency>
 			<groupId>net.sf.saxon</groupId>
 			<artifactId>Saxon-HE</artifactId>
 			<version>${net.sf.saxon.version}</version>
 		</dependency>
-
-		
-
+	
 	</dependencies>
 </project>
