@@ -613,7 +613,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<imixs-ai name="PROMPT">
- <endpoint>https://llama.cpp.foo.com/</endpoint>
+ <endpoint><propertyvalue>LLM_SERVICE_ENDPOINT</propertyvalue></endpoint>
  <result-event>XML</result-event>
  <debug>true</debug>
 </imixs-ai>
@@ -688,8 +688,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
 <invoice>
   <cdtr.name>...</cdtr.name>
   <invoice.number>...</invoice.number> 
-  <invoice.date>2024-12-31</invoice.date>
-  <payment.date>2024-12-31</payment.date>
+  <invoice.date type="date">2024-12-31</invoice.date>
+  <payment.date type="date">2024-12-31</payment.date>
   <invoice.total type="double">1234.00</invoice.total>
   <cdtr.iban>...</cdtr.iban>
   <cdtr.bic>...</cdtr.bic>
@@ -871,7 +871,7 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<validation name="required">false</validation>
 <imixs-ai name="PROMPT">
- <endpoint>https://llama.cpp.foo.com/</endpoint>
+ <endpoint><propertyvalue>LLM_SERVICE_ENDPOINT</propertyvalue></endpoint>
  <result-event>XML</result-event>
 </imixs-ai>
 
@@ -999,7 +999,7 @@ Note: Do not generate any other information instead of the XML object. Do not ge
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<imixs-ai name="PROMPT">
- <endpoint>https://llama.cpp.foo.com/</endpoint>
+  <endpoint><propertyvalue>LLM_SERVICE_ENDPOINT</propertyvalue></endpoint>
   <result-item>invoice.summary</result-item>
   <debug>true</debug>
 </imixs-ai>

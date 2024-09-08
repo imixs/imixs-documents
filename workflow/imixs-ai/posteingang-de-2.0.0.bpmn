@@ -33,7 +33,7 @@
       <imixs:value><![CDATA[org.imixs.marty.profile.MailPlugin]]></imixs:value>
     </imixs:item>
     <imixs:item name="txtworkflowmodelversion" type="xs:string">
-      <imixs:value><![CDATA[posteingang-en-2.0]]></imixs:value>
+      <imixs:value><![CDATA[posteingang-de-2.0]]></imixs:value>
     </imixs:item>
     <open-bpmn:auto-align>true</open-bpmn:auto-align>
   </bpmn2:extensionElements>
@@ -688,8 +688,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
 <invoice>
   <cdtr.name>...</cdtr.name>
   <invoice.number>...</invoice.number> 
-  <invoice.date>2024-12-31</invoice.date>
-  <payment.date>2024-12-31</payment.date>
+  <invoice.date type="date">2024-12-31</invoice.date>
+  <payment.date type="date">2024-12-31</payment.date>
   <invoice.total type="double">1234.00</invoice.total>
   <cdtr.iban>...</cdtr.iban>
   <cdtr.bic>...</cdtr.bic>
@@ -871,6 +871,7 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<validation name="required">false</validation>
 <imixs-ai name="PROMPT">
+ <debug>true</debug>
  <endpoint><propertyvalue>LLM_SERVICE_ENDPOINT</propertyvalue></endpoint>
  <result-event>XML</result-event>
 </imixs-ai>

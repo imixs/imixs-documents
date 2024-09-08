@@ -10,8 +10,8 @@
 <invoice>
   <cdtr.name>...</cdtr.name>
   <invoice.number>...</invoice.number> 
-  <invoice.date>2024-12-31</invoice.date>
-  <payment.date>2024-12-31</payment.date>
+  <invoice.date type="date">2024-12-31</invoice.date>
+  <payment.date type="date">2024-12-31</payment.date>
   <invoice.total type="double">1234.00</invoice.total>
   <cdtr.iban>...</cdtr.iban>
   <cdtr.bic>...</cdtr.bic>
