@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<imixs-form>
+    <imixs-form-section columns="4" label="Messwerte">
+        <item name="m1" type="text"  label="Ankerpunkte:" required="true" />
+        <item name="m2" type="text"  label="Wasserabfuhr:" required="true" />
+        <item name="m3" type="text"  label="Korrosionsschutz:" required="true" />
+        <item name="m4" type="text"  label="Blitzschutz:" required="true" />
+      </imixs-form-section>
+     
+
+  <imixs-form-section columns="1" label="Anlagendaten">
+    <item name="name" type="text"  label="Anlagennummer:" required="true" readonly="true" />
+  </imixs-form-section>
+  <imixs-form-section columns="2" label="">
+     <item name="" type="custom" path="spaceref"  label="Standort:"  readonly="true"/>
+     <item name="reminder" type="date"  label="Wiedervorlage:" readonly="true" />
+  </imixs-form-section>
+
+
+</imixs-form>
