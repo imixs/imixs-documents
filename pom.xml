@@ -67,17 +67,19 @@
 		<!-- Dependency Versions -->
 		<jakarta.version>10.0.0</jakarta.version>
 		<org.imixs.workflow.version>6.1.0-SNAPSHOT</org.imixs.workflow.version>
-		<org.imixs.archive.version>3.1.0-SNAPSHOT</org.imixs.archive.version> 
+		<org.imixs.archive.version>3.1.0-SNAPSHOT</org.imixs.archive.version>
 		<org.imixs.office.version>5.1.0-SNAPSHOT</org.imixs.office.version>
-		
-	 <org.imixs.marty.version>5.0.1</org.imixs.marty.version> 
+		<org.imixs.marty.version>5.0.1</org.imixs.marty.version>
 		<org.imixs.adapter.version>3.0.1</org.imixs.adapter.version>
-	
 		<org.imixs.ai.version>1.1.0-SNAPSHOT</org.imixs.ai.version>
 		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
 		<net.sf.saxon.version>9.9.1-4</net.sf.saxon.version>
 		<apache.pdfbox.version>2.0.24</apache.pdfbox.version>
-		<custom.webResources>src/main/webapp</custom.webResources>		
+		<!-- test dependencies -->
+		<junit.jupiter.version>5.9.2</junit.jupiter.version>
+		<mockito.version>5.8.0</mockito.version>
+
+		<custom.webResources>src/main/webapp</custom.webResources>
 		<imixs-office.applicationname>imixs-documents</imixs-office.applicationname>
 		<!-- Environment Settings -->
 		<imixs-office.contextroot>/</imixs-office.contextroot>
@@ -92,6 +94,8 @@
 		<!-- Wildfly unpack war -->
 		<custom.unpackTypes>war</custom.unpackTypes>
 		<jakarta.faces.project_stage>Production</jakarta.faces.project_stage>
+
+
 	</properties>
 
 	<repositories>
@@ -262,6 +266,14 @@
 				</configuration>
 			</plugin>
 
+			<!-- Testing JUnit 5 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+
+
 			<!-- issue #572  
 			 	hack for:
 			https://stackoverflow.com/questions/75116023/unable-to-make-protected-final-java-lang-class-java-lang-classloader-defineclass
@@ -285,7 +297,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.0</version>
@@ -328,7 +340,6 @@
 			</plugin>
 
 
-
 			<plugin>
 				<groupId>org.imixs.maven</groupId>
 				<artifactId>manik-hotdeploy-maven-plugin</artifactId>
@@ -359,7 +370,7 @@
 					</hotdeployments>
 
 				</configuration>
-			</plugin>	
+			</plugin>
 
 			<!-- relase management -->
 			<plugin>
@@ -375,24 +386,24 @@
 	<dependencies>
 		<!-- Jakarta EE -->
 		<dependency>
-		    <groupId>jakarta.platform</groupId>
-		    <artifactId>jakarta.jakartaee-api</artifactId>
-		    <version>${jakarta.version}</version>
-		    <scope>provided</scope>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>${jakarta.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<!-- JDK 11 - XML Bind -->
 		<dependency>
-		    <groupId>org.glassfish.jaxb</groupId>
-		    <artifactId>jaxb-runtime</artifactId>
-		    <version>3.0.0</version>
-		    <scope>test</scope>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
 		</dependency>
-    	<dependency>
-	       <groupId>jakarta.xml.bind</groupId>
-	       <artifactId>jakarta.xml.bind-api</artifactId>
-	       <version>3.0.0</version>
-	       <scope>test</scope>
-	    </dependency>	
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
 
 
 		<!-- Imixs Workflow -->
@@ -430,7 +441,6 @@
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 
-		
 
 		<!-- Marty -->
 		<dependency>
@@ -440,7 +450,7 @@
 			<version>${org.imixs.marty.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 
 		<!-- Imixs-Office-Workflow Overlay -->
 		<dependency>
@@ -488,7 +498,7 @@
 			<artifactId>imixs-ai-workflow</artifactId>
 			<version>${org.imixs.ai.version}</version>
 			<scope>compile</scope>
-		</dependency>		
+		</dependency>
 
 		<!-- Imixs-QR-Code  -->
 		<dependency>
@@ -511,7 +521,7 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
-			
+
 		<!-- Imixs Signature Feature
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -527,7 +537,7 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- DATEV -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -535,21 +545,70 @@
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		<!-- POI Adapter -->	
+
+		<!-- POI Adapter -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-poi</artifactId>
 			<version>${org.imixs.adapter.version}</version>
 			<scope>compile</scope>
-		</dependency>	
-		
+		</dependency>
+
 		<!-- xsl 2.0 support -->
 		<dependency>
 			<groupId>net.sf.saxon</groupId>
 			<artifactId>Saxon-HE</artifactId>
 			<version>${net.sf.saxon.version}</version>
 		</dependency>
-	
+
+
+		<!-- Testing -->
+
+		<!-- JUnit 5 Dependencies -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Mockito Dependencies -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>org.eclipse.parsson</groupId>
+			<artifactId>jakarta.json</artifactId>
+			<version>1.1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 </project>

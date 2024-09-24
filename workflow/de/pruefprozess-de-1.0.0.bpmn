@@ -726,7 +726,6 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_hW9GKg"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_ggL1Rw</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_hky8WA</bpmn2:outgoing>
       <bpmn2:outgoing>sequenceFlow_XkYHAA</bpmn2:outgoing>
     </bpmn2:task>
@@ -773,6 +772,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
       <bpmn2:incoming>sequenceFlow_b66QTg</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_q6EXYQ</bpmn2:outgoing>
       <bpmn2:outgoing>sequenceFlow_YHl0hQ</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_ggL1Rw</bpmn2:incoming>
     </bpmn2:task>
     <bpmn2:intermediateCatchEvent id="event_Atsexw" imixs:activityid="110" name="OK">
       <bpmn2:extensionElements>
@@ -854,7 +854,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
     <bpmn2:sequenceFlow id="sequenceFlow_9C8eag" sourceRef="task_7xxGYA" targetRef="event_lfK3GA">
       <bpmn2:documentation id="documentation_uye7Eg"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_ggL1Rw" sourceRef="event_lfK3GA" targetRef="task_sE0aWQ">
+    <bpmn2:sequenceFlow id="sequenceFlow_ggL1Rw" sourceRef="event_lfK3GA" targetRef="task_qxGF9A">
       <bpmn2:documentation id="documentation_WiyPKA"/>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_hky8WA" sourceRef="task_sE0aWQ" targetRef="event_Atsexw">
@@ -1185,6 +1185,9 @@ if (workitem.getItemValueString('txtcomment') == '') {
    result.errorMessage='Bitte geben Sie einen Kommentar ein.';
 }]]></imixs:value>
         </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="action">home</item>]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_OQBA6A"><![CDATA[Prüfung nicht OK]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_tZrmew</bpmn2:incoming>
@@ -1320,6 +1323,14 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:dataObject id="dataObject_0nYC1A" name="Form">
       <bpmn2:documentation id="documentation_0WuO0g"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
+    <imixs-form-section columns="4" label="Messwerte">
+        <item name="m1" type="text"  label="Ankerpunkte:" required="true" />
+        <item name="m2" type="text"  label="Wasserabfuhr:" required="true" />
+        <item name="m3" type="text"  label="Korrosionsschutz:" required="true" />
+        <item name="m4" type="text"  label="Blitzschutz:" required="true" />
+      </imixs-form-section>
+     
+
   <imixs-form-section columns="1" label="Anlagendaten">
     <item name="name" type="text"  label="Anlagennummer:" required="true" readonly="true" />
   </imixs-form-section>
@@ -1570,9 +1581,11 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <di:waypoint x="980.0" y="225.0"/>
         <di:waypoint x="1027.0" y="225.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ggL1Rw" id="BPMNEdge_rEM4RA" sourceElement="BPMNShape_UMaiqA" targetElement="BPMNShape_gaKihg">
-        <di:waypoint x="1063.0" y="225.0"/>
-        <di:waypoint x="1120.0" y="225.0"/>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ggL1Rw" id="BPMNEdge_rEM4RA" sourceElement="BPMNShape_UMaiqA" targetElement="BPMNShape_tzvo8g">
+        <di:waypoint x="1045.0" y="207.0"/>
+        <di:waypoint x="1045.0" y="103.0"/>
+        <di:waypoint x="1405.0" y="103.0"/>
+        <di:waypoint x="1405.0" y="200.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_hky8WA" id="BPMNEdge_124UWQ" sourceElement="BPMNShape_gaKihg" targetElement="BPMNShape_i0mUFw">
         <di:waypoint x="1230.0" y="225.0"/>
