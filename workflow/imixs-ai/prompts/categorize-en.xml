@@ -11,7 +11,7 @@
 - Credit - in case of a credit note
 - Invoice - in all other cases
 
-Extract also the company name and the language the invoice is written in. 
+Extract also the company name and the language the invoice is written in.
 
 Note: The company name is the name of the company that issued the invoice document, not the recipient. The company name is usually at the beginning or end of the invoice document.
 
@@ -28,4 +28,4 @@ Note: Do not generate any other information instead of the XML object. Do not ge
 [/INST]
 ]]>
 </prompt>
-</PromptDefinition>    
+</PromptDefinition>
