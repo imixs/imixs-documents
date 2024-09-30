@@ -161,24 +161,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[<item name="action">home</item>
 <item name="process">Empfang</item>
 
-<e-invoice name="ENTITY">
-  <name>invoice.number</name>
-  <xpath>//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID</xpath>
-</e-invoice>
-<e-invoice name="ENTITY">
-  <name>invoice.date</name>
-  <type>date</type>
-  <xpath>//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString/text()</xpath>
-</e-invoice>
-<e-invoice name="ENTITY">
-  <name>invoice.total</name>
-  <type>double</type>
-  <xpath>//ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:GrandTotalAmount</xpath>
-</e-invoice>
-<e-invoice name="ENTITY">
-  <name>cdtr.name</name>
-  <xpath>//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name/text()</xpath>
-</e-invoice>
+
 
 ]]></imixs:value>
         </imixs:item>
@@ -1492,7 +1475,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:documentation id="documentation_dDLFbw"/>
   </bpmn2:process>
   <bpmn2:signal id="signal_3" name="org.imixs.ai.workflow.OpenAIAPIAdapter"/>
-  <bpmn2:signal id="signal_4" name="org.imixs.archive.documents.EInvoiceAdapter"/>
+  <bpmn2:signal id="signal_4" name="org.imixs.archive.documents.EInvoiceAutoAdapter"/>
+  <bpmn2:signal id="signal_4" name="Signal 4"/>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1" name="Default Collaboration Diagram">
     <bpmndi:BPMNPlane bpmnElement="Collaboration_1" id="BPMNPlane_1">
       <bpmndi:BPMNShape bpmnElement="Participant_1" id="BPMNShape_1" isHorizontal="true">
