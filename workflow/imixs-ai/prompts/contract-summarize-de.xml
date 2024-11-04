@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+	<prompt_options>{"n_predict": 4096, "temperature": 0}</prompt_options>
+	<prompt><![CDATA[[INST] Du bist Sachbearbeiter in einem Unternehmen. Deine Aufgabe ist es, eingehende Vertragsdokumente zu prüfen. [/INST]
+
+<FILECONTEXT>^.+\.([pP][dD][fF])$</FILECONTEXT>
+
+</s>[INST]
+
+Erstelle eine kurze Zusammenfassung der wichtigsten Elemente dieses Vertrags. 
+
+ - Vertragsgeber
+ - Vertragsnehmer
+ - Gegenstand
+ - Laufzeit
+ 
+[/INST]
+]]>
+</prompt>
+</PromptDefinition>    

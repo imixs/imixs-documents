@@ -1487,7 +1487,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="SequenceFlow_27" sourceRef="IntermediateCatchEvent_8" targetRef="Task_3">
       <bpmn2:documentation id="documentation_g23n0w"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_6" imixs:activityid="990" name="[OCR/ML Import]">
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_6" imixs:activityid="990" name="[OCR/AI Import]">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
           <imixs:value><![CDATA[2]]></imixs:value>
@@ -1539,7 +1539,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value/>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="comment" ignore="true"/>]]></imixs:value>
+          <imixs:value><![CDATA[<item name="comment" ignore="true"/>
+<item name="process">Beschaffung</item>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Speichern]]></imixs:value>
@@ -1742,9 +1743,9 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_5000-20" id="BPMNShape_IntermediateCatchEvent_2">
-        <dc:Bounds height="36.0" width="36.0" x="545.0" y="198.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="545.0" y="184.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_10" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="20.0" width="100.0" x="513.5" y="234.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="513.5" y="220.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_5005-10" id="BPMNShape_IntermediateCatchEvent_6">
@@ -2029,8 +2030,8 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         <bpmndi:BPMNLabel id="BPMNLabel_5"/>
         <di:waypoint x="418.0" y="205.0"/>
         <di:waypoint x="481.5" y="205.0"/>
-        <di:waypoint x="481.5" y="213.5"/>
-        <di:waypoint x="545.1744565300241" y="213.5"/>
+        <di:waypoint x="481.5" y="202.0"/>
+        <di:waypoint x="545.0" y="202.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_7" id="BPMNEdge_SequenceFlow_8" sourceElement="BPMNShape_IntermediateCatchEvent_26" targetElement="BPMNShape_ExclusiveGateway_5">
         <bpmndi:BPMNLabel id="BPMNLabel_8"/>
@@ -2090,7 +2091,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_24" id="BPMNEdge_SequenceFlow_25" sourceElement="BPMNShape_IntermediateCatchEvent_2" targetElement="BPMNShape_ExclusiveGateway_4">
         <bpmndi:BPMNLabel id="BPMNLabel_54"/>
-        <di:waypoint x="563.0" y="234.0"/>
+        <di:waypoint x="563.0" y="220.0"/>
         <di:waypoint x="563.0" y="264.0"/>
         <di:waypoint x="563.0" y="305.0"/>
       </bpmndi:BPMNEdge>
@@ -2194,7 +2195,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         <di:waypoint x="678.5" y="139.0"/>
         <di:waypoint x="629.75" y="139.0"/>
         <di:waypoint x="629.75" y="216.0"/>
-        <di:waypoint x="581.0" y="216.0"/>
+        <di:waypoint x="574.3137084989847" y="216.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="dataObject_Vj8NJA" id="BPMNShape_0skHlQ">
         <dc:Bounds height="50.0" width="35.0" x="242.5" y="709.0"/>

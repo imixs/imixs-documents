@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PromptDefinition>
   <prompt_options>{"n_predict": 512, "temperature": 0 }</prompt_options>
-  <prompt><![CDATA[[INST] You are an employee at Imixs Software Solutions. Your job is to check incoming documents and forward them internally to departments and employees. [/INST]
+  <prompt><![CDATA[[INST] You are an employee in a company. Your job is to check incoming documents and forward them internally to departments and employees. [/INST]
 
 <FILECONTEXT>^.+\.([pP][dD][fF])$</FILECONTEXT>
     
