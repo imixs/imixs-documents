@@ -33,7 +33,7 @@
       <imixs:value><![CDATA[org.imixs.marty.profile.MailPlugin]]></imixs:value>
     </imixs:item>
     <imixs:item name="txtworkflowmodelversion" type="xs:string">
-      <imixs:value><![CDATA[posteingang-de-2.0]]></imixs:value>
+      <imixs:value><![CDATA[posteingang-de-3.0]]></imixs:value>
     </imixs:item>
     <open-bpmn:auto-align>true</open-bpmn:auto-align>
   </bpmn2:extensionElements>
@@ -266,9 +266,9 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<item name="comment" ignore="true"/>
 <tika name="options">X-Tika-OCRLanguage=eng+deu</tika>
-<tika name="options">X-Tika-PDFocrStrategy=OCR_ONLY</tika>
+<tika name="options">X-Tika-PDFocrStrategy=AUTO</tika>
 <tika name="filepattern">(PDF|pdf)$</tika>
-<tika name="maxpdfpages">10</tika>
+<tika name="maxpdfpages">20</tika>
 ]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
@@ -416,7 +416,7 @@ Assign invoice to process 'Front Desk']]></bpmn2:text>
           <imixs:value><![CDATA[typcn-printer]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>document.type</itemvalue> ⇒ <itemvalue>document.company</itemvalue> (Import: <itemvalue>document.import.type</itemvalue> - Langauge: <itemvalue>document.language</itemvalue>) ]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>document.type</itemvalue> ⇒ <itemvalue>document.company</itemvalue> (Import: <itemvalue>document.import.type</itemvalue> - Language: <itemvalue>document.language</itemvalue>) ]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -618,7 +618,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<imixs-ai name="PROMPT">
- <endpoint><propertyvalue>LLM_SERVICE_ENDPOINT</propertyvalue></endpoint>
+ <endpoint><propertyvalue>llm.service.endpoint</propertyvalue></endpoint>
  <result-event>XML</result-event>
  <debug>true</debug>
 </imixs-ai>
@@ -878,7 +878,7 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
           <imixs:value><![CDATA[<validation name="required">false</validation>
 <imixs-ai name="PROMPT">
  <debug>true</debug>
- <endpoint><propertyvalue>LLM_SERVICE_ENDPOINT</propertyvalue></endpoint>
+ <endpoint><propertyvalue>llm.service.endpoint</propertyvalue></endpoint>
  <result-event>XML</result-event>
 </imixs-ai>
 
@@ -903,26 +903,27 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
       <bpmn2:documentation id="documentation_K0KMVw" open-bpmn:file-link="file://prompts/categorize-en.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <PromptDefinition>
   <prompt_options>{"n_predict": 512, "temperature": 0 }</prompt_options>
-  <prompt><![CDATA[[INST] You are an employee at a logistic company. Your job is to check incoming invoice documents and forward them internally to employees. [/INST]
+  <prompt><![CDATA[[INST] You are an employee at Imixs Software Solutions. Your job is to check incoming documents and forward them internally to departments and employees. [/INST]
 
 <FILECONTEXT>^.+\.([pP][dD][fF])$</FILECONTEXT>
     
-</s>[INST] Assign the invoice to one of the following categories:
+</s>[INST] Assign the document to one of the following categories:
 
-- Cargo-Invoice - in case the invoice is about cargo and logistic services
-- Credit - in case of a credit note
-- Invoice - in all other cases
+- Invoice - the document is an invoice in which services and goods are invoiced. 
+- Contract - the document describes contractual agreements.
+- Order - if it is a customer order for goods or services.
+- Complaint - if it is a complaint about our services provided. 
 
-Extract also the company name and the language the invoice is written in.
+Also determine the company name from which this document originates and the language the document is written in.
 
-Note: The company name is the name of the company that issued the invoice document, not the recipient. The company name is usually at the beginning or end of the invoice document.
+Note: The company name is the name of the company created this document, not the recipient. The company name is usually at the beginning or end of the invoice document. It is not Imixs!
 
-Output the infromation as one XML object that has the following structure:
+Output the information as one XML object that has the following structure:
 
 <document>
-  <document.type>Type<document.type>  
-  <document.company>Kraxi GmbH<document.company>
-  <document.language>German<document.language>
+  <document.type>DOCUMENT TYPE<document.type>  
+  <document.company>SENDER NAME<document.company>
+  <document.language>LANGUAGE<document.language>
 </document>
 
 Note: Do not generate any other information instead of the XML object. Do not generate more than one XML Object.
@@ -1006,7 +1007,7 @@ Note: Do not generate any other information instead of the XML object. Do not ge
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<imixs-ai name="PROMPT">
-  <endpoint><propertyvalue>LLM_SERVICE_ENDPOINT</propertyvalue></endpoint>
+  <endpoint><propertyvalue>llm.service.endpoint</propertyvalue></endpoint>
   <result-item>invoice.summary</result-item>
   <debug>true</debug>
 </imixs-ai>
