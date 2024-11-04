@@ -288,6 +288,7 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
       <bpmn2:incoming>SequenceFlow_15</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_33</bpmn2:outgoing>
       <bpmn2:documentation id="documentation_wq4llQ"/>
+      <bpmn2:incoming>SequenceFlow_21</bpmn2:incoming>
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_33" sourceRef="ExclusiveGateway_1" targetRef="Task_2">
       <bpmn2:documentation id="documentation_MGjLSg"/>
@@ -616,7 +617,6 @@ result.isValid=true;
       <bpmn2:incoming>SequenceFlow_20</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
       <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
-      <bpmn2:incoming>SequenceFlow_21</bpmn2:incoming>
     </bpmn2:task>
     <bpmn2:dataObject id="DataObject_2" name="Invoice Form">
       <bpmn2:documentation id="Documentation_8"><![CDATA[<?xml version="1.0"?>
@@ -647,7 +647,10 @@ result.isValid=true;
     <item name="cdtr.iban" type="iban"  label="IBAN:" />
     <item name="cdtr.bic" type="bic"  label="BIC:" />
   </imixs-form-section>
- 
+
+   <imixs-form-section columns="1" label="Document Summary" readonly="true" >
+    <item name="invoice.summary" type="custom" path="markdown" />
+  </imixs-form-section>
 </imixs-form>]]></bpmn2:documentation>
       <bpmn2:dataState id="DataState_1"/>
     </bpmn2:dataObject>
@@ -1572,7 +1575,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmn2:outputSet id="OutputSet_1" name="Output Set 1"/>
       <bpmn2:linkEventDefinition id="LinkEventDefinition_7" name="Link Event Definition 7"/>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_21" sourceRef="IntermediateCatchEvent_6" targetRef="Task_2">
+    <bpmn2:sequenceFlow id="SequenceFlow_21" sourceRef="IntermediateCatchEvent_6" targetRef="ExclusiveGateway_1">
       <bpmn2:documentation id="documentation_v0I6PQ"/>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="SequenceFlow_26" sourceRef="IntermediateCatchEvent_5000-10" targetRef="Task_5005">
@@ -1774,13 +1777,13 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       <bpmndi:BPMNShape bpmnElement="ExclusiveGateway_1" id="BPMNShape_ExclusiveGateway_1" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="219.0" y="180.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_60" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="20.0" width="100.0" x="25.0" y="-4.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="194.0" y="233.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="EventBasedGateway_2" id="BPMNShape_EventBasedGateway_2" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="451.0" y="483.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_65" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="20.0" width="100.0" x="25.0" y="-4.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="426.0" y="536.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_TextAnnotation_1">
@@ -1819,7 +1822,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       <bpmndi:BPMNShape bpmnElement="EventBasedGateway_4" id="BPMNShape_EventBasedGateway_4" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="958.0" y="700.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_80" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="20.0" width="100.0" x="25.0" y="-4.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="933.0" y="753.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_16" id="BPMNShape_IntermediateCatchEvent_26">
@@ -1858,7 +1861,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       <bpmndi:BPMNShape bpmnElement="ExclusiveGateway_5" id="BPMNShape_ExclusiveGateway_5" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="1046.0" y="483.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_23" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="20.0" width="100.0" x="25.0" y="-4.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1021.0" y="536.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_2" id="BPMNShape_IntermediateCatchEvent_4">
@@ -1870,7 +1873,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       <bpmndi:BPMNShape bpmnElement="ExclusiveGateway_6" id="BPMNShape_ExclusiveGateway_6" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="628.0" y="483.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_32" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="20.0" width="100.0" x="25.0" y="-4.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="603.0" y="536.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_3" id="BPMNShape_IntermediateCatchEvent_5">
@@ -1933,7 +1936,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       <bpmndi:BPMNShape bpmnElement="ExclusiveGateway_2" id="BPMNShape_ExclusiveGateway_2" isMarkerVisible="true">
         <dc:Bounds height="50.0" width="50.0" x="1407.0" y="944.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_11" labelStyle="BPMNLabelStyle_1">
-          <dc:Bounds height="20.0" width="100.0" x="25.0" y="-11.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1382.0" y="997.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_4" id="BPMNShape_IntermediateCatchEvent_9">
@@ -2197,12 +2200,11 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         <di:waypoint x="1118.0" y="969.0"/>
         <di:waypoint x="1168.0" y="969.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_21" id="BPMNEdge_SequenceFlow_21" sourceElement="BPMNShape_IntermediateCatchEvent_11" targetElement="BPMNShape_Task_5">
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_21" id="BPMNEdge_SequenceFlow_21" sourceElement="BPMNShape_IntermediateCatchEvent_11" targetElement="BPMNShape_ExclusiveGateway_1">
         <bpmndi:BPMNLabel id="BPMNLabel_59"/>
         <di:waypoint x="177.0" y="115.0"/>
-        <di:waypoint x="242.5" y="115.0"/>
-        <di:waypoint x="242.5" y="205.0"/>
-        <di:waypoint x="308.0" y="205.0"/>
+        <di:waypoint x="245.0" y="115.0"/>
+        <di:waypoint x="245.0" y="181.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_26" id="BPMNEdge_SequenceFlow_27" sourceElement="BPMNShape_IntermediateCatchEvent_1" targetElement="BPMNShape_Task_2">
         <bpmndi:BPMNLabel id="BPMNLabel_62"/>

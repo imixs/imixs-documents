@@ -44,8 +44,10 @@ services:
       # ARCHIVE_SERVICE_ENDPOINT: "http://imixs-archive:8080/api"
 
       # Imixs-AI 
-      LLM_SERVICE_ENDPOINT_USER: "admin"
-      LLM_SERVICE_ENDPOINT_PASSWORD: "xxxxx"
+      # Optional configured via imixs.properties
+      #LLM_SERVICE_ENDPOINT: "https://foo.com"
+      #LLM_SERVICE_ENDPOINT_USER: "admin"
+      #LLM_SERVICE_ENDPOINT_PASSWORD: "admin"
 
 
     ports:
