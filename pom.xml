@@ -298,7 +298,9 @@
 				</executions>
 			</plugin>
 
+
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.0</version>
 				<configuration>
@@ -320,11 +322,9 @@
 						<overlay>
 							<groupId>org.imixs.workflow</groupId>
 							<artifactId>imixs-office-workflow-app</artifactId>
-							<!-- 
 							<excludes>
 								<exclude>WEB-INF/lib/*.jar</exclude>
 							</excludes>
-							-->
 						</overlay>
 					</overlays>
 				</configuration>
@@ -377,7 +377,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 			</plugin>
-
 		</plugins>
 
 		<finalName>imixs-documents</finalName>
@@ -391,19 +390,6 @@
 			<version>${jakarta.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- JDK 11 - XML Bind -->
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<version>3.0.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>3.0.0</version>
-			<scope>test</scope>
-		</dependency>
 
 
 		<!-- Imixs Workflow -->
@@ -412,28 +398,24 @@
 			<artifactId>imixs-workflow-core</artifactId>
 			<type>jar</type>
 			<version>${org.imixs.workflow.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-engine</artifactId>
 			<type>jar</type>
 			<version>${org.imixs.workflow.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-jax-rs</artifactId>
 			<type>jar</type>
 			<version>${org.imixs.workflow.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-workflow-faces</artifactId>
 			<type>jar</type>
 			<version>${org.imixs.workflow.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
@@ -441,16 +423,13 @@
 			<version>${org.imixs.workflow.version}</version>
 		</dependency>
 
-
 		<!-- Marty -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-marty</artifactId>
 			<type>jar</type>
 			<version>${org.imixs.marty.version}</version>
-			<scope>compile</scope>
 		</dependency>
-
 
 		<!-- Imixs-Office-Workflow Overlay -->
 		<dependency>
@@ -462,7 +441,6 @@
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-office-workflow-util</artifactId>
-			<scope>compile</scope>
 			<version>${org.imixs.office.version}</version>
 		</dependency>
 
@@ -471,25 +449,21 @@
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-archive-api</artifactId>
 			<version>${org.imixs.archive.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-archive-documents</artifactId>
 			<version>${org.imixs.archive.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-archive-importer</artifactId>
 			<version>${org.imixs.archive.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox</artifactId>
 			<version>${apache.pdfbox.version}</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- Imixs-AI -->
@@ -497,7 +471,6 @@
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-ai-workflow</artifactId>
 			<version>${org.imixs.ai.version}</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- Imixs-QR-Code  -->
@@ -505,7 +478,6 @@
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-qrcode</artifactId>
 			<version>${org.imixs.adapter.version}</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- Imixs-Wopi -->
@@ -513,13 +485,11 @@
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-wopi</artifactId>
 			<version>${org.imixs.adapter.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-odf</artifactId>
 			<version>${org.imixs.adapter.version}</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- Imixs Signature Feature
@@ -527,7 +497,6 @@
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-signature-api</artifactId>
 			<version>${org.imixs.signature.version}</version>
-			<scope>compile</scope>
 		</dependency>
  		-->
 		<!-- SEPA -->
@@ -535,7 +504,6 @@
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-sepa</artifactId>
 			<version>${org.imixs.adapter.version}</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- DATEV -->
@@ -543,7 +511,6 @@
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-datev</artifactId>
 			<version>${org.imixs.adapter.version}</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- POI Adapter -->
@@ -551,7 +518,6 @@
 			<groupId>org.imixs.workflow</groupId>
 			<artifactId>imixs-adapters-poi</artifactId>
 			<version>${org.imixs.adapter.version}</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- xsl 2.0 support -->
@@ -564,7 +530,6 @@
 
 		<!-- Testing -->
 
-		<!-- JUnit 5 Dependencies -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -577,7 +542,6 @@
 			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Mockito Dependencies -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
@@ -590,7 +554,6 @@
 			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Test dependencies -->
 		<dependency>
 			<groupId>org.eclipse.parsson</groupId>
 			<artifactId>jakarta.json</artifactId>
@@ -609,6 +572,7 @@
 			<version>3.0.0</version>
 			<scope>test</scope>
 		</dependency>
+
 
 	</dependencies>
 </project>
