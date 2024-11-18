@@ -36,6 +36,11 @@ if [[ "$(strip_dash $1)" == "start" ]]; then
     docker-compose -f ./docker/docker-compose-dev.yaml up
 fi
 
+if [[ "$(strip_dash $1)" == "docker" ]]; then
+    echo " Buld Docker Image..."
+    mvn clean install -Pdocker
+fi
+
 if [[ "$(strip_dash $1)" == "build" ]]; then
     echo " Build and Autodeploy..."
     mvn clean install -DskipTests
@@ -63,6 +68,7 @@ if [[ $# -eq 0 ]]; then
     echo "   -start  : start Docker Containers"
     echo "   -build  : build application and redeploy"
     echo "   -hot    : Manik Hotdeploy"
+    echo "   -docker : build the Docker image"    
     echo "   -test   : run tests"
     echo "   -setup  : setup dev environment - rebuild docker containers "
     echo "_________________________________________"

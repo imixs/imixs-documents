@@ -1396,7 +1396,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[4]]></imixs:value>
         </imixs:item>
         <imixs:item name="numactivitydelay" type="xs:string">
-          <imixs:value><![CDATA[10]]></imixs:value>
+          <imixs:value><![CDATA[-20]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyactivitydelayunit" type="xs:string">
           <imixs:value><![CDATA[4]]></imixs:value>
@@ -2096,7 +2096,6 @@ result.isValid=true;
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_3" sourceElement="BPMNShape_Task_5" targetElement="BPMNShape_IntermediateCatchEvent_2">
         <bpmndi:BPMNLabel id="BPMNLabel_5"/>
         <di:waypoint x="410.0" y="315.0"/>
-        <di:waypoint x="412.0" y="315.0"/>
         <di:waypoint x="475.0" y="315.0"/>
         <di:waypoint x="537.0" y="315.0"/>
       </bpmndi:BPMNEdge>

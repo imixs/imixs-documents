@@ -42,29 +42,6 @@
     <bpmn2:participant id="Participant_1" name="Inbox" processRef="Process_1">
       <bpmn2:documentation id="documentation_m9vQ5g"/>
     </bpmn2:participant>
-    <bpmn2:textAnnotation id="TextAnnotation_1">
-      <bpmn2:text>For the OCR Adapter the following minimal options should be set:
-
-        * X-Tika-PDFocrStrategy=OCR_AND_TEXT_EXTRACTION
-        * X-Tika-OCRLanguage=eng+deu
-
-        These options allow OCR and text extraction suporting English and German language.
-
-        Additional Tika Options can be set but are NOT needed in most cases:
-
-        * X-Tika-PDFOcrImageType=RGB (setting the RGB color mode)
-        * X-Tika-PDFOcrDPI=400 (setting DPI)
-
-        Setting the OcrDPI is only recommended if the DPI is know!
-
-        Possible ImageTypes are:
-
-        * ARGB Alpha, Red, Green, Blue
-        * BINARY Black or white.
-        * GRAY Shades of gray
-        * RGB Red, Green, Blue
-</bpmn2:text>
-    </bpmn2:textAnnotation>
     <bpmn2:participant id="participant_GUMWGQ" name="Default Process" processRef="process_2"/>
   </bpmn2:collaboration>
   <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Inbox">
@@ -111,6 +88,7 @@
         <bpmn2:flowNodeRef>dataObject_QalZ1A</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_tSLHgg</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_urn9Cg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>TextAnnotation_1</bpmn2:flowNodeRef>
       </bpmn2:lane>
     </bpmn2:laneSet>
     <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_2" imixs:activityid="10" name="einvoice">
@@ -1129,6 +1107,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmn2:incoming>sequenceFlow_tcjWAA</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_gpPDLg</bpmn2:outgoing>
       <bpmn2:incoming>sequenceFlow_d0zSHA</bpmn2:incoming>
+      <bpmn2:errorEventDefinition id="errorEventDefinition_17TdSw"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_tcjWAA" name="PROMPT Error" sourceRef="gateway_qDAhHw" targetRef="event_9mJrhQ">
       <bpmn2:documentation id="documentation_jE0MLA"/>
@@ -1615,6 +1594,30 @@ Erstelle eine kurze Zusammenfassung der wichtigsten Elemente dieses Vertrags.
     <bpmn2:sequenceFlow id="sequenceFlow_PSnrnQ" sourceRef="event_urn9Cg" targetRef="event_b9NNXw">
       <bpmn2:documentation id="documentation_wskHTA"/>
     </bpmn2:sequenceFlow>
+    <bpmn2:textAnnotation id="TextAnnotation_1">
+      <bpmn2:text>For the OCR Adapter the following minimal options should be set:
+
+        * X-Tika-PDFocrStrategy=OCR_AND_TEXT_EXTRACTION
+        * X-Tika-OCRLanguage=eng+deu
+
+        These options allow OCR and text extraction suporting English and German language.
+
+        Additional Tika Options can be set but are NOT needed in most cases:
+
+        * X-Tika-PDFOcrImageType=RGB (setting the RGB color mode)
+        * X-Tika-PDFOcrDPI=400 (setting DPI)
+
+        Setting the OcrDPI is only recommended if the DPI is know!
+
+        Possible ImageTypes are:
+
+        * ARGB Alpha, Red, Green, Blue
+        * BINARY Black or white.
+        * GRAY Shades of gray
+        * RGB Red, Green, Blue
+</bpmn2:text>
+      <bpmn2:documentation id="documentation_EIjG2Q"/>
+    </bpmn2:textAnnotation>
   </bpmn2:process>
   <bpmn2:process id="process_2" name="Imixs AI" processType="Public">
     <bpmn2:documentation id="documentation_dDLFbw"/>
@@ -1673,10 +1676,7 @@ Erstelle eine kurze Zusammenfassung der wichtigsten Elemente dieses Vertrags.
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="TextAnnotation_1" id="BPMNShape_TextAnnotation_1">
-        <dc:Bounds height="321.0" width="541.0" x="440.0" y="600.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_53">
-          <dc:Bounds height="315.0" width="529.0" x="446.0" y="600.0"/>
-        </bpmndi:BPMNLabel>
+        <dc:Bounds height="427.0" width="420.0" x="190.0" y="660.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_9" id="BPMNEdge_SequenceFlow_9" sourceElement="BPMNShape_Task_2" targetElement="BPMNShape_IntermediateCatchEvent_3">
         <bpmndi:BPMNLabel id="BPMNLabel_21"/>
