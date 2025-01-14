@@ -46,7 +46,7 @@
     </bpmn2:participant>
     <bpmn2:participant id="participant_mrZq8Q" name="Default Process" processRef="process_2"/>
   </bpmn2:collaboration>
-  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Rechnungseingang">
+  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Rechnungseingang" processType="Private">
     <bpmn2:laneSet id="LaneSet_1" name="Lane Set 1">
       <bpmn2:lane id="Lane_1" name="Ersteller">
         <bpmn2:flowNodeRef>ExclusiveGateway_4</bpmn2:flowNodeRef>
@@ -1990,7 +1990,7 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         <bpmndi:BPMNLabel id="BPMNLabel_90"/>
         <di:waypoint x="983.0" y="750.0"/>
         <di:waypoint x="983.0" y="789.0"/>
-        <di:waypoint x="1053.0277992443885" y="789.0"/>
+        <di:waypoint x="1053.0" y="789.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_30" id="BPMNEdge_SequenceFlow_31" sourceElement="BPMNShape_EventBasedGateway_4" targetElement="BPMNShape_IntermediateCatchEvent_26">
         <bpmndi:BPMNLabel id="BPMNLabel_91"/>
@@ -2029,8 +2029,8 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_3" sourceElement="BPMNShape_Task_5" targetElement="BPMNShape_IntermediateCatchEvent_2">
         <bpmndi:BPMNLabel id="BPMNLabel_5"/>
         <di:waypoint x="418.0" y="205.0"/>
-        <di:waypoint x="481.5" y="205.0"/>
-        <di:waypoint x="481.5" y="202.0"/>
+        <di:waypoint x="482.0" y="205.0"/>
+        <di:waypoint x="482.0" y="202.0"/>
         <di:waypoint x="545.0" y="202.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_7" id="BPMNEdge_SequenceFlow_8" sourceElement="BPMNShape_IntermediateCatchEvent_26" targetElement="BPMNShape_ExclusiveGateway_5">
@@ -2097,14 +2097,14 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="Association_3" id="BPMNEdge_Association_3" sourceElement="BPMNShape_TextAnnotation_2" targetElement="BPMNShape_Task_1">
         <bpmndi:BPMNLabel id="BPMNLabel_68"/>
-        <di:waypoint x="741.0" y="724.5"/>
-        <di:waypoint x="769.5" y="724.5"/>
-        <di:waypoint x="769.5" y="725.0"/>
+        <di:waypoint x="741.0" y="725.0"/>
+        <di:waypoint x="770.0" y="725.0"/>
+        <di:waypoint x="770.0" y="725.0"/>
         <di:waypoint x="798.0" y="725.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="Association_4" id="BPMNEdge_Association_4" sourceElement="BPMNShape_TextAnnotation_3" targetElement="BPMNShape_Task_9">
         <bpmndi:BPMNLabel id="BPMNLabel_6"/>
-        <di:waypoint x="944.2896728515625" y="938.0"/>
+        <di:waypoint x="944.0" y="938.0"/>
         <di:waypoint x="1204.0" y="938.0"/>
         <di:waypoint x="1204.0" y="944.0"/>
       </bpmndi:BPMNEdge>
@@ -2183,19 +2183,19 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         <dc:Bounds height="50.0" width="152.0" x="1692.5" y="881.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="Association_CyVQbQ" id="BPMNEdge_aan5Pw" sourceElement="BPMNShape_ab6PVg" targetElement="BPMNShape_IntermediateCatchEvent_9">
-        <di:waypoint x="1692.5" y="906.0"/>
-        <di:waypoint x="1677.75" y="906.0"/>
-        <di:waypoint x="1677.75" y="969.0"/>
+        <di:waypoint x="1693.0" y="906.0"/>
+        <di:waypoint x="1678.0" y="906.0"/>
+        <di:waypoint x="1678.0" y="969.0"/>
         <di:waypoint x="1663.0" y="969.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="textAnnotation_b50y3w" id="BPMNShape_wmsiWg">
         <dc:Bounds height="74.0" width="217.0" x="678.5" y="102.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="Association_aLlhAQ" id="BPMNEdge_n84NYg" sourceElement="BPMNShape_wmsiWg" targetElement="BPMNShape_IntermediateCatchEvent_2">
-        <di:waypoint x="678.5" y="139.0"/>
-        <di:waypoint x="629.75" y="139.0"/>
-        <di:waypoint x="629.75" y="216.0"/>
-        <di:waypoint x="574.3137084989847" y="216.0"/>
+        <di:waypoint x="679.0" y="139.0"/>
+        <di:waypoint x="630.0" y="139.0"/>
+        <di:waypoint x="630.0" y="216.0"/>
+        <di:waypoint x="574.0" y="216.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="dataObject_Vj8NJA" id="BPMNShape_0skHlQ">
         <dc:Bounds height="50.0" width="35.0" x="242.5" y="709.0"/>
@@ -2204,8 +2204,8 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="Association_zFgl0Q" id="BPMNEdge_mPh59Q" sourceElement="BPMNShape_0skHlQ" targetElement="BPMNShape_Task_2">
-        <di:waypoint x="261.75" y="709.0"/>
-        <di:waypoint x="261.75" y="508.0"/>
+        <di:waypoint x="262.0" y="709.0"/>
+        <di:waypoint x="262.0" y="508.0"/>
         <di:waypoint x="308.0" y="508.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="Association_SUICiw" id="BPMNEdge_BrRDxA" sourceElement="BPMNShape_0skHlQ" targetElement="BPMNShape_Task_1">
@@ -2221,10 +2221,10 @@ Weiterleitung zur Sachprüfung/Freigabe]]></bpmn2:text>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="Association_6a0zRA" id="BPMNEdge_6PT4og" sourceElement="BPMNShape_20MvEA" targetElement="BPMNShape_Task_9">
-        <di:waypoint x="885.5344848632812" y="1017.6202392578125"/>
-        <di:waypoint x="1061.5953369140625" y="1017.6202392578125"/>
-        <di:waypoint x="1061.5953369140625" y="956.7247314453125"/>
-        <di:waypoint x="1168.0" y="956.7247314453125"/>
+        <di:waypoint x="886.0" y="1018.0"/>
+        <di:waypoint x="1062.0" y="1018.0"/>
+        <di:waypoint x="1062.0" y="957.0"/>
+        <di:waypoint x="1168.0" y="957.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_y9bx7Q" id="BPMNEdge_Qcb8cQ" sourceElement="BPMNShape_IntermediateCatchEvent_5" targetElement="BPMNShape_Task_5">
         <di:waypoint x="177.0" y="278.0"/>
