@@ -66,12 +66,12 @@
 
 		<!-- Dependency Versions -->
 		<jakarta.version>10.0.0</jakarta.version>
-		<org.imixs.workflow.version>6.1.1-SNAPSHOT</org.imixs.workflow.version>
-		<org.imixs.archive.version>3.1.0-SNAPSHOT</org.imixs.archive.version>
-		<org.imixs.office.version>5.1.0-SNAPSHOT</org.imixs.office.version>
-		<org.imixs.marty.version>5.0.3-SNAPSHOT</org.imixs.marty.version>
+		<org.imixs.workflow.version>6.1.1</org.imixs.workflow.version>
+		<org.imixs.archive.version>3.1.0</org.imixs.archive.version>
+		<org.imixs.office.version>5.1.0</org.imixs.office.version>
+		<org.imixs.marty.version>5.0.3</org.imixs.marty.version>
 		<org.imixs.adapter.version>3.0.1</org.imixs.adapter.version>
-		<org.imixs.ai.version>1.1.1-SNAPSHOT</org.imixs.ai.version>
+		<org.imixs.ai.version>1.1.1</org.imixs.ai.version>
 		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
 		<net.sf.saxon.version>9.9.1-4</net.sf.saxon.version>
 		<apache.pdfbox.version>2.0.24</apache.pdfbox.version>
