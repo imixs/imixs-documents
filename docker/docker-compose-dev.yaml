@@ -1,20 +1,19 @@
 version: "3.6"
 services:
-
-#######################
-# PostgreSQL
-#######################
+  #######################
+  # PostgreSQL
+  #######################
   db:
     image: postgres:9.6.1
     environment:
       POSTGRES_PASSWORD: adminadmin
       POSTGRES_DB: office
-    volumes: 
+    volumes:
       - dbdata:/var/lib/postgresql/data
 
-#######################
-# Imixs-Documents
-#######################
+  #######################
+  # Imixs-Documents
+  #######################
   imixs-documents:
     #image: imixs/imixs-documents:latest
     image: imixs/imixs-office-workflow
@@ -24,7 +23,7 @@ services:
       JAVA_OPTS: "-Dnashorn.args=--no-deprecation-warning"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "adminadmin"
-      POSTGRES_CONNECTION: "jdbc:postgresql://db/office"      
+      POSTGRES_CONNECTION: "jdbc:postgresql://db/office"
       TZ: "Europe/Berlin"
       LANG: "en_US.UTF-8"
       MAILGATEWAY: "localhost"
@@ -32,7 +31,7 @@ services:
       ASYNCEVENT_PROCESSOR_INITIALDELAY: "10000"
       OCR_SERVICE_ENDPOINT: "http://tika:9998/tika"
       OCR_SERVICE_MODE: "MODEL"
-      #OCR_STRATEGY: "NO_OCR, OCR_ONLY, OCR_AND_TEXT_EXTRACTION, AUTO (default)" 
+      #OCR_STRATEGY: "NO_OCR, OCR_ONLY, OCR_AND_TEXT_EXTRACTION, AUTO (default)"
       OCR_STRATEGY: "AUTO"
       # Collabora integration
       WOPI_PUBLIC_ENDPOINT: "http://localhost:9980"
@@ -40,15 +39,14 @@ services:
       WOPI_HOST_ENDPOINT: "http://imixs-documents:8080/api/wopi/"
       COLLABORA_CONVERTER_URL: "http://collabora:9980/lool/convert-to/"
 
-      # Imixs-Archive 
+      # Imixs-Archive
       # ARCHIVE_SERVICE_ENDPOINT: "http://imixs-archive:8080/api"
 
-      # Imixs-AI 
+      # Imixs-AI
       # Optional configured via imixs.properties
       #LLM_SERVICE_ENDPOINT: "https://foo.com"
       #LLM_SERVICE_ENDPOINT_USER: "admin"
       #LLM_SERVICE_ENDPOINT_PASSWORD: "admin"
-
 
     ports:
       - "8080:8080"
@@ -57,18 +55,16 @@ services:
     volumes:
       - ./deployments:/opt/jboss/wildfly/standalone/deployments/
 
-
-#######################
-# Tika OCR Service
-#######################
-  tika: 
+  #######################
+  # Tika OCR Service
+  #######################
+  tika:
     #image: imixs/tika
     image: apache/tika:1.24.1-full
     environment:
       TZ: "Europe/Berlin"
     ports:
       - "9998:9998"
-
 
   #######################
   # collabora Office Online
@@ -88,42 +84,39 @@ services:
       - ./docker/configuration/collabora/fonts:/usr/share/fonts/truetype/more/
       - ./docker/configuration/collabora/fonts:/opt/cool/systemplate/usr/share/fonts/truetype/more/
 
+  #######################
+  # Only Office Online
+  #######################
+  #  onlyoffice-app:
+  #    image: onlyoffice/documentserver
+  #    container_name: onlyoffice-app
+  #    expose:
+  #      - 80
+  #    ports:
+  #      - "80:80"
+  #    environment:
+  #      TZ: "Europe/Berlin"
+  #    volumes:
+  #      - ./configuration/onlyoffice/local.json:/etc/onlyoffice/documentserver/local.json
+  #      #- ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json
 
-
-#######################
-# Only Office Online
-#######################
-#  onlyoffice-app:
-#    image: onlyoffice/documentserver
-#    container_name: onlyoffice-app
-#    expose:
-#      - 80
-#    ports:
-#      - "80:80"
-#    environment:
-#      TZ: "Europe/Berlin"
-#    volumes:
-#      - ./configuration/onlyoffice/local.json:/etc/onlyoffice/documentserver/local.json      
-#      #- ./configuration/onlyoffice/default.json:/etc/onlyoffice/documentserver/default.json   
-      
-      
-#######################
-# Imixs Signature
-#######################
-#  imixssignature:
-#    image: imixs/imixs-signature-service
-#    environment:
-#      SIGNATURE_KEYSTORE_PATH: "/opt/keys/imixs.jks"
-#      SIGNATURE_KEYSTORE_PASSWORD: "123456" 
-#      SIGNATURE_KEYSTORE_TYPE: "PKCS12"
-#      SIGNATURE_ROOTCERT_ALIAS: "imixs.com"
-#      SIGNATURE_ROOTCERT_PASSWORD: "123456" 
-#      #SIGNATURE_TSA_URL: "https://freetsa.org/tsr"
-#    ports:
-#      - "8082:8080"
-#      - "8789:8787"
-#    volumes:
-#      - ./keys:/opt/keys/
+  #######################
+  # Imixs Signature
+  #######################
+  #  imixssignature:
+  #    image: imixs/imixs-signature-service
+  #    environment:
+  #      SIGNATURE_KEYSTORE_PATH: "/opt/keys/imixs.jks"
+  #      SIGNATURE_KEYSTORE_PASSWORD: "123456"
+  #      SIGNATURE_KEYSTORE_TYPE: "PKCS12"
+  #      SIGNATURE_ROOTCERT_ALIAS: "imixs.com"
+  #      SIGNATURE_ROOTCERT_PASSWORD: "123456"
+  #      #SIGNATURE_TSA_URL: "https://freetsa.org/tsr"
+  #    ports:
+  #      - "8082:8080"
+  #      - "8789:8787"
+  #    volumes:
+  #      - ./keys:/opt/keys/
 
 # #######################
 # # Imixs Admin Client
@@ -134,4 +127,4 @@ services:
 #       - "8888:8080"
 
 volumes:
-  dbdata: 
+  dbdata:
