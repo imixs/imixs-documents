@@ -79,10 +79,10 @@ services:
       - username=admin
       - password=adminadmin
       - extra_params=--o:ssl.enable=false
-      - aliasgroup1=http://imixs-documents:8080:443
+      - aliasgroup1=http://imixs-documents:8080
     volumes:
-      - ./docker/configuration/collabora/fonts:/usr/share/fonts/truetype/more/
-      - ./docker/configuration/collabora/fonts:/opt/cool/systemplate/usr/share/fonts/truetype/more/
+      - ./configuration/collabora/fonts:/usr/share/fonts/truetype/more/
+      - ./configuration/collabora/fonts:/opt/cool/systemplate/usr/share/fonts/truetype/more/
 
   #######################
   # Only Office Online
