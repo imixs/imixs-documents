@@ -118,13 +118,13 @@ services:
   #    volumes:
   #      - ./keys:/opt/keys/
 
-# #######################
-# # Imixs Admin Client
-# #######################
-#   imixsadmin:
-#     image: imixs/imixs-admin
-#     ports:
-#       - "8888:8080"
+  #######################
+  # Imixs Admin Client
+  #######################
+  imixsadmin:
+    image: imixs/imixs-admin
+    ports:
+      - "8888:8080"
 
 volumes:
   dbdata:
