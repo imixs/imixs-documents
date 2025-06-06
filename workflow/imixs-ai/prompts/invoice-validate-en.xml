@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+	<prompt_options>{"n_predict": 4096, "temperature": 0}</prompt_options>
+	<prompt><![CDATA[[INST]You are a clerk at Imixs Software Solutions GmbH. Your task is to compare an incoming invoice with an existing offer. [/INST]
+
+
+# INVOICE
+
+<itemvalue>invoice.summary</itemvalue>
+
+
+# OFFER
+
+<workitemref filter="($workflowgroup:Bedarfsmeldung)">offer.summary</workitemref>.
+
+
+</s>[INST]
+
+
+If there are discrepancies between the offer positions and the invoice items regarding quantity, price, or description, create a corresponding note.
+
+[/INST]
+]]>
+</prompt>
+</PromptDefinition>    

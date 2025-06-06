@@ -54,6 +54,8 @@ services:
       - "8787:8787"
     volumes:
       - ./deployments:/opt/jboss/wildfly/standalone/deployments/
+      - ./import_examples:/opt/jboss/import_examples/
+
 
   #######################
   # Tika OCR Service
@@ -83,7 +85,7 @@ services:
     volumes:
       - ./configuration/collabora/fonts:/usr/share/fonts/truetype/more/
       - ./configuration/collabora/fonts:/opt/cool/systemplate/usr/share/fonts/truetype/more/
-
+      
   #######################
   # Only Office Online
   #######################
