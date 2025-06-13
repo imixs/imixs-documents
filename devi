@@ -40,6 +40,10 @@ if [[ "$(strip_dash $1)" == "docker" ]]; then
     echo " Buld Docker Image..."
     mvn clean install -Pdocker
 fi
+if [[ "$(strip_dash $1)" == "debug" ]]; then
+    echo " Buld Docker Image..."
+    mvn clean install -Pdebug
+fi
 
 if [[ "$(strip_dash $1)" == "build" ]]; then
     echo " Build and Autodeploy..."
@@ -69,6 +73,7 @@ if [[ $# -eq 0 ]]; then
     echo "   -build  : build application and redeploy"
     echo "   -hot    : Manik Hotdeploy"
     echo "   -docker : build the Docker image"    
+    echo "   -debug  : build the Docker image with debug options"    
     echo "   -test   : run tests"
     echo "   -setup  : setup dev environment - rebuild docker containers "
     echo "_________________________________________"

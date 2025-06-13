@@ -15,8 +15,8 @@ services:
   # Imixs-Documents
   #######################
   imixs-documents:
-    #image: imixs/imixs-documents:latest
-    image: imixs/imixs-office-workflow
+    image: imixs/imixs-documents
+    #image: imixs/imixs-office-workflow
     depends_on:
       - db
     environment:

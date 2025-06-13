@@ -10,11 +10,8 @@
 	<ui:define name="content">
 		<f:view>
 
-
-
 			<script type="text/javascript">
 				/*<![CDATA[*/
-
 				function updateStatustPanel(data) {
 					//initUserInput($('#userselector_id'));
 					if (data.status === 'success') {
@@ -22,30 +19,122 @@
 						$('[id$=status_panel]').imixsLayout();
 					}
 				}
-
-				/*]]>*/
+				/*]]>*/ 
 			</script>
 
-
-			<h:form id="import_form_id">
+			<h:form id="import_form_id"  enctype="multipart/form-data">
 
 				<div class="imixs-form">
 					<div class="imixs-header">
 						<h1>DATEV</h1>
 					</div>
 
-
-
 					<div class="imixs-body">
-
-
 						<div class="imixs-tabs">
 							<ul>
-								<li><a href="#tab-1">Import</a></li>
-								<li><a href="#tab-2">Export</a></li>
+								<li><a href="#tab-1">Einstellungen</a></li>
+								<li><a href="#tab-2">Import</a></li>
+								<li><a href="#tab-3">Export</a></li>
 							</ul>
 
 							<div id="tab-1">
+								<!-- **** Einstellungen ***** -->
+								<div class="imixs-form-section">
+									<div class="ui-state-highlight ui-corner-all"
+										style="margin-bottom: 10px; padding: .5em;">
+										<h3>DATEV Einstellungen</h3>
+										<p>Definieren Sie hier die DATEV Parameter die Ihnen von Ihrem Steuerberater mitgeteilt wurden.</p>
+									</div>
+
+									
+									<div class="imixs-form-section-2">
+										
+										<dl>
+											<dt>DATEV Mandant Name</dt>
+											<dd>
+												<h:inputText required="false"
+													value="#{datevController.configuration.item['datev.client.name']}">
+												</h:inputText>
+											</dd>
+										</dl>
+
+										<dl>
+											<dt>DATEV Mandantennummer </dt>
+											<dd>
+												<h:inputText required="false"
+													value="#{datevController.configuration.item['datev.client.id']}">
+												</h:inputText>
+											</dd>
+										</dl>
+
+										<dl>
+											<dt>
+												DATEV Beraternummer <span class="imixs-required">*</span>
+											</dt>
+											<dd>
+												<h:inputText required="true"
+													value="#{datevController.configuration.item['datev.consultant.id']}">
+												</h:inputText>
+											</dd>
+										</dl>
+
+										<dl>
+											<dt>BU Schlüssel:</dt>
+											<dd>
+		
+												<h:inputTextarea required="false"
+													converter="org.imixs.VectorConverter"
+													style="height: 8em; width: 100%;"
+													value="#{datevController.configuration.itemList['datev.buschluessel']}">
+												</h:inputTextarea>
+												<span style="font-size:0.7rem;">Format: BEZEICHNUNG | DATEV_BU_SCHLUESSEL | PROZENTSATZ</span>
+	
+											</dd>
+										</dl>
+
+										<dl>
+											<dt>
+												DATEV WJ-Beginn (MMTT) <span class="imixs-required">* <h:message
+														for="fiscalstart" /></span>
+											</dt>
+											<dd>
+												<h:inputText value="#{datevController.configuration.item['datev.fiscal_start']}"
+													id="fiscalstart" required="false"/>
+											</dd>
+										</dl>
+										<dl>
+											<dt>DATEV Sachkontennummernlänge</dt>
+											<dd>
+												<h:inputText
+													value="#{datevController.configuration.item['datev.sachkontennummernlaenge']}" />
+											</dd>
+										</dl>
+										<dl>
+											<dt>Kostenstelle I. (Nummer|Bezeichnung)</dt>
+											<dd>
+												<h:inputTextarea required="false"
+													converter="org.imixs.VectorConverter"
+													style="height: 8em; width: 100%;"
+													value="#{datevController.configuration.itemList['datev.kostenstelle1']}">
+												</h:inputTextarea>
+											</dd>
+										</dl>
+									
+										<dl>
+											<dt>Kostenstellen II. (Nummer|Bezeichnung)</dt>
+											<dd>
+												<h:inputTextarea required="false"
+													converter="org.imixs.VectorConverter"
+													style="height: 8em; width: 100%;"
+													value="#{datevController.configuration.itemList['datev.kostenstelle2']}">
+												</h:inputTextarea>
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+
+							<div id="tab-2">
 								<!-- **** DATEV import ***** -->
 								<div class="imixs-form-section">
 									<div class="ui-state-highlight ui-corner-all"
@@ -69,6 +158,7 @@
 										</ul>
 									</div>
 
+									
 									<dl>
 										<dt>Importdatei wählen:</dt>
 										<dd>
@@ -85,16 +175,23 @@
 											</h:panelGroup>
 										</dd>
 									</dl>
-
+									<dl>
+										<dt>Encoding </dt>
+										<dd>
+											<h:inputText required="false" style="width: 220px;"
+												value="#{datevController.configuration.item['datev.encoding']}">
+											</h:inputText>
+										</dd>
+									</dl>
 									<h:commandButton
 										actionListener="#{datevController.startImport}"
-										value="Start Import">
+										value="Start Import...">
 									</h:commandButton>
 
 								</div>
 
 							</div>
-							<div id="tab-2">
+							<div id="tab-3">
 
 								<!-- **** Export Buchunsstapel ***** -->
 								<div class="imixs-form-section">
@@ -170,37 +267,7 @@
 
 									</div>
 
-									<div class="imixs-form-section-3">
-										
-										<dl>
-											<dt>DATEV Mandant Name</dt>
-											<dd>
-												<h:inputText required="false"
-													value="#{datevController.configuration.item['datev.client.name']}">
-												</h:inputText>
-											</dd>
-										</dl>
-
-										<dl>
-											<dt>DATEV Mandantennummer </dt>
-											<dd>
-												<h:inputText required="false"
-													value="#{datevController.configuration.item['datev.client.id']}">
-												</h:inputText>
-											</dd>
-										</dl>
-
-										<dl>
-											<dt>
-												DATEV Beraternummer <span class="imixs-required">*</span>
-											</dt>
-											<dd>
-												<h:inputText required="true"
-													value="#{datevController.configuration.item['datev.consultant.id']}">
-												</h:inputText>
-											</dd>
-										</dl>
-									</div>
+									
 
 
 									<div class="imixs-form-section">
