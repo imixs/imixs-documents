@@ -10,16 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.ejb.EJB;
-import jakarta.enterprise.event.Observes;
-import jakarta.faces.context.FacesContext;
-import jakarta.faces.event.ActionEvent;
-import jakarta.faces.model.SelectItem;
-import jakarta.faces.view.ViewScoped;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-
+import javax.naming.NamingException;
 
 import org.imixs.workflow.ItemCollection;
 import org.imixs.workflow.ItemCollectionComparator;
@@ -33,6 +24,16 @@ import org.imixs.workflow.faces.fileupload.FileUploadController;
 import org.imixs.workflow.office.forms.WorkitemLinkController;
 import org.imixs.workflow.office.views.BoardController;
 import org.imixs.workflow.office.views.SearchController;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.ejb.EJB;
+import jakarta.enterprise.event.Observes;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.ActionEvent;
+import jakarta.faces.model.SelectItem;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
 @ViewScoped
@@ -167,7 +168,7 @@ public class WikiController implements Serializable {
     }
 
     /**
-     * This method returns all chepters with $taskid 1000-1999. 
+     * This method returns all chepters with $taskid 1000-1999.
      * <p>
      * 
      * 
@@ -180,13 +181,14 @@ public class WikiController implements Serializable {
             document = new ArrayList<ItemCollection>();
             List<ItemCollection> col = null;
             try {
-                String query = "(type:\"workitem\") AND ($taskid:[1000 TO 1999]) AND ($uniqueidref:\"" + process.getUniqueID() + "\")";
+                String query = "(type:\"workitem\") AND ($taskid:[1000 TO 1999]) AND ($uniqueidref:\""
+                        + process.getUniqueID() + "\")";
                 // select all objects....
                 document = documentService.find(query, 999, 0, "name", false);
-//
-//                for (ItemCollection aworkitem : col) {
-//                    document.add(aworkitem);
-//                }
+                //
+                // for (ItemCollection aworkitem : col) {
+                // document.add(aworkitem);
+                // }
 
             } catch (QueryException e) {
                 // TODO Auto-generated catch block
@@ -241,7 +243,8 @@ public class WikiController implements Serializable {
             List<ItemCollection> chapters;
             try {
                 // all chapters, ignore current
-                String query = "(type:\"workitem\") AND ($taskid:[1000 TO 1999]) AND ($uniqueidref:\"" + processref + "\")";
+                String query = "(type:\"workitem\") AND ($taskid:[1000 TO 1999]) AND ($uniqueidref:\"" + processref
+                        + "\")";
 
                 if (!workflowController.getWorkitem().getUniqueID().isEmpty()) {
                     query = query + " AND NOT ($uniqueid:" + workflowController.getWorkitem().getUniqueID() + ")";
@@ -387,8 +390,6 @@ public class WikiController implements Serializable {
         this.dmsFilter = dmsFitler;
     }
 
-    
-    
     /**
      * returns a list of all workItems holding a reference to a given workItem.
      * 
@@ -407,7 +408,8 @@ public class WikiController implements Serializable {
         List<ItemCollection> workitems = null;
 
         try {
-            workitems = workflowService.getDocumentService().findStubs(sQuery, WorkitemLinkController.MAX_SEARCH_RESULT, 0,
+            workitems = workflowService.getDocumentService().findStubs(sQuery, WorkitemLinkController.MAX_SEARCH_RESULT,
+                    0,
                     WorkflowKernel.LASTEVENTDATE, true);
         } catch (QueryException e) {
 
@@ -420,23 +422,5 @@ public class WikiController implements Serializable {
         return result;
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
