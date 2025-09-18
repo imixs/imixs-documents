@@ -61,8 +61,7 @@ services:
   # Tika OCR Service
   #######################
   tika:
-    #image: imixs/tika
-    image: apache/tika:1.24.1-full
+    image: apache/tika:3.2.0.0-full
     environment:
       TZ: "Europe/Berlin"
     ports:
