@@ -6,7 +6,7 @@
 	<artifactId>imixs-documents</artifactId>
 	<packaging>war</packaging>
 	<name>Imixs Documents</name>
-	<version>2.2.3</version>
+	<version>2.2.4</version>
 	<description>Imixs Documents - A collaboration platform for documents. </description>
 	<organization>
 		<name>Imixs Software Solutions GmbH</name>
@@ -66,10 +66,11 @@
 
 		<!-- Dependency Versions -->
 		<jakarta.version>10.0.0</jakarta.version>
-		<org.imixs.workflow.version>6.2.2</org.imixs.workflow.version>
-		<org.imixs.archive.version>3.1.2</org.imixs.archive.version>
-		<org.imixs.office.version>5.1.4</org.imixs.office.version>
-		<org.imixs.marty.version>5.0.3</org.imixs.marty.version>
+		<org.imixs.workflow.version>6.2.4-SNAPSHOT</org.imixs.workflow.version>
+		<org.imixs.archive.version>3.1.3</org.imixs.archive.version>
+		<org.imixs.data.version>1.0.0</org.imixs.data.version>
+		<org.imixs.office.version>5.1.5-SNAPSHOT</org.imixs.office.version>
+		<org.imixs.marty.version>5.1.0</org.imixs.marty.version>
 		<org.imixs.adapter.version>3.2.0</org.imixs.adapter.version>
 		<org.imixs.ai.version>1.1.1</org.imixs.ai.version>
 		<org.imixs.signature.version>1.0.0</org.imixs.signature.version>
@@ -450,15 +451,28 @@
 			<artifactId>imixs-archive-api</artifactId>
 			<version>${org.imixs.archive.version}</version>
 		</dependency>
+		<!-- Imixs Data -->
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
-			<artifactId>imixs-archive-documents</artifactId>
-			<version>${org.imixs.archive.version}</version>
+			<artifactId>imixs-data-groups</artifactId>
+			<version>${org.imixs.data.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.imixs.workflow</groupId>
-			<artifactId>imixs-archive-importer</artifactId>
-			<version>${org.imixs.archive.version}</version>
+			<artifactId>imixs-data-views</artifactId>
+			<version>${org.imixs.data.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-data-documents</artifactId>
+			<version>${org.imixs.data.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-data-importer</artifactId>
+			<version>${org.imixs.data.version}</version>
 		</dependency>
 		<!-- -->
 		<dependency>
