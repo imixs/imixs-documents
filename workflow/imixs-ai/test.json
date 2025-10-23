@@ -1,0 +1,48 @@
+{chat.role=[system
+    ], chat.message=[ You are an employee in a company. Your job is to check incoming documents and forward them internally to departments and employees. The workflow is separated into 3 steps 1. categorize the content of the document. This helps in deciding whether it is an invoice, an order, a contract, or another type of document. 2. create an summarization of the document. This helps in the further processing to determine the basic data of the document. 3. extract business data for further processing in a specific workflow.
+    ]
+}~{chat.role=[user
+    ], chat.message=[ Assign the document to one of the following categories: - Invoice - the document is an invoice in which services and goods are invoiced. - Contract - the document describes contractual agreements. - Order - if it is a customer order for goods or services. - Complaint - if it is a complaint about our services provided. Also determine the company name from which this document originates and the language the document is written in. Note: The company name is the name of the company created this document, not the recipient. The company name is usually at the beginning or end of the invoice document. It is not Imixs! Output the information as one XML object that has the following structure: DOCUMENT TYPE SENDER NAME LANGUAGE Note: Do not generate any other information instead of the XML object. Do not generate more than one XML Object. # Document: Mustermann GmbH Musterstr. 100 12345 Musterhausen Ust-IdNr.: DE123456789 Tel.: (+49) 1234/98 76 54 Fax: (+49) 1234/98 76 55 E-Mail: mail@mustermann.com Web: www.mustermann.com Volksbank Musterhausen IBAN: DE34233004333401 BIC: GENODE61FR1 Kto. Inh.: Max Mustermann Mustermann GmbH Mustermann GmbH | Musterstr. 100 | 12345 Musterhausen Imixs Software Solution GmbH Herr Thomas Riess Agnes-Poeckels-Bogen 1 80992 München Kundennummer Liefer- /Leistungsdatum Rechnungsdatum 987654321 28.04.2023 02.05.2023 Rechnung Nr. R12345 Wir bedanken uns für die gute Zusammenarbeit und stellen Ihnen vereinbarungsgemäß folgende Lieferungen und Leistungen in Rechnung: Pos. Bezeichnung Menge Einzel (€) Gesamt (€) 1 Dell Inspiron 16 Laptop 1 Stück 1.000,
+        00 1.000,
+        00 2 Logitech G PRO Wireless Maus 1 Stückl 39,
+        90 39,
+        90 Summe Netto € 1.039,
+        90 Umsatzsteuer 19,
+        00% € 197,
+        58 Rechnungsbetrag € 1.237,
+        48 Zahlung innerhalb von 14 Tagen ab Rechnungseingang ohne Abzüge an die unten angegebene Bankverbindung. Mit freundlichen Grüßen Max Mustermann
+    ]
+}~{chat.role=[assistant
+    ], chat.message=[ Invoice Mustermann GmbH German
+    ]
+}~{chat.role=[user
+    ], chat.message=[ Summarize the data from the following invoice document: - Company information - General Billing data - Invoice total information - Payment summary - Invoice items The company name is the name of the company that issued the invoice document, not the recipient. The company name is usually at the beginning or end of the invoice document. Summarize the invoice lines in a table. Use only the default values and do not perform any calculations, summing or changes to these values yourself. Format numbers and amounts according to ISO 4217. # Document: Mustermann GmbH Musterstr. 100 12345 Musterhausen Ust-IdNr.: DE123456789 Tel.: (+49) 1234/98 76 54 Fax: (+49) 1234/98 76 55 E-Mail: mail@mustermann.com Web: www.mustermann.com Volksbank Musterhausen IBAN: DE34233004333401 BIC: GENODE61FR1 Kto. Inh.: Max Mustermann Mustermann GmbH Mustermann GmbH | Musterstr. 100 | 12345 Musterhausen Imixs Software Solution GmbH Herr Thomas Riess Agnes-Poeckels-Bogen 1 80992 München Kundennummer Liefer- /Leistungsdatum Rechnungsdatum 987654321 28.04.2023 02.05.2023 Rechnung Nr. R12345 Wir bedanken uns für die gute Zusammenarbeit und stellen Ihnen vereinbarungsgemäß folgende Lieferungen und Leistungen in Rechnung: Pos. Bezeichnung Menge Einzel (€) Gesamt (€) 1 Dell Inspiron 16 Laptop 1 Stück 1.000,
+        00 1.000,
+        00 2 Logitech G PRO Wireless Maus 1 Stückl 39,
+        90 39,
+        90 Summe Netto € 1.039,
+        90 Umsatzsteuer 19,
+        00% € 197,
+        58 Rechnungsbetrag € 1.237,
+        48 Zahlung innerhalb von 14 Tagen ab Rechnungseingang ohne Abzüge an die unten angegebene Bankverbindung. Mit freundlichen Grüßen Max Mustermann
+    ]
+}~{chat.role=[assistant
+    ], chat.message=[**Company Information** * Company Name: Mustermann GmbH * Address: Musterstr. 100,
+        12345 Musterhausen * Tax ID: DE123456789 * Contact: Tel.: (+49) 1234/98 76 54, Fax: (+49) 1234/98 76 55, E-Mail: mail@mustermann.com * Bank Details: Volksbank Musterhausen, IBAN: DE34233004333401, BIC: GENODE61FR1, Account Holder: Max Mustermann **General Billing Data** * Customer Number: 987654321 * Delivery/Performance Date: 28.04.2023 * Invoice Date: 02.05.2023 * Invoice Number: R12345 **Invoice Total Information** * Net Amount: € 1,
+        039.90 * VAT (19%): € 197.58 * Total Amount: € 1,
+        237.48 **Payment Summary** * Payment Terms: Within 14 days of invoice receipt without deductions **Invoice Items** | Pos. | Bezeichnung | Menge | Einzel (€) | Gesamt (€) | |---|---|---|---|---| | 1 | Dell Inspiron 16 Laptop | 1 Stück | 1,
+        000.00 | 1,
+        000.00 | | 2 | Logitech G PRO Wireless Maus | 1 Stück | 39.90 | 39.90 |
+    ]
+}~{chat.role=[user
+    ], chat.message=[ Transfer the following invoice data into an XML object with the following structure: ... ... 2024-12-31 2024-12-31 1234.00 ... ... Transfer the individual invoice data to the XML tags, taking into account the following suggestions for mapping: - Company name ==> "cdtr.name" (the name of the company that issued the invoice document, not the recipient) - Invoice number ==> "invoice.number" - Invoice Date ==> "invoice.date" - Total ==> "invoice.total" (in EUR or if not available in USD or PLN) - IBAN ==> "cdtr.iban" - BIC or SWIFT ==> "cdtr.bic" - Payment date / Due date ==> "payment.date" Note: Output only the XML object! Don't add explanations or comments. Use only the XML structure specified in this example and do not create any other XML tags. If you don't have data for some fields, leave the corresponding XML tags blank. Format date values (invoice.date, payment.date) into the ISO 8601 format (YYYY-MM-DD). Format numbers and amounts (type="double") according to ISO 4217. <> # Invoice data: **Company Information** * Company Name: Mustermann GmbH * Address: Musterstr. 100,
+        12345 Musterhausen * Tax ID: DE123456789 * Contact: Tel.: (+49) 1234/98 76 54, Fax: (+49) 1234/98 76 55, E-Mail: mail@mustermann.com * Bank Details: Volksbank Musterhausen, IBAN: DE34233004333401, BIC: GENODE61FR1, Account Holder: Max Mustermann **General Billing Data** * Customer Number: 987654321 * Delivery/Performance Date: 28.04.2023 * Invoice Date: 02.05.2023 * Invoice Number: R12345 **Invoice Total Information** * Net Amount: € 1,
+        039.90 * VAT (19%): € 197.58 * Total Amount: € 1,
+        237.48 **Payment Summary** * Payment Terms: Within 14 days of invoice receipt without deductions **Invoice Items** | Pos. | Bezeichnung | Menge | Einzel (€) | Gesamt (€) | |---|---|---|---|---| | 1 | Dell Inspiron 16 Laptop | 1 Stück | 1,
+        000.00 | 1,
+        000.00 | | 2 | Logitech G PRO Wireless Maus | 1 Stück | 39.90 | 39.90 |
+    ]
+}~{chat.role=[assistant
+    ], chat.message=[ Mustermann GmbH R12345 2023-05-02 1237.48 DE34233004333401 GENODE61FR1
+    ]
+}
