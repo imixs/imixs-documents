@@ -1,0 +1,113 @@
+---
+###################################################
+# Persistence Volume Claim for index
+###################################################
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: index
+spec:
+  accessModes:
+    - ReadWriteOnce
+  # The default storageClassName is used here.
+  # You can overwrite the classname
+  # storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+###################################################
+# Deployment office-demo
+###################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imixs-documents
+  labels:
+    app: imixs-documents
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: imixs-documents
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imixs-documents
+    spec:
+      # Pod-level security context
+      securityContext:
+        fsGroup: 1000 # GID des jboss users
+        runAsUser: 1000 # UID des jboss users
+        runAsNonRoot: true
+      containers:
+        - name: imixs-documents
+          image: imixs/imixs-documents:latest
+          imagePullPolicy: Always
+          # Container-level security context
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - name: JAVA_OPTS
+              value: "-Dnashorn.args=--no-deprecation-warning"
+            - name: POSTGRES_CONNECTION
+              value: jdbc:postgresql://db/office
+            - name: POSTGRES_PASSWORD
+              value: adminadmin
+            - name: POSTGRES_USER
+              value: postgres
+            - name: TZ
+              value: Europe/Berlin
+            - name: WILDFLY_PASS
+              value: adminadmin
+
+          ports:
+            - name: web
+              containerPort: 8080
+            - name: admin
+              containerPort: 9990
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9990
+            initialDelaySeconds: 30
+            periodSeconds: 5
+          # Memory Request and Limits
+          resources:
+            requests:
+              memory: "512M"
+            limits:
+              memory: "1024M"
+          volumeMounts:
+            - mountPath: /opt/jboss/lucene
+              name: index
+      restartPolicy: Always
+      volumes:
+        - name: index
+          persistentVolumeClaim:
+            claimName: index
+
+---
+###################################################
+# Service imixs-documents
+###################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: imixs-documents
+  labels:
+    app: imixs-documents
+spec:
+  ports:
+    - name: web
+      port: 8080
+    - name: admin
+      port: 9990
+  selector:
+    app: imixs-documents

@@ -1,4 +1,3 @@
 resources:
-- 010-deployment.yaml
-- 020-volumes.yaml
-- 030-network.yaml
+  - 010-postgres.yaml
+  - 020-office.yaml
