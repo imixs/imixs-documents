@@ -2084,9 +2084,9 @@ The workflow is separated into 3 steps
         <bpmndi:BPMNLabel id="BPMNLabel_20"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="dataObject_FS1r0Q" id="BPMNShape_Cn1HMQ">
-        <dc:Bounds height="50.0" width="35.0" x="300.0" y="430.0"/>
+        <dc:Bounds height="50.0" width="35.0" x="298.0" y="430.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_he9OHg">
-          <dc:Bounds height="20.0" width="100.0" x="267.5" y="485.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="265.5" y="485.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_uB6BGQ" id="BPMNShape_027JKQ">
@@ -2443,7 +2443,7 @@ The workflow is separated into 3 steps
         <di:waypoint x="1925.0" y="763.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association_RUf6TA" id="BPMNEdge_BmOWRA" sourceElement="BPMNShape_Cn1HMQ" targetElement="BPMNShape_ELW5JA">
-        <di:waypoint x="335.0" y="460.0"/>
+        <di:waypoint x="333.0" y="460.0"/>
         <di:waypoint x="403.0" y="460.0"/>
         <di:waypoint x="403.0" y="540.0"/>
       </bpmndi:BPMNEdge>

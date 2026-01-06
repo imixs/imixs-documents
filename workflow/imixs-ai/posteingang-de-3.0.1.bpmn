@@ -780,8 +780,7 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
 
 - Invoice - the document is an invoice in which services and goods are invoiced. 
 - Contract - the document describes contractual agreements.
-- Order - if it is a customer purchase order for goods or services.
-- Offer - if it is a customer offer for goods or services.
+- Order - if it is a customer order for goods or services.
 - Complaint - if it is a complaint about our services provided. 
 
 Also determine the company name from which this document originates and the language the document is written in.
@@ -909,7 +908,7 @@ Note: Do not generate any other information instead of the XML object. Do not ge
       <bpmn2:documentation id="documentation_8puQcA" open-bpmn:file-link="file://prompts/invoice-summarize-en.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <PromptDefinition>
 	<prompt_options>{"n_predict": 4096, "temperature": 0}</prompt_options>
-	<prompt><![CDATA[[INST]You are a clerk at Imixs Software Solutions GmbH. Your task is to check incoming invoices. [/INST]
+	<prompt><![CDATA[[INST]You are a clerk at a logistic company. Your task is to check incoming invoices. [/INST]
 
 <FILECONTEXT>^.+\.([pP][dD][fF])$</FILECONTEXT>
 
@@ -923,13 +922,10 @@ Summarize the data from this invoice document:
  - Payment summary
  - Invoice items
 
-The company name is the name of the company that issued the invoice document, not the Imixs Software Solutions GmbH. The company name is usually at the beginning or end of the invoice document.
+The company name is the name of the company that issued the invoice document, not the recipient. The company name is usually at the beginning or end of the invoice document.
 
 Summarize the invoice lines in a table.
-Use only the default values and do not perform any calculations, summing or changes to these values yourself. 
-
-Format numbers and amounts according to ISO 4217 
-
+Use only the default values and do not perform any calculations, summing or changes to these values yourself. Format numbers and amounts according to ISO 4217.
 
 [/INST]
 ]]]]><![CDATA[>
@@ -1997,6 +1993,9 @@ Format numbers and amounts according to ISO 4217
   </bpmn2:process>
   <bpmn2:process id="process_2" name="Imixs AI" processType="Public">
     <bpmn2:documentation id="documentation_dDLFbw"/>
+    <bpmn2:extensionElements>
+      <open-bpmn:auto-align/>
+    </bpmn2:extensionElements>
   </bpmn2:process>
   <bpmn2:signal id="signal_3" name="org.imixs.ai.workflow.OpenAIAPIAdapter"/>
   <bpmn2:signal id="signal_4" name="org.imixs.archive.documents.EInvoiceAutoAdapter"/>
@@ -2053,22 +2052,25 @@ Format numbers and amounts according to ISO 4217
       <bpmndi:BPMNShape bpmnElement="TextAnnotation_1" id="BPMNShape_TextAnnotation_1">
         <dc:Bounds height="427.0" width="420.0" x="190.0" y="660.0"/>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="participant_GUMWGQ" id="BPMNShape_WUg5qw">
+        <dc:Bounds height="210.0" width="800.0" x="0.0" y="0.0"/>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_9" id="BPMNEdge_SequenceFlow_9" sourceElement="BPMNShape_Task_2" targetElement="BPMNShape_IntermediateCatchEvent_3">
-        <bpmndi:BPMNLabel id="BPMNLabel_21"/>
         <di:waypoint x="840.0" y="565.0"/>
         <di:waypoint x="877.0" y="565.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_21"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_12" id="BPMNEdge_SequenceFlow_12" sourceElement="BPMNShape_Task_4" targetElement="BPMNShape_EndEvent_1">
-        <bpmndi:BPMNLabel id="BPMNLabel_27"/>
         <di:waypoint x="2140.0" y="745.0"/>
         <di:waypoint x="2197.0" y="745.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_27"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_2" sourceElement="BPMNShape_BoundaryEvent_1" targetElement="BPMNShape_IntermediateCatchEvent_3">
-        <bpmndi:BPMNLabel id="BPMNLabel_20"/>
         <di:waypoint x="797.0" y="517.0"/>
         <di:waypoint x="797.0" y="507.0"/>
         <di:waypoint x="892.0" y="507.0"/>
         <di:waypoint x="892.0" y="547.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_20"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="dataObject_FS1r0Q" id="BPMNShape_Cn1HMQ">
         <dc:Bounds height="50.0" width="35.0" x="300.0" y="430.0"/>
