@@ -54,8 +54,8 @@
 	</issueManagement>
 
 	<properties>
-		<java.source>11</java.source>
-		<java.target>11</java.target>
+		<java.source>17</java.source>
+		<java.target>17</java.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<custom.webResources>src/main/webapp</custom.webResources>
 		<custom.unpackTypes>war</custom.unpackTypes>
