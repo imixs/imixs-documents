@@ -260,12 +260,8 @@ th {
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue format="dd.MM.yyyy">payment.date</itemvalue> : <itemvalue>customer.name</itemvalue> (<itemvalue format="#,###,##0.00" locale="de_DE">payment.amount</itemvalue> <itemvalue>payment.currency</itemvalue>)]]></imixs:value>
         </imixs:item>
-        <imixs:item name="keyupdateacl" type="xs:boolean">
-          <imixs:value>true</imixs:value>
-        </imixs:item>
-        <imixs:item name="keyownershipfields" type="xs:string">
-          <imixs:value><![CDATA[namCreator]]></imixs:value>
-          <imixs:value><![CDATA[namprocessteam]]></imixs:value>
+        <imixs:item name="keyupdateacl" type="xs:string">
+          <imixs:value><![CDATA[true]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyaddwritefields" type="xs:string">
           <imixs:value><![CDATA[namCreator]]></imixs:value>
@@ -273,10 +269,16 @@ th {
           <imixs:value><![CDATA[namprocessteam]]></imixs:value>
         </imixs:item>
         <imixs:item name="txttype" type="xs:string">
-          <imixs:value><![CDATA[workitem]]></imixs:value>
+          <imixs:value><![CDATA[workitemarchive]]></imixs:value>
         </imixs:item>
         <imixs:item name="namaddwriteaccess" type="xs:string">
           <imixs:value><![CDATA[{process:?:member}]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="namownershipnames" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddreadaccess" type="xs:string">
+          <imixs:value/>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_18"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
@@ -541,9 +543,6 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
         <bpmndi:BPMNLabel id="BPMNLabel_11">
           <dc:Bounds height="20.0" width="100.0" x="165.0" y="40.0"/>
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="participant_5CZoTA" id="BPMNShape_C5w96Q">
-        <dc:Bounds height="210.0" width="800.0" x="0.0" y="0.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_10hUxQ" id="BPMNShape_9EaWBg">
         <dc:Bounds height="36.0" width="36.0" x="907.0" y="417.0"/>

@@ -43,10 +43,7 @@ services:
       # ARCHIVE_SERVICE_ENDPOINT: "http://imixs-archive:8080/api"
 
       # Imixs-AI
-      # Optional configured via imixs.properties
-      #LLM_SERVICE_ENDPOINT: "https://foo.com"
-      #LLM_SERVICE_ENDPOINT_USER: "admin"
-      #LLM_SERVICE_ENDPOINT_PASSWORD: "admin"
+      LLM_CONFIG_FILE: /opt/jboss/imixs-llm.xml
 
     ports:
       - "8080:8080"
@@ -55,7 +52,7 @@ services:
     volumes:
       - ./deployments:/opt/jboss/wildfly/standalone/deployments/
       - ./import_examples:/opt/jboss/import_examples/
-
+      - ./keys/imixs-llm.xml:/opt/jboss/imixs-llm.xml
 
   #######################
   # Tika OCR Service
@@ -83,7 +80,6 @@ services:
     # volumes:
     #   - ./configuration/collabora/fonts:/usr/share/fonts/truetype/more/
     #   - ./configuration/collabora/fonts:/opt/cool/systemplate/usr/share/fonts/truetype/more/
-
 
   #######################
   # Imixs Signature

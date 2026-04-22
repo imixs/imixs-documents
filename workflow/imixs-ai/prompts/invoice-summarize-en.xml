@@ -13,11 +13,9 @@ Summarize the data from this invoice document:
  - General Billing data
  - Invoice total information
  - Payment summary
- - Invoice items
 
 The company name is the name of the company that issued the invoice document, not the recipient. The company name is usually at the beginning or end of the invoice document.
-
-Summarize the invoice lines in a table.
+Ignore the invoice lines.
 Use only the default values and do not perform any calculations, summing or changes to these values yourself. Format numbers and amounts according to ISO 4217.
 
 [/INST]
